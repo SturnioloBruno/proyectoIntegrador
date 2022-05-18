@@ -20,14 +20,19 @@ public class CategoriaController {
         return ResponseEntity.ok(categoriaService.listarTodos());
     }
 
-    @GetMapping("/buscar/{id}")
+    @GetMapping("/listarTitulos")
+    public ResponseEntity<List<String>> listarTitulos()throws Exception{
+        return ResponseEntity.ok(categoriaService.listarTitulos());
+    }
+
+    @GetMapping("/buscarId/{id}")
     public ResponseEntity<Categoria> buscarId(@PathVariable Long id)throws Exception{
         return ResponseEntity.ok(categoriaService.buscarId(id));
     }
 
-    @GetMapping("/buscar/{nombre}")
-    public ResponseEntity<Categoria> buscarId(@PathVariable String nombre)throws Exception{
-        return ResponseEntity.ok(categoriaService.buscarNombre(nombre));
+    @GetMapping("/buscarNombre/{nombre}")
+    public ResponseEntity<Categoria> buscarId(@PathVariable String titulo)throws Exception{
+        return ResponseEntity.ok(categoriaService.buscarTitulo(titulo));
     }
 
     @DeleteMapping("/borrar/{id}")
@@ -36,8 +41,13 @@ public class CategoriaController {
         return ResponseEntity.ok("Categoria borrada con exito!");
     }
 
-    @PutMapping
+    @PutMapping("/actualizar")
     public ResponseEntity<Categoria> actualizar(@RequestBody Categoria categoria)throws Exception{
         return ResponseEntity.ok(categoriaService.actualizar(categoria));
+    }
+
+    @PostMapping("/guardar")
+    public ResponseEntity<Categoria> guardar(@RequestBody Categoria categoria)throws Exception{
+        return ResponseEntity.ok(categoriaService.guardar(categoria));
     }
 }

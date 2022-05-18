@@ -5,6 +5,7 @@ import com.grupo01.proyectointegrador.Repository.ICategoriaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,9 +20,20 @@ public class CategoriaService {
         return categoriaRepository.findAll();
     }
 
+    // Select All Titulos
+    public List<String> listarTitulos() throws Exception{
+        List<String> listaNombres = new ArrayList<>();
+
+        for (Categoria categoria: categoriaRepository.findAll()) {
+            listaNombres.add(categoria.getTitulo());
+        }
+
+        return listaNombres;
+    }
+
     // Select for name
-    public Categoria buscarNombre(String nombre) throws  Exception{
-        Optional<Categoria> categoria = categoriaRepository.findByTitulo(nombre);
+    public Categoria buscarTitulo(String titulo) throws  Exception{
+        Optional<Categoria> categoria = categoriaRepository.findByTitulo(titulo);
 
         return categoria.orElse(null);//si esta lo retorna si no manda null
     }
@@ -34,7 +46,7 @@ public class CategoriaService {
     }
 
     // Insert
-    public Categoria insert(Categoria categoria) throws  Exception{
+    public Categoria guardar(Categoria categoria) throws  Exception{
         return categoriaRepository.save(categoria);
     }
 

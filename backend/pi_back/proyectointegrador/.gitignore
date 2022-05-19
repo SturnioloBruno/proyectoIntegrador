@@ -33,4 +33,5 @@ build/
 .vscode/
 
 ### evito application properties ###
-.properties
+*.properties
+/src/main/**/application.properties

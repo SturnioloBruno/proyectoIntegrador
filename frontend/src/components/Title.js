@@ -1,8 +1,8 @@
 function Title() {
     return (
-        <div>
+        <div className="div__title-header">
             <h1>Digital Booking</h1>
-            <span>Sentite como en tu hogar</span>
+            <p>Sentite como en tu hogar</p>
         </div>
     )
 }

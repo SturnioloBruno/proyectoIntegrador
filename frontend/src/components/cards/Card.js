@@ -5,6 +5,8 @@ function Card(props) {
         <article>
            <div>
                 <div>
+                    {// Acá va el endpoint de la categoría
+                    }
                     <p>Hotel</p>
                 </div>
                 <h3>{props.title}</h3>
@@ -15,9 +17,13 @@ function Card(props) {
             </div>
             <p>A 940 m del centro <a href="#">mostrar en el mapa</a></p>
             <ul>
+                {// Acá va el for con la BBDD de los servicios
+                }
                 <li>Wifi</li>
                 <li>Piscina</li>
             </ul>
+            {// Acá va el endpoint de las descripciones
+            }
             <p>En el corazón de San Telmo, disfruta de un albergue inspirado en las pasiones de Buenos Aires. <a href="">más...</a></p>
             <Button text="ver más" />
         </article>

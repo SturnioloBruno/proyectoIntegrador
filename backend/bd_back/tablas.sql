@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS categoria (
+CREATE TABLE IF NOT EXISTS categorias (
 	cat_id INT AUTO_INCREMENT PRIMARY KEY,
     cat_titulo VARCHAR(100) NOT NULL, 
     cat_descripcion VARCHAR(500),

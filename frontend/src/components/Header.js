@@ -11,7 +11,7 @@ function Header() {
         <header>
             <Title />
             <div className={`${isOpen ? 'div__open-menu' : ''}`}>
-                <a href="#" class="a__button-nav" onClick={toggle}>Abrir/Cerrar</a>
+                <a href="#" className="a__button-nav" onClick={toggle}>Abrir/Cerrar</a>
                 <div className="div__menu-bar">
                     <p>Menú</p>
                     <nav>

@@ -1,13 +1,18 @@
 import Button from "./Button";
+import '../styles/Search.css';
 
 function Search() {
     return (
-        <section>
+        <section className="section__search-bar">
             <h2>Busca ofertas en hoteles, casas y mucho más</h2>
             <form>
-                <input type="text" name="locality" placeholder="¿A dónde vamos?" />
-                <input type="calendar" name="day" placeholder="Check in - Check out" />
-                <Button text="Buscar" type="submit" />
+                <label for="" className="input__text-location">
+                    <input type="text" name="locality" placeholder="¿A dónde vamos?" id="" />
+                </label>
+                <label for="" className="input__calendar-day">
+                    <input type="calendar" name="day" placeholder="Check in - Check out" id="" />
+                </label>
+                <Button text="Buscar" type="submit" className="btn button__solid-type" />
             </form>
         </section>
     )

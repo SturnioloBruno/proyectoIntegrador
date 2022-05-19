@@ -30,7 +30,7 @@ public class CategoriaController {
         return ResponseEntity.ok(categoriaService.buscarId(id));
     }
 
-    @GetMapping("/buscarNombre/{nombre}")
+    @GetMapping("/buscarNombre/{titulo}")
     public ResponseEntity<Categoria> buscarId(@PathVariable String titulo)throws Exception{
         return ResponseEntity.ok(categoriaService.buscarTitulo(titulo));
     }

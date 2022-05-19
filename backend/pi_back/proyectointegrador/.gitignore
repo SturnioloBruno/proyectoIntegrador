@@ -36,3 +36,5 @@ build/
 *.properties
 /src/main/**/application.properties
 src/main/resources/application.properties
+.idea/
+*.idea/

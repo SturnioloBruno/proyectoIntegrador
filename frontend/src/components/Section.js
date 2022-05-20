@@ -8,7 +8,7 @@ function Section(props) {
         <section>
             <h2>{props.title}</h2>
             {type == "Category" &&
-            <ul className="ul__accommodation-list">
+            <ul className="ul__categories-list">
                 {// Acá va el for con la BBDD de las categorías
                 }
                 <li><a href='#'><Category title="Hoteles" /></a></li>
@@ -18,12 +18,14 @@ function Section(props) {
             </ul>
             }
             {type == "Card" &&
-            <ul>
+            <ul className="ul__accommodation-list">
                 {// Acá va el for con la BBDD de los nombres de hoteles
                 }
-                <li><Card title="Hermitage Hotel" /></li>
-                <li><Card title="Hermitage Hotel" /></li>
-                </ul>
+                <li><a href='#'><Card title="Hermitage Hotel" /></a></li>
+                <li><a href='#'><Card title="Hermitage Hotel" /></a></li>
+                <li><a href='#'><Card title="Hermitage Hotel" /></a></li>
+                <li><a href='#'><Card title="Hermitage Hotel" /></a></li>
+            </ul>
             }
         </section>
     )

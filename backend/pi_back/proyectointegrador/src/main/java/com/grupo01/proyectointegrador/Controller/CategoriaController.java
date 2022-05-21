@@ -9,44 +9,44 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/categorias")
+@RequestMapping("/categories")
 public class CategoriaController {
 
     @Autowired
     CategoriaService categoriaService;
 
-    @GetMapping("/listar")
+    @GetMapping("/getList")
     public ResponseEntity<List<Categoria>> listar()throws Exception{
         return ResponseEntity.ok(categoriaService.listarTodos());
     }
 
-    @GetMapping("/listarTitulos")
+    @GetMapping("/getListNames")
     public ResponseEntity<List<String>> listarTitulos()throws Exception{
         return ResponseEntity.ok(categoriaService.listarTitulos());
     }
 
-    @GetMapping("/buscarId/{id}")
+    @GetMapping("/findById/{id}")
     public ResponseEntity<Categoria> buscarId(@PathVariable Long id)throws Exception{
         return ResponseEntity.ok(categoriaService.buscarId(id));
     }
 
-    @GetMapping("/buscarNombre/{titulo}")
+    @GetMapping("/findByName/{titulo}")
     public ResponseEntity<Categoria> buscarId(@PathVariable String titulo)throws Exception{
         return ResponseEntity.ok(categoriaService.buscarTitulo(titulo));
     }
 
-    @DeleteMapping("/borrar/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> borrar(@PathVariable Long id) throws Exception{
         categoriaService.borrar(id);
         return ResponseEntity.ok("Categoria borrada con exito!");
     }
 
-    @PutMapping("/actualizar")
+    @PutMapping("/update")
     public ResponseEntity<Categoria> actualizar(@RequestBody Categoria categoria)throws Exception{
         return ResponseEntity.ok(categoriaService.actualizar(categoria));
     }
 
-    @PostMapping("/guardar")
+    @PostMapping("/insert")
     public ResponseEntity<Categoria> guardar(@RequestBody Categoria categoria)throws Exception{
         return ResponseEntity.ok(categoriaService.guardar(categoria));
     }

@@ -45,7 +45,7 @@ public class ClienteService {
         Cliente cliente = buscarId(id);
 
         if(cliente == null){
-            throw new Exception("Categoria con id: "+ id + "no existe");
+            throw new Exception("Cliente con id: "+ id + "no existe");
         }
 
         clienteRepository.deleteById(id);
@@ -56,9 +56,23 @@ public class ClienteService {
         Cliente clienteBuscado = buscarId(cliente.getId());
 
         if(clienteBuscado==null){
-            throw new Exception("Categoria con id: "+ cliente.getId() + "no existe");
+            throw new Exception("Cliente con id: "+ cliente.getId() + "no existe");
         }
 
         return clienteRepository.save(cliente);
+    }
+
+    public Boolean validarCliente(String email,String password)throws Exception{
+        Cliente clienteBuscado = buscarEmail(email);
+
+        if(clienteBuscado==null){
+            throw new Exception("No se encuentra usuario con el email ingresado!");
+        }
+
+        if(!clienteBuscado.getPassword().equals(password)){
+            throw new Exception("Contraseña incorrecta!");
+        }
+
+        return true;
     }
 }

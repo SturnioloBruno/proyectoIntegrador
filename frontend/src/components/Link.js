@@ -1,6 +1,6 @@
 function Link(props) {
     return (
-        <a href="#" className={props.className}>{props.text}</a>
+        <a href={props.href}>{props.text}</a>
     )
 }
 

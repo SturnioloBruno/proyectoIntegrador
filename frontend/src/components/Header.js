@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Title from "./Title";
-import Link from "./Link";
+import Links from "./Link";
+import Login from "./login/Login";
 import '../styles/Header.css';
 
 function Header() {
@@ -17,8 +18,8 @@ function Header() {
                     <p>Menú</p>
                     <nav>
                         <ul className="ul__bar-links">
-                            <li><Link className="" text="Crear cuenta" /></li>
-                            <li><Link className="" text="Iniciar sesión" /></li>
+                            <li><Links href="./login/Login.js" text="Crear cuenta" /></li>
+                            <li><Links href="Login.js" text="Iniciar sesión" /></li>
                         </ul>
                         <ul className="ul__social-links">
                             <li><a href="#" className="a__icon-fb">Facebook</a></li>

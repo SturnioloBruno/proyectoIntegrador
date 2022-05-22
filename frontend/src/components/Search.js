@@ -34,7 +34,7 @@ function Search() {
                     <input type="text" name="locality" placeholder="¿A dónde vamos?" id="" />
                 </label>
 
-                <label htmlFor="" className="">
+                <label htmlFor="" className="input__calendar-day">
                     
                 <DateRangePicker
                     startDatePlaceholderText={"Check in"}

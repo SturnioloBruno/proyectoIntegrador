@@ -42,16 +42,44 @@
   width: 100%;
 }
 
-.DateRangePickerInput input{
-  margin: 0px;
+.DateInput {
+  width: calc(48% - 1em);
 }
 
 .DateRangePickerInput {
-    width: 100%;
-    margin-top: 1em;
-    border-radius: 5px;
-    border: none;
-  }
+  width: 100%;
+  margin-top: 1em;
+  border-radius: 5px;
+  border: none;
+}
+
+.DateRangePickerInput input{
+  margin: 0;
+}
+
+.DateRangePickerInput_calendarIcon {
+  padding: 0;
+  margin: 0 0.5em 0 1em;
+}
+
+.DateInput_input {
+  box-shadow: none;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 11px 1.5em 9px
+}
+
+.DateInput_input__focused {
+  border-bottom: 2px solid var(--orange);
+}
+
+.DateRangePickerInput_calendarIcon_svg {
+  display: none;
+}
+
+.DayPickerKeyboardShortcuts_show__bottomRight {
+  display: none;
+}
 
 @media (min-width: 768px) {
   .DateRangePickerInput {

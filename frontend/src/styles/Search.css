@@ -52,12 +52,20 @@
         margin-top: 0;
     }
 
-    .section__search-bar label, .section__search-bar .button__solid-type {
-        width: calc(33% - 1em);
+    .section__search-bar .input__text-location {
+        width: calc(30% - 1em);
+    }
+
+    .section__search-bar .input__calendar-day {
+        width: calc(45% - 1em);
+    }
+
+    .section__search-bar .button__solid-type {
+        width: calc(25% - 1em);
     }
 
     .section__search-bar label::after {
-        top: 8px;
+        top: 12px;
     }
 }
 
@@ -69,5 +77,13 @@
 
     .section__search-bar label::after {
         top: 12px;
+    }
+
+    .section__search-bar .input__text-location, .section__search-bar .input__calendar-day {
+        width: calc(40% - 1em);
+    }
+
+    .section__search-bar .button__solid-type {
+        width: calc(20% - 1em);
     }
 }

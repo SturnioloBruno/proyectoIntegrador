@@ -16,7 +16,7 @@ function Card(props) {
                         <p>Muy bueno</p>
                     </div>
                 </div>
-                <p class="p__accommodation-direction">A 940 m del centro <a href="#">mostrar en el mapa</a></p>
+                <p className="p__accommodation-direction">A 940 m del centro <a href="#">mostrar en el mapa</a></p>
                 <ul className="ul__services-list">
                     {// Acá va el for con la BBDD de los servicios
                     }

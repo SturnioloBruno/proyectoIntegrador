@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Title from "./Title";
 import Link from "./Link";
 import '../styles/Header.css';
@@ -6,11 +6,12 @@ import '../styles/Header.css';
 function Header() {
     const [isOpen, setIsOpen] = useState(false);
     const toggle = () => setIsOpen(!isOpen);
+    {(isOpen ? document.body.style.overflow = 'hidden' : document.body.style.overflow = 'unset' )}
 
     return (
-        <header>
+        <header className={`${isOpen ? 'div__open-menu' : ''}`}>
             <Title />
-            <div className={`${isOpen ? 'div__open-menu' : ''}`}>
+            <div>
                 <a href="#" className="a__button-nav" onClick={toggle}>Abrir/Cerrar</a>
                 <div className="div__menu-bar">
                     <p>Menú</p>

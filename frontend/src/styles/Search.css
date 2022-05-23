@@ -1,0 +1,89 @@
+.section__search-bar {
+    background-color: var(--light-grey);
+    padding-top: calc(82px + 1em);
+}
+
+.section__search-bar h2 {
+    font-size: 30px;
+    text-align: center;
+}
+
+.section__search-bar input, .section__search-bar .button__solid-type {
+    width: 100%;
+    margin-top: 1em;
+}
+
+.section__search-bar label {
+    position: relative;
+}
+
+.section__search-bar label::after {
+    content: "";
+    width: 24px;
+    height: 24px;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 10px;
+}
+
+.input__text-location::after {
+    background: url(../assets/icons/location.svg) no-repeat center center;
+    background-size: contain;
+}
+
+.input__calendar-day::after {
+    background: url(../assets/icons/calendar.svg) no-repeat center center;
+    background-size: contain;
+}
+
+@media (min-width: 768px) {
+    .section__search-bar {
+        padding: calc(98px + 2em) 5% 2em;
+    }
+
+    .section__search-bar form {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 2em;
+    }
+
+    .section__search-bar input, .section__search-bar .button__solid-type {
+        margin-top: 0;
+    }
+
+    .section__search-bar .input__text-location {
+        width: calc(30% - 1em);
+    }
+
+    .section__search-bar .input__calendar-day {
+        width: calc(45% - 1em);
+    }
+
+    .section__search-bar .button__solid-type {
+        width: calc(25% - 1em);
+    }
+
+    .section__search-bar label::after {
+        top: 12px;
+    }
+}
+
+@media (min-width: 1280px) {
+    .section__search-bar form {
+        width: 90%;
+        margin: 2em auto 0;
+    }
+
+    .section__search-bar label::after {
+        top: 12px;
+    }
+
+    .section__search-bar .input__text-location, .section__search-bar .input__calendar-day {
+        width: calc(40% - 1em);
+    }
+
+    .section__search-bar .button__solid-type {
+        width: calc(20% - 1em);
+    }
+}

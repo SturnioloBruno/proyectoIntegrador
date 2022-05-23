@@ -1,0 +1,67 @@
+footer {
+    background-color: var(--orange);
+    padding: 1em;
+}
+
+footer p {
+    color: white;
+    font-size: 14px;
+}
+
+footer a {
+    display: none;
+}
+
+@media (min-width: 768px) {
+    footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1.5em 5%;
+    }
+
+    footer p {
+        font-size: 1em;
+    }
+
+    footer ul {
+        display: flex;
+        align-items: center;
+    }
+
+    footer ul li {
+        margin-left: 24px;
+    }
+
+    footer a {
+        display: block;
+        font-size: 0;
+    }
+
+    footer a::after {
+        content: "";
+        width: 24px;
+        height: 24px;
+        display: block;
+    }
+
+    footer a.a__fb-white::after {
+        background: url(../assets/icons/fb-white.svg) no-repeat center center;
+        background-size: contain;
+    }
+    
+    footer a.a__li-white::after {
+        background: url(../assets/icons/li-white.svg) no-repeat center center;
+        background-size: contain;
+    }
+
+    footer a.a__tw-white::after {
+        background: url(../assets/icons/tw-white.svg) no-repeat center center;
+        background-size: contain;
+    }
+
+    footer a.a__ig-white::after {
+        background: url(../assets/icons/ig-white.svg) no-repeat center center;
+        background-size: contain;
+    }
+}

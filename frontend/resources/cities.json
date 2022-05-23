@@ -1,0 +1,52 @@
+[
+    {
+        "id":1,
+        "ciudad":"Buenos Aires",
+        "pais":"Argentina"
+    },
+    {
+        "id":2,
+        "ciudad":"Córdoba",
+        "pais":"Argentina"
+    },
+    {
+        "id":3,
+        "ciudad":"Rosario",
+        "pais":"Argentina"
+    },
+    {
+        "id":4,
+        "ciudad":"Comodoro Rivadavia",
+        "pais":"Argentina"
+    },
+    {
+        "id":5,
+        "ciudad":"Mar del Plata",
+        "pais":"Argentina"
+    },
+    {
+        "id":6,
+        "ciudad":"Salta",
+        "pais":"Argentina"
+    },
+    {
+        "id":7,
+        "ciudad":"Santa Fe",
+        "pais":"Argentina"
+    },
+    {
+        "id":8,
+        "ciudad":"San Salvador de Jujuy",
+        "pais":"Argentina"
+    },
+    {
+        "id":9,
+        "ciudad":"San Luis",
+        "pais":"Argentina"
+    },
+    {
+        "id":10,
+        "ciudad":"San Carlos de Bariloche",
+        "pais":"Argentina"
+    }
+]

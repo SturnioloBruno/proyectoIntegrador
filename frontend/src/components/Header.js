@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import Title from "./Title";
-import Links from "./Link";
 import Login from "./login/Login";
+import Register from "./login/Register";
 import '../styles/Header.css';
 
 function Header() {
@@ -18,8 +19,8 @@ function Header() {
                     <p>Menú</p>
                     <nav>
                         <ul className="ul__bar-links">
-                            <li><Links href="./login/Login.js" text="Crear cuenta" /></li>
-                            <li><Links href="Login.js" text="Iniciar sesión" /></li>
+                            <li><Link to="/login" element={<Login />}>Iniciar sesión</Link></li>
+                            <li><Link to="/register" element={<Register />}>Crear cuenta</Link></li>
                         </ul>
                         <ul className="ul__social-links">
                             <li><a href="#" className="a__icon-fb">Facebook</a></li>

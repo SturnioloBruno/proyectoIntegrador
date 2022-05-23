@@ -1,7 +1,9 @@
+import { Link } from "react-router-dom";
 import Button from "../Button";
+import Login from "./Login";
 import '../../styles/Login.css';
 
-function Login() {
+function Register() {
     return (
         <section class="section__form-data">
             <h2>Crear cuenta</h2>
@@ -28,9 +30,9 @@ function Login() {
                 </label>
                 <Button text="Crear cuenta" type="submit" className="btn button__solid-type" />
             </form>
-            <p>¿Ya tienes una cuenta? <a href=''>Crear cuenta</a></p>
+            <p>¿Ya tienes una cuenta? <Link to="/login" element={<Login />}>Iniciar sesión</Link></p>
         </section>
     )
   }
   
-export default Login;
+export default Register;

@@ -1,4 +1,6 @@
+import { Link } from "react-router-dom";
 import Button from "../Button";
+import Register from "./Register";
 import '../../styles/Login.css';
 
 function Login() {
@@ -16,7 +18,7 @@ function Login() {
                 </label>
                 <Button text="Ingresar" type="submit" className="btn button__solid-type" />
             </form>
-            <p>¿Aún no tenes cuenta? <a href=''>Registrate</a></p>
+            <p>¿Aún no tenes cuenta? <Link to="/register" element={<Register />}>Registrate</Link></p>
         </section>
     )
   }

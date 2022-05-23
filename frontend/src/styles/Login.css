@@ -1,0 +1,107 @@
+.section__form-data {
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: calc(100vh - 50px);
+}
+
+.section__form-data h2 {
+    text-align: center;
+    color: var(--orange);
+    font-size: 24px;
+    padding-top: 3em;
+    flex: 1;
+}
+
+.section__form-data label {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1em;
+    position: relative;
+}
+
+.section__form-data span {
+    font-size: 14px;
+    color: var(--grey);
+}
+
+.section__form-data input {
+    margin-top: .5em;
+    width: 100%;
+    padding: 1em;
+}
+
+.section__form-data .label__password-input::after {
+    content: "";
+    width: 24px;
+    height: 24px;
+    display: block;
+    position: absolute;
+    top: 40px;
+    right: 10px;
+    background: url(../assets/icons/no-view.svg) no-repeat center center;
+    background-size: contain;
+}
+
+.section__form-data p {
+    text-align: center;
+    margin-top: 1.5em;
+    font-size: 14px;
+    flex: 1;
+}
+
+.section__form-data p a {
+    color: var(--orange);
+}
+
+.section__form-data .btn {
+    width: 100%;
+    margin-top: 1em;
+}
+
+@media (min-width: 768px) {
+    .section__form-data {
+        min-height: calc(100vh - 72px);
+    }
+
+    .section__form-data form {
+        width: 60%;
+        margin: auto;
+    }
+
+    .section__form-data h2 {
+        padding-top: 5em;
+    }
+
+    .section__form-data label, .section__form-data .btn, .section__form-data p {
+        margin-top: 2em;
+    }
+}
+
+@media (min-width: 1280px) {
+    .section__form-data h2, .section__form-data p {
+        flex: none;
+    }
+
+    .section__form-data form {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        width: 35%;
+        margin: 0 auto;
+    }
+
+    .section__form-data label.label__input-name {
+        width: calc(50% - 1em);
+    }
+
+    .section__form-data label {
+        width: 100%;
+    }
+
+    .section__form-data .btn {
+        width: auto;
+        margin: 2em auto 0;
+    }
+}

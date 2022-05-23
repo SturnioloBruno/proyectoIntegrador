@@ -1,17 +1,21 @@
 import React, {Fragment} from 'react';
+import { Routes, Route } from "react-router-dom";
 import Header from './components/Header';
-import Search from './components/Search';
+import Home from './Home';
+import Login from './components/login/Login';
+import Register from './components/login/Register';
 import Footer from './components/Footer';
-import Section from './components/Section';
 
 function App() {
   return (
     <Fragment>
       <Header />
-      <Search />
 
-      <Section title="Buscar por tipo de alojamiento" type="Category" />
-      <Section title="Recomendaciones" type="Card" />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+      </Routes>
 
       <Footer />
     </Fragment>

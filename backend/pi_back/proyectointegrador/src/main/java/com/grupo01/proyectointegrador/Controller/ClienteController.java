@@ -25,6 +25,7 @@ public class ClienteController {
         return ResponseEntity.ok(clienteService.buscarId(id));
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/findByEmail/{email}")
     public ResponseEntity<Cliente> buscarEmail(@PathVariable String email)throws Exception{
         return ResponseEntity.ok(clienteService.buscarEmail(email));
@@ -41,11 +42,13 @@ public class ClienteController {
         return ResponseEntity.ok(clienteService.actualizar(cliente));
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/insert")
     public ResponseEntity<Cliente> guardar(@RequestBody Cliente cliente)throws Exception{
         return ResponseEntity.ok(clienteService.guardar(cliente));
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/validate")
     public ResponseEntity<String> validarCliente(@RequestBody Cliente cliente)throws Exception{
         String mensaje="";

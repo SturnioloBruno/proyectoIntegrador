@@ -16,8 +16,6 @@ function Card(props) {
                 </div>
                 <p className="p__accommodation-direction">{props.location}<a href="#"> mostrar en el mapa</a></p>
                 <ul className="ul__services-list">
-                    {// Acá va el for con la BBDD de los servicios
-                    }
                     <li className="li__wifi-icon">Wifi</li>
                     <li className="li__pool-icon">Piscina</li>
                 </ul>

@@ -1,0 +1,67 @@
+[
+    {
+        "alo_id": "1",
+        "alo_titulo": "Hotel el Pacífico",
+        "alo_location": "Buenos Aires, CABA",
+        "alo_categoria": "Hoteles",
+        "cat_descripcion": "Carefully drink from water glass and then spill it everywhere and proceed to lick the puddle. Commence midnight zoomies eat the rubberband and slap owner's face at 5am until human fills food dish stick butt in face lay on arms while you're using the keyboard murder hooman toes.",
+        "alo_url_img": "https://images.unsplash.com/photo-1629140727571-9b5c6f6267b4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1527&q=80"
+    },
+    {
+        "alo_id": "2",
+        "alo_titulo": "Hostel Argentina",
+        "alo_location": "Córdoba, Villa Carlos Paz",
+        "alo_categoria": "Hostels",
+        "cat_descripcion": "Carefully drink from water glass and then spill it everywhere and proceed to lick the puddle. Commence midnight zoomies eat the rubberband and slap owner's face at 5am until human fills food dish stick butt in face lay on arms while you're using the keyboard murder hooman toes.",
+        "alo_url_img": "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80"
+    },
+    {
+        "alo_id": "3",
+        "alo_titulo": "Departamentos Mendoza",
+        "alo_location": "Mendoza, San Rafael",
+        "alo_categoria": "Departamentos",
+        "cat_descripcion": "Carefully drink from water glass and then spill it everywhere and proceed to lick the puddle. Commence midnight zoomies eat the rubberband and slap owner's face at 5am until human fills food dish stick butt in face lay on arms while you're using the keyboard murder hooman toes.",
+        "alo_url_img": "https://images.unsplash.com/photo-1581404569456-a2e7007c3979?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80"
+    },
+    {
+        "alo_id": "4",
+        "alo_titulo": "Apart Hotel Cielo",
+        "alo_location": "Santa Fe, Rosario",
+        "alo_categoria": "Bed and Breakfast",
+        "cat_descripcion": "Carefully drink from water glass and then spill it everywhere and proceed to lick the puddle. Commence midnight zoomies eat the rubberband and slap owner's face at 5am until human fills food dish stick butt in face lay on arms while you're using the keyboard murder hooman toes.",
+        "alo_url_img": "https://images.unsplash.com/photo-1584602755303-759bf3645954?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80"
+    },
+    {
+        "alo_id": "5",
+        "alo_titulo": "Hotel el Atlántico",
+        "alo_location": "Rio de Negro, Bariloche",
+        "alo_categoria": "Hoteles",
+        "cat_descripcion": "Carefully drink from water glass and then spill it everywhere and proceed to lick the puddle. Commence midnight zoomies eat the rubberband and slap owner's face at 5am until human fills food dish stick butt in face lay on arms while you're using the keyboard murder hooman toes.",
+        "alo_url_img": "https://images.unsplash.com/photo-1629140727571-9b5c6f6267b4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1527&q=80"
+    },
+    {
+        "alo_id": "6",
+        "alo_titulo": "Hostel",
+        "alo_location": "Salta, Cafayate",
+        "alo_categoria": "Hostels",
+        "cat_descripcion": "Carefully drink from water glass and then spill it everywhere and proceed to lick the puddle. Commence midnight zoomies eat the rubberband and slap owner's face at 5am until human fills food dish stick butt in face lay on arms while you're using the keyboard murder hooman toes.",
+        "alo_url_img": "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80"
+    },
+    {
+        "alo_id": "7",
+        "alo_titulo": "Departamentos Victoria",
+        "alo_location": "Entre Rios, Victoria",
+        "alo_categoria": "Departamentos",
+        "cat_descripcion": "Carefully drink from water glass and then spill it everywhere and proceed to lick the puddle. Commence midnight zoomies eat the rubberband and slap owner's face at 5am until human fills food dish stick butt in face lay on arms while you're using the keyboard murder hooman toes.",
+        "alo_url_img": "https://images.unsplash.com/photo-1581404569456-a2e7007c3979?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80"
+    },
+    {
+        "alo_id": "8",
+        "alo_titulo": "Apart Iguazú",
+        "alo_location": "Misiones, Puerto Iguazú",
+        "alo_categoria": "Bed and Breakfast",
+        "cat_descripcion": "Carefully drink from water glass and then spill it everywhere and proceed to lick the puddle. Commence midnight zoomies eat the rubberband and slap owner's face at 5am until human fills food dish stick butt in face lay on arms while you're using the keyboard murder hooman toes.",
+        "alo_url_img": "https://images.unsplash.com/photo-1584602755303-759bf3645954?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80"
+    }
+    
+]

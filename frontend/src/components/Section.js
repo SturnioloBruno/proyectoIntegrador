@@ -4,7 +4,7 @@ import '../styles/Section.css';
 import Categories from "../data/categories.json";
 import Alojamientos from "../data/alojamiento.json";
 
-function Section({ type, title, src }) {
+function Section({ type, title, src, location, desc, categ}) {
     return (
         <section>
             <h2>{title}</h2>
@@ -18,7 +18,7 @@ function Section({ type, title, src }) {
             {type == "Card" &&
             <ul className="ul__accommodation-list">
                 {Alojamientos.map((alo) => (
-                    <li><a href='#'><Card title={alo.alo_titulo} /></a></li>
+                    <li><a href='#'><Card title={alo.alo_titulo} src={alo.alo_url_img} location={alo.alo_location} desc={alo.alo_descripcion} categ={alo.alo_categoria}/></a></li>
                 ))}
             </ul>
             }

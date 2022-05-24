@@ -1,20 +1,20 @@
 import Category from './cards/Category';
 import Card from '../components/cards/Card';
 import '../styles/Section.css';
+import Categories from "../data/categories.json";
 
-function Section(props) {
-    const type = props.type;
+function Section({ type, title, src }) {
+    console.log(Categories)
     return (
         <section>
-            <h2>{props.title}</h2>
+            <h2>{title}</h2>
             {type == "Category" &&
             <ul className="ul__categories-list">
                 {// Acá va el for con la BBDD de las categorías
                 }
-                <li><a href='#'><Category title="Hoteles" /></a></li>
-                <li><a href='#'><Category title="Hotels" /></a></li>
-                <li><a href='#'><Category title="Departamentos" /></a></li>
-                <li><a href='#'><Category title="Bed and breakfast" /></a></li>
+                {Categories.map((cat) => (
+                    <li><a href='#'><Category title={cat.cat_titulo} src={cat.cat_url_img} /></a></li>
+                ))}
             </ul>
             }
             {type == "Card" &&

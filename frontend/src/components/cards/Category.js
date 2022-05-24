@@ -3,7 +3,7 @@ function Category(props) {
         <article>
             <div>
                 <h3>{props.title}</h3>
-                <p>807.105 hoteles</p>
+                <p>{props.description}</p>
             </div>
             <img src={props.src} alt="Hotel" />
         </article>

@@ -63,25 +63,51 @@ header.div__open-menu {
 
 .div__open-menu nav {
     display: flex;
-    justify-content: space-between;
     flex-direction: column;
-    height: 75%;
 }
 
-.div__open-menu .div__menu-bar p {
+.div__open-menu .div__menu-login {
     height: 25%;
     background-color: var(--orange);
     padding: 1em;
     display: flex;
     align-items: flex-end;
     justify-content: flex-end;
+}
+
+.div__open-menu .div__menu-login > p {
     color: white;
     font-size: 20px;
     text-transform: uppercase;
 }
 
-.div__open-menu .div__menu-bar .ul__bar-links {
-    padding: 0 1em;
+.div__open-menu .div__menu-login .div__user-login {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.div__menu-login .div__user-login > span {
+    border-radius: 50%;
+    color: #333;
+    background: white;
+    font-size: 16px;
+    text-transform: uppercase;
+    margin-bottom: .5em;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.div__menu-login .div__user-login p {
+    font-weight: 700;
+    font-size: 16px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
 }
 
 .div__open-menu .div__menu-bar .ul__bar-links li {
@@ -97,11 +123,34 @@ header.div__open-menu {
     color: var(--grey);
 }
 
+.div__menu-bar .div__menu-navigation {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 75%;
+    padding: 0 1em 1.5em;
+}
+
+.div__menu-bar .div__menu-navigation.login {
+    justify-content: flex-end;
+}
+
+.div__menu-bar .div__social-menu span {
+    display: block;
+    text-align: right;
+    padding-bottom: 1em;
+    border-bottom: 1px solid var(--black);
+}
+
+.div__menu-bar .div__social-menu a {
+    color: var(--orange);
+}
+
 .ul__social-links {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    padding: 1.5em 1em;
+    padding-top: 1.5em;
 }
 
 .ul__social-links li {
@@ -148,7 +197,7 @@ header.div__open-menu {
         display: flex;
     }
 
-    .div__menu-bar p, .ul__social-links {
+    .div__menu-bar .div__menu-login > p, .ul__social-links {
         display: none;
     }
 
@@ -164,6 +213,47 @@ header.div__open-menu {
         border: 1px solid var(--orange);
         color: var(--orange);
         margin-left: 1.5em;
+    }
+
+    .div__user-login {
+        display: flex;
+        align-items: center;
+    }
+
+    .div__menu-login {
+        margin-right: 2em;
+    }
+
+    .div__menu-login .div__user-login p {
+        color: var(--grey);
+        align-items: flex-start;
+    }
+
+    .div__menu-login .div__user-login p span {
+        color: var(--orange);
+    }
+
+    .div__menu-login .div__user-login > span {
+        color: white;
+        background: black;
+        margin-right: .5em;
+    }
+
+    .div__menu-bar .div__menu-navigation {
+        padding: 0;
+        height: auto;
+    }
+
+    .div__menu-bar .div__social-menu span {
+        font-size: 0;
+        border-bottom: 0;
+    }
+
+    .div__menu-bar .div__social-menu a::after {
+        content: "X";
+        color: var(--black);
+        font-size: 16px;
+        font-weight: 700;
     }
 }
 

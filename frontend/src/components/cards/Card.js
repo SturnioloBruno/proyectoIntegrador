@@ -6,7 +6,7 @@ function Card(props) {
             <div>
                 <div className="div__info-accommodation">
                     <div>
-                        <p className="p__category-name">{props.categ}</p>
+                        <p className="p__category-name">{props.category}</p>
                         <h3>{props.title}</h3>
                     </div>
                     <div className="div__puntuation-number">
@@ -20,7 +20,7 @@ function Card(props) {
                     <li className="li__pool-icon">Piscina</li>
                 </ul>
                 <div className="div__show-text">
-                    <p className="p__description-text">{props.desc}</p>
+                    <p className="p__description-text">{props.description}</p>
                     <a href="#">más...</a>
                 </div>
                 <Button text="ver más" className="btn button__solid-type" />

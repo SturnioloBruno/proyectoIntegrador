@@ -1,52 +1,52 @@
 [
     {
         "id":1,
-        "ciudad":"Buenos Aires",
-        "pais":"Argentina"
+        "city":"Buenos Aires",
+        "country":"Argentina"
     },
     {
         "id":2,
-        "ciudad":"Córdoba",
-        "pais":"Argentina"
+        "city":"Córdoba",
+        "country":"Argentina"
     },
     {
         "id":3,
-        "ciudad":"Rosario",
-        "pais":"Argentina"
+        "city":"Rosario",
+        "country":"Argentina"
     },
     {
         "id":4,
-        "ciudad":"Comodoro Rivadavia",
-        "pais":"Argentina"
+        "city":"Comodoro Rivadavia",
+        "country":"Argentina"
     },
     {
         "id":5,
-        "ciudad":"Mar del Plata",
-        "pais":"Argentina"
+        "city":"Mar del Plata",
+        "country":"Argentina"
     },
     {
         "id":6,
-        "ciudad":"Salta",
-        "pais":"Argentina"
+        "city":"Salta",
+        "country":"Argentina"
     },
     {
         "id":7,
-        "ciudad":"Santa Fe",
-        "pais":"Argentina"
+        "city":"Santa Fe",
+        "country":"Argentina"
     },
     {
         "id":8,
-        "ciudad":"San Salvador de Jujuy",
-        "pais":"Argentina"
+        "city":"San Salvador de Jujuy",
+        "country":"Argentina"
     },
     {
         "id":9,
-        "ciudad":"San Luis",
-        "pais":"Argentina"
+        "city":"San Luis",
+        "country":"Argentina"
     },
     {
         "id":10,
-        "ciudad":"San Carlos de Bariloche",
-        "pais":"Argentina"
+        "city":"San Carlos de Bariloche",
+        "country":"Argentina"
     }
 ]

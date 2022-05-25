@@ -1,26 +1,26 @@
 [
     {
         "cat_id": "1",
-        "cat_titulo": "Hoteles",
-        "cat_descripcion": "807.105 hoteles",
+        "cat_title": "Hoteles",
+        "cat_description": "807.105 hoteles",
         "cat_url_img": "https://images.unsplash.com/photo-1629140727571-9b5c6f6267b4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1527&q=80"
     },
     {
         "cat_id": "2",
-        "cat_titulo": "Hostels",
-        "cat_descripcion": "807.105 hoteles",
+        "cat_title": "Hostels",
+        "cat_description": "807.105 hoteles",
         "cat_url_img": "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80"
     },
     {
         "cat_id": "3",
-        "cat_titulo": "Departamentos",
-        "cat_descripcion": "807.105 hoteles",
+        "cat_title": "Departamentos",
+        "cat_description": "807.105 hoteles",
         "cat_url_img": "https://images.unsplash.com/photo-1581404569456-a2e7007c3979?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80"
     },
     {
         "cat_id": "4",
-        "cat_titulo": "Bed and Breakfast",
-        "cat_descripcion": "807.105 hoteles",
+        "cat_title": "Bed and Breakfast",
+        "cat_description": "807.105 hoteles",
         "cat_url_img": "https://images.unsplash.com/photo-1584602755303-759bf3645954?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80"
     }
 ]

@@ -172,6 +172,7 @@ h2 {
         height: auto;
         width: 45%;
         object-position: center;
+        border-radius: 8px 0 0 8px;
     }
 
     .ul__accommodation-list article .p__description-text {
@@ -199,5 +200,9 @@ h2 {
 
     .ul__categories-list article, .ul__accommodation-list article {
         margin-top: 2em;
+    }
+
+    .ul__accommodation-list article {
+        height: 100%;
     }
 }

@@ -4,7 +4,7 @@ import Register from "./Register";
 import '../../styles/Login.css';
 import {useState} from 'react';
 
-function Login() {
+function Login({handlerUser}) {
     const [errors,setError]=useState({})
     const navigate = useNavigate();
     const userValidate = {email:"admin@admin.com",
@@ -43,6 +43,7 @@ function Login() {
             return
         }
 
+        handlerUser({nombre:"Admin",apellido:"Admin"})
         navigate("/")
     }
 

@@ -7,12 +7,14 @@ import {useState} from 'react';
 function Login() {
     const [errors,setError]=useState({})
     const navigate = useNavigate();
+    const userValidate = {email:"admin@admin.com",
+                          password:"Admin1234"}
 
     const handlerSubmit = (e)=>{
         e.preventDefault()
 
-        const emailValue =  document.querySelector("#email_login").trim();
-        const passwordValue = document.querySelector("#password_login").trim();
+        const emailValue =  document.querySelector("#email_login");
+        const passwordValue = document.querySelector("#password_login");
         let ret;
 
         //LIMPIO ERRORES 
@@ -32,21 +34,21 @@ function Login() {
             return
         }
 
-       //VALIDO CONTRA PASSWORDD Y EMAIL ESTATICO DESPUES SE CAMBIA POR FETCH
-        if(emailValue.value !== 'admin@admin.com'){
-            setError({password:["Por favor vuelva a intentarlo, sus credenciales son inválidas"]})
-            return
-        }else if(passwordValue.value !== 'Admin1234'){
+      //VALIDO CONTRA PASSWORDD Y EMAIL ESTATICO DESPUES SE CAMBIA POR FETCH
+      if(emailValue.value.trim() !== userValidate.email){
+        setError({password:["Por favor vuelva a intentarlo, sus credenciales son inválidas"]})
+        return
+        }else if(passwordValue.value.trim() !== userValidate.password){
             setError({password:["Por favor vuelva a intentarlo, sus credenciales son inválidas"]})
             return
         }
 
-        //Hook de useNavigate 
         navigate("/")
     }
 
     //VALIDO CAMPO EMAIL
     const validateInput = (type,value)=>{ 
+        value = value.trim() //hago un trim para sacar los espacios
 
         switch (type) {
             case 'EMAIL':
@@ -84,7 +86,7 @@ function Login() {
                 return "Caso no comtemplado!";
         }
           
-        //RETORNO VACIO NO HAY ERRORES
+        //RETORNO VACIO NO HUBO ERRORES
         return "";
     }
 

@@ -3,7 +3,9 @@ import Button from "../Button";
 import Login from "./Login";
 import '../../styles/Login.css';
 
-function Register() {
+function Register({ type }) {
+    if(type) document.body.className = `${type}`;
+
     return (
         <section className="section__form-data">
             <h2>Crear cuenta</h2>

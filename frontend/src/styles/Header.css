@@ -183,6 +183,14 @@ header.div__open-menu {
     background-size: contain;
 }
 
+body.login #link__login-btn {
+    display: none;
+}
+
+body.register #link__register-btn {
+    display: none;
+}
+
 @media (min-width: 768px) {
     header {
         padding: 1.5em 5%;

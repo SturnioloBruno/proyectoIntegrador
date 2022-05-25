@@ -14,16 +14,14 @@ function App() {
     setUser(null)
   }
 
-  
-
   return (
     <Fragment>
       <Header user={user} handlerUser={handlerUser}/>
       
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login handlerUser={handlerUser} />} />
-        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login handlerUser={handlerUser} type="login" />} />
+        <Route path="/register" element={<Register type="register" />} />
       </Routes>
 
       <Footer />

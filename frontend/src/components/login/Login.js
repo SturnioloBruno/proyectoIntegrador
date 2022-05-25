@@ -91,6 +91,8 @@ function Login({handlerUser, type}) {
         return "";
     }
 
+    if(type) document.body.className = `${type}`;
+
     return (
         <section className={`section__form-data ${errors.email || errors.password ? "error" : ""}`}>
             <h2>Iniciar sesión</h2>

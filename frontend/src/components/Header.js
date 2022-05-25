@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 import Title from "./Title";
 import '../styles/Header.css';
 import { Link } from "react-router-dom";
@@ -10,6 +10,8 @@ function Header({user,handlerUser}) {
     const toggle = () => setIsOpen(!isOpen)
     {(isOpen ? document.body.style.overflow = 'hidden' : document.body.style.overflow = 'unset')};
 
+
+    
     return (
         <header className={`${isOpen ? 'div__open-menu' : ''}`}>
             <Title />
@@ -29,8 +31,8 @@ function Header({user,handlerUser}) {
                         {user? ""
                         :<nav>
                             <ul className="ul__bar-links">
-                                <li><Link to="/login" element={<Login />}>Iniciar sesión</Link></li>
-                                <li><Link to="/register" element={<Register />}>Crear cuenta</Link></li>
+                            <li><Link to="/login" element={<Login />} id="link__login-btn">Iniciar sesión</Link></li>
+                            <li><Link to="/register" element={<Register />} id="link__register-btn">Crear cuenta</Link></li>
                             </ul>
                         </nav>}
                         <div className="div__social-menu">

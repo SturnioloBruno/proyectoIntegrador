@@ -49,7 +49,7 @@ function Search() {
                         } else if(city.city.toLowerCase().includes(searchTerm.toLowerCase())) {
                             return city;
                         }
-                    }).map((city) => {
+                    }).slice(0,4).map((city) => {
                         return (
                             <li>
                                 <a href="#">

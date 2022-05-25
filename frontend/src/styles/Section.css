@@ -32,6 +32,10 @@ h2 {
     background-color: white;
 }
 
+.ul__accommodation-list article > div {
+    border-radius: 0 8px 8px 0;
+}
+
 .ul__categories-list article div h3, .ul__accommodation-list article h3 {
     font-size: 20px;
     color: var(--grey);
@@ -54,15 +58,14 @@ h2 {
 
 .ul__accommodation-list article .p__description-text {
     color: var(--grey);
-    margin-top: 1em;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
 }
 
-.hide .p__description-text {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    -webkit-line-clamp: 4;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
+.ul__accommodation-list article .div__show-text {
+    margin: 1em 0;
 }
 
 .ul__accommodation-list article .div__show-text a {
@@ -76,6 +79,7 @@ h2 {
 
 .div__info-accommodation > div:first-of-type {
     flex-direction: column;
+    width: 65%;
 }
 
 .p__category-name {
@@ -94,6 +98,7 @@ h2 {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+    width: 35%;
 }
 
 .div__puntuation-number span {
@@ -102,6 +107,7 @@ h2 {
     padding: .2em .8em;
     border-radius: 10px;
     margin-bottom: .2em;
+    text-align: right;
 }
 
 .div__puntuation-number p {
@@ -149,6 +155,10 @@ h2 {
     background-size: contain;
 }
 
+.ul__categories-list article .button__solid-type, .ul__accommodation-list article .button__solid-type {
+    width: 100%;
+}
+
 @media (min-width: 768px) {
     .ul__categories-list, .ul__accommodation-list {
         display: flex;
@@ -173,15 +183,12 @@ h2 {
         width: 45%;
         object-position: center;
         border-radius: 8px 0 0 8px;
+        max-height: 400px;
     }
 
     .ul__accommodation-list article .p__description-text {
         margin-top: 2.5em;
-    }
-
-    .ul__accommodation-list .button__solid-type {
-        width: 100%;
-        margin-top: 1em;
+        -webkit-line-clamp: 3;
     }
 }
 
@@ -203,6 +210,19 @@ h2 {
     }
 
     .ul__accommodation-list article {
-        height: 100%;
+        height: calc(100% - 2em);
+    }
+
+    .div__info-accommodation > div:first-of-type {
+        width: 70%;
+    }
+
+    .div__puntuation-number {
+        width: 30%;
+    }
+
+    .ul__accommodation-list article .div__show-text {
+        display: flex;
+        flex-direction: column;
     }
 }

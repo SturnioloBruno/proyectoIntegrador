@@ -4,7 +4,7 @@ import Register from "./Register";
 import '../../styles/Login.css';
 import {useState} from 'react';
 
-function Login({handlerUser}) {
+function Login({handlerUser, type}) {
     const [errors,setError]=useState({})
     const navigate = useNavigate();
     const userValidate = {email:"admin@admin.com",
@@ -68,23 +68,23 @@ function Login({handlerUser}) {
 
                     if (value.length < 6) {
                         
-                         return "La contraseña debe contener mas de 6 caracteres"
+                         return "La contraseña debe contener más de 6 caracteres"
                     }
 
                     if (!value.match(/[A-Z]/)) {
-                        return "El campo debe contener al menos una letra Mayuscula"
+                        return "El campo debe contener al menos una letra mayúscula"
                     }
 
                     if (!value.match(/[a-z]/)) {
-                        return "El campo debe contener al menos una letra Minuscula"
+                        return "El campo debe contener al menos una letra minúscula"
                     }
 
                     if (!value.match(/[0-9]/)) {
-                        return "El campo debe contener al menos un Numero"
+                        return "El campo debe contener al menos un número"
                     }
                     break;
             default:
-                return "Caso no comtemplado!";
+                return "Caso no contemplado!";
         }
           
         //RETORNO VACIO NO HUBO ERRORES
@@ -92,26 +92,26 @@ function Login({handlerUser}) {
     }
 
     return (
-        <section class="section__form-data">  
+        <section className={`section__form-data ${errors.email || errors.password ? "error" : ""}`}>
             <h2>Iniciar sesión</h2>
             <form action="POST" onSubmit={handlerSubmit}>
                 <label htmlFor="">
                     <span>Correo electrónico</span>
-                    <input type="email" name="email" id="email_login" required autocomplete="on"/>
+                    <input type="email" name="email" id="email_login" required autoComplete="on"/>
                     
                     {errors.email?
-                     <small class="small__error" id="error_email">{errors.email[0]}</small>:
-                     <small class="small__error"></small>}
+                     <small className="small__error" id="error_email">{errors.email[0]}</small>:
+                     <small className="small__error"></small>}
 
                 </label>
 
                 <label htmlFor="" className='label__password-input'>
                     <span>Contraseña</span>
-                    <input type="password" name="password" id="password_login" required autocomplete="on"/>
+                    <input type="password" name="password" id="password_login" required autoComplete="on"/>
                     
                     {errors.password?
-                    <small class="small__error" id="error_password">{errors.password[0]}</small>:
-                    <small class="small__error"></small>
+                    <small className="small__error" id="error_password">{errors.password[0]}</small>:
+                    <small className="small__error"></small>
                     }
 
                 </label>

@@ -159,13 +159,6 @@ h2 {
     width: 100%;
 }
 
-.small__error{
-    padding-top: 2%;
-    color: red;
-    text-align: right;
-}
-
-
 @media (min-width: 768px) {
     .ul__categories-list, .ul__accommodation-list {
         display: flex;

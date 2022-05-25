@@ -8,7 +8,7 @@ import Register from "./login/Register";
 function Header({user,handlerUser}) {
     const [isOpen, setIsOpen] = useState(false);
     const toggle = () => setIsOpen(!isOpen)
-    {(isOpen ? document.body.style.overflow = 'hidden' : document.body.style.overflow = 'unset'  )}
+    {(isOpen ? document.body.style.overflow = 'hidden' : document.body.style.overflow = 'unset')};
 
     return (
         <header className={`${isOpen ? 'div__open-menu' : ''}`}>

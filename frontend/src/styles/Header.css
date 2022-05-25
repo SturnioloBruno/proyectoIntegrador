@@ -24,6 +24,7 @@ header.div__open-menu {
 
 .div__title-header p {
     display: none;
+    font-style: italic;
 }
 
 .a__button-nav {
@@ -110,17 +111,15 @@ header.div__open-menu {
     align-items: flex-end;
 }
 
-.div__open-menu .div__menu-bar .ul__bar-links li {
-    padding: 1.5em 0;
-    text-align: right;
-}
-
 .div__open-menu .div__menu-bar .ul__bar-links li:not(:last-of-type) {
     border-bottom: 1px solid var(--light-grey);
 }
 
 .div__open-menu .div__menu-bar .ul__bar-links li a {
     color: var(--grey);
+    padding: 24px 0;
+    text-align: right;
+    display: block;
 }
 
 .div__menu-bar .div__menu-navigation {

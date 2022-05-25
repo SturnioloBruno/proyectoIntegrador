@@ -54,8 +54,8 @@ function Search() {
                             <li>
                                 <a href="#">
                                     <div>
-                                        <span class="span__city-text">{city.city}</span>
-                                        <span class="span__country-text">{city.country}</span>
+                                        <span className="span__city-text">{city.city}</span>
+                                        <span className="span__country-text">{city.country}</span>
                                     </div>
                                 </a>
                             </li>

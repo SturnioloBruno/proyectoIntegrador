@@ -5,7 +5,7 @@ import '../../styles/Login.css';
 
 function Register() {
     return (
-        <section class="section__form-data">
+        <section className="section__form-data">
             <h2>Crear cuenta</h2>
             <form>
                 <label htmlFor="" className="label__input-name">

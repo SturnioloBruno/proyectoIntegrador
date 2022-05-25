@@ -53,11 +53,11 @@
     }
 
     .section__search-bar .input__text-location {
-        width: calc(30% - 1em);
+        width: calc(35% - 1em);
     }
 
     .section__search-bar .input__calendar-day {
-        width: calc(45% - 1em);
+        width: calc(40% - 1em);
     }
 
     .section__search-bar .button__solid-type {

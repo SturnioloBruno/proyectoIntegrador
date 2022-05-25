@@ -1,0 +1,59 @@
+.input__text-location {
+    position: relative;
+}
+
+.ul__list-location {
+    border: 1px solid #F3F1ED;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 0px 0px 5px 5px;
+    background-color: white;
+    margin-top: 0.3em;
+    display: none;
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+}
+
+.show.ul__list-location {
+    display: block;
+}
+
+.ul__list-location li {
+    padding: 0 1em;
+}
+
+.ul__list-location li a {
+    padding: 1em 0;
+    font-weight: 700;
+    font-size: 14px;
+    border-bottom: 1px solid var(--orange);
+    display: flex;
+    align-items: center;
+}
+
+.ul__list-location li a div {
+    display: flex;
+    flex-direction: column;
+}
+
+.ul__list-location li a::before {
+    content: "";
+    width: 24px;
+    height: 24px;
+    display: block;
+    background: url(../assets/icons/city.svg) no-repeat center center;
+    background-size: contain;
+    margin-right: .5em;
+}
+
+.ul__list-location li:last-child a {
+    border: none;
+}
+
+.ul__list-location a .span__city-text {
+    color: black;
+}
+
+.ul__list-location a .span__country-text {
+    color: var(--grey);
+}

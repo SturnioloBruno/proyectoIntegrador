@@ -5,6 +5,7 @@ import {useEffect,useState} from 'react';
 import 'react-dates/initialize';
 import {DateRangePicker} from 'react-dates';
 import '../styles/DateRangePicker.css';
+import Cities from "../data/cities.json";
 
 function Search() {
     const [startDate,setStartDate] = useState(null);
@@ -26,12 +27,41 @@ function Search() {
         }
     },[])
 
+    //Buscador
+    const [searchTerm, setSearchTerm]= useState("");
+    const [isActive, setActive] = useState(false);
+    const toggle = () => { setActive(!isActive); };
+
     return (
         <section className="section__search-bar">
             <h2>Busca ofertas en hoteles, casas y mucho más</h2>
             <form>
                 <label htmlFor="" className="input__text-location">
-                    <input type="text" name="locality" placeholder="¿A dónde vamos?" id="" />
+                    <input type="text" name="locality" placeholder="¿A dónde vamos?" id="" 
+                    onChange={(e) => {
+                        setSearchTerm(e.target.value);
+                    }} 
+                    onClick={toggle} />
+                    <ul className={isActive ? 'ul__list-location show': 'ul__list-location'} >
+                    {Cities.filter((city) => {
+                        if(searchTerm == "") {
+                            return city;
+                        } else if(city.city.toLowerCase().includes(searchTerm.toLowerCase())) {
+                            return city;
+                        }
+                    }).map((city) => {
+                        return (
+                            <li>
+                                <a href="#">
+                                    <div>
+                                        <span class="span__city-text">{city.city}</span>
+                                        <span class="span__country-text">{city.country}</span>
+                                    </div>
+                                </a>
+                            </li>
+                        )
+                    })}
+                    </ul>
                 </label>
 
                 <label htmlFor="" className="input__calendar-day">

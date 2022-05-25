@@ -1,6 +1,7 @@
 import React, {Fragment} from 'react';
 import Search from './components/Search';
 import Section from './components/Section';
+import './styles/Home.css';
 
 function Home() {
   return (

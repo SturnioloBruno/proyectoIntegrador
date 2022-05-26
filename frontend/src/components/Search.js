@@ -7,6 +7,9 @@ import 'react-dates/lib/css/_datepicker.css';
 import '../styles/DateRangePicker.css';
 import 'react-dates/initialize';
 import Cities from "../data/cities.json";
+import moment from 'moment';
+import 'moment/locale/es';
+moment.locale('es');
 
 function Search() {
     const [startDate,setStartDate] = useState(null);
@@ -14,6 +17,7 @@ function Search() {
     const [focusedInput,setFocusedInpuf] = useState(null)
     const [qMonth,setQMonth] = useState(null)
     const inputLocality = document.getElementById("input__locality")
+    
 
     //evento para que cambie dinamicamente 
     window.visualViewport.addEventListener('resize',(e)=>{
@@ -92,7 +96,7 @@ function Search() {
 
                     required={true}
 
-                    monthFormat={"MMM"} //formato de como muestra el Mes
+                    monthFormat={"MMMM"} //formato de como muestra el Mes
                     numberOfMonths={qMonth} //cantidad de meses que muestra
                     />
                 </label>

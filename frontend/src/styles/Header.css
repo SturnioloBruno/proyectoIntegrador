@@ -11,7 +11,8 @@ header {
 }
 
 header.div__open-menu {
-    position: initial;
+    top: 0px;
+    bottom: 0px;
 }
 
 .div__title-header h1 {

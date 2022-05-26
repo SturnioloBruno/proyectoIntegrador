@@ -3,7 +3,9 @@ import Search from './components/Search';
 import Section from './components/Section';
 import './styles/Home.css';
 
-function Home() {
+function Home({ type }) {
+  if(type) document.body.className = `${type}`;
+
   return (
     <Fragment>
         <Search />

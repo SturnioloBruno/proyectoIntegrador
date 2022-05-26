@@ -1,10 +1,11 @@
+import {useEffect,useState} from 'react';
+import {DateRangePicker} from 'react-dates';
+import { Link } from "react-router-dom";
 import Button from "./Button";
 import '../styles/Search.css';
 import 'react-dates/lib/css/_datepicker.css';
-import {useEffect,useState} from 'react';
-import 'react-dates/initialize';
-import {DateRangePicker} from 'react-dates';
 import '../styles/DateRangePicker.css';
+import 'react-dates/initialize';
 import Cities from "../data/cities.json";
 
 function Search() {
@@ -36,8 +37,8 @@ function Search() {
         <section className="section__search-bar">
             <h2>Busca ofertas en hoteles, casas y mucho más</h2>
             <form>
-                <label htmlFor="" className="input__text-location">
-                    <input type="text" name="locality" placeholder="¿A dónde vamos?" id="" 
+                <label htmlFor="input__locality" className="input__text-location">
+                    <input type="text" name="locality" placeholder="¿A dónde vamos?" id="input__locality" 
                     onChange={(e) => {
                         setSearchTerm(e.target.value);
                     }} 
@@ -49,22 +50,22 @@ function Search() {
                         } else if(city.city.toLowerCase().includes(searchTerm.toLowerCase())) {
                             return city;
                         }
-                    }).slice(0,4).map((city) => {
+                    }).slice(0,4).map((city, key) => {
                         return (
-                            <li>
-                                <a href="#">
+                            <li key={key}>
+                                <Link to="#">
                                     <div>
                                         <span className="span__city-text">{city.city}</span>
                                         <span className="span__country-text">{city.country}</span>
                                     </div>
-                                </a>
+                                </Link>
                             </li>
                         )
                     })}
                     </ul>
                 </label>
 
-                <label htmlFor="" className="input__calendar-day">
+                <label className="input__calendar-day">
                     
                 <DateRangePicker
                     startDatePlaceholderText={"Check in"}

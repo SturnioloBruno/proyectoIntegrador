@@ -6,17 +6,21 @@ import Login from "./login/Login";
 import Register from "./login/Register";
 
 function Header({user,handlerUser}) {
-    const [isOpen, setIsOpen] = useState(false);
-    const toggle = () => setIsOpen(!isOpen)
-    {(isOpen ? document.body.style.overflow = 'hidden' : document.body.style.overflow = 'unset')};
+    function clicNav() {
+        document.querySelector("header").classList.toggle("div__open-menu");
+        document.querySelector("header").className == "div__open-menu" ? document.body.style.overflow = 'hidden' : document.body.style.overflow = 'unset';
+    }
 
+    function clicButton() {
+        document.querySelector("header").className = "";
+        document.body.style.overflow = 'unset';
+    }
 
-    
     return (
-        <header className={`${isOpen ? 'div__open-menu' : ''}`}>
+        <header>
             <Title />
             <div>
-                <a href="#" className="a__button-nav" onClick={toggle}>Abrir/Cerrar</a>
+                <Link to="#" className="a__button-nav" onClick={clicNav}>Abrir/Cerrar</Link>
                 <div className="div__menu-bar">
                     <div className={"div__menu-login"}>
                         {user? 
@@ -31,17 +35,17 @@ function Header({user,handlerUser}) {
                         {user? ""
                         :<nav>
                             <ul className="ul__bar-links">
-                            <li><Link to="/login" element={<Login />} id="link__login-btn">Iniciar sesión</Link></li>
-                            <li><Link to="/register" element={<Register />} id="link__register-btn">Crear cuenta</Link></li>
+                            <li><Link to="/login" element={<Login />} id="link__login-btn" onClick={clicButton}>Iniciar sesión</Link></li>
+                            <li><Link to="/register" element={<Register />} id="link__register-btn" onClick={clicButton}>Crear cuenta</Link></li>
                             </ul>
                         </nav>}
                         <div className="div__social-menu">
-                           {user?<span>¿Deseas <a href="#"  onClick={()=>handlerUser({})}>cerrar sesión</a>?</span>:''}
+                           {user?<span>¿Deseas <Link to="#" onClick={()=>handlerUser({})}>cerrar sesión</Link>?</span>:''}
                             <ul className="ul__social-links">
-                                <li><a href="#" className="a__icon-fb">Facebook</a></li>
-                                <li><a href="#" className="a__icon-li">LinkedIn</a></li>
-                                <li><a href="#" className="a__icon-tw">Twitter</a></li>
-                                <li><a href="#" className="a__icon-ig">Instagram</a></li>
+                                <li><Link to="#" className="a__icon-fb">Facebook</Link></li>
+                                <li><Link to="#" className="a__icon-li">LinkedIn</Link></li>
+                                <li><Link to="#" className="a__icon-tw">Twitter</Link></li>
+                                <li><Link to="#" className="a__icon-ig">Instagram</Link></li>
                             </ul>
                         </div>
                     </div>

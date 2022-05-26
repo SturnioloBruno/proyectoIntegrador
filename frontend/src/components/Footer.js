@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import '../styles/Footer.css';
 
 function Footer() {
@@ -5,10 +6,10 @@ function Footer() {
         <footer>
             <p>©2021 Digital Booking</p>
             <ul>
-                <li><a href="#" className="a__fb-white">Facebook</a></li>
-                <li><a href="#" className="a__li-white">LinkedIn</a></li>
-                <li><a href="#" className="a__tw-white">Twitter</a></li>
-                <li><a href="#" className="a__ig-white">Instagram</a></li>
+                <li><Link to="#" className="a__fb-white">Facebook</Link></li>
+                <li><Link to="#" className="a__li-white">LinkedIn</Link></li>
+                <li><Link to="#" className="a__tw-white">Twitter</Link></li>
+                <li><Link to="#" className="a__ig-white">Instagram</Link></li>
             </ul>
         </footer>
     )

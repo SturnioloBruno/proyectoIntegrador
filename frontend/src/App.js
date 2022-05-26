@@ -19,7 +19,7 @@ function App() {
       <Header user={user} handlerUser={handlerUser}/>
       
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home type="home" />} />
         <Route path="/login" element={<Login handlerUser={handlerUser} type="login" />} />
         <Route path="/register" element={<Register type="register" />} />
       </Routes>

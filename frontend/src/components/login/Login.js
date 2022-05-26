@@ -97,9 +97,9 @@ function Login({handlerUser, type}) {
         <section className={`section__form-data ${errors.email || errors.password ? "error" : ""}`}>
             <h2>Iniciar sesión</h2>
             <form action="POST" onSubmit={handlerSubmit}>
-                <label htmlFor="">
+                <label htmlFor="email_login">
                     <span>Correo electrónico</span>
-                    <input type="email" name="email" id="email_login" required autoComplete="on"/>
+                    <input type="email" name="email" id="email_login" required />
                     
                     {errors.email?
                      <small className="small__error" id="error_email">{errors.email[0]}</small>:
@@ -107,9 +107,9 @@ function Login({handlerUser, type}) {
 
                 </label>
 
-                <label htmlFor="" className='label__password-input'>
+                <label htmlFor="password_login" className='label__password-input'>
                     <span>Contraseña</span>
-                    <input type="password" name="password" id="password_login" required autoComplete="on"/>
+                    <input type="password" name="password" id="password_login" required />
                     
                     {errors.password?
                     <small className="small__error" id="error_password">{errors.password[0]}</small>:

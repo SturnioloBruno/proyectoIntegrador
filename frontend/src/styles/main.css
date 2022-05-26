@@ -91,6 +91,10 @@ input {
     text-align: right;
 }
 
+.show {
+    overflow: hidden;
+}
+
 @media (min-width: 1280px) {
     input {
         height: 50px;

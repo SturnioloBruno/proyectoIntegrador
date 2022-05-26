@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Button from "../Button";
 
 function Card(props) {
@@ -14,14 +15,14 @@ function Card(props) {
                         <p>Muy bueno</p>
                     </div>
                 </div>
-                <p className="p__accommodation-direction">{props.location}<a href="#"> mostrar en el mapa</a></p>
+                <p className="p__accommodation-direction">{props.location}<Link to="#"> mostrar en el mapa</Link></p>
                 <ul className="ul__services-list">
                     <li className="li__wifi-icon">Wifi</li>
                     <li className="li__pool-icon">Piscina</li>
                 </ul>
                 <div className="div__show-text">
                     <p className="p__description-text">{props.description}</p>
-                    <a href="#">más...</a>
+                    <Link to="#">más...</Link>
                 </div>
                 <Button text="ver más" className="btn button__solid-type" />
             </div>

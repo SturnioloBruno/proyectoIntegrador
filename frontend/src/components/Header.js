@@ -31,7 +31,7 @@ function Header({user,handlerLogOut}) {
                         :<p>Menú</p>
                         }
                     </div>
-                    <div className={`div__menu-navigation ${user? "login":""}`}>
+                    <div className={`div__menu-navigation ${user?.user? "login":""}`}>
                         {user?.user? ""
                         :<nav>
                             <ul className="ul__bar-links">

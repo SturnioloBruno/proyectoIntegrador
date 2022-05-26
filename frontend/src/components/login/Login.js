@@ -94,7 +94,7 @@ function Login({handlerUser, type}) {
     if(type) document.body.className = `${type}`;
 
     return (
-        <section className={`section__form-data`}>
+        <section className="section__form-data">
             <h2>Iniciar sesión</h2>
             <form action="POST" onSubmit={handlerSubmit}>
                 <label htmlFor="email_login">

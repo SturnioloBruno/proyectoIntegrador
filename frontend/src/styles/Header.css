@@ -206,6 +206,7 @@ body.register .div__open-menu .div__menu-bar .ul__bar-links li {
     
     .div__menu-bar {
         display: flex;
+        align-items: flex-start;
     }
 
     .div__menu-bar .div__menu-login > p, .ul__social-links {
@@ -248,6 +249,7 @@ body.register .div__open-menu .div__menu-bar .ul__bar-links li {
         color: white;
         background: black;
         margin-right: .5em;
+        margin-bottom: 0;
     }
 
     .div__menu-bar .div__menu-navigation {

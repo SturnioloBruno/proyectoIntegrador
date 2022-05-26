@@ -129,6 +129,7 @@ function Register({type,handlerUser}) {
                 <label htmlFor="password_login" className='label__password-input'>
                     <span>Contraseña</span>
                     <input type="password" name="password" id="password_login" required autoComplete="off" className={`${errors.password ? "error" : ""}`} />
+                    <Link to="#" class="a__show-hide" onClick={show}>Show/Hide</Link>
 
                     {errors.password?
                     <small className="small__error" id="error_password">{errors.password[0]}</small>:
@@ -138,6 +139,8 @@ function Register({type,handlerUser}) {
                 <label htmlFor="repeat_login" className='label__password-input'>
                     <span>Confirmar contraseña</span>
                     <input type="password" name="password-confirm" id="repeat_login" required className={`${errors.passwordRepeat ? "error" : ""}`} />
+                    <Link to="#" class="a__show-hide" onClick={show}>Show/Hide</Link>
+
                     {errors.passwordRepeat?
                     <small className="small__error" id="error_password">{errors.passwordRepeat[0]}</small>:
                     <small className="small__error"></small>

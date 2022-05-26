@@ -102,6 +102,14 @@ function Register({type,handlerUser}) {
         //RETORNO VACIO NO HUBO ERRORES
         return "";
     }
+
+    //Mostrar u ocultar contraseña
+    function show(e) {
+        e.preventDefault();
+        const input = e.target.previousElementSibling;
+        e.target.classList.toggle("show");
+        input.type == "password" ? input.type = "text" : input.type = "password";
+    }
     
     if(type) document.body.className = `${type}`;
 

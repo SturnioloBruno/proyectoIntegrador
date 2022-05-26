@@ -13,6 +13,7 @@ function Search() {
     const [endDate,setEndDate] = useState(null);
     const [focusedInput,setFocusedInpuf] = useState(null)
     const [qMonth,setQMonth] = useState(null)
+    const inputLocality = document.getElementById("input__locality")
 
     //evento para que cambie dinamicamente 
     window.visualViewport.addEventListener('resize',(e)=>{
@@ -38,7 +39,7 @@ function Search() {
             <h2>Busca ofertas en hoteles, casas y mucho más</h2>
             <form>
                 <label htmlFor="input__locality" className="input__text-location">
-                    <input type="text" name="locality" placeholder="¿A dónde vamos?" id="input__locality" 
+                    <input type="text" name="locality" placeholder="¿A dónde vamos?" id="input__locality" autoComplete='off'
                     onChange={(e) => {
                         setSearchTerm(e.target.value);
                     }} 
@@ -52,9 +53,12 @@ function Search() {
                         }
                     }).slice(0,4).map((city, key) => {
                         return (
-                            <li key={key}>
+                            <li key={key} onClick={(e)=>{
+                                inputLocality.value = city.city + ", " + city.country
+                                            toggle()
+                                        }}>
                                 <Link to="#">
-                                    <div>
+                                    <div >
                                         <span className="span__city-text">{city.city}</span>
                                         <span className="span__country-text">{city.country}</span>
                                     </div>

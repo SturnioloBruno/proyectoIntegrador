@@ -94,28 +94,27 @@ function Login({handlerUser, type}) {
     if(type) document.body.className = `${type}`;
 
     return (
-        <section className={`section__form-data ${errors.email || errors.password ? "error" : ""}`}>
+        <section className={`section__form-data`}>
             <h2>Iniciar sesión</h2>
             <form action="POST" onSubmit={handlerSubmit}>
                 <label htmlFor="email_login">
                     <span>Correo electrónico</span>
-                    <input type="email" name="email" id="email_login" required />
+                    <input type="email" name="email" id="email_login" required className={`${errors.email ? "error" : ""}`} autoComplete="off" />
                     
                     {errors.email?
-                     <small className="small__error" id="error_email">{errors.email[0]}</small>:
-                     <small className="small__error"></small>}
-
+                    <small className="small__error" id="error_email">{errors.email[0]}</small>:
+                    <small className="small__error"></small>
+                    }
                 </label>
 
                 <label htmlFor="password_login" className='label__password-input'>
                     <span>Contraseña</span>
-                    <input type="password" name="password" id="password_login" required />
+                    <input type="password" name="password" id="password_login" required className={`${errors.password ? "error" : ""}`} autoComplete="off" />
                     
                     {errors.password?
                     <small className="small__error" id="error_password">{errors.password[0]}</small>:
                     <small className="small__error"></small>
                     }
-
                 </label>
 
                 <Button text="Ingresar" type="submit" className="btn button__solid-type" />

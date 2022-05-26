@@ -1,4 +1,3 @@
-import React, { Fragment, useState } from "react";
 import Title from "./Title";
 import '../styles/Header.css';
 import { Link } from "react-router-dom";

@@ -80,7 +80,7 @@ input {
     box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.15);
 }
 
-.error input {
+input.error {
     border: 1px solid #FF0000;
     background: #FFE1E1;
 }

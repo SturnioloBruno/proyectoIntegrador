@@ -4,11 +4,9 @@ import Register from "./Register";
 import '../../styles/Login.css';
 import {useState} from 'react';
 
-function Login({handlerUser, type}) {
+function Login({handlerLogIn, type,users}) {
     const [errors,setError]=useState({})
     const navigate = useNavigate();
-    const userValidate = {email:"admin@admin.com",
-                          password:"Admin1234"}
 
     const handlerSubmit = (e)=>{
         e.preventDefault()
@@ -34,16 +32,22 @@ function Login({handlerUser, type}) {
             return
         }
 
-      //VALIDO CONTRA PASSWORDD Y EMAIL ESTATICO DESPUES SE CAMBIA POR FETCH
-      if(emailValue.value.trim() !== userValidate.email){
-        setError({password:["Por favor vuelva a intentarlo, sus credenciales son inválidas"]})
-        return
-        }else if(passwordValue.value.trim() !== userValidate.password){
-            setError({password:["Por favor vuelva a intentarlo, sus credenciales son inválidas"]})
+        //VALIDO CONTRA EL ARRAY DE USUARIOS QUE ESTA EN APP
+        let userVerificado = null;
+        users?.forEach((user)=>{
+            if(user.email===emailValue.value.trim() && user.password === passwordValue.value.trim()){
+                userVerificado = user;
+            }
+        })
+
+        //SI NO HUBO COINCIDENCIA DE PASSWORD E EMAIL DEVUELVO ERROR
+        if(!userVerificado){
+            setError({general:["Por favor vuelva a intentarlo, sus credenciales son inválidas"]})
             return
         }
 
-        handlerUser({nombre:"Admin",apellido:"Admin"})
+        //SI LLEGO HASTA ACA ESTA VERIFICADO Y PUSHEO LOS DATOS DEL USUARIO PARA OBTENER NOMBRE Y APELLIDO 
+        handlerLogIn(userVerificado)
         navigate("/")
     }
 
@@ -99,20 +103,18 @@ function Login({handlerUser, type}) {
             <form action="POST" onSubmit={handlerSubmit}>
                 <label htmlFor="email_login">
                     <span>Correo electrónico</span>
-                    <input type="email" name="email" id="email_login" required className={`${errors.email ? "error" : ""}`} autoComplete="off" />
-                    
-                    {errors.email?
-                    <small className="small__error" id="error_email">{errors.email[0]}</small>:
-                    <small className="small__error"></small>
-                    }
+                    <input type="email" name="email" id="email_login" required className={`${errors.email ||errors.general ? "error" : ""}`} autoComplete="off" />
                 </label>
 
                 <label htmlFor="password_login" className='label__password-input'>
                     <span>Contraseña</span>
-                    <input type="password" name="password" id="password_login" required className={`${errors.password ? "error" : ""}`} autoComplete="off" />
+                    <input type="password" name="password" id="password_login" required className={`${errors.password || errors.general? "error" : ""}`} autoComplete="off" />
                     
-                    {errors.password?
-                    <small className="small__error" id="error_password">{errors.password[0]}</small>:
+                    {errors.password||errors.email||errors.general?
+                    <small className="small__error" id="error_password">{
+                        errors.password?errors.password:''}
+                        {errors.email?errors.email:''}
+                        {errors.general?errors.general:''}</small>:
                     <small className="small__error"></small>
                     }
                 </label>

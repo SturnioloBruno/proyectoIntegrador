@@ -7,21 +7,25 @@ import Register from './components/login/Register';
 import Footer from './components/Footer';
 
 function App() {
-  const [user,setUser] = useState(null)
-  const handlerUser = ({nombre,apellido})=>{
-    nombre?
-    setUser({nombre:nombre,apellido:apellido}):
-    setUser(null)
+  const [users,setUsers] = useState([])
+  const [userLogged , setUserLogged] = useState(null) 
+
+  const handlerUsers = (data)=>{
+    setUsers([...users,data])
+  }
+
+  const handlerLogInOut = (user) =>{
+    setUserLogged({user})
   }
 
   return (
     <Fragment>
-      <Header user={user} handlerUser={handlerUser}/>
+      <Header user={userLogged} handlerLogOut={handlerLogInOut}/>
       
       <Routes>
         <Route path="/" element={<Home type="home" />} />
-        <Route path="/login" element={<Login handlerUser={handlerUser} type="login" />} />
-        <Route path="/register" element={<Register type="register" />} />
+        <Route path="/login" element={<Login handlerLogIn={handlerLogInOut} users={users} type="login" />} />
+        <Route path="/register" element={<Register type="register" handlerUser={handlerUsers}/>} />
       </Routes>
 
       <Footer />

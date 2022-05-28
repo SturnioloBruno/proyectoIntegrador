@@ -56,7 +56,7 @@ public class CategoriaService {
         Categoria categoria = buscarId(id);
 
         if(categoria == null){
-           throw new Exception("Categoria con id: "+ id + "no existe");
+           throw new Exception("Categoria con id: "+ id + " no existe");
         }
 
         categoriaRepository.deleteById(id);

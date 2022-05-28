@@ -2,6 +2,7 @@ package com.grupo01.proyectointegrador.Controller;
 
 import com.grupo01.proyectointegrador.Model.Categoria;
 import com.grupo01.proyectointegrador.Service.CategoriaService;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +17,7 @@ public class CategoriaController {
     CategoriaService categoriaService;
 
     @CrossOrigin(origins = "http://localhost:3000")
+    @Operation(summary = "Listar todas las categorias")
     @GetMapping("/getList")
     public ResponseEntity<List<Categoria>> listar()throws Exception{
         return ResponseEntity.ok(categoriaService.listarTodos());

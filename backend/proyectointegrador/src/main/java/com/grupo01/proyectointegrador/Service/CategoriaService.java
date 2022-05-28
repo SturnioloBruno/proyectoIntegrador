@@ -67,7 +67,7 @@ public class CategoriaService {
         Categoria categoriaBuscada = buscarId(categoria.getId());
 
         if(categoriaBuscada== null){
-            throw new Exception("Categoria con id: "+ categoria.getId() + "no existe");
+            throw new Exception("Categoria con id: "+ categoria.getId() + " no existe");
         }
 
             return categoriaRepository.save(categoria);

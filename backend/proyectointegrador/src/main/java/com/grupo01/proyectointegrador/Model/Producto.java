@@ -43,44 +43,44 @@ public class Producto {
         this.id = id;
     }
 
-    public String getNombreProducto() {
-        return nombreProducto;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setNombreProducto(String nombreProducto) {
-        this.nombreProducto = nombreProducto;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public int getPuntuacionDelProducto() {
-        return puntuacionDelProducto;
+    public int getPuntuacion() {
+        return puntuacion;
     }
 
-    public void setPuntuacionDelProducto(int puntuacionDelProducto) {
-        this.puntuacionDelProducto = puntuacionDelProducto;
+    public void setPuntuacion(int puntuacion) {
+        this.puntuacion = puntuacion;
     }
 
-    public int getEstrellasDelProducto() {
-        return estrellasDelProducto;
+    public int getEstrellas() {
+        return estrellas;
     }
 
-    public void setEstrellasDelProducto(int estrellasDelProducto) {
-        this.estrellasDelProducto = estrellasDelProducto;
+    public void setEstrellas(int estrellas) {
+        this.estrellas = estrellas;
     }
 
-    public String getDescTituloProducto() {
-        return descTituloProducto;
+    public String getDescTitulo() {
+        return descTitulo;
     }
 
-    public void setDescTituloProducto(String descTituloProducto) {
-        this.descTituloProducto = descTituloProducto;
+    public void setDescTitulo(String descTitulo) {
+        this.descTitulo = descTitulo;
     }
 
-    public String getDescripcionProducto() {
-        return descripcionProducto;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public void setDescripcionProducto(String descripcionProducto) {
-        this.descripcionProducto = descripcionProducto;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     public int getCoordenadas() {

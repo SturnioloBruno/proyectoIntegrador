@@ -3,7 +3,7 @@ function InfoProduct({address, meters, score, stars, puntuation}) {
         <div className='div__address-score'>
             <div className='div__info-address'>
                 <p>Buenos Aires, Ciudad Autónoma de Buenos Aires, Argentina</p>
-                <p>A 940 m del centro</p>
+                <p className="p__center-meters">A 940 m del centro</p>
                 {/*<p>${address}</p>
                 <p>A ${meters}m del centro</p>*/}
             </div>

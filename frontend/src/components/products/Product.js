@@ -1,11 +1,11 @@
-import React, {Fragment} from 'react';
 import { Link } from "react-router-dom";
 import HeaderProduct from './HeaderProduct';
 import InfoProduct from './InfoProduct';
+import "../../styles/Product.css";
 
 function Product({src, alt, title, text}) {
     return (
-        <Fragment>
+        <section className="section__info-product">
             <HeaderProduct />
             <InfoProduct />
             <div className="div__img-actions">
@@ -28,7 +28,7 @@ function Product({src, alt, title, text}) {
             El establecimiento sirve un desayuno variado de 07:00 a 10:30.</p>
             {/*<h2>${title}</h2>
             <p>${text}</p>*/}
-        </Fragment>
+        </section>
     )
 }
 

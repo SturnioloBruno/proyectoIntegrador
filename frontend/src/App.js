@@ -2,6 +2,7 @@ import React, {Fragment ,useState } from 'react';
 import { Routes, Route } from "react-router-dom";
 import Header from './components/Header';
 import Home from './Home';
+import Product from './components/products/Product';
 import Login from './components/login/Login';
 import Register from './components/login/Register';
 import Footer from './components/Footer';
@@ -24,6 +25,7 @@ function App() {
       
       <Routes>
         <Route path="/" element={<Home type="home" />} />
+        <Route path="/product" element={<Product type="product" />} />
         <Route path="/login" element={<Login handlerLogIn={handlerLogInOut} users={users} type="login" />} />
         <Route path="/register" element={<Register type="register" handlerUser={handlerUsers}/>} />
       </Routes>

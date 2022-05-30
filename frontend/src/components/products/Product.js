@@ -1,9 +1,13 @@
 import React, {Fragment} from 'react';
 import { Link } from "react-router-dom";
+import HeaderProduct from './HeaderProduct';
+import InfoProduct from './InfoProduct';
 
 function Product({src, alt, title, text}) {
     return (
         <Fragment>
+            <HeaderProduct />
+            <InfoProduct />
             <div className="div__img-actions">
                 <div className="div__buttons-bar">
                     <Link to="#" class="a__share-icon">Compartir</Link>

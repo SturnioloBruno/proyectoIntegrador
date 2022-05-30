@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function HeaderProduct({category, name}) {
     return (
         <div className="div__header-product">

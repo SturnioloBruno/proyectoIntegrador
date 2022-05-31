@@ -139,3 +139,28 @@
     bottom: 1em;
     color: white;
 }
+
+@media (min-width: 768px) {
+    .section__info-product {
+        padding: 98px 0 0;
+    }
+
+    .div__buttons-bar {
+        position: initial;
+        padding: 1em 5%;
+    }
+
+    .a__share-icon, .a__like-icon {
+        margin-right: 24px;
+    }
+
+    .a__share-icon::before {
+        background: url(../assets/icons/share-black.svg) no-repeat center center;
+        background-size: contain;
+    }
+    
+    .a__like-icon::before {
+        background: url(../assets/icons/like-black.svg) no-repeat center center;
+        background-size: contain;
+    }
+}

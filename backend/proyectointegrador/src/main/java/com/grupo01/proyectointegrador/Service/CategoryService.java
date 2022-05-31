@@ -1,7 +1,7 @@
 package com.grupo01.proyectointegrador.Service;
 
-import com.grupo01.proyectointegrador.Model.Categoria;
-import com.grupo01.proyectointegrador.Repository.ICategoriaRepository;
+import com.grupo01.proyectointegrador.Model.Category;
+import com.grupo01.proyectointegrador.Repository.ICategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,7 +1,7 @@
 package com.grupo01.proyectointegrador.Controller;
 
-import com.grupo01.proyectointegrador.Model.Categoria;
-import com.grupo01.proyectointegrador.Service.CategoriaService;
+import com.grupo01.proyectointegrador.Model.Category;
+import com.grupo01.proyectointegrador.Service.CategoryService;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

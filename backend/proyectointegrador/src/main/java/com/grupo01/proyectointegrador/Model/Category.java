@@ -22,7 +22,7 @@ public class Category {
     @Column(name = "cat_url_img",nullable = false)
     private String urlImagen;
 
-    @OneToMany(mappedBy = "categories")
+    @OneToMany(mappedBy = "category")
     @JsonIgnore
     private Set<Product> products;
 

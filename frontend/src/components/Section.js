@@ -1,18 +1,41 @@
+import {useEffect,useState} from 'react';
 import { Link } from "react-router-dom";
 import Category from './cards/Category';
 import Card from '../components/cards/Card';
 import '../styles/Section.css';
-import Categories from "../data/categories.json";
 import Acommodations from "../data/acommodations.json";
 
 function Section({ type, title }) {
+    
+    const[categories,setCategories] = useState(null)
+    useEffect(()=>{
+        //Cargo Categorias
+        const getCategories = async()=>{
+            await fetch("http://localhost:8080/categories/getList",{
+                method:'GET',
+                headers:{
+                    'Content-Type':'application/json'
+                }
+            })
+            .then(function(respuesta){
+                return respuesta.json();
+                })
+            .then(function (categories) {
+                setCategories(categories);
+                })
+        }
+        
+        getCategories();
+    },[])
+
     return (
         <section>
             <h2>{title}</h2>
             {type == "Category" &&
             <ul className="ul__categories-list">
-                {Categories.map((category) => (
-                    <li key={category.cat_id}><Link to='#'><Category title={category.cat_title} description={category.cat_description} src={category.cat_url_img} /></Link></li>
+                {categories?.map((category) => (
+                    <li key={category.id}><Link to='#'><Category title={category.cat_title} description={category.cat_desc} src={category.cat_url_img} />{console.log(category)}
+                    </Link></li>
                 ))}
             </ul>
             }

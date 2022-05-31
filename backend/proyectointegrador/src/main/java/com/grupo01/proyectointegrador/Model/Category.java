@@ -16,13 +16,13 @@ public class Category {
     @Column(name="cat_title",nullable = false)
     private String title;
 
-    @Column(name = "cat_desc",nullable = false)
+    @Column(name = "cat_description",nullable = false)
     private String desc;
 
     @Column(name = "cat_url_img",nullable = false)
     private String urlImagen;
 
-    @OneToMany(mappedBy = "category")
+    @OneToMany(mappedBy = "category",fetch = FetchType.EAGER)
     @JsonIgnore
     private Set<Product> products;
 

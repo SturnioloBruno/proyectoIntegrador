@@ -1,8 +1,8 @@
-CREATE TABLE IF NOT EXISTS categorias (
+CREATE TABLE IF NOT EXISTS categories (
 	cat_id INT NOT NULL AUTO_INCREMENT,
-    cat_titulo VARCHAR(100) NOT NULL, 
-    cat_descripcion VARCHAR(500),
-    cat_url_imagen VARCHAR(500) NOT NULL,
+    cat_title VARCHAR(100) NOT NULL, 
+    cat_description VARCHAR(500),
+    cat_url_image VARCHAR(500) NOT NULL,
     PRIMARY KEY(cat_id)
 );
 
@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS products (
     prod_stars SMALLINT,
     prod_desc_title VARCHAR(100),
     prod_desc VARCHAR(500),
-    prod_coordinates INT NOT NULL,
+    prod_coordinates VARCHAR(500) NOT NULL,
     PRIMARY KEY(prod_id),
     FOREIGN KEY(cat_id) REFERENCES categories(cat_id),
     FOREIGN KEY(city_id) REFERENCES cities(city_id)
@@ -67,24 +67,24 @@ CREATE TABLE IF NOT EXISTS products_policies (
     FOREIGN KEY(policies_id) REFERENCES policies(policies_id)
 );
 
-CREATE TABLE IF NOT EXISTS clientes (
-  cli_id INT NOT NULL AUTO_INCREMENT,
-  cli_nombre VARCHAR(100) NOT NULL,
-  cli_apellido VARCHAR(50) NOT NULL,
-  cli_password VARCHAR(30) NOT NULL,
-  cli_direccion VARCHAR(100) NOT NULL,
-  cli_email VARCHAR(200) NOT NULL,
-  PRIMARY KEY (cli_id)
+CREATE TABLE IF NOT EXISTS customers (
+  cus_id INT NOT NULL AUTO_INCREMENT,
+  cus_name VARCHAR(100) NOT NULL,
+  cus_lastname VARCHAR(50) NOT NULL,
+  cus_password VARCHAR(30) NOT NULL,
+  cus_address VARCHAR(100) NOT NULL,
+  cus_email VARCHAR(200) NOT NULL,
+  PRIMARY KEY (cus_id)
 );
 
-CREATE TABLE IF NOT EXISTS reservas (
-	res_id INT NOT NULL AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS bookings (
+	book_id INT NOT NULL AUTO_INCREMENT,
     hab_id INT NOT NULL,
-    cli_id INT NOT NULL,
-    res_fecha_inicio DATE NOT NULL,
-    res_fecha_fin DATE NOT NULL,
-    PRIMARY KEY (res_id),
+    cus_id INT NOT NULL,
+    book_start_date DATE NOT NULL,
+    book_end_date DATE NOT NULL,
+    PRIMARY KEY (book_id),
     FOREIGN KEY(hab_id) REFERENCES habitaciones(hab_id),
-    FOREIGN KEY(cli_id) REFERENCES clientes(cli_id)
+    FOREIGN KEY(cus_id) REFERENCES customers(cus_id)
 );
 

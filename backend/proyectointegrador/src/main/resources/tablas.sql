@@ -6,6 +6,67 @@ CREATE TABLE IF NOT EXISTS categorias (
     PRIMARY KEY(cat_id)
 );
 
+CREATE TABLE IF NOT EXISTS cities (
+	city_id INT NOT NULL AUTO_INCREMENT,
+    city_name VARCHAR(100) NOT NULL,
+    city_country VARCHAR(100) NOT NULL,
+    PRIMARY KEY(city_id)
+);
+
+CREATE TABLE IF NOT EXISTS products (
+	prod_id INT NOT NULL AUTO_INCREMENT,
+    cat_id INT NOT NULL,
+    city_id INT NOT NULL,
+    prod_name VARCHAR(100) NOT NULL,
+    prod_punctuation SMALLINT,
+    prod_stars SMALLINT,
+    prod_desc_title VARCHAR(100),
+    prod_desc VARCHAR(500),
+    prod_coordinates INT NOT NULL,
+    PRIMARY KEY(prod_id),
+    FOREIGN KEY(cat_id) REFERENCES categories(cat_id),
+    FOREIGN KEY(city_id) REFERENCES cities(city_id)
+);
+
+CREATE TABLE IF NOT EXISTS images (
+	img_id INT NOT NULL AUTO_INCREMENT,
+    prod_id INT NOT NULL,
+    img_url VARCHAR(500) NOT NULL,
+    PRIMARY KEY(img_id),
+    FOREIGN KEY(prod_id) REFERENCES products(prod_id)
+);
+
+CREATE TABLE IF NOT EXISTS characteristics (
+	charact_id INT NOT NULL AUTO_INCREMENT,
+    charact_title VARCHAR(100) NOT NULL,
+    PRIMARY KEY(charact_id)
+);
+
+CREATE TABLE IF NOT EXISTS products_characteristics (
+	prod_charact_id INT NOT NULL AUTO_INCREMENT,
+    prod_id INT NOT NULL,
+    charact_id INT NOT NULL,
+    PRIMARY KEY(prod_charact_id),
+    FOREIGN KEY(prod_id) REFERENCES products(prod_id),
+    FOREIGN KEY(charact_id) REFERENCES characteristics(charact_id)
+);
+
+CREATE TABLE IF NOT EXISTS policies (
+	policies_id INT NOT NULL AUTO_INCREMENT,
+    policies_title VARCHAR(100) NOT NULL,
+    policies_desc VARCHAR(500) NOT NULL,
+    PRIMARY KEY(policies_id)
+);
+
+CREATE TABLE IF NOT EXISTS products_policies (
+	prod_policies_id INT NOT NULL AUTO_INCREMENT,
+    prod_id INT NOT NULL,
+    policies_id INT NOT NULL,
+    PRIMARY KEY(prod_policies_id),
+    FOREIGN KEY(prod_id) REFERENCES products(prod_id),
+    FOREIGN KEY(policies_id) REFERENCES policies(policies_id)
+);
+
 CREATE TABLE IF NOT EXISTS clientes (
   cli_id INT NOT NULL AUTO_INCREMENT,
   cli_nombre VARCHAR(100) NOT NULL,
@@ -14,30 +75,6 @@ CREATE TABLE IF NOT EXISTS clientes (
   cli_direccion VARCHAR(100) NOT NULL,
   cli_email VARCHAR(200) NOT NULL,
   PRIMARY KEY (cli_id)
-);
-
-CREATE TABLE IF NOT EXISTS alojamientos (
-	alo_id INT NOT NULL AUTO_INCREMENT,
-    cat_id INT NOT NULL,
-    alo_nombre VARCHAR(100) NOT NULL,
-    alo_direccion VARCHAR(100) NOT NULL,
-    alo_cant_hab_totales SMALLINT,
-    alo_cant_hab_libres SMALLINT,
-    alo_ciudad VARCHAR(100) NOT NULL,
-    alo_puntuacion SMALLINT,
-    alo_cant_estrellas SMALLINT,
-    PRIMARY KEY(alo_id),
-    FOREIGN KEY (cat_id) REFERENCES categorias(cat_id)
-);
-
-CREATE TABLE IF NOT EXISTS habitaciones (
-	hab_id INT NOT NULL AUTO_INCREMENT,
-    alo_id INT NOT NULL,
-    hab_nro INT NOT NULL,
-    hab_cant_personas SMALLINT NOT NULL,
-    hab_ocupada TINYINT NOT NULL,
-    PRIMARY KEY(hab_id),
-    FOREIGN KEY(alo_id) REFERENCES alojamientos(alo_id)
 );
 
 CREATE TABLE IF NOT EXISTS reservas (

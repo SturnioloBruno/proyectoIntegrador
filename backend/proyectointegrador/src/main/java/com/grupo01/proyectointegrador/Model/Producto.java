@@ -30,7 +30,7 @@ public class Producto {
     private int coordenadas;
 
     @ManyToOne
-    @JsonIgnore
+    @JoinColumn(name = "cat_id", nullable = false)
     private Categoria categoria;
 
 

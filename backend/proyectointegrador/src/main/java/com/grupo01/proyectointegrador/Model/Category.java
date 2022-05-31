@@ -24,7 +24,7 @@ public class Category {
 
     @OneToMany(mappedBy = "categories")
     @JsonIgnore
-    private Set<Producto> productos;
+    private Set<Product> products;
 
 
     public Category(Long id, String title, String desc, String urlImagen) {
@@ -70,11 +70,11 @@ public class Category {
         this.urlImagen = urlImagen;
     }
 
-    public Set<Producto> getProductos() {
-        return productos;
+    public Set<Product> getProductos() {
+        return products;
     }
 
-    public void setProductos(Set<Producto> productos) {
-        this.productos = productos;
+    public void setProductos(Set<Product> products) {
+        this.products = products;
     }
 }

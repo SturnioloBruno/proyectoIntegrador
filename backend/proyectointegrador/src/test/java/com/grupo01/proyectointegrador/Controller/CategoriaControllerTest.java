@@ -4,7 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import com.grupo01.proyectointegrador.Model.Categoria;
+import com.grupo01.proyectointegrador.Model.Category;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -58,7 +58,7 @@ class CategoriaControllerTest {
                 .configure(SerializationFeature.WRAP_ROOT_VALUE,false)
                 .writer();
 
-        String categoriaEsperada = writer.writeValueAsString(new Categoria(8L,"TEST-UPDATE","TEST-UPDATE","una url de test"));
+        String categoriaEsperada = writer.writeValueAsString(new Category(8L,"TEST-UPDATE","TEST-UPDATE","una url de test"));
 
         //Ejecuto
         MvcResult resultado = this.mockMvc.perform(MockMvcRequestBuilders.get("/categories/findById/{id}",8).accept(MediaType.APPLICATION_JSON))
@@ -78,7 +78,7 @@ class CategoriaControllerTest {
                 .configure(SerializationFeature.WRAP_ROOT_VALUE,false)
                 .writer();
 
-        String categoriaEsperada = writer.writeValueAsString(new Categoria(8L,"TEST-UPDATE","TEST-UPDATE","una url de test"));
+        String categoriaEsperada = writer.writeValueAsString(new Category(8L,"TEST-UPDATE","TEST-UPDATE","una url de test"));
 
         //Ejecuto
         MvcResult resultado = this.mockMvc.perform(MockMvcRequestBuilders.get("/categories/findByName/{titulo}","TEST-UPDATE").accept(MediaType.APPLICATION_JSON))
@@ -112,8 +112,8 @@ class CategoriaControllerTest {
                 .configure(SerializationFeature.WRAP_ROOT_VALUE,false)
                 .writer();
 
-        String categoriaJSON = writer.writeValueAsString(new Categoria(8L,"TEST-UPDATE","TEST-UPDATE","una url de test"));
-        String categoriaEsperada = writer.writeValueAsString(new Categoria(8L,"TEST-UPDATE","TEST-UPDATE","una url de test"));
+        String categoriaJSON = writer.writeValueAsString(new Category(8L,"TEST-UPDATE","TEST-UPDATE","una url de test"));
+        String categoriaEsperada = writer.writeValueAsString(new Category(8L,"TEST-UPDATE","TEST-UPDATE","una url de test"));
 
         //Ejecuto
         MvcResult resultado = this.mockMvc.perform(MockMvcRequestBuilders.put("/categories/update")
@@ -135,8 +135,8 @@ class CategoriaControllerTest {
                 .configure(SerializationFeature.WRAP_ROOT_VALUE,false)
                 .writer();
 
-        String categoriaJSON = writer.writeValueAsString(new Categoria("TEST","TEST","una url de test"));
-        String categoriaEsperada = writer.writeValueAsString(new Categoria(8L,"TEST","TEST","una url de test"));
+        String categoriaJSON = writer.writeValueAsString(new Category("TEST","TEST","una url de test"));
+        String categoriaEsperada = writer.writeValueAsString(new Category(8L,"TEST","TEST","una url de test"));
 
         //Ejecuto
         MvcResult resultado = this.mockMvc.perform(MockMvcRequestBuilders.post("/categories/insert")

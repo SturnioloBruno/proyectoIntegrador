@@ -81,6 +81,17 @@
 }
 
 .div__buttons-bar {
+    position: absolute;
+    top: 1em;
+    left: 5%;
+    z-index: 2;
+}
+
+.div__img-actions {
+    position: relative;
+}
+
+.div__buttons-bar {
     display: flex;
     align-items: center;
 }
@@ -108,9 +119,23 @@
 }
 
 .section__info-product > h2 {
-    margin: 1.5em 5%;
+    margin: 1em 5%;
 }
 
 .section__info-product > p {
     margin: 0 5% 1.5em;
+}
+
+.div__img-actions .swiper-slide img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.div__img-actions .swiper-pagination-fraction {
+    width: auto;
+    left: auto;
+    right: 5%;
+    bottom: 1em;
+    color: white;
 }

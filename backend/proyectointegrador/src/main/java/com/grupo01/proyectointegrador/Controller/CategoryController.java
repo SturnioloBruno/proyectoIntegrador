@@ -11,47 +11,47 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/categories")
-public class CategoriaController {
+public class CategoryController {
 
     @Autowired
-    CategoriaService categoriaService;
+    CategoryService categoryService;
 
     @CrossOrigin(origins = "http://localhost:3000")
     @Operation(summary = "Listar todas las categorias")
     @GetMapping("/getList")
-    public ResponseEntity<List<Categoria>> listar()throws Exception{
-        return ResponseEntity.ok(categoriaService.listarTodos());
+    public ResponseEntity<List<Category>> listar()throws Exception{
+        return ResponseEntity.ok(categoryService.listarTodos());
     }
 
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/getListNames")
     public ResponseEntity<List<String>> listarTitulos()throws Exception{
-        return ResponseEntity.ok(categoriaService.listarTitulos());
+        return ResponseEntity.ok(categoryService.listarTitulos());
     }
 
     @GetMapping("/findById/{id}")
-    public ResponseEntity<Categoria> buscarId(@PathVariable Long id)throws Exception{
-        return ResponseEntity.ok(categoriaService.buscarId(id));
+    public ResponseEntity<Category> buscarId(@PathVariable Long id)throws Exception{
+        return ResponseEntity.ok(categoryService.buscarId(id));
     }
 
     @GetMapping("/findByName/{titulo}")
-    public ResponseEntity<Categoria> buscarId(@PathVariable String titulo)throws Exception{
-        return ResponseEntity.ok(categoriaService.buscarTitulo(titulo));
+    public ResponseEntity<Category> buscarId(@PathVariable String titulo)throws Exception{
+        return ResponseEntity.ok(categoryService.buscarTitulo(titulo));
     }
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> borrar(@PathVariable Long id) throws Exception{
-        categoriaService.borrar(id);
+        categoryService.borrar(id);
         return ResponseEntity.ok("Categoria borrada con exito!");
     }
 
     @PutMapping("/update")
-    public ResponseEntity<Categoria> actualizar(@RequestBody Categoria categoria)throws Exception{
-        return ResponseEntity.ok(categoriaService.actualizar(categoria));
+    public ResponseEntity<Category> actualizar(@RequestBody Category category)throws Exception{
+        return ResponseEntity.ok(categoryService.actualizar(category));
     }
 
     @PostMapping("/insert")
-    public ResponseEntity<Categoria> guardar(@RequestBody Categoria categoria)throws Exception{
-        return ResponseEntity.ok(categoriaService.guardar(categoria));
+    public ResponseEntity<Category> guardar(@RequestBody Category category)throws Exception{
+        return ResponseEntity.ok(categoryService.guardar(category));
     }
 }

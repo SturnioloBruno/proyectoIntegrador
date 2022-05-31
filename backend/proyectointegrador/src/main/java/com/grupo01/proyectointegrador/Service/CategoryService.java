@@ -25,7 +25,7 @@ public class CategoryService {
         List<String> listaNombres = new ArrayList<>();
 
         for (Category category: categoryRepository.findAll()) {
-            listaNombres.add(category.getTitulo());
+            listaNombres.add(category.getTitle());
         }
 
         return listaNombres;
@@ -66,7 +66,7 @@ public class CategoryService {
     public Category actualizar(Category category) throws Exception{
         Category categoryBuscada = buscarId(category.getId());
 
-        if(categoriyBuscada== null){
+        if(categoryBuscada== null){
             throw new Exception("Categoria con id: "+ category.getId() + " no existe");
         }
 

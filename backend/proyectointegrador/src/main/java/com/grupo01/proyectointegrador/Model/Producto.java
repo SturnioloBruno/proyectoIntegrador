@@ -31,7 +31,7 @@ public class Producto {
 
     @ManyToOne
     @JoinColumn(name = "cat_id", nullable = false)
-    private Categoria categoria;
+    private Category categoria;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "city_id", nullable = false)
@@ -89,11 +89,11 @@ public class Producto {
         this.coordenadas = coordenadas;
     }
 
-    public Categoria getCategoria() {
+    public Category getCategory() {
         return categoria;
     }
 
-    public void setCategoria(Categoria categoria) {
-        this.categoria = categoria;
+    public void setCategoria(Category category) {
+        this.categoria = category;
     }
 }

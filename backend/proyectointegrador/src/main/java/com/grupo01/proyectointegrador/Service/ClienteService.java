@@ -45,7 +45,7 @@ public class ClienteService {
         Cliente cliente = buscarId(id);
 
         if(cliente == null){
-            throw new Exception("Cliente con id: "+ id + "no existe");
+            throw new Exception("Cliente con id: "+ id + " no existe");
         }
 
         clienteRepository.deleteById(id);
@@ -56,7 +56,7 @@ public class ClienteService {
         Cliente clienteBuscado = buscarId(cliente.getId());
 
         if(clienteBuscado==null){
-            throw new Exception("Cliente con id: "+ cliente.getId() + "no existe");
+            throw new Exception("Cliente con id: "+ cliente.getId() + " no existe");
         }
 
         return clienteRepository.save(cliente);

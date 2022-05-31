@@ -17,7 +17,7 @@ function Search() {
     const [focusedInput,setFocusedInpuf] = useState(null)
     const [qMonth,setQMonth] = useState(null)
     const inputLocality = document.getElementById("input__locality")
-    
+    const [cities,setCities] = useState(null)
 
     //evento para que cambie dinamicamente 
     window.visualViewport.addEventListener('resize',(e)=>{
@@ -26,11 +26,30 @@ function Search() {
 
     //Detecto el tamaño de la pantalla y muestro 1 o 2 meses.
     useEffect(()=>{
+        //Seteo meses por inicio
         if (window.screen.width<1024){
             setQMonth(1);
         }else{
             setQMonth(2);
         }
+
+        //Cargo ciudades
+        const getCities = async()=>{
+            await fetch("http://localhost:8080/cities/getList",{
+                method:'GET',
+                headers:{
+                    'Content-Type':'application/json'
+                }
+            })
+            .then(function(respuesta){
+                return respuesta.json();
+                })
+            .then(function (cities) {
+                setCities(cities);
+                })
+        }
+        
+        getCities();
     },[])
 
     //Buscador
@@ -49,21 +68,21 @@ function Search() {
                     }} 
                     onClick={toggle} />
                     <ul className={isActive ? 'ul__list-location show': 'ul__list-location'} >
-                    {Cities.filter((city) => {
+                    {cities?.filter((city) => {
                         if(searchTerm == "") {
                             return city;
-                        } else if(city.city.toLowerCase().includes(searchTerm.toLowerCase())) {
+                        } else if(city.cityName.toLowerCase().includes(searchTerm.toLowerCase())) {
                             return city;
                         }
-                    }).slice(0,4).map((city, key) => {
+                    }).slice(0,4).map((city) => {
                         return (
-                            <li key={key} onClick={(e)=>{
-                                inputLocality.value = city.city + ", " + city.country
+                            <li key={city.cityName+city.id} onClick={(e)=>{
+                                inputLocality.value = city.cityName + ", " + city.country
                                             toggle()
                                         }}>
                                 <Link to="#">
                                     <div >
-                                        <span className="span__city-text">{city.city}</span>
+                                        <span className="span__city-text">{city.cityName}</span>
                                         <span className="span__country-text">{city.country}</span>
                                     </div>
                                 </Link>

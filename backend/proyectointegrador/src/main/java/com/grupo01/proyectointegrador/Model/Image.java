@@ -12,17 +12,17 @@ public class Image {
     @Column(name = "img_url", nullable = false)
     private String nombre_url;
     @Column(name = "pro_id", nullable = false)
-    private long pro_id;
+    private long proId;
 
     public Image(Long id, String nombre_url, long pro_id) {
         this.id = id;
         this.nombre_url = nombre_url;
-        this.pro_id = pro_id;
+        this.proId = pro_id;
     }
 
     public Image(String nombre_url, long pro_id) {
         this.nombre_url = nombre_url;
-        this.pro_id = pro_id;
+        this.proId = pro_id;
     }
 
     public Image() {
@@ -44,8 +44,7 @@ public class Image {
         this.nombre_url = nombre_url;
     }
 
-    public long getPro_id() {
-        return pro_id;
+    public long getProId() {
+        return proId;
     }
-
 }

@@ -1,6 +1,5 @@
 package com.grupo01.proyectointegrador.Controller;
 
-import com.grupo01.proyectointegrador.Model.Cliente;
 import com.grupo01.proyectointegrador.Model.Image;
 import com.grupo01.proyectointegrador.Service.ImageService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -50,3 +50,4 @@ CREATE TABLE IF NOT EXISTS reservas (
     FOREIGN KEY(hab_id) REFERENCES habitaciones(hab_id),
     FOREIGN KEY(cli_id) REFERENCES clientes(cli_id)
 );
+

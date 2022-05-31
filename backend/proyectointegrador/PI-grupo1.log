@@ -1,0 +1,2 @@
+[2022-05-31 00:02:26] [ ERROR] [GlobalExceptions:27] Categoria con id: 1 no existe
+[2022-05-31 00:04:13] [ ERROR] [GlobalExceptions:27] not-null property references a null or transient value : com.grupo01.proyectointegrador.Model.Image.nombreUrl; nested exception is org.hibernate.PropertyValueException: not-null property references a null or transient value : com.grupo01.proyectointegrador.Model.Image.nombreUrl

@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Table(name="Productos")
 public class Producto {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "prod_nombre", nullable = false)
@@ -33,14 +33,8 @@ public class Producto {
     @JoinColumn(name = "cat_id", nullable = false)
     private Categoria categoria;
 
-
-
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getNombre() {

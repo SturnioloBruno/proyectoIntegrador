@@ -21,7 +21,7 @@ public class ImageController {
 
     @GetMapping("/findById/{id}")
     public ResponseEntity <List<String>> findProId(@PathVariable Long id)throws Exception{
-        return ResponseEntity.ok(imageService.findProId(id));
+        return ResponseEntity.ok(imageService.findByProId(id));
     }
 
     @PutMapping("/update")

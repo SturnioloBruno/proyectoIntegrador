@@ -14,7 +14,6 @@ public class ProductoService implements IProductoService {
     @Autowired
     private IProductoRepository productoRepository;
 
-
     @Override
     public void crearProducto(Producto producto) throws Exception{
         productoRepository.save(producto);
@@ -40,5 +39,32 @@ public class ProductoService implements IProductoService {
         }
         return  productoEncontrado;
     }
+
+    public Producto save(Producto producto) throws Exception{
+        return productoRepository.save(producto);
+    }
+
+    public void delete(Long id)throws Exception{
+        // verifico que existe
+        Producto producto = buscarPorId(id);
+
+        if(producto == null){
+            throw new Exception("Producto con id: "+ id + " no existe");
+        }
+
+        productoRepository.deleteById(id);
+    }
+
+    public Producto update(Producto producto) throws Exception{
+        Producto productoBuscado = buscarPorId(producto.getId());
+
+        if(productoBuscado== null){
+            throw new Exception("Producto con id: "+ producto.getId() + " no existe");
+        }
+
+        return productoRepository.save(producto);
+    }
+
+
 }
 

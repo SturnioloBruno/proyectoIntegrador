@@ -8,20 +8,22 @@ public class Image {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     @Column(name = "img_id")
+
     private Long id;
     @Column(name = "img_url", nullable = false)
-    private String nombre_url;
+    private String nombreUrl;
+
     @Column(name = "pro_id", nullable = false)
     private long proId;
 
     public Image(Long id, String nombre_url, long pro_id) {
         this.id = id;
-        this.nombre_url = nombre_url;
+        this.nombreUrl = nombre_url;
         this.proId = pro_id;
     }
 
     public Image(String nombre_url, long pro_id) {
-        this.nombre_url = nombre_url;
+        this.nombreUrl = nombre_url;
         this.proId = pro_id;
     }
 
@@ -32,16 +34,12 @@ public class Image {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public String getNombre_url() {
-        return nombre_url;
+        return nombreUrl;
     }
 
     public void setNombre_url(String nombre_url) {
-        this.nombre_url = nombre_url;
+        this.nombreUrl = nombre_url;
     }
 
     public long getProId() {

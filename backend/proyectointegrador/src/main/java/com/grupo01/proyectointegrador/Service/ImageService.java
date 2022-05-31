@@ -24,7 +24,7 @@ public class ImageService {
 
 
     // Select for product id
-    public List<String> findProId(Long id) throws  Exception{
+    public List<String> findByProId(Long id) throws  Exception{
         List<String> imageReturn = new ArrayList<>();
         Optional<List<Image>> imagesDB = imageRepository.findByProId(id);
         if (!imagesDB.isEmpty()) {

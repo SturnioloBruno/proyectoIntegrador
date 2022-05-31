@@ -1,6 +1,5 @@
 package com.grupo01.proyectointegrador.Controller;
 
-import com.grupo01.proyectointegrador.Model.Categoria;
 import com.grupo01.proyectointegrador.Model.Producto;
 import com.grupo01.proyectointegrador.Service.ProductoService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -8,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Set;
 
 @RestController

@@ -11,27 +11,31 @@ public class Producto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "prod_nombre", nullable = false)
+    @Column(name = "prod_name", nullable = false)
     private String nombre;
 
-    @Column(name = "prod_puntuacion")
+    @Column(name = "prod_punctuation")
     private int puntuacion;
 
-    @Column(name = "prod_estrellas")
+    @Column(name = "prod_stars")
     private int estrellas;
 
-    @Column(name = "prod_desc_titulo")
+    @Column(name = "prod_desc_title")
     private String descTitulo;
 
-    @Column(name = "prod_descripcion")
+    @Column(name = "prod_desc")
     private String descripcion;
 
-    @Column(name = "prod_coordenadas")
+    @Column(name = "prod_coordinates")
     private int coordenadas;
 
     @ManyToOne
     @JoinColumn(name = "cat_id", nullable = false)
     private Categoria categoria;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "city_id", nullable = false)
+    private City city;
 
     public Long getId() {
         return id;

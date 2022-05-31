@@ -1,2 +1,13 @@
 [2022-05-31 00:02:26] [ ERROR] [GlobalExceptions:27] Categoria con id: 1 no existe
 [2022-05-31 00:04:13] [ ERROR] [GlobalExceptions:27] not-null property references a null or transient value : com.grupo01.proyectointegrador.Model.Image.nombreUrl; nested exception is org.hibernate.PropertyValueException: not-null property references a null or transient value : com.grupo01.proyectointegrador.Model.Image.nombreUrl
+[2022-05-31 14:01:53] [ ERROR] [GlobalExceptions:27] could not extract ResultSet; SQL [n/a]; nested exception is org.hibernate.exception.SQLGrammarException: could not extract ResultSet
+[2022-05-31 14:01:54] [ ERROR] [GlobalExceptions:27] could not extract ResultSet; SQL [n/a]; nested exception is org.hibernate.exception.SQLGrammarException: could not extract ResultSet
+[2022-05-31 14:05:07] [ ERROR] [GlobalExceptions:27] could not extract ResultSet; SQL [n/a]; nested exception is org.hibernate.exception.SQLGrammarException: could not extract ResultSet
+[2022-05-31 14:05:10] [ ERROR] [GlobalExceptions:27] could not extract ResultSet; SQL [n/a]; nested exception is org.hibernate.exception.SQLGrammarException: could not extract ResultSet
+[2022-05-31 14:05:10] [ ERROR] [GlobalExceptions:27] could not extract ResultSet; SQL [n/a]; nested exception is org.hibernate.exception.SQLGrammarException: could not extract ResultSet
+[2022-05-31 14:06:31] [ ERROR] [GlobalExceptions:27] could not extract ResultSet; SQL [n/a]; nested exception is org.hibernate.exception.SQLGrammarException: could not extract ResultSet
+[2022-05-31 14:07:13] [ ERROR] [GlobalExceptions:27] could not extract ResultSet; SQL [n/a]; nested exception is org.hibernate.exception.SQLGrammarException: could not extract ResultSet
+[2022-05-31 14:08:19] [ ERROR] [GlobalExceptions:27] could not extract ResultSet; SQL [n/a]; nested exception is org.hibernate.exception.SQLGrammarException: could not extract ResultSet
+[2022-05-31 14:15:45] [ ERROR] [GlobalExceptions:27] could not extract ResultSet; SQL [n/a]; nested exception is org.hibernate.exception.SQLGrammarException: could not extract ResultSet
+[2022-05-31 14:18:30] [ ERROR] [GlobalExceptions:27] could not extract ResultSet; SQL [n/a]; nested exception is org.hibernate.exception.SQLGrammarException: could not extract ResultSet
+[2022-05-31 14:21:43] [ ERROR] [GlobalExceptions:27] could not extract ResultSet; SQL [n/a]; nested exception is org.hibernate.exception.SQLGrammarException: could not extract ResultSet

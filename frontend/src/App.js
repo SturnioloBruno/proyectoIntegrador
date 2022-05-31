@@ -26,6 +26,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home type="home" />} />
         <Route path="/product" element={<Product type="product" />} />
+        <Route path="/product/:id" element={<Product type="product" />} />
         <Route path="/login" element={<Login handlerLogIn={handlerLogInOut} users={users} type="login" />} />
         <Route path="/register" element={<Register type="register" handlerUser={handlerUsers}/>} />
       </Routes>

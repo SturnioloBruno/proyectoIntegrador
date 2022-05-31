@@ -42,7 +42,7 @@ function Section({ type, title }) {
             {type == "Card" &&
             <ul className="ul__accommodation-list">
                 {Acommodations.map((acommodation) => (
-                    <li key={acommodation.alo_id}><Link to='#'><Card title={acommodation.alo_title} src={acommodation.alo_url_img} location={acommodation.alo_location} description={acommodation.alo_description} category={acommodation.alo_category}/></Link></li>
+                    <li key={acommodation.alo_id}><Link to={`/product/${acommodation.alo_id}`}><Card title={acommodation.alo_title} src={acommodation.alo_url_img} location={acommodation.alo_location} description={acommodation.alo_description} category={acommodation.alo_category}/></Link></li>
                 ))}
             </ul>
             }

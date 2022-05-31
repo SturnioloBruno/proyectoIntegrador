@@ -2,7 +2,7 @@ CREATE TABLE IF NOT EXISTS categories (
 	cat_id INT NOT NULL AUTO_INCREMENT,
     cat_title VARCHAR(100) NOT NULL, 
     cat_description VARCHAR(500),
-    cat_url_image VARCHAR(500) NOT NULL,
+    cat_url_img VARCHAR(500) NOT NULL,
     PRIMARY KEY(cat_id)
 );
 

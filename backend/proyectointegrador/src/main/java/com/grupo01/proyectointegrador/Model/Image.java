@@ -3,7 +3,7 @@ package com.grupo01.proyectointegrador.Model;
 import javax.persistence.*;
 
 @Entity
-@Table (name= "Imagenes")
+@Table (name= "images")
 public class Image {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)

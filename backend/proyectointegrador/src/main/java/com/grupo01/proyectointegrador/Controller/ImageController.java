@@ -38,6 +38,6 @@ public class ImageController {
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> delete(@PathVariable Long id) throws Exception{
         imageService.borrar(id);
-        return ResponseEntity.ok("Image borrada con exito!");
+        return ResponseEntity.ok("Imagen borrada con exito!");
     }
 }

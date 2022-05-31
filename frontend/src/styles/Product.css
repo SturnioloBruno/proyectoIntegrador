@@ -1,0 +1,116 @@
+.section__info-product {
+    padding: 82px 0 0;
+}
+
+.div__header-product {
+    padding: 1em 5%;
+    background-color: var(--grey);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.div__header-product .div__info-name {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.div__header-product h2, .div__header-product p {
+    color: white;
+}
+
+.div__header-product p {
+    text-transform: uppercase;
+}
+
+.div__header-product .a__show-more::after {
+    content: "";
+    width: 24px;
+    height: 24px;
+    display: block;
+    background: url(../assets/icons/show.svg) no-repeat center center;
+    background-size: contain;
+}
+
+.div__address-score {
+    padding: 1em 5%;
+    background: rgba(49, 54, 63, .1);
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.div__address-score .div__info-address {
+    width: calc(60% - 1em);
+    display: flex;
+}
+
+.div__address-score .div__info-address::before {
+    content: "";
+    width: 32px;
+    height: 16px;
+    display: block;
+    background: url(../assets/icons/location.svg) no-repeat center center;
+    background-size: contain;
+    margin-right: 4px;
+}
+
+.div__address-score .div__info-address p {
+    font-size: 14px;
+}
+
+.div__address-score .p__center-meters {
+    display: none;
+}
+
+.div__address-score .div__info-score p {
+    font-weight: 700;
+}
+
+.div__address-score .div__puntuation-score {
+    display: flex;
+}
+
+.div__address-score .div__puntuation-score > span {
+    background-color: var(--grey);
+    color: white;
+    padding: 0.2em 0.8em;
+    border-radius: 10px;
+    text-align: right;
+    margin-left: .5em;
+}
+
+.div__buttons-bar {
+    display: flex;
+    align-items: center;
+}
+
+.a__share-icon, .a__like-icon {
+    font-size: 0;
+    margin-right: 16px;
+}
+
+.a__share-icon::before, .a__like-icon::before {
+    content: "";
+    width: 24px;
+    height: 24px;
+    display: block;
+}
+
+.a__share-icon::before {
+    background: url(../assets/icons/share.svg) no-repeat center center;
+    background-size: contain;
+}
+
+.a__like-icon::before {
+    background: url(../assets/icons/like.svg) no-repeat center center;
+    background-size: contain;
+}
+
+.section__info-product > h2 {
+    margin: 1.5em 5%;
+}
+
+.section__info-product > p {
+    margin: 0 5% 1.5em;
+}

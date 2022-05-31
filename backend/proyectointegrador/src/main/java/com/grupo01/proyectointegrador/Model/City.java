@@ -1,11 +1,7 @@
 package com.grupo01.proyectointegrador.Model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "cities")
@@ -23,7 +19,7 @@ public class City {
     private String country;
 
     @OneToMany(mappedBy = "city", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Producto> productos;
+    private List<Product> products;
 
     public City(Long id, String cityName, String country) {
         this.id = id;

@@ -88,3 +88,19 @@ CREATE TABLE IF NOT EXISTS bookings (
     FOREIGN KEY(cus_id) REFERENCES customers(cus_id)
 );
 
+insert into cities(city_name,city_country)
+VALUES
+("Buenos Aires","Argentina"),
+("Rosario","Argentina"),
+("Entre Rios","Argentina"),
+("Cordoba","Argentina"),
+("Mar del Plata","Argentina"),
+("Salta","Argentina"),
+("Santa Fe","Argentina"),
+("San Salvador de Jujuy","Argentina"),
+("San Luis","Argentina"),
+("San Carlos de Bariloche","Argentina"),
+("Comodoro Rivadavia","Argentina"),
+("Mendoza","Argentina");
+
+

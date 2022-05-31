@@ -1,6 +1,8 @@
 package com.grupo01.proyectointegrador.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name="Categorias")
@@ -19,6 +21,11 @@ public class Categoria {
 
     @Column(name = "cat_url_imagen",nullable = false)
     private String url_imagen;
+
+    @OneToMany(mappedBy = "categoria")
+    @JsonIgnore
+    private Set<Producto> productos;
+
 
     public Categoria(Long id, String titulo, String descripcion, String url_imagen) {
         this.id = id;
@@ -62,4 +69,13 @@ public class Categoria {
     public void setUrl_imagen(String url_imagen) {
         this.url_imagen = url_imagen;
     }
+
+    public Set<Producto> getProductos() {
+        return productos;
+    }
+
+    public void setProductos(Set<Producto> productos) {
+        this.productos = productos;
+    }
+
 }

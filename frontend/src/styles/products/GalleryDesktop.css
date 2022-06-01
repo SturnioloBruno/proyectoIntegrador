@@ -1,0 +1,35 @@
+@media (min-width: 1024px) {
+    body .gallery-modal .gallery-modal--overlay {
+        background-color: #31363F !important;
+        opacity: 0.95 !important;
+        backdrop-filter: blur(500px);
+    }
+
+    .gallery .gallery-control--prev svg, .gallery .gallery-control--next svg {
+        background-color: var(--orange);
+        padding: 0.8em;
+        border-radius: 50%;
+    }
+
+    .gallery-figcaption .gallery-figcaption--thumbnails .caption-thumbnails ul.thumbnails-list li button, .gallery-figcaption .gallery-figcaption--thumbnails .caption-thumbnails ul.thumbnails-list li button.thumbnail-button div.picture {
+        border: none;
+    }
+
+    .gallery-figcaption .gallery-figcaption--thumbnails .caption-thumbnails ul.thumbnails-list li {
+        margin-right: 1.5em;
+    }
+
+    .gallery ul.gallery-images--ul li.gallery-media-photo .picture img.photo, .gallery-figcaption .gallery-figcaption--thumbnails .caption-thumbnails ul.thumbnails-list li button.thumbnail-button div.picture img.thumbnail {
+        border-radius: 8px;
+    }
+
+    .gallery-figcaption .gallery-figcaption--thumbnails {
+        height: 90px;
+    }
+
+    .gallery-figcaption .gallery-figcaption--thumbnails .caption-thumbnails ul.thumbnails-list li button.thumbnail-button div.picture img.thumbnail {
+        width: 150px !important;
+        height: 90px !important;
+        object-fit: cover;
+    }
+}

@@ -77,16 +77,16 @@ CREATE TABLE IF NOT EXISTS customers (
   PRIMARY KEY (cus_id)
 );
 
-CREATE TABLE IF NOT EXISTS bookings (
-	book_id INT NOT NULL AUTO_INCREMENT,
-    hab_id INT NOT NULL,
-    cus_id INT NOT NULL,
-    book_start_date DATE NOT NULL,
-    book_end_date DATE NOT NULL,
-    PRIMARY KEY (book_id),
-    FOREIGN KEY(hab_id) REFERENCES habitaciones(hab_id),
-    FOREIGN KEY(cus_id) REFERENCES customers(cus_id)
-);
+--CREATE TABLE IF NOT EXISTS bookings (
+--	book_id INT NOT NULL AUTO_INCREMENT,
+--    hab_id INT NOT NULL,
+--   cus_id INT NOT NULL,
+--    book_start_date DATE NOT NULL,
+--    book_end_date DATE NOT NULL,
+--    PRIMARY KEY (book_id),
+--    FOREIGN KEY(hab_id) REFERENCES habitaciones(hab_id),
+--    FOREIGN KEY(cus_id) REFERENCES customers(cus_id)
+--);
 
 insert into cities(city_name,city_country)
 VALUES

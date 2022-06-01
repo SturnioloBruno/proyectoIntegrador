@@ -116,7 +116,7 @@ function Login({handlerLogIn, type,users}) {
                 <label htmlFor="password_login" className='label__password-input'>
                     <span>Contraseña</span>
                     <input type="password" name="password" id="password_login" required className={`${errors.password || errors.general? "error" : ""}`} autoComplete="off" />
-                    <Link to="#" class="a__show-hide" onClick={show}>Show/Hide</Link>
+                    <Link to="#" className="a__show-hide" onClick={show}>Show/Hide</Link>
                     
                     {errors.password||errors.email||errors.general?
                     <small className="small__error" id="error_password">{

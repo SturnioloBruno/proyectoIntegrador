@@ -33,7 +33,7 @@ public class CategoryService {
 
     // Select for name
     public Category buscarTitulo(String titulo) throws  Exception{
-        Optional<Category> category = categoryRepository.findByTitulo(titulo);
+        Optional<Category> category = categoryRepository.findByTitle(titulo);
 
         return category.orElse(null);//si esta lo retorna si no manda null
     }

@@ -20,9 +20,12 @@ public class Policy {
     @Column(name = "policies_desc", nullable = false)
     private String desc;
 
-    @OneToMany(mappedBy = "policies",fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "policy",fetch = FetchType.EAGER)
     @JsonIgnore
-    private Set<Policy> policies;
+    private Set<ProductPolicy> policies;
+
+    public Policy() {
+    }
 
     public Policy(Long id, String title, String desc) {
         this.id = id;

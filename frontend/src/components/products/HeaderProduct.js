@@ -9,7 +9,7 @@ function HeaderProduct({category, name}) {
             </div>
             {/*<h2>${name}</h2>
             <p>${category}</p>*/}
-            <Link to="#" className="a__show-more" />
+            <Link to="/" className="a__show-more" />
         </div>
     )
 }

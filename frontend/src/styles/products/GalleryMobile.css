@@ -1,0 +1,13 @@
+.div__img-actions .swiper-slide img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.div__img-actions .swiper-pagination-fraction {
+    width: auto;
+    left: auto;
+    right: 5%;
+    bottom: 1em;
+    color: white;
+}

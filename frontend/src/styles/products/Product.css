@@ -28,7 +28,7 @@
     width: 24px;
     height: 24px;
     display: block;
-    background: url(../assets/icons/show.svg) no-repeat center center;
+    background: url(../../assets/icons/show.svg) no-repeat center center;
     background-size: contain;
 }
 
@@ -50,7 +50,7 @@
     width: 32px;
     height: 16px;
     display: block;
-    background: url(../assets/icons/location.svg) no-repeat center center;
+    background: url(../../assets/icons/location.svg) no-repeat center center;
     background-size: contain;
     margin-right: 4px;
 }
@@ -109,12 +109,12 @@
 }
 
 .a__share-icon::before {
-    background: url(../assets/icons/share.svg) no-repeat center center;
+    background: url(../../assets/icons/share.svg) no-repeat center center;
     background-size: contain;
 }
 
 .a__like-icon::before {
-    background: url(../assets/icons/like.svg) no-repeat center center;
+    background: url(../../assets/icons/like.svg) no-repeat center center;
     background-size: contain;
 }
 
@@ -124,20 +124,6 @@
 
 .section__info-product > p {
     margin: 0 5% 1.5em;
-}
-
-.div__img-actions .swiper-slide img {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-}
-
-.div__img-actions .swiper-pagination-fraction {
-    width: auto;
-    left: auto;
-    right: 5%;
-    bottom: 1em;
-    color: white;
 }
 
 @media (min-width: 768px) {
@@ -155,12 +141,53 @@
     }
 
     .a__share-icon::before {
-        background: url(../assets/icons/share-black.svg) no-repeat center center;
+        background: url(../../assets/icons/share-black.svg) no-repeat center center;
         background-size: contain;
     }
     
     .a__like-icon::before {
-        background: url(../assets/icons/like-black.svg) no-repeat center center;
+        background: url(../../assets/icons/like-black.svg) no-repeat center center;
         background-size: contain;
+    }
+}
+
+@media (min-width: 1024px) {
+    .div__buttons-bar {
+        padding: 1.5em 5%;
+    }
+
+    .div__gallery-desktop {
+        padding: 0 5%;
+        position: relative;
+    }
+
+    .ul__gallery-desktop {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        grid-column-gap: 1.5em;
+        grid-row-gap: 1.5em;
+    }
+    
+    .ul__gallery-desktop li:first-child { grid-area: 1 / 1 / 3 / 3; }
+    .ul__gallery-desktop li:nth-child(2) { grid-area: 1 / 3 / 2 / 4; }
+    .ul__gallery-desktop li:nth-child(3) { grid-area: 1 / 4 / 2 / 5; }
+    .ul__gallery-desktop li:nth-child(4) { grid-area: 2 / 3 / 3 / 4; }
+    .ul__gallery-desktop li:last-child { grid-area: 2 / 4 / 3 / 5; }
+
+    .ul__gallery-desktop li img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 8px
+    }
+
+    .button__open-gallery {
+        position: absolute;
+        bottom: 1.5em;
+        right: calc(5% + 1.5em);
+        text-decoration: underline;
+        color: white;
+        font-weight: 700;
     }
 }

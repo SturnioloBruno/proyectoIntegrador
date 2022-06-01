@@ -16,7 +16,7 @@ import java.util.Set;
 @Service
 public class ProductService implements IProductService {
     @Autowired
-    private IProductRepository productRepository;
+    IProductRepository productRepository;
     @Autowired
     ObjectMapper mapper;
 

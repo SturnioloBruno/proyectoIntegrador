@@ -19,7 +19,10 @@ public class Characteristic {
 
     @OneToMany(mappedBy = "characteristic",fetch = FetchType.EAGER)
     @JsonIgnore
-    private Set<Characteristic> characteristics;
+    private Set<ProductCharacteristic> characteristics;
+
+    public Characteristic() {
+    }
 
     public Characteristic(Long id, String title) {
         this.id = id;

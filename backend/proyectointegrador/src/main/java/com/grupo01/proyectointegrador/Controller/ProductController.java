@@ -1,6 +1,7 @@
 package com.grupo01.proyectointegrador.Controller;
 
 import com.grupo01.proyectointegrador.Model.Product;
+import com.grupo01.proyectointegrador.Model.ProductDTO;
 import com.grupo01.proyectointegrador.Service.ProductService;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,17 +18,18 @@ public class ProductController {
     @Autowired
     ProductService productService;
 
+
     @CrossOrigin(origins = "http://localhost:3000")
     @Operation(summary = "retorna producto segun el id")
     @GetMapping("/findById/{id}")
-    public ResponseEntity<Product> findByID(@PathVariable Long id)throws Exception{
+    public ResponseEntity<ProductDTO> findByID(@PathVariable Long id)throws Exception{
         return ResponseEntity.ok(productService.buscarPorId(id));
     }
 
     @CrossOrigin(origins = "http://localhost:3000")
     @Operation(summary = "retorna producto segun el id")
     @GetMapping("/getListProducts")
-    public ResponseEntity<Set<Product>> getListProduct(@PathVariable Long id)throws Exception{
+    public ResponseEntity<Set<ProductDTO>> getListProduct(@PathVariable Long id)throws Exception{
         return ResponseEntity.ok(productService.getProducts());
     }
 

@@ -22,10 +22,9 @@ public class Category {
     @Column(name = "cat_url_img",nullable = false)
     private String urlImagen;
 
-    @OneToMany(mappedBy = "categories")
+    @OneToMany(mappedBy = "category",fetch = FetchType.EAGER)
     @JsonIgnore
     private Set<Product> products;
-
 
     public Category(Long id, String title, String desc, String urlImagen) {
         this.id = id;
@@ -34,7 +33,7 @@ public class Category {
         this.urlImagen = urlImagen;
     }
 
-    public Category( String title, String des, String urlImagen) {
+    public Category(String title, String desc, String urlImagen) {
         this.title = title;
         this.desc = desc;
         this.urlImagen = urlImagen;
@@ -68,13 +67,5 @@ public class Category {
 
     public void setUrlImagen(String urlImagen) {
         this.urlImagen = urlImagen;
-    }
-
-    public Set<Product> getProductos() {
-        return products;
-    }
-
-    public void setProductos(Set<Product> products) {
-        this.products = products;
     }
 }

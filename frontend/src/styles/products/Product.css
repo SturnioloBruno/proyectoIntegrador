@@ -1,8 +1,29 @@
-.section__info-product {
+.article__info-product {
     padding: 82px 0 0;
 }
 
-.div__header-product {
+.article__info-product section {
+    padding: 1.5em 5% 0;
+}
+
+.article__info-product section > h2 {
+    margin-bottom: 1em;
+}
+
+.article__info-product .section__title-border {
+    padding: 1.5em 0 0;
+}
+
+.article__info-product .section__title-border h2 {
+    border-bottom: 1px solid var(--orange);
+    padding-bottom: 1em;
+}
+
+.article__info-product .section__title-border > * {
+    padding: 0 5%;
+}
+
+.article__info-product .section__header-product {
     padding: 1em 5%;
     background-color: var(--grey);
     display: flex;
@@ -10,20 +31,20 @@
     justify-content: space-between;
 }
 
-.div__header-product .div__info-name {
+.article__info-product .section__header-product .div__info-name {
     display: flex;
     flex-direction: column-reverse;
 }
 
-.div__header-product h2, .div__header-product p {
+.article__info-product .section__header-product h2, .section__header-product p {
     color: white;
 }
 
-.div__header-product p {
+.article__info-product .section__header-product p {
     text-transform: uppercase;
 }
 
-.div__header-product .a__show-more::after {
+.article__info-product .section__header-product .a__show-more::after {
     content: "";
     width: 24px;
     height: 24px;
@@ -32,7 +53,7 @@
     background-size: contain;
 }
 
-.div__address-score {
+.article__info-product .section__address-score {
     padding: 1em 5%;
     background: rgba(49, 54, 63, .1);
     display: flex;
@@ -40,19 +61,19 @@
     justify-content: space-between;
 }
 
-.div__address-score .div__info-address {
+.article__info-product .section__address-score .div__info-address {
     width: calc(60% - 1em);
 }
 
-.div__address-score .div__info-address p {
+.article__info-product .section__address-score .div__info-address p {
     font-size: 14px;
 }
 
-.div__address-score .div__info-address .p__city-info {
+.section__address-score .div__info-address .p__city-info {
     display: flex;
 }
 
-.div__address-score .div__info-address .p__city-info:before {
+.article__info-product .section__address-score .div__info-address .p__city-info:before {
     content: "";
     width: 16px;
     height: 16px;
@@ -62,26 +83,30 @@
     margin-right: 4px;
 }
 
-.div__address-score .p__center-meters {
+.article__info-product section:nth-of-type(3) {
+    background: none;
+}
+
+.article__info-product .section__address-score .p__center-meters {
     display: none;
 }
 
-.div__address-score .div__info-score p {
+.article__info-product .section__address-score .div__info-score p {
     font-weight: 700;
     text-align: right;
     margin-bottom: .1em;
     color: var(--grey);
 }
 
-.MuiRating-iconFilled {
+.article__info-product .MuiRating-iconFilled {
     color: var(--orange);
 }
 
-.div__address-score .div__puntuation-score {
+.article__info-product .section__address-score .div__puntuation-score {
     display: flex;
 }
 
-.div__address-score .div__puntuation-score > span {
+.article__info-product .section__address-score .div__puntuation-score > span {
     background-color: var(--grey);
     color: white;
     padding: 0.2em 0.7em;
@@ -94,97 +119,144 @@
     font-weight: 700;
 }
 
-.div__buttons-bar {
+.article__info-product .div__buttons-bar {
     position: absolute;
     top: 1em;
     left: 5%;
     z-index: 2;
 }
 
-.div__img-actions {
+.article__info-product .div__img-actions {
     position: relative;
 }
 
-.div__buttons-bar {
+.article__info-product .div__buttons-bar {
     display: flex;
     align-items: center;
 }
 
-.a__share-icon, .a__like-icon {
+.article__info-product .a__share-icon, .a__like-icon {
     font-size: 0;
     margin-right: 16px;
 }
 
-.a__share-icon::before, .a__like-icon::before {
+.article__info-product .a__share-icon::before, .a__like-icon::before {
     content: "";
     width: 24px;
     height: 24px;
     display: block;
 }
 
-.a__share-icon::before {
+.article__info-product .a__share-icon::before {
     background: url(../../assets/icons/share.svg) no-repeat center center;
     background-size: contain;
 }
 
-.a__like-icon::before {
+.article__info-product .a__like-icon::before {
     background: url(../../assets/icons/like.svg) no-repeat center center;
     background-size: contain;
 }
 
-.section__info-product > h2 {
-    margin: 1em 5%;
+.article__info-product .section__hotel-date {
+    background-color: var(--light-grey);
+    padding-bottom: 1.5em;
 }
 
-.section__info-product > p {
-    margin: 0 5% 1.5em;
+.article__info-product .p__bold-style {
+    font-weight: 700;
+    margin-bottom: 1em;
+    color: var(--grey);
+}
+
+.article__info-product .section__hotel-date button {
+    width: 100%;
+}
+
+.article__info-product .section__politics ul li h3, .article__info-product .section__politics ul li ul li {
+    margin-bottom: 1em;
+}
+
+.article__info-product .section__politics > ul > li {
+    margin-bottom: 1.5em;
 }
 
 @media (min-width: 768px) {
-    .section__info-product {
+    .article__info-product {
         padding: 98px 0 0;
     }
 
-    .div__address-score .p__center-meters {
+    .article__info-product .section__address-score .p__center-meters {
         display: block;
         margin-left: 20px;
     }
 
-    .div__address-score {
+    .article__info-product .section__address-score {
         align-items: center;
     }
 
-    .div__buttons-bar {
+    .article__info-product .div__buttons-bar {
         position: initial;
         padding: 1em 5%;
     }
 
-    .a__share-icon, .a__like-icon {
+    .article__info-product .a__share-icon, .a__like-icon {
         margin-right: 24px;
     }
 
-    .a__share-icon::before {
+    .article__info-product .a__share-icon::before {
         background: url(../../assets/icons/share-black.svg) no-repeat center center;
         background-size: contain;
     }
     
-    .a__like-icon::before {
+    .article__info-product .a__like-icon::before {
         background: url(../../assets/icons/like-black.svg) no-repeat center center;
         background-size: contain;
+    }
+
+    .article__info-product .section__hotel-date .div__calendar-info div {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .article__info-product .section__hotel-date .p__bold-style {
+        margin-bottom: 0;
+    }
+
+    .article__info-product .section__hotel-date button {
+        width: auto;
+    }
+
+    .article__info-product .section__politics > ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .article__info-product .section__politics > ul > li {
+        width: calc(50% - .75em);
     }
 }
 
 @media (min-width: 1024px) {
-    .div__buttons-bar {
+    .article__info-product section {
+        padding: 3em 5% 0;    
+    }
+
+    .article__info-product .section__title-border {
+        padding: 3em 0 0;
+    }
+
+    .article__info-product .div__buttons-bar {
         padding: 1.5em 5%;
     }
 
-    .div__gallery-desktop {
+    .article__info-product .div__gallery-desktop {
         padding: 0 5%;
         position: relative;
     }
 
-    .ul__gallery-desktop {
+    .article__info-product .ul__gallery-desktop {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         grid-template-rows: repeat(2, 1fr);
@@ -192,20 +264,20 @@
         grid-row-gap: 1.5em;
     }
     
-    .ul__gallery-desktop li:first-child { grid-area: 1 / 1 / 3 / 3; }
-    .ul__gallery-desktop li:nth-child(2) { grid-area: 1 / 3 / 2 / 4; }
-    .ul__gallery-desktop li:nth-child(3) { grid-area: 1 / 4 / 2 / 5; }
-    .ul__gallery-desktop li:nth-child(4) { grid-area: 2 / 3 / 3 / 4; }
-    .ul__gallery-desktop li:last-child { grid-area: 2 / 4 / 3 / 5; }
+    .article__info-product .ul__gallery-desktop li:first-child { grid-area: 1 / 1 / 3 / 3; }
+    .article__info-product .ul__gallery-desktop li:nth-child(2) { grid-area: 1 / 3 / 2 / 4; }
+    .article__info-product .ul__gallery-desktop li:nth-child(3) { grid-area: 1 / 4 / 2 / 5; }
+    .article__info-product .ul__gallery-desktop li:nth-child(4) { grid-area: 2 / 3 / 3 / 4; }
+    .article__info-product .ul__gallery-desktop li:last-child { grid-area: 2 / 4 / 3 / 5; }
 
-    .ul__gallery-desktop li img {
+    .article__info-product .ul__gallery-desktop li img {
         width: 100%;
         height: 100%;
         object-fit: cover;
         border-radius: 8px
     }
 
-    .button__open-gallery {
+    .article__info-product .button__open-gallery {
         position: absolute;
         bottom: 1.5em;
         right: calc(5% + 1.5em);
@@ -214,7 +286,41 @@
         font-weight: 700;
     }
 
-    .section__info-product > h2 {
-        margin: 1.5em 5%;
+    .article__info-product .section__hotel-date .div__calendar-info {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .article__info-product .section__hotel-date .div__calendar-info div {
+        padding: 1.5em;
+        background: white;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 30%;
+    }
+    
+    .article__info-product .section__hotel-date .div__calendar-info div p {
+        margin-bottom: 1em;
+    }
+
+    .article__info-product .section__hotel-date .div__calendar-info div button {
+        width: 100%;
+    }
+
+    .article__info-product .section__politics > ul {
+        margin-top: 3em;
+        justify-content: flex-start;
+    }
+
+    .article__info-product .section__politics > ul > li {
+        width: calc(25% - 1.5em);
+        margin-right: 3em;
+    }
+
+    .article__info-product .section__politics > ul > li {
+        margin-bottom: 3em;
     }
 }

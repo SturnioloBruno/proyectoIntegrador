@@ -5,7 +5,7 @@ import StarIcon from '@mui/icons-material/Star';
 
 function InfoProduct({address, meters, score, stars, puntuation}) {
     return (
-        <div className='div__address-score'>
+        <section className='section__address-score'>
             <div className='div__info-address'>
                 <p className="p__city-info">Buenos Aires, Ciudad Autónoma de Buenos Aires, Argentina</p>
                 <p className="p__center-meters">A 940 m del centro</p>
@@ -23,7 +23,7 @@ function InfoProduct({address, meters, score, stars, puntuation}) {
                 <span>8</span>
                 {/*<span>${puntuation}</span>*/}
             </div>
-        </div>
+        </section>
     )
 }
 

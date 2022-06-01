@@ -18,19 +18,23 @@ body {
 }
 
 h1 {
-    font-size: 24px;
+    font-size: 32px;
 }
 
 h2 {
+    font-size: 24px;
+}
+
+h3 {
     font-size: 20px;
 }
 
-h3, p, button {
+h4 {
     font-size: 16px;
 }
 
-h4 {
-    font-size: 14px;
+p, button {
+    font-size: 16px;
 }
 
 h1, h2, h3, h4, p, button {

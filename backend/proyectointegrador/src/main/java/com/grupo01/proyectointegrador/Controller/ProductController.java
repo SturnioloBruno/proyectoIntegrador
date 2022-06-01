@@ -1,7 +1,7 @@
 package com.grupo01.proyectointegrador.Controller;
 
 import com.grupo01.proyectointegrador.Model.Product;
-import com.grupo01.proyectointegrador.Model.ProductDTO;
+import com.grupo01.proyectointegrador.DTO.ProductDTO;
 import com.grupo01.proyectointegrador.Service.ProductService;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;

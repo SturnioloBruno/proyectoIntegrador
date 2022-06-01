@@ -1,7 +1,7 @@
 package com.grupo01.proyectointegrador.Service.Interfaces;
 
 import com.grupo01.proyectointegrador.Model.Product;
-import com.grupo01.proyectointegrador.Model.ProductDTO;
+import com.grupo01.proyectointegrador.DTO.ProductDTO;
 
 import java.util.Set;
 

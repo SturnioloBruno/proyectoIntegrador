@@ -1,4 +1,4 @@
-package com.grupo01.proyectointegrador.Model;
+package com.grupo01.proyectointegrador.DTO;
 
 public class ProductDTO {
     private Long id;

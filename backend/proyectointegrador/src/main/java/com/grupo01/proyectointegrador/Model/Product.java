@@ -8,6 +8,7 @@ import javax.persistence.*;
 @Table(name="products")
 public class Product {
     @Id
+    @Column(name = "prod_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 

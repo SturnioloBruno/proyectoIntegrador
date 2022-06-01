@@ -29,7 +29,7 @@ public class ProductController {
     @CrossOrigin(origins = "http://localhost:3000")
     @Operation(summary = "retorna producto segun el id")
     @GetMapping("/getListProducts")
-    public ResponseEntity<Set<ProductDTO>> getListProduct(@PathVariable Long id)throws Exception{
+    public ResponseEntity<Set<ProductDTO>> getListProduct()throws Exception{
         return ResponseEntity.ok(productService.getProducts());
     }
 

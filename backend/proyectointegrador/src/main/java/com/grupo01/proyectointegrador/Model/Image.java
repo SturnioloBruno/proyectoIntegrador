@@ -13,18 +13,19 @@ public class Image {
     @Column(name = "img_url", nullable = false)
     private String nombreUrl;
 
-    @Column(name = "pro_id", nullable = false)
-    private long proId;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "prod_id", nullable = false)
+    private Product proId;
 
-    public Image(Long id, String nombre_url, long pro_id) {
+    public Image(Long id, String nombreUrl, Product proId) {
         this.id = id;
-        this.nombreUrl = nombre_url;
-        this.proId = pro_id;
+        this.nombreUrl = nombreUrl;
+        this.proId = proId;
     }
 
-    public Image(String nombre_url, long pro_id) {
-        this.nombreUrl = nombre_url;
-        this.proId = pro_id;
+    public Image(String nombreUrl, Product proId) {
+        this.nombreUrl = nombreUrl;
+        this.proId = proId;
     }
 
     public Image() {
@@ -42,7 +43,7 @@ public class Image {
         this.nombreUrl = nombre_url;
     }
 
-    public long getProId() {
+    public Product getProId() {
         return proId;
     }
 }

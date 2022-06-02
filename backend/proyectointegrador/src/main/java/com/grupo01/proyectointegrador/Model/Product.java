@@ -56,8 +56,8 @@ public class Product {
     @JsonIgnore
     private Set<ProductPolicy> productsP;
 
-    @OneToMany(mappedBy = "product",fetch = FetchType.EAGER)
-    @JsonIgnore
+    @OneToMany(mappedBy = "proId",fetch = FetchType.EAGER)
+    //@JsonIgnore
     private Set<Image> images;
 
     public Product() {

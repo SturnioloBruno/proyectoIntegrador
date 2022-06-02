@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS products (
 CREATE TABLE IF NOT EXISTS images (
 	img_id INT NOT NULL AUTO_INCREMENT,
     prod_id INT NOT NULL,
-    img_url VARCHAR(500) NOT NULL,
+    img_url VARCHAR(8000) NOT NULL,
     PRIMARY KEY(img_id),
     FOREIGN KEY(prod_id) REFERENCES products(prod_id)
 );

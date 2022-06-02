@@ -21,8 +21,15 @@ public class ProductController {
 
     @CrossOrigin(origins = "http://localhost:3000")
     @Operation(summary = "retorna producto segun el id")
+    @GetMapping("/findByIdDTO/{id}")
+    public ResponseEntity<ProductDTO> findByIDDTO(@PathVariable Long id)throws Exception{
+        return ResponseEntity.ok(productService.buscarPorIdDTO(id));
+    }
+
+    @CrossOrigin(origins = "http://localhost:3000")
+    @Operation(summary = "retorna producto segun el id")
     @GetMapping("/findById/{id}")
-    public ResponseEntity<ProductDTO> findByID(@PathVariable Long id)throws Exception{
+    public ResponseEntity<Product> findByID(@PathVariable Long id)throws Exception{
         return ResponseEntity.ok(productService.buscarPorId(id));
     }
 

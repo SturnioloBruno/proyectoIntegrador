@@ -37,13 +37,19 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public ProductDTO buscarPorId(Long id) throws Exception{
+    public ProductDTO buscarPorIdDTO(Long id) throws Exception{
         Optional<Product> product = productRepository.findById(id);
         ProductDTO productEncontrado = null;
         if (product.isPresent()){
             productEncontrado = mapper.convertValue(product.get(),ProductDTO.class);
         }
         return productEncontrado;
+    }
+
+    public Product buscarPorId(Long id) throws Exception{
+        Optional<Product> product = productRepository.findById(id);
+
+        return product.orElse(null);
     }
 
     /*
@@ -59,7 +65,7 @@ public class ProductService implements IProductService {
 
     public void delete(Long id)throws Exception{
         // verifico que existe
-        ProductDTO product = buscarPorId(id);
+        ProductDTO product = buscarPorIdDTO(id);
 
         if(product == null){
             throw new Exception("Producto con id: "+ id + " no existe");
@@ -69,7 +75,7 @@ public class ProductService implements IProductService {
     }
 
     public ProductDTO update(ProductDTO productDTO) throws Exception{
-        ProductDTO productBuscado = buscarPorId(productDTO.getId());
+        ProductDTO productBuscado = buscarPorIdDTO(productDTO.getId());
 
         if(productBuscado == null){
             throw new Exception("Producto con id: "+ productDTO.getId() + " no existe");

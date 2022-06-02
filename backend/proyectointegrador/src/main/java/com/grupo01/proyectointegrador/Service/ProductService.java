@@ -78,8 +78,13 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public List<Product> findByCity(Long idCiudad)throws Exception {
-        return productRepository.findByCity(idCiudad).get();
+    public Set<ProductDTO> findProductsByCity(Long idCiudad)throws Exception {
+        Set<Product> products = productRepository.findByCity(idCiudad).get();
+        Set<ProductDTO> productDTOs = new HashSet<>();
+        for (Product p:products){
+            productDTOs.add(mapper.convertValue(p,ProductDTO.class));
+        }
+        return productDTOs;
     }
 
 

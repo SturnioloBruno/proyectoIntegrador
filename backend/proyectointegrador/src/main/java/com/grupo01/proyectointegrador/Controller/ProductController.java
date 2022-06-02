@@ -9,8 +9,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
 
 @RestController
@@ -45,9 +43,9 @@ public class ProductController {
 
     @CrossOrigin(origins = "http://localhost:3000")
     @Operation(summary = "retorna productos por ciudad")
-    @GetMapping("/getListProducts/{id}")
-    public ResponseEntity<List<Product>> getProductByCity(@PathVariable Long id)throws  Exception{
-        return  ResponseEntity.ok(productService.findByCity(id));
+    @GetMapping("/getListProductsByCityId")
+    public Set<ProductDTO> getProductByCity(@RequestParam Long id)throws  Exception{
+        return  productService.findProductsByCity(id);
     }
 
 }

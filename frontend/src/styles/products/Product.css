@@ -164,11 +164,11 @@
 
 .article__info-product .p__bold-style {
     font-weight: 700;
-    margin-bottom: 1em;
+    margin-bottom: 1.5em;
     color: var(--grey);
 }
 
-.article__info-product .section__hotel-date button {
+.article__info-product .section__hotel-date button.btn {
     width: 100%;
 }
 
@@ -213,17 +213,21 @@
         background-size: contain;
     }
 
-    .article__info-product .section__hotel-date .div__calendar-info div {
+    .article__info-product .section__hotel-date .div__calendar-info .div__button-selected {
         display: flex;
         align-items: center;
         justify-content: space-between;
+    }
+
+    .article__info-product .section__hotel-date {
+        padding: 3em 5%;
     }
 
     .article__info-product .section__hotel-date .p__bold-style {
         margin-bottom: 0;
     }
 
-    .article__info-product .section__hotel-date button {
+    .article__info-product .section__hotel-date button.btn {
         width: auto;
     }
 
@@ -241,6 +245,10 @@
 @media (min-width: 1024px) {
     .article__info-product section {
         padding: 3em 5% 0;    
+    }
+
+    .article__info-product section > h2 {
+        margin-bottom: 1.5em;
     }
 
     .article__info-product .section__title-border {
@@ -292,7 +300,7 @@
         justify-content: space-between;
     }
 
-    .article__info-product .section__hotel-date .div__calendar-info div {
+    .article__info-product .section__hotel-date .div__calendar-info .div__button-selected {
         padding: 1.5em;
         background: white;
         border-radius: 8px;
@@ -302,11 +310,11 @@
         width: 30%;
     }
     
-    .article__info-product .section__hotel-date .div__calendar-info div p {
+    .article__info-product .section__hotel-date .div__calendar-info .div__button-selected p {
         margin-bottom: 1em;
     }
 
-    .article__info-product .section__hotel-date .div__calendar-info div button {
+    .article__info-product .section__hotel-date .div__calendar-info .div__button-selected button {
         width: 100%;
     }
 
@@ -322,5 +330,19 @@
 
     .article__info-product .section__politics > ul > li {
         margin-bottom: 3em;
+    }
+
+    .div__calendar-info > div:first-of-type {
+        width: calc(70% - 3em);
+    }
+}
+
+@media (min-width: 1440px) {
+    .article__info-product .section__hotel-date .div__calendar-info .div__button-selected {
+        width: 35%;
+    }
+
+    .div__calendar-info > div:first-of-type {
+        width: calc(65% - 3em);
     }
 }

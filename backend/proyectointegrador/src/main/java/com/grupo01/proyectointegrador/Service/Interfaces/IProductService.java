@@ -12,6 +12,5 @@ public interface IProductService {
     ProductDTO buscarPorIdDTO(Long id) throws Exception;
     void delete(Long id) throws Exception;
     ProductDTO update(ProductDTO productDTO) throws Exception;
-    Set<ProductDTO> findProductsByCity(Long idCiudad) throws Exception;
 }
 

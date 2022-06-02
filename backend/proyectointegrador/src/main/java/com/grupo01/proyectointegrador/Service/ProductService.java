@@ -9,7 +9,10 @@ import com.grupo01.proyectointegrador.Service.Interfaces.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class ProductService implements IProductService {
@@ -82,16 +85,6 @@ public class ProductService implements IProductService {
         Product product=mapper.convertValue(productDTO,Product.class);
         productRepository.save(product);
         return productDTO;
-    }
-
-    @Override
-    public Set<ProductDTO> findProductsByCity(Long idCiudad)throws Exception {
-        Set<Product> products = productRepository.findByCity(idCiudad).get();
-        Set<ProductDTO> productDTOs = new HashSet<>();
-        for (Product p:products){
-            productDTOs.add(mapper.convertValue(p,ProductDTO.class));
-        }
-        return productDTOs;
     }
 
 

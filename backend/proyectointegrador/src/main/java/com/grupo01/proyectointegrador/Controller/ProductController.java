@@ -48,11 +48,4 @@ public class ProductController {
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
-    @Operation(summary = "retorna productos por ciudad")
-    @GetMapping("/getListProductsByCityId")
-    public Set<ProductDTO> getProductByCity(@RequestParam Long id)throws  Exception{
-        return  productService.findProductsByCity(id);
-    }
-
 }

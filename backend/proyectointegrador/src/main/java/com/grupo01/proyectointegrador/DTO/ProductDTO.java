@@ -4,10 +4,13 @@ public class ProductDTO {
     private Long id;
     private String adress;
     private String name;
+    private int punctuation;
+    private int stars;
     private String descTitle;
     private String desc;
     private int x;
     private int y;
+    private String score;
 
     public Long getId() {
         return id;
@@ -27,6 +30,22 @@ public class ProductDTO {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getPunctuation() {
+        return punctuation;
+    }
+
+    public void setPunctuation(int punctuation) {
+        this.punctuation = punctuation;
+    }
+
+    public int getStars() {
+        return stars;
+    }
+
+    public void setStars(int stars) {
+        this.stars = stars;
     }
 
     public String getDescTitle() {
@@ -52,4 +71,12 @@ public class ProductDTO {
     public int getY() { return y; }
 
     public void setY(int y) { this.y = y; }
+
+    public String getScore() {
+        return score;
+    }
+
+    public void setScore(String score) {
+        this.score = score;
+    }
 }

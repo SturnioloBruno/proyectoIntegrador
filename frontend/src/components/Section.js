@@ -6,8 +6,8 @@ import '../styles/Section.css';
 import Acommodations from "../data/acommodations.json";
 
 function Section({ type, title }) {
-    
     const[categories,setCategories] = useState(null)
+
     useEffect(()=>{
         //Cargo Categorias
         const getCategories = async()=>{
@@ -34,7 +34,7 @@ function Section({ type, title }) {
             {type == "Category" &&
             <ul className="ul__categories-list">
                 {categories?.map((category) => (
-                    <li key={category.id}><Link to='#'><Category title={category.cat_title} description={category.cat_desc} src={category.cat_url_img} />{console.log(category)}
+                    <li key={category.id}><Link to='#'><Category title={category.cat_title} description={category.cat_desc} src={category.cat_url_img} />
                     </Link></li>
                 ))}
             </ul>

@@ -1,6 +1,6 @@
-import React from 'react';
+import {React,useState,useEffect} from 'react';
 import { useMediaQuery } from 'react-responsive';
-import { Link } from "react-router-dom";
+import { Link , useParams} from "react-router-dom";
 import HeaderProduct from './HeaderProduct';
 import InfoProduct from './InfoProduct';
 import GalleryMobile from "./GalleryMobile";
@@ -15,6 +15,30 @@ import "../../styles/products/Product.css";
 function Product({src, alt}) {
     const mobileTablet = useMediaQuery({ query: '(max-width: 1024px)' });
     const desktop = useMediaQuery({ query: '(min-width: 1025px)' });
+    const [product,setProduct] = useState(null);
+    const {id} = useParams();
+
+    useEffect(()=>{
+        //Cargo datos del Producto
+        const getProduct = async()=>{
+            await fetch("http://localhost:8080/products/findById/"+id,{
+                method:'GET',
+                headers:{
+                    'Content-Type':'application/json'
+                }
+            })
+            .then(function(respuesta){
+                return respuesta.json();
+                })
+            .then(function (product) {
+                setProduct(product);
+                })
+        }
+        
+        getProduct();
+        console.log(product);
+
+    },[])
 
     return <article className="article__info-product">
         <HeaderProduct />
@@ -27,7 +51,7 @@ function Product({src, alt}) {
             {mobileTablet && <GalleryMobile />}
             {desktop && <GalleryDesktop />}
         </div>
-        <DescriptionHotel />
+        <DescriptionHotel title={product?.descTitle} text={product?.desc}/>
         <LocationServices />
         <HotelDate />
         <MapLocation />

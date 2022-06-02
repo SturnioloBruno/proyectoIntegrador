@@ -2,6 +2,7 @@ package com.grupo01.proyectointegrador.DTO;
 
 public class ProductDTO {
     private Long id;
+    private String adress;
     private String name;
     private String descTitle;
     private String desc;
@@ -10,6 +11,14 @@ public class ProductDTO {
 
     public Long getId() {
         return id;
+    }
+
+    public String getAdress() {
+        return adress;
+    }
+
+    public void setAdress(String adress) {
+        this.adress = adress;
     }
 
     public String getName() {

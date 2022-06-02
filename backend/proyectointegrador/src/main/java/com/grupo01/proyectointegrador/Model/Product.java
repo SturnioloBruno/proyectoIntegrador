@@ -13,11 +13,14 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "prod_address", nullable = false)
+    private String adress;
+
     @Column(name = "prod_name", nullable = false)
     private String name;
 
     @Column(name = "prod_punctuation")
-    private int puntuation;
+    private int punctuation;
 
     @Column(name = "prod_stars")
     private int stars;
@@ -28,8 +31,14 @@ public class Product {
     @Column(name = "prod_desc")
     private String desc;
 
-    @Column(name = "prod_coordinates")
-    private int coordinates;
+    @Column(name = "prod_x")
+    private String x;
+
+    @Column(name = "prod_y")
+    private String y;
+
+    @Column(name = "prod_score")
+    private String score;
 
     @ManyToOne
     @JoinColumn(name = "cat_id", nullable = false)
@@ -50,31 +59,41 @@ public class Product {
     public Product() {
     }
 
-    public Product(Long id, String name, int puntuation, int stars, String descTitle, String desc, int coordinates, Category category, City city) {
+    public Product(Long id, String adress, String name, int punctuation, int stars, String descTitle, String desc, String x, String y, String score) {
         this.id = id;
+        this.adress = adress;
         this.name = name;
-        this.puntuation = puntuation;
+        this.punctuation = punctuation;
         this.stars = stars;
         this.descTitle = descTitle;
         this.desc = desc;
-        this.coordinates = coordinates;
-        this.category = category;
-        this.city = city;
+        this.x = x;
+        this.y = y;
+        this.score = score;
     }
 
-    public Product(String name, int puntuation, int stars, String descTitle, String desc, int coordinates, Category category, City city) {
+    public Product(String adress, String name, int punctuation, int stars, String descTitle, String desc, String x, String y, String score) {
+        this.adress = adress;
         this.name = name;
-        this.puntuation = puntuation;
+        this.punctuation = punctuation;
         this.stars = stars;
         this.descTitle = descTitle;
         this.desc = desc;
-        this.coordinates = coordinates;
-        this.category = category;
-        this.city = city;
+        this.x = x;
+        this.y = y;
+        this.score = score;
     }
 
     public Long getId() {
         return id;
+    }
+
+    public String getAdress() {
+        return adress;
+    }
+
+    public void setAdress(String adress) {
+        this.adress = adress;
     }
 
     public String getName() {
@@ -85,12 +104,12 @@ public class Product {
         this.name = name;
     }
 
-    public int getPuntuation() {
-        return puntuation;
+    public int getPunctuation() {
+        return punctuation;
     }
 
-    public void setPuntuation(int puntuation) {
-        this.puntuation = puntuation;
+    public void setPunctuation(int punctuation) {
+        this.punctuation = punctuation;
     }
 
     public int getStars() {
@@ -117,27 +136,27 @@ public class Product {
         this.desc = desc;
     }
 
-    public int getCoordinates() {
-        return coordinates;
+    public String getX() {
+        return x;
     }
 
-    public void setCoordinates(int coordinates) {
-        this.coordinates = coordinates;
+    public void setX(String x) {
+        this.x = x;
     }
 
-    public Category getCategory() {
-        return category;
+    public String getY() {
+        return y;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setY(String y) {
+        this.y = y;
     }
 
-    public City getCity() {
-        return city;
+    public String getScore() {
+        return score;
     }
 
-    public void setCity(City city) {
-        this.city = city;
+    public void setScore(String score) {
+        this.score = score;
     }
 }

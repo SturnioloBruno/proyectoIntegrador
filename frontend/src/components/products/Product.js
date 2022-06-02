@@ -33,16 +33,15 @@ function Product({src, alt}) {
             .then(function (product) {
                 setProduct(product);
                 })
-        }
-        
+        }      
         getProduct();
-        console.log(product);
 
     },[])
 
-    return <article className="article__info-product">
+    return <article className="article__info-product">{
+        console.log(product)}
         <HeaderProduct />
-        <InfoProduct />
+        <InfoProduct  puntuation={product?.puntuation} stars={product?.stars}/>
         <div className="div__img-actions">
             <div className="div__buttons-bar">
                 <Link to="#" className="a__share-icon">Compartir</Link>
@@ -54,7 +53,7 @@ function Product({src, alt}) {
         <DescriptionHotel title={product?.descTitle} text={product?.desc}/>
         <LocationServices />
         <HotelDate />
-        <MapLocation />
+        <MapLocation city={product?.city.cityName + ", " + product?.city.country} />
         <Politis />
     </article>
 }

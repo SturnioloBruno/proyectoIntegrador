@@ -43,7 +43,7 @@ public class Product {
     @JsonIgnore
     private Set<ProductCharacteristic> productsC;
 
-    @OneToMany(mappedBy = "policyby",fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "policy",fetch = FetchType.EAGER)
     @JsonIgnore
     private Set<ProductPolicy> productsP;
 

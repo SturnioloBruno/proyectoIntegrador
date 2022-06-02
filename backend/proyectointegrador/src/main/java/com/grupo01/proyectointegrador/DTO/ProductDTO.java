@@ -2,13 +2,13 @@ package com.grupo01.proyectointegrador.DTO;
 
 import com.grupo01.proyectointegrador.Model.Image;
 import com.grupo01.proyectointegrador.Model.ProductCharacteristic;
+import com.grupo01.proyectointegrador.Model.ProductPolicy;
 
-import java.util.List;
 import java.util.Set;
 
 public class ProductDTO {
     private Long id;
-    private String adress;
+    private String address;
     private String name;
     private int punctuation;
     private int stars;
@@ -19,19 +19,20 @@ public class ProductDTO {
     private String score;
     private CityDTO city;
     private CategoryDTO category;
-    private Set<Image> listImages;
-    private Set<ProductCharacteristic> listCharacteristic;
+    private Set<Image> images;
+    private Set<ProductCharacteristic> characteristic;
+    private Set<ProductPolicy> policy;
 
     public Long getId() {
         return id;
     }
 
     public String getAdress() {
-        return adress;
+        return address;
     }
 
     public void setAdress(String adress) {
-        this.adress = adress;
+        this.address = adress;
     }
 
     public String getName() {
@@ -106,19 +107,27 @@ public class ProductDTO {
         this.category = category;
     }
 
-    public Set<Image> getListImages() {
-        return listImages;
+    public Set<Image> getImages() {
+        return images;
     }
 
-    public void setListImages(Set<Image> listImages) {
-        this.listImages = listImages;
+    public void setImages(Set<Image> images) {
+        this.images = images;
     }
 
-    public Set<ProductCharacteristic> getListCharacteristic() {
-        return listCharacteristic;
+    public Set<ProductCharacteristic> getCharacteristic() {
+        return characteristic;
     }
 
-    public void setListCharacteristic(Set<ProductCharacteristic> listCharacteristic) {
-        this.listCharacteristic = listCharacteristic;
+    public void setCharacteristic(Set<ProductCharacteristic> characteristic) {
+        this.characteristic = characteristic;
+    }
+
+    public Set<ProductPolicy> getPolicy() {
+        return policy;
+    }
+
+    public void setPolicy(Set<ProductPolicy> policy) {
+        this.policy = policy;
     }
 }

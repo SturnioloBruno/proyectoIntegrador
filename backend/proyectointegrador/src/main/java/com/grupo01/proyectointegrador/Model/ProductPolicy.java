@@ -26,5 +26,11 @@ public class ProductPolicy {
         return id;
     }
 
+    public Policy getPolicy() {
+        return policy;
+    }
 
+    public void setPolicy(Policy policy) {
+        this.policy = policy;
+    }
 }

@@ -42,8 +42,9 @@ public class ProductService implements IProductService {
         ProductDTO productEncontrado = null;
         if (product.isPresent()){
             productEncontrado = mapper.convertValue(product.get(),ProductDTO.class);
-            productEncontrado.setListImages(product.get().getImages());
-            productEncontrado.setListCharacteristic(product.get().getProductsC());
+            productEncontrado.setImages(product.get().getImages());
+            productEncontrado.setCharacteristic(product.get().getProductsC());
+            productEncontrado.setPolicy(product.get().getProductsP());
         }
         return productEncontrado;
     }

@@ -194,4 +194,12 @@ public class Product {
     public void setProductsC(Set<ProductCharacteristic> productsC) {
         this.productsC = productsC;
     }
+
+    public Set<ProductPolicy> getProductsP() {
+        return productsP;
+    }
+
+    public void setProductsP(Set<ProductPolicy> productsP) {
+        this.productsP = productsP;
+    }
 }

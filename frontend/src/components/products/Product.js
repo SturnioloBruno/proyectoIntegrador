@@ -38,7 +38,7 @@ function Product({src, alt}) {
 
     },[])
 
-    return <article className="article__info-product">{console.log(product)}
+    return <article className="article__info-product">
         <HeaderProduct />
         <InfoProduct address={product?.adress}  puntuation={product?.punctuation} stars={product?.stars} score={product?.score}/>
         <div className="div__img-actions">
@@ -52,7 +52,9 @@ function Product({src, alt}) {
         <DescriptionHotel title={product?.descTitle} text={product?.desc}/>
         <LocationServices />
         <HotelDate />
-        <MapLocation city={product?product?.city?.cityName + ", " + product?.city?.country:""} />
+        <MapLocation city={product?
+            product.city?.cityName + ", " + product.city?.country
+            :""} />
         <Politis />
     </article>
 }

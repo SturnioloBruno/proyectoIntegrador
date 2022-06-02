@@ -15,7 +15,7 @@ function InfoProduct({address, meters, score, stars, puntuation}) {
             <div className='div__puntuation-score'>
                 <div className="div__info-score">
                     <p>{score}</p> 
-                    <Stack spacing={1}>{console.log(stars)}
+                    <Stack spacing={1}>
                         <Rating name="half-rating-read" defaultValue={stars} value={stars} precision={0.5} emptyIcon={<StarIcon style={{ opacity: 0.5 }} />} readOnly />
                     </Stack>
                    

@@ -1,0 +1,74 @@
+.article__info-product .section__location-services ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.article__info-product .section__location-services ul li {
+    width: calc(50% - .75em);
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5em;
+}
+
+.article__info-product .section__location-services ul li::before {
+    content: "";
+    display: block;
+    width: 32px;
+    height: 32px;
+    margin-right: .5em;
+}
+
+.article__info-product .section__location-services ul li.li__kitchen::before {
+    background: url(../../assets/icons/kitchen-orange.svg) no-repeat center center;
+    background-size: contain;
+}
+
+.article__info-product .section__location-services ul li.li__parking::before {
+    background: url(../../assets/icons/parking-orange.svg) no-repeat center center;
+    background-size: contain;
+}
+
+.article__info-product .section__location-services ul li.li__tv::before {
+    background: url(../../assets/icons/tv-orange.svg) no-repeat center center;
+    background-size: contain;
+}
+
+.article__info-product .section__location-services ul li.li__pool::before {
+    background: url(../../assets/icons/pool-orange.svg) no-repeat center center;
+    background-size: contain;
+}
+
+.article__info-product .section__location-services ul li.li__air-conditioning::before {
+    background: url(../../assets/icons/air-conditioning-orange.svg) no-repeat center center;
+    background-size: contain;
+}
+
+.article__info-product .section__location-services ul li.li__wifi::before {
+    background: url(../../assets/icons/wifi-orange.svg) no-repeat center center;
+    background-size: contain;
+}
+
+.article__info-product .section__location-services ul li.li__pets::before {
+    background: url(../../assets/icons/pets-orange.svg) no-repeat center center;
+    background-size: contain;
+}
+
+@media (min-width: 1024px) {
+    .article__info-product .section__location-services > h2 {
+        margin-bottom: 0;
+    }
+
+    .article__info-product .section__location-services ul {
+        justify-content: flex-start;
+    }
+
+    .article__info-product .section__location-services ul li {
+        width: calc(25% - 1.5em);
+        margin: 3em 1.5em 3em 0;
+    }
+
+    .article__info-product .section__location-services ul li:nth-child(4n+4) {
+        margin-right: 0;
+    }
+}

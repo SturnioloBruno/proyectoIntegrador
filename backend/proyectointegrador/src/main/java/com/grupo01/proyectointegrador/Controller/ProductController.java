@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 @RestController
@@ -39,6 +41,13 @@ public class ProductController {
     public ResponseEntity<?> createProduct(@RequestBody Product product)throws Exception{
         productService.crearProduct(product);
         return ResponseEntity.ok(HttpStatus.OK);
+    }
+
+    @CrossOrigin(origins = "http://localhost:3000")
+    @Operation(summary = "retorna productos por ciudad")
+    @GetMapping("/getListProducts/{id}")
+    public ResponseEntity<List<Product>> getProductByCity(@PathVariable Long id)throws  Exception{
+        return  ResponseEntity.ok(productService.findByCity(id));
     }
 
 }

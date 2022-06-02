@@ -8,10 +8,7 @@ import com.grupo01.proyectointegrador.Service.Interfaces.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 @Service
 public class ProductService implements IProductService {
@@ -78,6 +75,11 @@ public class ProductService implements IProductService {
         Product product=mapper.convertValue(productDTO,Product.class);
         productRepository.save(product);
         return productDTO;
+    }
+
+    @Override
+    public List<Product> findByCity(Long idCiudad)throws Exception {
+        return productRepository.findByCity(idCiudad).get();
     }
 
 

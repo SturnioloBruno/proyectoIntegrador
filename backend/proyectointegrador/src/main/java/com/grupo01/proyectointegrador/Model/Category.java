@@ -26,7 +26,6 @@ public class Category {
     @JsonIgnore
     private Set<Product> products;
 
-
     public Category(Long id, String title, String desc, String urlImagen) {
         this.id = id;
         this.title = title;
@@ -34,7 +33,7 @@ public class Category {
         this.urlImagen = urlImagen;
     }
 
-    public Category( String title, String des, String urlImagen) {
+    public Category(String title, String desc, String urlImagen) {
         this.title = title;
         this.desc = desc;
         this.urlImagen = urlImagen;
@@ -68,13 +67,5 @@ public class Category {
 
     public void setUrlImagen(String urlImagen) {
         this.urlImagen = urlImagen;
-    }
-
-    public Set<Product> getProductos() {
-        return products;
-    }
-
-    public void setProductos(Set<Product> products) {
-        this.products = products;
     }
 }

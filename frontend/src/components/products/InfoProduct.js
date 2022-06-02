@@ -5,7 +5,7 @@ import StarIcon from '@mui/icons-material/Star';
 
 function InfoProduct({address, meters, score, stars, puntuation}) {
     return (
-        <section className='section__address-score'>
+        <section className='section__address-score'>{console.log(stars)}
             <div className='div__info-address'>
                 <p className="p__city-info">Buenos Aires, Ciudad Autónoma de Buenos Aires, Argentina</p>
                 <p className="p__center-meters">A 940 m del centro</p>
@@ -16,12 +16,11 @@ function InfoProduct({address, meters, score, stars, puntuation}) {
                 <div className="div__info-score">
                     <p>Muy bueno</p>
                     <Stack spacing={1}>
-                        <Rating name="half-rating-read" defaultValue={2.5} precision={0.5} emptyIcon={<StarIcon style={{ opacity: 0.5 }} />} readOnly />
+                        <Rating name="half-rating-read" defaultValue={stars} precision={0.5} emptyIcon={<StarIcon style={{ opacity: 0.5 }} />} readOnly />
                     </Stack>
                     {/*<p>${score}</p>*/}
                 </div>
-                <span>8</span>
-                {/*<span>${puntuation}</span>*/}
+                <span>{puntuation}</span>
             </div>
         </section>
     )

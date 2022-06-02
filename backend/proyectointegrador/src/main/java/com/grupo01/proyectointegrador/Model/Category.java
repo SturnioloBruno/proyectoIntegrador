@@ -23,7 +23,6 @@ public class Category {
     private String urlImagen;
 
     @OneToMany(mappedBy = "category",fetch = FetchType.EAGER)
-    @JsonIgnore
     private Set<Product> products;
 
     public Category(Long id, String title, String desc, String urlImagen) {
@@ -68,4 +67,6 @@ public class Category {
     public void setUrlImagen(String urlImagen) {
         this.urlImagen = urlImagen;
     }
+
+
 }

@@ -38,9 +38,9 @@ function Product({src, alt}) {
 
     },[])
 
-    return <article className="article__info-product">
+    return <article className="article__info-product">{console.log(product)}
         <HeaderProduct />
-        <InfoProduct  puntuation={product?.puntuation} stars={product?.stars}/>
+        <InfoProduct address={product?.adress}  puntuation={product?.punctuation} stars={product?.stars} score={product?.score}/>
         <div className="div__img-actions">
             <div className="div__buttons-bar">
                 <Link to="#" className="a__share-icon">Compartir</Link>
@@ -52,7 +52,7 @@ function Product({src, alt}) {
         <DescriptionHotel title={product?.descTitle} text={product?.desc}/>
         <LocationServices />
         <HotelDate />
-        <MapLocation city={product?product?.city.cityName + ", " + product?.city.country:""} />
+        <MapLocation city={product?product?.city?.cityName + ", " + product?.city?.country:""} />
         <Politis />
     </article>
 }

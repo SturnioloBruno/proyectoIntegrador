@@ -11,6 +11,8 @@ public class ProductDTO {
     private int x;
     private int y;
     private String score;
+    private CityDTO city;
+    private CategoryDTO category;
 
     public Long getId() {
         return id;
@@ -78,5 +80,21 @@ public class ProductDTO {
 
     public void setScore(String score) {
         this.score = score;
+    }
+
+    public CityDTO getCity() {
+        return city;
+    }
+
+    public void setCity(CityDTO city) {
+        this.city = city;
+    }
+
+    public CategoryDTO getCategory() {
+        return category;
+    }
+
+    public void setCategory(CategoryDTO category) {
+        this.category = category;
     }
 }

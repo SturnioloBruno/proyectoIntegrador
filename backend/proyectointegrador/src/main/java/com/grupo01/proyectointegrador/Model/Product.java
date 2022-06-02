@@ -41,7 +41,14 @@ public class Product {
 
     @OneToMany(mappedBy = "product",fetch = FetchType.EAGER)
     @JsonIgnore
-    private Set<Product> products;
+    private Set<ProductCharacteristic> productsC;
+
+    @OneToMany(mappedBy = "product",fetch = FetchType.EAGER)
+    @JsonIgnore
+    private Set<ProductPolicy> productsP;
+
+    public Product() {
+    }
 
     public Product(Long id, String name, int puntuation, int stars, String descTitle, String desc, int coordinates, Category category, City city) {
         this.id = id;

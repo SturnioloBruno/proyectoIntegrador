@@ -8,8 +8,8 @@ public class Image {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     @Column(name = "img_id")
-
     private Long id;
+
     @Column(name = "img_url", nullable = false)
     private String nombreUrl;
 

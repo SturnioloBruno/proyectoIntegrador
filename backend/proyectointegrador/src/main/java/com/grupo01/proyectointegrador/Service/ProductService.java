@@ -1,7 +1,6 @@
 package com.grupo01.proyectointegrador.Service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.grupo01.proyectointegrador.DTO.CityDTO;
 import com.grupo01.proyectointegrador.Model.Product;
 import com.grupo01.proyectointegrador.DTO.ProductDTO;
 import com.grupo01.proyectointegrador.Repository.IProductRepository;
@@ -43,6 +42,8 @@ public class ProductService implements IProductService {
         ProductDTO productEncontrado = null;
         if (product.isPresent()){
             productEncontrado = mapper.convertValue(product.get(),ProductDTO.class);
+            productEncontrado.setListImages(product.get().getImages());
+            productEncontrado.setListCharacteristic(product.get().getProductsC());
         }
         return productEncontrado;
     }

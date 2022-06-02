@@ -1,5 +1,11 @@
 package com.grupo01.proyectointegrador.DTO;
 
+import com.grupo01.proyectointegrador.Model.Image;
+import com.grupo01.proyectointegrador.Model.ProductCharacteristic;
+
+import java.util.List;
+import java.util.Set;
+
 public class ProductDTO {
     private Long id;
     private String adress;
@@ -13,6 +19,8 @@ public class ProductDTO {
     private String score;
     private CityDTO city;
     private CategoryDTO category;
+    private Set<Image> listImages;
+    private Set<ProductCharacteristic> listCharacteristic;
 
     public Long getId() {
         return id;
@@ -96,5 +104,21 @@ public class ProductDTO {
 
     public void setCategory(CategoryDTO category) {
         this.category = category;
+    }
+
+    public Set<Image> getListImages() {
+        return listImages;
+    }
+
+    public void setListImages(Set<Image> listImages) {
+        this.listImages = listImages;
+    }
+
+    public Set<ProductCharacteristic> getListCharacteristic() {
+        return listCharacteristic;
+    }
+
+    public void setListCharacteristic(Set<ProductCharacteristic> listCharacteristic) {
+        this.listCharacteristic = listCharacteristic;
     }
 }

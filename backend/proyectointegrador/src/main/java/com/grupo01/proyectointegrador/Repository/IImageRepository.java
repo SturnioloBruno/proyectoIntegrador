@@ -1,6 +1,7 @@
 package com.grupo01.proyectointegrador.Repository;
 
 import com.grupo01.proyectointegrador.Model.Image;
+import com.grupo01.proyectointegrador.Model.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

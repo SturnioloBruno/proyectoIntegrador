@@ -26,5 +26,11 @@ public class ProductCharacteristic {
         return id;
     }
 
+    public Characteristic getCharacteristic() {
+        return characteristic;
+    }
 
+    public void setCharacteristic(Characteristic characteristic) {
+        this.characteristic = characteristic;
+    }
 }

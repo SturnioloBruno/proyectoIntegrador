@@ -1,6 +1,9 @@
 package com.grupo01.proyectointegrador.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table (name= "images")
@@ -15,6 +18,7 @@ public class Image {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "prod_id", nullable = false)
+    @JsonIgnore
     private Product proId;
 
     public Image(Long id, String nombreUrl, Product proId) {

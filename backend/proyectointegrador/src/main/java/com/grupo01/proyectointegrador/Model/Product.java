@@ -57,7 +57,6 @@ public class Product {
     private Set<ProductPolicy> productsP;
 
     @OneToMany(mappedBy = "proId",fetch = FetchType.EAGER)
-    //@JsonIgnore
     private Set<Image> images;
 
     public Product() {
@@ -178,5 +177,21 @@ public class Product {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public Set<Image> getImages() {
+        return images;
+    }
+
+    public void setImages(Set<Image> images) {
+        this.images = images;
+    }
+
+    public Set<ProductCharacteristic> getProductsC() {
+        return productsC;
+    }
+
+    public void setProductsC(Set<ProductCharacteristic> productsC) {
+        this.productsC = productsC;
     }
 }

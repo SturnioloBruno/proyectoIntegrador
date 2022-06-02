@@ -3,7 +3,7 @@ package com.grupo01.proyectointegrador.Model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "poducts_policies")
+@Table(name = "products_policies")
 public class ProductPolicy {
 
     @Id

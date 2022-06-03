@@ -11,8 +11,8 @@ function Card(props) {
                         <h3>{props.title}</h3>
                     </div>
                     <div className="div__puntuation-number">
-                        <span>8</span>
-                        <p>Muy bueno</p>
+                        <span>{props.punctuation}</span>
+                        <p>{props.score}</p>
                     </div>
                 </div>
                 <p className="p__accommodation-direction">{props.location}<Link to="#"> mostrar en el mapa</Link></p>

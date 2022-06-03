@@ -15,7 +15,7 @@ import "../../styles/products/Product.css";
 function Product({src, alt}) {
     const mobileTablet = useMediaQuery({ query: '(max-width: 1024px)' });
     const desktop = useMediaQuery({ query: '(min-width: 1025px)' });
-    const [product,setProduct] = useState(null);
+    const [product, setProduct] = useState(null);
     const {id} = useParams();
 
     useEffect(()=>{
@@ -29,18 +29,17 @@ function Product({src, alt}) {
             })
             .then(function(respuesta){
                 return respuesta.json();
-                })
+            })
             .then(function (product) {
                 setProduct(product);
-                })
+            })
         }      
         getProduct();
-
-    },[])
+    },[]);
 
     return <article className="article__info-product">
         <HeaderProduct />
-        <InfoProduct address={product?.adress}  puntuation={product?.punctuation} stars={product?.stars} score={product?.score}/>
+        <InfoProduct address={product?.adress} puntuation={product?.punctuation} stars={product?.stars} score={product?.score}/>
         <div className="div__img-actions">
             <div className="div__buttons-bar">
                 <Link to="#" className="a__share-icon">Compartir</Link>

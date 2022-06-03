@@ -3,13 +3,13 @@ import { Link } from "react-router-dom";
 import Category from './cards/Category';
 import Card from '../components/cards/Card';
 import '../styles/Section.css';
-import Acommodations from "../data/acommodations.json";
 
 function Section({ type, title }) {
-    const[categories,setCategories] = useState(null)
+    const[categories, setCategories] = useState(null);
+    const[products, setProducts] = useState(null);
 
     useEffect(()=>{
-        //Cargo Categorias
+        //Cargo categorías
         const getCategories = async()=>{
             await fetch("http://localhost:8080/categories/getList",{
                 method:'GET',
@@ -19,14 +19,32 @@ function Section({ type, title }) {
             })
             .then(function(respuesta){
                 return respuesta.json();
-                })
+            })
             .then(function (categories) {
                 setCategories(categories);
-                })
+            })
         }
-        
         getCategories();
-    },[])
+    },[]);
+
+    useEffect(()=>{
+        //Cargo productos
+        const getProducts = async()=>{
+            await fetch("http://localhost:8080/products/getListProducts",{
+                method:'GET',
+                headers:{
+                    'Content-Type':'application/json'
+                }
+            })
+            .then(function(respuesta){
+                return respuesta.json();
+            })
+            .then(function (products) {
+                setProducts(products);
+            })
+        }
+        getProducts();
+    },[]);
 
     return (
         <section>
@@ -41,8 +59,8 @@ function Section({ type, title }) {
             }
             {type == "Card" &&
             <ul className="ul__accommodation-list">
-                {Acommodations.map((acommodation) => (
-                    <li key={acommodation.alo_id}><Link to={`/product/${acommodation.alo_id}`}><Card title={acommodation.alo_title} src={acommodation.alo_url_img} location={acommodation.alo_location} description={acommodation.alo_description} category={acommodation.alo_category}/></Link></li>
+                {products?.map((product) => (
+                    <li key={product.id}><Link to={`/product/${product.id}`}><Card title={product.name} src={product.category.urlImagen} location={product.adress} description={product.desc} category={product.category.title} punctuation={product.punctuation} score={product.score} /></Link></li>
                 ))}
             </ul>
             }

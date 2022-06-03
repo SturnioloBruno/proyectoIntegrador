@@ -90,5 +90,15 @@ public class ProductService implements IProductService {
     }
 
 
+    public Set<ProductDTO> findByCityId(Long idCiudad)throws Exception {
+        Set<Product> products = productRepository.findByCityId(idCiudad).get();
+        Set<ProductDTO> productDTOs = new HashSet<>();
+        for (Product p:products){
+            productDTOs.add(mapper.convertValue(p,ProductDTO.class));
+        }
+        return productDTOs;
+    }
+
+
 }
 

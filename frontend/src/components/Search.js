@@ -6,7 +6,6 @@ import '../styles/Search.css';
 import 'react-dates/lib/css/_datepicker.css';
 import '../styles/DateRangePicker.css';
 import 'react-dates/initialize';
-import Cities from "../data/cities.json";
 import moment from 'moment';
 import 'moment/locale/es';
 moment.locale('es');
@@ -17,7 +16,7 @@ function Search() {
     const [focusedInput,setFocusedInpuf] = useState(null)
     const [qMonth,setQMonth] = useState(null)
     const inputLocality = document.getElementById("input__locality")
-    const [cities,setCities] = useState(null)
+    const [cities, setCities] = useState(null);
 
     //evento para que cambie dinamicamente 
     window.visualViewport.addEventListener('resize',(e)=>{
@@ -43,19 +42,18 @@ function Search() {
             })
             .then(function(respuesta){
                 return respuesta.json();
-                })
+            })
             .then(function (cities) {
                 setCities(cities);
-                })
+            })
         }
-        
         getCities();
-    },[])
+    },[]);
 
     //Buscador
     const [searchTerm, setSearchTerm]= useState("");
     const [isActive, setActive] = useState(false);
-    const toggle = () => { setActive(!isActive); };
+    const toggle = () => { setActive(!isActive) };
 
     return (
         <section className="section__search-bar">
@@ -65,7 +63,7 @@ function Search() {
                     <input type="text" name="locality" placeholder="¿A dónde vamos?" id="input__locality" autoComplete='off'
                     onChange={(e) => {
                         setSearchTerm(e.target.value);
-                    }} 
+                    }}
                     onClick={toggle} />
                     <ul className={isActive ? 'ul__list-location show': 'ul__list-location'} >
                     {cities?.filter((city) => {
@@ -77,9 +75,10 @@ function Search() {
                     }).slice(0,4).map((city) => {
                         return (
                             <li key={city.cityName+city.id} onClick={(e)=>{
-                                inputLocality.value = city.cityName + ", " + city.country
-                                            toggle()
-                                        }}>
+                                inputLocality.name = inputLocality.name + "/" + city.id;
+                                inputLocality.value = city.cityName + ", " + city.country;
+                                toggle()
+                                }}>
                                 <Link to="#">
                                     <div >
                                         <span className="span__city-text">{city.cityName}</span>
@@ -101,9 +100,9 @@ function Search() {
                     customArrowIcon={"-"}
 
                     startDate={startDate} //requerido
-                    startDateId="your_unique_start_date_id" //requerido
+                    startDateId="day" //requerido
                     endDate={endDate} //requerido
-                    endDateId="your_unique_end_date_id" //requerido
+                    endDateId="day" //requerido
 
                     onDatesChange={({ startDate, endDate }) => {
                         setStartDate(startDate);
@@ -117,6 +116,7 @@ function Search() {
 
                     monthFormat={"MMMM"} //formato de como muestra el Mes
                     numberOfMonths={qMonth} //cantidad de meses que muestra
+                    showClearDates={true}
                     />
                 </label>
                 <Button text="Buscar" type="submit" className="btn button__solid-type" />

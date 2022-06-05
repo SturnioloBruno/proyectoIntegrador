@@ -1,6 +1,6 @@
 import {React,useState,useEffect} from 'react';
 import { useMediaQuery } from 'react-responsive';
-import { Link , useParams} from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import HeaderProduct from './HeaderProduct';
 import InfoProduct from './InfoProduct';
 import GalleryMobile from "./GalleryMobile";
@@ -21,7 +21,7 @@ function Product() {
     useEffect(()=>{
         //Cargo datos del Producto
         const getProduct = async()=>{
-            await fetch("http://localhost:8080/products/findById/"+id,{
+            await fetch("http://localhost:8080/products/findById/" + id,{
                 method:'GET',
                 headers:{
                     'Content-Type':'application/json'
@@ -36,6 +36,7 @@ function Product() {
         }      
         getProduct();
     },[]);
+
     return <article className="article__info-product">
         <HeaderProduct name={product?.name} category={product?.category.title} />
         <InfoProduct address={product?.adress} punctuation={product?.punctuation} stars={product?.stars} score={product?.score}/>

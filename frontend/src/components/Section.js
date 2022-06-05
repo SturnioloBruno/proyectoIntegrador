@@ -1,13 +1,12 @@
-import {useEffect,useState} from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
 import Category from './cards/Category';
 import Card from '../components/cards/Card';
 import '../styles/Section.css';
 
 function Section({ type, title }) {
-    const[categories, setCategories] = useState(null);
-    const[products, setProducts] = useState(null);
-
+    const [categories, setCategories] = useState(null);
+    const [products, setProducts] = useState(null);
     useEffect(()=>{
         //Cargo categorías
         const getCategories = async()=>{
@@ -25,9 +24,7 @@ function Section({ type, title }) {
             })
         }
         getCategories();
-    },[]);
 
-    useEffect(()=>{
         //Cargo productos
         const getProducts = async()=>{
             await fetch("http://localhost:8080/products/getListProducts",{
@@ -47,6 +44,7 @@ function Section({ type, title }) {
     },[]);
 
     return (
+        <>
         <section>
             <h2>{title}</h2>
             {type == "Category" &&
@@ -65,6 +63,7 @@ function Section({ type, title }) {
             </ul>
             }
         </section>
+        </>
     )
 }
 

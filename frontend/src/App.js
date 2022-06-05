@@ -5,6 +5,7 @@ import Home from './Home';
 import Product from './components/products/Product';
 import Login from './components/login/Login';
 import Register from './components/login/Register';
+import Result from "./components/Result";
 import Footer from './components/Footer';
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home type="home" />} />
         <Route path="/product/:id" element={<Product type="product" />} />
+        <Route path="/locality/:id" element={<Result type="result" />} />
         <Route path="/login" element={<Login handlerLogIn={handlerLogInOut} users={users} type="login" />} />
         <Route path="/register" element={<Register type="register" handlerUser={handlerUsers}/>} />
       </Routes>

@@ -228,6 +228,13 @@ body.register .div__open-menu .div__menu-bar .ul__bar-links li {
         margin-left: 1.5em;
     }
 
+    .ul__bar-links a:hover, .ul__bar-links a:active {
+        border: none;
+        color: white;
+        background: var(--orange);
+        border: 1px solid var(--orange);
+    }
+
     .div__user-login {
         display: flex;
         align-items: center;

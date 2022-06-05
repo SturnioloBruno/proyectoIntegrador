@@ -49,13 +49,13 @@ h1, h2, h3, h4, p, button {
     height: 50px;
 }
 
-.button__linear-type, .button__solid-type:hover {
+.button__linear-type, .button__solid-type:hover, .button__solid-type:active {
     border: 1px solid var(--orange);
     color: var(--orange);
-    background: none;
+    background: white;
 }
 
-.button__solid-type, .button__linear-type:hover {
+.button__solid-type, .button__linear-type:hover, .button__linear-type:active {
     border: none;
     color: white;
     background: var(--orange);

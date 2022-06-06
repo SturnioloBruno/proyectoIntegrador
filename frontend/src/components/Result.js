@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useParams } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Search from '../components/Search';
 import Card from '../components/cards/Card';
 import "../styles/Home.css";
 
 function Home() {
   const [productsCities, setProductsCities] = useState(null);
-  const {id} = useParams();
+  const location = useLocation();
 
   useEffect(()=>{
+    console.log(location);
     //Cargo productos por ciudad
     const getProductsperCities = async()=>{
-        await fetch("http://localhost:8080/products/getListProductsByCityId?id=" + id, {
+        await fetch("http://localhost:8080/products/getListProducts/" + location.search, {
             method:'GET',
             headers:{
                 'Content-Type':'application/json'
@@ -25,10 +26,10 @@ function Home() {
         })
     }
     getProductsperCities();
-  },[]);
+  },[location]);
 
   return (
-    <>
+    <>{console.log(productsCities)}
         <Search />
         <section>
           <h2>Resultado de búsqueda</h2>

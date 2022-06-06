@@ -23,7 +23,7 @@ public class Product {
     private int punctuation;
 
     @Column(name = "prod_stars")
-    private int stars;
+    private Double stars;
 
     @Column(name = "prod_desc_title")
     private String descTitle;
@@ -62,7 +62,7 @@ public class Product {
     public Product() {
     }
 
-    public Product(Long id, String address, String name, int punctuation, int stars, String descTitle, String desc, Double x, Double y, String score) {
+    public Product(Long id, String address, String name, int punctuation, Double stars, String descTitle, String desc, Double x, Double y, String score) {
         this.id = id;
         this.address = address;
         this.name = name;
@@ -75,7 +75,7 @@ public class Product {
         this.score = score;
     }
 
-    public Product(String address, String name, int punctuation, int stars, String descTitle, String desc, Double x, Double y, String score) {
+    public Product(String address, String name, int punctuation, Double stars, String descTitle, String desc, Double x, Double y, String score) {
         this.address = address;
         this.name = name;
         this.punctuation = punctuation;
@@ -115,11 +115,11 @@ public class Product {
         this.punctuation = punctuation;
     }
 
-    public int getStars() {
+    public Double getStars() {
         return stars;
     }
 
-    public void setStars(int stars) {
+    public void setStars(Double stars) {
         this.stars = stars;
     }
 

@@ -31,7 +31,12 @@ public class ProductService implements IProductService {
         Set<ProductDTO> productsDTO = new HashSet<>();
 
         for (Product p: listaProducts){
-            productsDTO.add(mapper.convertValue(p,ProductDTO.class));
+            ProductDTO productReturn = null;
+            productReturn = mapper.convertValue(p,ProductDTO.class);
+            productReturn.setImages(p.getImages());
+            productReturn.setCharacteristic(p.getProductsC());
+            productReturn.setPolicy(p.getProductsP());
+            productsDTO.add(productReturn);
         }
         return productsDTO;
     }
@@ -94,7 +99,13 @@ public class ProductService implements IProductService {
         Set<Product> products = productRepository.findByCityId(idCiudad).get();
         Set<ProductDTO> productDTOs = new HashSet<>();
         for (Product p:products){
-            productDTOs.add(mapper.convertValue(p,ProductDTO.class));
+            ProductDTO productReturn = null;
+            productReturn = mapper.convertValue(p,ProductDTO.class);
+            productReturn.setImages(p.getImages());
+            productReturn.setCharacteristic(p.getProductsC());
+            productReturn.setPolicy(p.getProductsP());
+
+            productDTOs.add(productReturn);
         }
         return productDTOs;
     }
@@ -103,7 +114,12 @@ public class ProductService implements IProductService {
         Set<Product> products = productRepository.findByCategoryId(idCategory).get();
         Set<ProductDTO> productDTOs = new HashSet<>();
         for (Product p:products){
-            productDTOs.add(mapper.convertValue(p,ProductDTO.class));
+            ProductDTO productReturn = null;
+            productReturn = mapper.convertValue(p,ProductDTO.class);
+            productReturn.setImages(p.getImages());
+            productReturn.setCharacteristic(p.getProductsC());
+            productReturn.setPolicy(p.getProductsP());
+            productDTOs.add(productReturn);
         }
         return productDTOs;
     }

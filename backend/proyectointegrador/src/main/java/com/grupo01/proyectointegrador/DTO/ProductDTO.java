@@ -11,7 +11,7 @@ public class ProductDTO {
     private String address;
     private String name;
     private int punctuation;
-    private int stars;
+    private Double stars;
     private String descTitle;
     private String desc;
     private Double x;
@@ -51,11 +51,11 @@ public class ProductDTO {
         this.punctuation = punctuation;
     }
 
-    public int getStars() {
+    public Double getStars() {
         return stars;
     }
 
-    public void setStars(int stars) {
+    public void setStars(Double stars) {
         this.stars = stars;
     }
 

@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS products (
     prod_address VARCHAR(300) NOT NULL,
     prod_name VARCHAR(100) NOT NULL,
     prod_punctuation SMALLINT,
-    prod_stars SMALLINT,
+    prod_stars NUMERIC(1,1),
     prod_desc_title VARCHAR(100),
     prod_desc VARCHAR(500),
     prod_x NUMERIC (18,10),

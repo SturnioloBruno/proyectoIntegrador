@@ -1,6 +1,6 @@
 import {useEffect,useState} from 'react';
 import {DateRangePicker} from 'react-dates';
-import { Link } from "react-router-dom";
+import { Link ,useNavigate,useLocation} from "react-router-dom";
 import Button from "./Button";
 import '../styles/Search.css';
 import 'react-dates/lib/css/_datepicker.css';
@@ -17,7 +17,13 @@ function Search() {
     const [qMonth,setQMonth] = useState(null)
     const inputLocality = document.getElementById("input__locality")
     const [cities, setCities] = useState(null);
-
+    const navigate = useNavigate();
+    //Buscador
+    const [searchTerm, setSearchTerm]= useState("");
+    const [isActive, setActive] = useState(false);
+    const toggle = () => { setActive(!isActive) };
+    const location = useLocation();
+    
     //evento para que cambie dinamicamente 
     window.visualViewport.addEventListener('resize',(e)=>{
         e.currentTarget.width<1024?setQMonth(1):setQMonth(2)
@@ -50,17 +56,23 @@ function Search() {
         getCities();
     },[]);
 
-    //Buscador
-    const [searchTerm, setSearchTerm]= useState("");
-    const [isActive, setActive] = useState(false);
-    const toggle = () => { setActive(!isActive) };
+    const handlerSubmit = (e)=>{
+        e.preventDefault();
+
+        if(inputLocality.value==""){
+            inputLocality.focus()
+            return
+        }
+
+        navigate("/search/"+inputLocality.name);
+    }
 
     return (
         <section className="section__search-bar">
             <h2>Busca ofertas en hoteles, casas y mucho más</h2>
-            <form>
+            <form method='POST' onSubmit={handlerSubmit}>
                 <label htmlFor="input__locality" className="input__text-location">
-                    <input type="text" name="locality" placeholder="¿A dónde vamos?" id="input__locality" autoComplete='off'
+                    <input type="text" name="city" placeholder="¿A dónde vamos?" id="input__locality" autoComplete='off'
                     onChange={(e) => {
                         setSearchTerm(e.target.value);
                     }}
@@ -77,11 +89,11 @@ function Search() {
                     }).slice(0,4).map((city) => {
                         return (
                             <li key={city.cityName+city.id} onClick={(e)=>{
-                                inputLocality.name = inputLocality.name + "/" + city.id;
+                                inputLocality.name = `?city=${city.id}`;
                                 inputLocality.value = city.cityName + ", " + city.country;
                                 toggle()
                                 }}>
-                                <Link to="#">
+                                <Link to={location.pathname+location.search}>
                                     <div >
                                         <span className="span__city-text">{city.cityName}</span>
                                         <span className="span__country-text">{city.country}</span>

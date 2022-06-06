@@ -98,10 +98,6 @@
     color: var(--grey);
 }
 
-.article__info-product .MuiRating-iconFilled {
-    color: var(--orange);
-}
-
 .article__info-product .section__address-score .div__puntuation-score {
     display: flex;
 }

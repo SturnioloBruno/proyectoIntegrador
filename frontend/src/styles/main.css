@@ -99,6 +99,10 @@ input.error {
     overflow: hidden;
 }
 
+.MuiRating-iconFilled {
+    color: var(--orange);
+}
+
 @media (min-width: 1280px) {
     input {
         height: 50px;

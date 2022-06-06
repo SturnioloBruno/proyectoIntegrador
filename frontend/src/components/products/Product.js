@@ -21,7 +21,7 @@ function Product() {
     useEffect(()=>{
         //Cargo datos del producto
         const getProduct = async()=>{
-            await fetch("http://localhost:8080/products/findByIdDTO/" + id,{
+            await fetch("http://localhost:8080/products/findById/" + id,{
                 method:'GET',
                 headers:{
                     'Content-Type':'application/json'
@@ -39,7 +39,7 @@ function Product() {
 
     return <article className="article__info-product">
         <HeaderProduct name={product?.name} category={product?.category.title} />
-        <InfoProduct address={product?.adress} punctuation={product?.punctuation} stars={product?.stars} score={product?.score}/>
+        <InfoProduct address={product?.address} punctuation={product?.punctuation} stars={product?.stars} score={product?.score}/>
         <div className="div__img-actions">
             <div className="div__buttons-bar">
                 <Link to="#" className="a__share-icon">Compartir</Link>
@@ -53,8 +53,8 @@ function Product() {
         <HotelDate />
         <MapLocation city={product?
             product.city?.cityName + ". " + product.city?.country
-            :""} latitude={product?.y} longitude={product?.x} title={product?.descTitle} address={product?.adress}/>
-        <Politis />
+            :""} latitude={product?.y} longitude={product?.x} title={product?.descTitle} address={product?.address}/>
+        <Politis policy={product?.policy} />
     </article>
 }
 

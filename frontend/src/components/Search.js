@@ -93,7 +93,7 @@ function Search() {
                                 inputLocality.value = city.cityName + ", " + city.country;
                                 toggle()
                                 }}>
-                                <Link to={location.pathname+location.search}>
+                                <Link to="#" onClick={(e)=>{e.preventDefault()}}>
                                     <div >
                                         <span className="span__city-text">{city.cityName}</span>
                                         <span className="span__country-text">{city.country}</span>

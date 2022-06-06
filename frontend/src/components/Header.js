@@ -24,7 +24,6 @@ function Header({user,handlerLogOut}) {
                     <div className={"div__menu-login"}>
                         {user?.user? 
                         <div className="div__user-login">
-                            {console.log(user)}
                             <span>{user.user?user.user.nombre[0]+user.user.apellido[0]:''}</span>
                             <p>Hola, <span>{`${user.user?.nombre} ${user.user?.apellido}`}</span></p>
                         </div>

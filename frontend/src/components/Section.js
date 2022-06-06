@@ -7,7 +7,9 @@ import '../styles/Section.css';
 function Section({ type, title }) {
     const [categories, setCategories] = useState(null);
     const [products, setProducts] = useState(null);
+
     useEffect(()=>{
+        if(type==="Category"){
         //Cargo categorías
         const getCategories = async()=>{
             await fetch("http://localhost:8080/categories/getList",{
@@ -24,7 +26,9 @@ function Section({ type, title }) {
             })
         }
         getCategories();
+        }
 
+        if(type==="Card"){
         //Cargo productos
         const getProducts = async()=>{
             await fetch("http://localhost:8080/products/getListProducts",{
@@ -37,11 +41,13 @@ function Section({ type, title }) {
                 return respuesta.json();
             })
             .then(function (products) {
-                setProducts(products);
+                setProducts(products)
             })
         }
         getProducts();
-    },[]);
+        }
+        
+    },[type]);
 
     return (
         <>

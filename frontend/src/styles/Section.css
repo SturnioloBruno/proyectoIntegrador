@@ -82,10 +82,17 @@ h2 {
     width: 65%;
 }
 
+.div__category-stars {
+    display: flex;
+    align-items: center;
+    margin-bottom: .5em;
+}
+
 .p__category-name {
     text-transform: uppercase;
     color: var(--grey);
     opacity: .6;
+    margin-right: .3em;
 }
 
 .p__accommodation-direction {
@@ -145,12 +152,12 @@ h2 {
     display: block;
 }
 
-.ul__services-list li.li__wifi-icon::after {
+.ul__services-list li.li__wifi {
     background: url(../assets/icons/wifi.svg) no-repeat center center;
     background-size: contain;
 }
 
-.ul__services-list li.li__pool-icon::after {
+.ul__services-list li.li__pileta::after {
     background: url(../assets/icons/pool.svg) no-repeat center center;
     background-size: contain;
 }
@@ -176,6 +183,9 @@ h2 {
 
     .ul__accommodation-list article > div {
         width: 55%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
     }
 
     .ul__accommodation-list article img {

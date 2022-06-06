@@ -7,7 +7,7 @@ import Register from "./login/Register";
 function Header({user,handlerLogOut}) {
     function clicNav() {
         document.querySelector("header").classList.toggle("div__open-menu");
-        document.querySelector("header").className == "div__open-menu" ? document.body.style.overflow = 'hidden' : document.body.style.overflow = 'unset';
+        document.querySelector("header").className === "div__open-menu" ? document.body.style.overflow = 'hidden' : document.body.style.overflow = 'unset';
     }
 
     function clicButton() {

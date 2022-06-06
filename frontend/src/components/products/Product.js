@@ -52,8 +52,8 @@ function Product() {
         <LocationServices />
         <HotelDate />
         <MapLocation city={product?
-            product.city?.cityName + ", " + product.city?.country
-            :""} />
+            product.city?.cityName + ". " + product.city?.country
+            :""} latitude={product?.y} longitude={product?.x} title={product?.descTitle} address={product?.adress}/>
         <Politis />
     </article>
 }

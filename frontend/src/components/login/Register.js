@@ -108,7 +108,7 @@ function Register({type,handlerUser}) {
         e.preventDefault();
         const input = e.target.previousElementSibling;
         e.target.classList.toggle("show");
-        input.type == "password" ? input.type = "text" : input.type = "password";
+        input.type === "password" ? input.type = "text" : input.type = "password";
     }
     
     if(type) document.body.className = `${type}`;

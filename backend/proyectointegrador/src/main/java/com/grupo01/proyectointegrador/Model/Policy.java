@@ -21,7 +21,6 @@ public class Policy {
     private String desc;
 
     @OneToMany(mappedBy = "policy",fetch = FetchType.EAGER)
-    @JsonIgnore
     private Set<ProductPolicy> policies;
 
     public Policy() {

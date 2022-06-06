@@ -1,5 +1,7 @@
 package com.grupo01.proyectointegrador.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -13,6 +15,7 @@ public class ProductCharacteristic {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "prod_id", nullable = false)
+    @JsonIgnore
     private Product product;
 
     @ManyToOne(fetch = FetchType.EAGER)
@@ -33,4 +36,5 @@ public class ProductCharacteristic {
     public void setCharacteristic(Characteristic characteristic) {
         this.characteristic = characteristic;
     }
+
 }

@@ -52,7 +52,7 @@ public class Product {
     @JsonIgnore
     private Set<ProductCharacteristic> productsC;
 
-    @OneToMany(mappedBy = "policy",fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "product",fetch = FetchType.EAGER)
     @JsonIgnore
     private Set<ProductPolicy> productsP;
 
@@ -62,9 +62,9 @@ public class Product {
     public Product() {
     }
 
-    public Product(Long id, String adress, String name, int punctuation, int stars, String descTitle, String desc, Double x, Double y, String score) {
+    public Product(Long id, String address, String name, int punctuation, int stars, String descTitle, String desc, Double x, Double y, String score) {
         this.id = id;
-        this.address = adress;
+        this.address = address;
         this.name = name;
         this.punctuation = punctuation;
         this.stars = stars;
@@ -75,8 +75,8 @@ public class Product {
         this.score = score;
     }
 
-    public Product(String adress, String name, int punctuation, int stars, String descTitle, String desc, Double x, Double y, String score) {
-        this.address = adress;
+    public Product(String address, String name, int punctuation, int stars, String descTitle, String desc, Double x, Double y, String score) {
+        this.address = address;
         this.name = name;
         this.punctuation = punctuation;
         this.stars = stars;
@@ -91,11 +91,11 @@ public class Product {
         return id;
     }
 
-    public String getAdress() {
+    public String getAddress() {
         return address;
     }
 
-    public void setAdress(String adress) {
+    public void setAddress(String adress) {
         this.address = adress;
     }
 

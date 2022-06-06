@@ -1,23 +1,26 @@
-function Politis() {
+function Politis({info}) {
     return (
         <section className="section__politics section__title-border">
             <h2>Qué tenés que saber</h2>
             <ul>
-                <li>
-                    <h3>Normas de la casa</h3>
-                    <ul>
-                        <li>Check-out: 10:00</li>
-                        <li>No se permiten fiestas</li>
-                        <li>No fumar</li>
-                    </ul>
-                </li>
+                {info?.map((policy) => (
+                    <li>
+                        <h3>{policy.policy.title}</h3>
+                        <ul>
+                            <li>{policy.policy.desc}</li>
+                        </ul>
+                    </li>
+                ))}
                 <li>
                     <h3>Salud y seguridad</h3>
-                    <ul>
-                        <li>Se aplican las pautas de distanciamiento social y otras normas relacionadas con el coronavirus</li>
-                        <li>Detector de humo</li>
-                        <li>Depósito de seguridad</li>
-                    </ul>
+                    {info?.map((policy) => (
+                        <li>
+                            <h3>{policy.policy.title}</h3>
+                            <ul>
+                                <li>{policy.policy.desc}</li>
+                            </ul>
+                        </li>
+                    ))}
                 </li>
                 <li>
                     <h3>Política de cancelación</h3>

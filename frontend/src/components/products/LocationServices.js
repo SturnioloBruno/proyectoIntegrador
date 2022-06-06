@@ -1,18 +1,13 @@
 import "../../styles/products/LocationServices.css";
 
-function LocationServices() {
+function LocationServices({services}) {
     return (
         <section className='section__location-services section__title-border'>
             <h2>¿Qué ofrece este lugar?</h2>
             <ul>
-                <li className='li__kitchen'>Cocina</li>
-                <li className='li__parking'>Estacionamiento gratuito</li>
-                <li className='li__tv'>Televisor</li>
-                <li className='li__pool'>Pileta</li>
-                <li className='li__air-conditioning'>Aire acondicionado</li>
-                <li className='li__wifi'>Wifi</li>
-                <li className='li__pets'>Apto mascotas</li>
-                <li className='li__pets'>Apto mascotas</li>
+                {services?.map((service) => (
+                    <li key={service.characteristic.id} className={`li__${(service.characteristic.title.toLowerCase().replace(/\s+/g, '-'))}`}>{service.characteristic.title}</li>
+                ))}
             </ul>
         </section>
     )

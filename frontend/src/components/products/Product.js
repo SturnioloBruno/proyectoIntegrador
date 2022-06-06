@@ -19,9 +19,9 @@ function Product() {
     const {id} = useParams();
 
     useEffect(()=>{
-        //Cargo datos del Producto
+        //Cargo datos del producto
         const getProduct = async()=>{
-            await fetch("http://localhost:8080/products/findById/" + id,{
+            await fetch("http://localhost:8080/products/findByIdDTO/" + id,{
                 method:'GET',
                 headers:{
                     'Content-Type':'application/json'
@@ -49,12 +49,12 @@ function Product() {
             {desktop && <GalleryDesktop srcImg={product?.images} altImg={product?.category.title} />}
         </div>
         <DescriptionHotel title={product?.descTitle} text={product?.desc} />
-        <LocationServices />
+        <LocationServices services={product?.characteristic} />
         <HotelDate />
         <MapLocation city={product?
             product.city?.cityName + ", " + product.city?.country
             :""} />
-        <Politis />
+        <Politis info={product?.policy} />
     </article>
 }
 

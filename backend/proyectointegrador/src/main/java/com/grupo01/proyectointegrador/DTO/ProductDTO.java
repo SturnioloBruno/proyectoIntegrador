@@ -14,8 +14,8 @@ public class ProductDTO {
     private int stars;
     private String descTitle;
     private String desc;
-    private int x;
-    private int y;
+    private Double x;
+    private Double y;
     private String score;
     private CityDTO city;
     private CategoryDTO category;
@@ -27,12 +27,12 @@ public class ProductDTO {
         return id;
     }
 
-    public String getAdress() {
+    public String getAddress() {
         return address;
     }
 
-    public void setAdress(String adress) {
-        this.address = adress;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getName() {
@@ -75,13 +75,13 @@ public class ProductDTO {
         this.desc = desc;
     }
 
-    public int getX() { return x; }
+    public Double getX() { return x; }
 
-    public void setX(int x) { this.x = x; }
+    public void setX(Double x) { this.x = x; }
 
-    public int getY() { return y; }
+    public Double getY() { return y; }
 
-    public void setY(int y) { this.y = y; }
+    public void setY(Double y) { this.y = y; }
 
     public String getScore() {
         return score;

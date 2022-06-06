@@ -14,7 +14,7 @@ public class Product {
     private Long id;
 
     @Column(name = "prod_address", nullable = false)
-    private String adress;
+    private String address;
 
     @Column(name = "prod_name", nullable = false)
     private String name;
@@ -32,10 +32,10 @@ public class Product {
     private String desc;
 
     @Column(name = "prod_x")
-    private String x;
+    private Double x;
 
     @Column(name = "prod_y")
-    private String y;
+    private Double y;
 
     @Column(name = "prod_score")
     private String score;
@@ -52,7 +52,7 @@ public class Product {
     @JsonIgnore
     private Set<ProductCharacteristic> productsC;
 
-    @OneToMany(mappedBy = "policy",fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "product",fetch = FetchType.EAGER)
     @JsonIgnore
     private Set<ProductPolicy> productsP;
 
@@ -62,9 +62,9 @@ public class Product {
     public Product() {
     }
 
-    public Product(Long id, String adress, String name, int punctuation, int stars, String descTitle, String desc, String x, String y, String score) {
+    public Product(Long id, String address, String name, int punctuation, int stars, String descTitle, String desc, Double x, Double y, String score) {
         this.id = id;
-        this.adress = adress;
+        this.address = address;
         this.name = name;
         this.punctuation = punctuation;
         this.stars = stars;
@@ -75,8 +75,8 @@ public class Product {
         this.score = score;
     }
 
-    public Product(String adress, String name, int punctuation, int stars, String descTitle, String desc, String x, String y, String score) {
-        this.adress = adress;
+    public Product(String address, String name, int punctuation, int stars, String descTitle, String desc, Double x, Double y, String score) {
+        this.address = address;
         this.name = name;
         this.punctuation = punctuation;
         this.stars = stars;
@@ -91,12 +91,12 @@ public class Product {
         return id;
     }
 
-    public String getAdress() {
-        return adress;
+    public String getAddress() {
+        return address;
     }
 
-    public void setAdress(String adress) {
-        this.adress = adress;
+    public void setAddress(String adress) {
+        this.address = adress;
     }
 
     public String getName() {
@@ -139,19 +139,19 @@ public class Product {
         this.desc = desc;
     }
 
-    public String getX() {
+    public Double getX() {
         return x;
     }
 
-    public void setX(String x) {
+    public void setX(Double x) {
         this.x = x;
     }
 
-    public String getY() {
+    public Double getY() {
         return y;
     }
 
-    public void setY(String y) {
+    public void setY(Double y) {
         this.y = y;
     }
 

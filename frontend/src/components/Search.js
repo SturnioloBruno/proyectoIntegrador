@@ -67,11 +67,13 @@ function Search() {
                     onClick={toggle} />
                     <ul className={isActive ? 'ul__list-location show': 'ul__list-location'} >
                     {cities?.filter((city) => {
-                        if(searchTerm == "") {
-                            return city;
+                        let ret;
+                        if(searchTerm === "") {
+                            ret= city;
                         } else if(city.cityName.toLowerCase().includes(searchTerm.toLowerCase())) {
-                            return city;
+                            ret= city;
                         }
+                        return ret
                     }).slice(0,4).map((city) => {
                         return (
                             <li key={city.cityName+city.id} onClick={(e)=>{

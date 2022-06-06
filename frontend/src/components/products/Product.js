@@ -52,9 +52,9 @@ function Product() {
         <LocationServices services={product?.characteristic} />
         <HotelDate />
         <MapLocation city={product?
-            product.city?.cityName + ", " + product.city?.country
-            :""} />
-        <Politis info={product?.policy} />
+            product.city?.cityName + ". " + product.city?.country
+            :""} latitude={product?.y} longitude={product?.x} title={product?.descTitle} address={product?.adress}/>
+        <Politis />
     </article>
 }
 

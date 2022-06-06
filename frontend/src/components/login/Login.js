@@ -101,7 +101,7 @@ function Login({handlerLogIn, type,users}) {
     function show(e) {
         e.preventDefault();
         document.querySelector(".a__show-hide").classList.toggle("show");
-        document.querySelector("#password_login").type == "password" ? document.querySelector("#password_login").type = "text" : document.querySelector("#password_login").type = "password";
+        document.querySelector("#password_login").type === "password" ? document.querySelector("#password_login").type = "text" : document.querySelector("#password_login").type = "password";
     }
 
     return (

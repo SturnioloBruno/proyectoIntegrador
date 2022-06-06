@@ -99,6 +99,13 @@ public class ProductService implements IProductService {
         return productDTOs;
     }
 
-
+    public Set<ProductDTO> findByCategoryId(Long idCategory)throws Exception {
+        Set<Product> products = productRepository.findByCategoryId(idCategory).get();
+        Set<ProductDTO> productDTOs = new HashSet<>();
+        for (Product p:products){
+            productDTOs.add(mapper.convertValue(p,ProductDTO.class));
+        }
+        return productDTOs;
+    }
 }
 

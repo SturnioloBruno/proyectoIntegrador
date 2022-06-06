@@ -9,6 +9,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 @RestController
@@ -18,26 +21,36 @@ public class ProductController {
     @Autowired
     ProductService productService;
 
-
     @CrossOrigin(origins = "http://localhost:3000")
     @Operation(summary = "retorna producto segun el id")
-    @GetMapping("/findByIdDTO/{id}")
+    @GetMapping("/findById/{id}")
     public ResponseEntity<ProductDTO> findByIDDTO(@PathVariable Long id)throws Exception{
         return ResponseEntity.ok(productService.buscarPorIdDTO(id));
     }
 
     @CrossOrigin(origins = "http://localhost:3000")
-    @Operation(summary = "retorna producto segun el id")
-    @GetMapping("/findById/{id}")
-    public ResponseEntity<Product> findByID(@PathVariable Long id)throws Exception{
-        return ResponseEntity.ok(productService.buscarPorId(id));
-    }
-
-    @CrossOrigin(origins = "http://localhost:3000")
-    @Operation(summary = "retorna lista de productos")
+    @Operation(summary = "retorna productos segun filtros")
     @GetMapping("/getListProducts")
-    public ResponseEntity<Set<ProductDTO>> getListProduct()throws Exception{
-        return ResponseEntity.ok(productService.getProducts());
+    public Set<ProductDTO> getListProduct(@RequestParam Optional<Long> city,
+                                          @RequestParam Optional<Long> category,
+                                          @RequestParam Optional<LocalDate> dateStart,
+                                          @RequestParam Optional<LocalDate> dateEnd)throws  Exception{
+
+        Set<ProductDTO> listReturn = new HashSet<>();
+
+        if(city.isEmpty() && category.isEmpty()){
+            return productService.getProducts();
+        }
+
+        if(!city.isEmpty()){
+            listReturn = productService.findByCityId(city.get());
+        }
+
+        if(!category.isEmpty()){
+            listReturn = productService.findByCategoryId(category.get());
+        }
+
+        return  listReturn;
     }
 
     @CrossOrigin(origins = "http://localhost:3000")
@@ -47,12 +60,4 @@ public class ProductController {
         productService.crearProduct(product);
         return ResponseEntity.ok(HttpStatus.OK);
     }
-
-    @CrossOrigin(origins = "http://localhost:3000")
-    @Operation(summary = "retorna productos por ciudad")
-    @GetMapping("/getListProductsByCityId")
-    public Set<ProductDTO> getProductByCity(@RequestParam Long id)throws  Exception{
-        return  productService.findByCityId(id);
-    }
-
 }

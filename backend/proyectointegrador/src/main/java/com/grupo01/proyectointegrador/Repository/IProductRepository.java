@@ -12,5 +12,6 @@ import java.util.Set;
 @Repository
 public interface IProductRepository extends JpaRepository<Product, Long> {
     Optional<Set<Product>> findByCityId(@Param("idCiudad") Long idCiudad);
+    Optional<Set<Product>> findByCategoryId(@Param("idCategory") Long idCategory);
 }
 

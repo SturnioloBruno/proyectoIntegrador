@@ -4,7 +4,7 @@ import Rating from '@mui/material/Rating';
 import Stack from '@mui/material/Stack';
 import StarIcon from '@mui/icons-material/Star';
 
-function Card({title, src, location, description, category, punctuation, score, stars, services}) {
+function Card({id, title, src, location, description, category, punctuation, score, stars, services}) {
     return (
         <article>
             <div>
@@ -33,7 +33,7 @@ function Card({title, src, location, description, category, punctuation, score, 
                     <p className="p__description-text">{description}</p>
                     <Link to="#">más...</Link>
                 </div>
-                <Button text="ver más" className="btn button__solid-type" />
+                <Link to={`/product/${id}`}className="btn button__solid-type">ver más</Link>
             </div>
             <img src={src} alt={title} />
         </article>

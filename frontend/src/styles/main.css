@@ -47,6 +47,10 @@ h1, h2, h3, h4, p, button {
     font-weight: 700;
     cursor: pointer;
     height: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .button__linear-type, .button__solid-type:hover, .button__solid-type:active {

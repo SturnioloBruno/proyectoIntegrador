@@ -101,6 +101,10 @@ h2 {
     margin: 1em 0;
 }
 
+.p__accommodation-direction a:hover {
+    text-decoration: underline;
+}
+
 .div__puntuation-number {
     display: flex;
     flex-direction: column;

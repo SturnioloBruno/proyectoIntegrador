@@ -4,7 +4,7 @@ import Search from '../components/Search';
 import Card from '../components/cards/Card';
 import "../styles/Home.css";
 
-function Home() {
+function Home({title}) {
   const [productsCities, setProductsCities] = useState(null);
   const location = useLocation();
 
@@ -28,14 +28,16 @@ function Home() {
     getProductsperCities();
   },[location]);
 
+  const category = productsCities?.slice(0,1).map((category) => category?.category.title);
+
   return (
-    <>{console.log(productsCities)}
+    <>
         <Search />
         <section>
-          <h2>Resultado de búsqueda</h2>
+          <h2>{title == undefined ? `Resultados de: ${category}` : title}</h2>
           <ul className="ul__accommodation-list">
             {productsCities?.map((city) => {
-              return <li key={city?.id}><Link to={`/product/${city?.id}`}><Card title={city?.name} src={city?.category.urlImagen} location={city?.adress} description={city?.desc} category={city?.category.title} punctuation={city?.punctuation} score={city?.score} /></Link></li>;
+              return <li key={city?.id}><Link to={`/product/${city?.id}`}><Card title={city?.name} src={city?.category.urlImagen} location={city?.address} description={city?.desc} category={city?.category.title} punctuation={city?.punctuation} score={city?.score} /></Link></li>;
             })}
           </ul>
         </section>

@@ -27,7 +27,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home type="home" />} />
         <Route path="/product/:id" element={<Product type="product" />} />
-        <Route path="/search/" element={<Result type="result" />} />
+        <Route path="/search/" element={<Result type="search" title="Resultado de búsqueda" />} />
+        <Route path="/categories/" element={<Result type="categories" />} />
         <Route path="/login" element={<Login handlerLogIn={handlerLogInOut} users={users} type="login" />} />
         <Route path="/register" element={<Register type="register" handlerUser={handlerUsers}/>} />
       </Routes>

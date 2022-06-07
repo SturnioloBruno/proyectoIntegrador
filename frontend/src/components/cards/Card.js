@@ -4,7 +4,7 @@ import Rating from '@mui/material/Rating';
 import Stack from '@mui/material/Stack';
 import StarIcon from '@mui/icons-material/Star';
 
-function Card({title, src, location, description, category, punctuation, score, stars,  services}) {
+function Card({title, src, location, description, category, punctuation, score, stars, services}) {
     return (
         <article>
             <div>

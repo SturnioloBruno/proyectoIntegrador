@@ -56,7 +56,7 @@ function Section({ type, title }) {
             {type === "Category" &&
             <ul className="ul__categories-list">
                 {categories?.map((category) => (
-                    <li key={category.id}><Link to='#'><Category title={category.title} description={category.desc} src={category.urlImagen} />
+                    <li key={category.id}><Link to={`/categories/?category=${category.id}`}><Category title={category.title} description={category.desc} src={category.urlImagen} />
                     </Link></li>
                 ))}
             </ul>

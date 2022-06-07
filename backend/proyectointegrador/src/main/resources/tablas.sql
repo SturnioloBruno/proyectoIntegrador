@@ -80,6 +80,16 @@ CREATE TABLE IF NOT EXISTS customers (
   PRIMARY KEY (cus_id)
 );
 
+CREATE TABLE IF NOT EXISTS punctuations (
+	punct_id INT NOT NULL AUTO_INCREMENT,
+    prod_id INT NOT NULL,
+    cus_id INT NOT NULL,
+    punctuation SMALLINT NOT NULL,
+    PRIMARY KEY(punct_id),
+    FOREIGN KEY(prod_id) REFERENCES products(prod_id),
+    FOREIGN KEY(cus_id) REFERENCES customers(cus_id)
+);
+
 --CREATE TABLE IF NOT EXISTS bookings (
 --	book_id INT NOT NULL AUTO_INCREMENT,
 --    hab_id INT NOT NULL,
@@ -112,20 +122,20 @@ VALUES
 ("Comodoro Rivadavia","Argentina"),
 ("Mendoza","Argentina");
 
-INSERT INTO products (cat_id,city_id,prod_address,prod_name,prod_punctuation,prod_stars,prod_desc_title,prod_desc,prod_x,prod_y,prod_score)
+INSERT INTO products (cat_id,city_id,prod_address,prod_name,prod_stars,prod_desc_title,prod_desc,prod_x,prod_y,prod_score)
 VALUES
-(1, 1, "San Martin 231", "Hotel el Pacífico", 8, 4,"Hotel el Pacífico", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed varius sed nibh sit amet dignissim. Morbi commodo turpis nulla.", "-123321", "-456789", "MUY BUENO"),
-(2, 2, "Lavalle 345", "Hostel Argentina", 6, 3, "Hostel Argentina", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed varius sed nibh sit amet dignissim. Morbi commodo turpis nulla.", "-123321", "-456789", "BUENO"),
-(3, 3, "Cordoba 999", "Dpto La Ventana", 8, 4, "Depto La Ventana", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed varius sed nibh sit amet dignissim. Morbi commodo turpis nulla.", "-123321", "-456789", "MUY BUENO"),
-(4, 4, "Mendoza 1020", "Bed and Breakfast Paraíso", 4, 2, "Bed and Breakfast Paraíso", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed varius sed nibh sit amet dignissim. Morbi commodo turpis nulla.", "-123321", "-456789", "MALO"),
-(1, 5, "Alsina 45", "Hotel El Mar", 6, 3, "Hotel El Mar", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed varius sed nibh sit amet dignissim. Morbi commodo turpis nulla.", "-123321", "-456789", "BUENO"),
-(2, 6, "San Martin 5300", "Hostel Los Árboles", 8, 4,"Hostel Los Árboles", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed varius sed nibh sit amet dignissim. Morbi commodo turpis nulla.", "-123321", "-456789", "MUY BUENO"),
-(3, 7, "9 de Julio 33", "Dpto Santa Fe", 6, 3, "Dpto Santa Fe", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed varius sed nibh sit amet dignissim. Morbi commodo turpis nulla.", "-123321", "-456789", "BUENO"),
-(4, 8, "Francia 102", "Bed and Breakfast Oasis", 8, 4, "Bed and Breakfast Oasis", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed varius sed nibh sit amet dignissim. Morbi commodo turpis nulla.", "-123321", "-456789", "MUY BUENO"),
-(1, 9, "Mitre 78", "Hotel Los Sueños", 8, 4, "Hotel Los Sueños", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed varius sed nibh sit amet dignissim. Morbi commodo turpis nulla.", "-123321", "-456789", "MUY BUENO"),
-(2, 10, "Corrientes 582", "Hostel Cristal", 4, 2, "Hotel Cristal", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed varius sed nibh sit amet dignissim. Morbi commodo turpis nulla.", "-123321", "-456789", "MALO"),
-(3, 11, "La Paz 10","Dpto Las Estrellas", 6, 3, "Dpto Las Estrellas", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed varius sed nibh sit amet dignissim. Morbi commodo turpis nulla.", "-123321", "-456789", "BUENO"),
-(4, 12, "Pasco 2404", "Bed and Breakfast Palace", 6, 3, "Bed and Breakfast Palace", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed varius sed nibh sit amet dignissim. Morbi commodo turpis nulla.", "-123321", "-456789", "PALACE");
+(1, 1, "San Martin 231", "Hotel el Pacífico", 5,"Hotel el Pacífico", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed varius sed nibh sit amet dignissim. Morbi commodo turpis nulla.", "-123321", "-456789", "MUY BUENO"),
+(2, 2, "Lavalle 345", "Hostel Argentina", 3, "Hostel Argentina", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed varius sed nibh sit amet dignissim. Morbi commodo turpis nulla.", "-123321", "-456789", "BUENO"),
+(3, 3, "Cordoba 999", "Dpto La Ventana", 4, "Depto La Ventana", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed varius sed nibh sit amet dignissim. Morbi commodo turpis nulla.", "-123321", "-456789", "MUY BUENO"),
+(4, 4, "Mendoza 1020", "Bed and Breakfast Paraíso", 2, "Bed and Breakfast Paraíso", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed varius sed nibh sit amet dignissim. Morbi commodo turpis nulla.", "-123321", "-456789", "MALO"),
+(1, 5, "Alsina 45", "Hotel El Mar", 3, "Hotel El Mar", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed varius sed nibh sit amet dignissim. Morbi commodo turpis nulla.", "-123321", "-456789", "BUENO"),
+(2, 6, "San Martin 5300", "Hostel Los Árboles", 4,"Hostel Los Árboles", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed varius sed nibh sit amet dignissim. Morbi commodo turpis nulla.", "-123321", "-456789", "MUY BUENO"),
+(3, 7, "9 de Julio 33", "Dpto Santa Fe", 3, "Dpto Santa Fe", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed varius sed nibh sit amet dignissim. Morbi commodo turpis nulla.", "-123321", "-456789", "BUENO"),
+(4, 8, "Francia 102", "Bed and Breakfast Oasis", 5, "Bed and Breakfast Oasis", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed varius sed nibh sit amet dignissim. Morbi commodo turpis nulla.", "-123321", "-456789", "MUY BUENO"),
+(1, 9, "Mitre 78", "Hotel Los Sueños", 4, "Hotel Los Sueños", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed varius sed nibh sit amet dignissim. Morbi commodo turpis nulla.", "-123321", "-456789", "MUY BUENO"),
+(2, 10, "Corrientes 582", "Hostel Cristal", 1, "Hotel Cristal", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed varius sed nibh sit amet dignissim. Morbi commodo turpis nulla.", "-123321", "-456789", "MALO"),
+(3, 11, "La Paz 10","Dpto Las Estrellas", 3, "Dpto Las Estrellas", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed varius sed nibh sit amet dignissim. Morbi commodo turpis nulla.", "-123321", "-456789", "BUENO"),
+(4, 12, "Pasco 2404", "Bed and Breakfast Palace", 3, "Bed and Breakfast Palace", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed varius sed nibh sit amet dignissim. Morbi commodo turpis nulla.", "-123321", "-456789", "PALACE");
 
 INSERT INTO images (prod_id, img_url)
 VALUES

@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS products (
     prod_address VARCHAR(300) NOT NULL,
     prod_name VARCHAR(100) NOT NULL,
     prod_punctuation SMALLINT,
-    prod_stars NUMERIC(1,1),
+    prod_stars TINYINT(1),
     prod_desc_title VARCHAR(100),
     prod_desc VARCHAR(500),
     prod_x NUMERIC (18,10),
@@ -91,7 +91,7 @@ CREATE TABLE IF NOT EXISTS customers (
 --    FOREIGN KEY(cus_id) REFERENCES customers(cus_id)
 --);
 
-INSERT INTO categories (cat_title, cat_descp, cat_url_img)
+INSERT INTO categories (cat_title, cat_description, cat_url_img)
 VALUES ("Hotel","821.458 hoteles","https://images.unsplash.com/photo-1629140727571-9b5c6f6267b4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1527&q=80"),
 ("Hostels","821.458 Hostels","https://images.unsplash.com/photo-1555854877-bab0e564b8d5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80"),
 ("Departamentos","821.458 Departamentos","https://images.unsplash.com/photo-1581404569456-a2e7007c3979?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80"),

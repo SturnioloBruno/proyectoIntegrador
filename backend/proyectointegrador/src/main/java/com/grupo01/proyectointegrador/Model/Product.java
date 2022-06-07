@@ -59,6 +59,9 @@ public class Product {
     @OneToMany(mappedBy = "proId",fetch = FetchType.EAGER)
     private Set<Image> images;
 
+    @OneToMany(mappedBy = "prodId", fetch = FetchType.EAGER)
+    private Punctuation punctProd;
+
     public Product() {
     }
 
@@ -201,5 +204,13 @@ public class Product {
 
     public void setProductsP(Set<ProductPolicy> productsP) {
         this.productsP = productsP;
+    }
+
+    public Punctuation getPunctProd() {
+        return punctProd;
+    }
+
+    public void setPunctProd(Punctuation punctProd) {
+        this.punctProd = punctProd;
     }
 }

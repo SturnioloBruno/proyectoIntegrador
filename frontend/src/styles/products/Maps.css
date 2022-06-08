@@ -1,5 +1,17 @@
 /* TIENE ESE NOMBRE PORQUE PISA LA QUE TRAE POR DEFECTO*/
 .leaflet-container{
-    height: 500px;
+    height: calc(100vh - 250px);
     width: 100%;
+}
+
+@media (min-width: 768px) {
+    .leaflet-container.leaflet-touch-drag.leaflet-touch-zoom {
+        height: 50vh;
+    }
+}
+
+@media (min-width: 1280px) {
+    .leaflet-container.leaflet-touch-drag.leaflet-touch-zoom {
+        height: 50vh;
+    }
 }

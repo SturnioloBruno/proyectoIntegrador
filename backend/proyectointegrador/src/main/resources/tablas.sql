@@ -212,9 +212,15 @@ VALUES
 
 INSERT INTO policies (policies_title, policies_desc)
 VALUES
+<<<<<<< HEAD
 ("Normas de la casa", '["Check-out: 10:00", "No se permiten fiestas", "No fumar"]'),
 ("Salud y seguridad", '["Se aplican las pautas de distanciamiento social y otras normas relacionadas con el coronavirus", "Detector de humo", "Depósito de seguridad"]'),
 ("Politica de Cancelación", '["Agregá las fechas de tu viaje para obtener los detalles de cancelación de esta estadía."]');
+=======
+("Normas de la casa", ["Check-out: 10:00", "No se permiten fiestas", "No fumar"]),
+("Salud y seguridad", ["Se aplican las pautas de distanciamiento social y otras normas relacionadas con el coronavirus", "Detector de humo", "Depósito de seguridad"]),
+("Politica de cancelación", ["Agregá las fechas de tu viaje para obtener los detalles de cancelación de esta estadía."]);
+>>>>>>> 41746b5accf507aaa856827c69e488d70525c35e
 
 INSERT INTO products_characteristics (prod_id, charact_id)
 VALUES
@@ -246,6 +252,37 @@ VALUES
 (11, 1), (11, 2), (11, 3),
 (12, 1), (12, 2), (12, 3);
 
+<<<<<<< HEAD
 INSERT INTO customers (cus_name,cus_lastname,cus_password,cus_address,cus_email) VALUES ('Admin','Root','Admin1234','direccion root','admin@admin.com');
 
+=======
+INSERT INTO customers (cus_name, cus_lastname, cus_password, cus_address, cus_email)
+VALUES
+("Camila", "Koatz", "password1", "calle1 111", "camila@email.com"),
+("Elida", "Alastra", "password2", "calle2 222", "elida@email.com"),
+("Nicolás", "Grieco", "password3", "calle3 333", "nicolas@email.com"),
+("Julian", "Paz", "password4", "calle4 444", "julian@email.com"),
+("Miranda", "Perafán", "password5", "calle5 555", "miranda@email.com"),
+("Tiago", "Ceballos", "password6", "calle6 666", "tiago@email.com"),
+("Julieta", "Carboni", "password7", "calle7 777", "julieta@email.com"),
+("Cato", "Yuvone", "password8", "calle8 888", "cato@email.com"),
+("Karina", "Valenzuela", "password9", "calle9 999", "karina@email.com"),
+("Luciano", "Belardo", "password10", "calle10 10", "luciano@email.com"),
+("Victoria", "Fiori", "password11", "calle11 11", "victoria@email.com"),
+("Andrés", "Cornejo", "password12", "calle12 12", "andres@email.com");
+>>>>>>> 41746b5accf507aaa856827c69e488d70525c35e
 
+INSERT into punctuations (prod_id, cus_id, punctuation)
+VALUES
+(1, 1, 4),
+(2, 2, 3),
+(3, 3, 5),
+(4, 4, 2),
+(5, 5, 3),
+(6, 6, 4),
+(7, 7, 3),
+(8, 8, 5),
+(9, 9, 4),
+(10, 10, 1),
+(11, 11, 3),
+(12, 12, 3);

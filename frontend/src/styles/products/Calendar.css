@@ -40,7 +40,7 @@
 }
 
 .react-datepicker__day-name, .react-datepicker__day, .react-datepicker__time-name {
-    width: 2.9em;
+    width: 2.4em;
 }
 
 .react-datepicker__navigation {
@@ -63,6 +63,10 @@
 
     .react-datepicker__day-names {
         margin-top: 1.5em;
+    }
+
+    .react-datepicker__day-name, .react-datepicker__day, .react-datepicker__time-name {
+        width: 2.9em;
     }
 }
 

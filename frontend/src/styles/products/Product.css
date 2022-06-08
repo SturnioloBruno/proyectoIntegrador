@@ -190,6 +190,10 @@
         align-items: center;
     }
 
+    .article__info-product .section__address-score .div__info-address p {
+        margin-top: .3em;
+    }
+
     .article__info-product .div__buttons-bar {
         position: initial;
         padding: 1em 5%;
@@ -207,6 +211,20 @@
     .article__info-product .a__like-icon::before {
         background: url(../../assets/icons/like-black.svg) no-repeat center center;
         background-size: contain;
+    }
+
+    .article__info-product .section__location-services ul li {
+        width: calc(50% - 1em);
+        margin-bottom: 2em;
+    }
+
+    .article__info-product .section__location-services ul li::before {
+        width: 24px;
+        height: 24px;
+    }
+
+    .article__info-product .section__location-services ul li p {
+        font-size: 16px;
     }
 
     .article__info-product .section__hotel-date .div__calendar-info .div__button-selected {
@@ -240,11 +258,7 @@
 
 @media (min-width: 1024px) {
     .article__info-product section {
-        padding: 3em 5% 0;    
-    }
-
-    .article__info-product section > h2 {
-        margin-bottom: 1.5em;
+        padding: 2em 5% 0;    
     }
 
     .article__info-product .section__title-border {
@@ -258,14 +272,16 @@
     .article__info-product .div__gallery-desktop {
         padding: 0 5%;
         position: relative;
+        height: calc(100vh - 350px);
     }
 
     .article__info-product .ul__gallery-desktop {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        grid-template-rows: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 45%);
         grid-column-gap: 1.5em;
         grid-row-gap: 1.5em;
+        height: calc(100vh - 350px);
     }
     
     .article__info-product .ul__gallery-desktop li:first-child { grid-area: 1 / 1 / 3 / 3; }
@@ -278,6 +294,7 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
+        object-position: center;
         border-radius: 8px
     }
 
@@ -330,6 +347,13 @@
 
     .div__calendar-info > div:first-of-type {
         width: calc(70% - 3em);
+    }
+}
+
+@media (min-width: 1280px) {
+    .article__info-product .section__location-services ul li {
+        width: calc(25% - 1.15em);
+        margin-bottom: 2em;
     }
 }
 

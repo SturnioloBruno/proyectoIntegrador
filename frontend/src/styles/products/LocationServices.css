@@ -5,17 +5,22 @@
 }
 
 .article__info-product .section__location-services ul li {
-    width: calc(50% - .75em);
     display: flex;
     align-items: center;
+    width: calc(50% - .5em);
     margin-bottom: 1.5em;
+}
+
+.article__info-product .section__location-services ul li p {
+    width: calc(100% - 32px);
+    font-size: 14px;
 }
 
 .article__info-product .section__location-services ul li::before {
     content: "";
     display: block;
-    width: 32px;
-    height: 32px;
+    width: 22px;
+    height: 22px;
     margin-right: .5em;
 }
 
@@ -24,12 +29,12 @@
     background-size: contain;
 }
 
-.article__info-product .section__location-services ul li.li__estacionamiento::before {
+.article__info-product .section__location-services ul li.li__estacionamiento-gratuito::before {
     background: url(../../assets/icons/parking-orange.svg) no-repeat center center;
     background-size: contain;
 }
 
-.article__info-product .section__location-services ul li.li__tv::before {
+.article__info-product .section__location-services ul li.li__televisor::before {
     background: url(../../assets/icons/tv-orange.svg) no-repeat center center;
     background-size: contain;
 }

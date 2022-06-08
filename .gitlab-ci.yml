@@ -1,3 +1,4 @@
+image: npm:latest
 image: maven:latest
 
 variables:
@@ -12,6 +13,7 @@ stages:
   - build
 #  - test
   - package
+  - front
 
 build_job:
   stage: build
@@ -34,3 +36,14 @@ package_job:
     - echo "Maven building api"
     - "cd backend/proyectointegrador"
     - "mvn package"
+
+
+front_job:
+  stage: front
+  artifacts:
+    paths:
+      - frontend
+  script:
+    - echo "building del front"
+    - "cd frontend"
+    - "npm run build"

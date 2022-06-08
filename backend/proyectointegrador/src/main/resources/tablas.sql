@@ -212,15 +212,9 @@ VALUES
 
 INSERT INTO policies (policies_title, policies_desc)
 VALUES
-<<<<<<< HEAD
-("Normas de la casa", '["Check-out: 10:00", "No se permiten fiestas", "No fumar"]'),
-("Salud y seguridad", '["Se aplican las pautas de distanciamiento social y otras normas relacionadas con el coronavirus", "Detector de humo", "Depósito de seguridad"]'),
-("Politica de Cancelación", '["Agregá las fechas de tu viaje para obtener los detalles de cancelación de esta estadía."]');
-=======
-("Normas de la casa", ["Check-out: 10:00", "No se permiten fiestas", "No fumar"]),
-("Salud y seguridad", ["Se aplican las pautas de distanciamiento social y otras normas relacionadas con el coronavirus", "Detector de humo", "Depósito de seguridad"]),
-("Politica de cancelación", ["Agregá las fechas de tu viaje para obtener los detalles de cancelación de esta estadía."]);
->>>>>>> 41746b5accf507aaa856827c69e488d70525c35e
+("Normas de la casa", "['Check-out: 10:00', 'No se permiten fiestas', 'No fumar']"),
+("Salud y seguridad", "['Se aplican las pautas de distanciamiento social y otras normas relacionadas con el coronavirus', 'Detector de humo', 'Depósito de seguridad']"),
+("Politica de Cancelación", "['Agregá las fechas de tu viaje para obtener los detalles de cancelación de esta estadía.']");
 
 INSERT INTO products_characteristics (prod_id, charact_id)
 VALUES
@@ -252,10 +246,10 @@ VALUES
 (11, 1), (11, 2), (11, 3),
 (12, 1), (12, 2), (12, 3);
 
-<<<<<<< HEAD
+
 INSERT INTO customers (cus_name,cus_lastname,cus_password,cus_address,cus_email) VALUES ('Admin','Root','Admin1234','direccion root','admin@admin.com');
 
-=======
+
 INSERT INTO customers (cus_name, cus_lastname, cus_password, cus_address, cus_email)
 VALUES
 ("Camila", "Koatz", "password1", "calle1 111", "camila@email.com"),
@@ -270,7 +264,7 @@ VALUES
 ("Luciano", "Belardo", "password10", "calle10 10", "luciano@email.com"),
 ("Victoria", "Fiori", "password11", "calle11 11", "victoria@email.com"),
 ("Andrés", "Cornejo", "password12", "calle12 12", "andres@email.com");
->>>>>>> 41746b5accf507aaa856827c69e488d70525c35e
+
 
 INSERT into punctuations (prod_id, cus_id, punctuation)
 VALUES

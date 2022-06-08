@@ -135,7 +135,7 @@ VALUES
 (1, 9, "Mitre 78", "Hotel Los Sueños", 4, "Hotel Los Sueños", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed varius sed nibh sit amet dignissim. Morbi commodo turpis nulla.", "-59.1235862000", "-34.5641632000", "MUY BUENO"),
 (2, 10, "Corrientes 582", "Hostel Cristal", 1, "Hotel Cristal", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed varius sed nibh sit amet dignissim. Morbi commodo turpis nulla.", "-59.1235862000", "-34.5641632000", "MALO"),
 (3, 11, "La Paz 10","Dpto Las Estrellas", 3, "Dpto Las Estrellas", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed varius sed nibh sit amet dignissim. Morbi commodo turpis nulla.", "-59.1235862000", "-34.5641632000", "BUENO"),
-(4, 12, "Pasco 2404", "Bed and Breakfast Palace", 3, "Bed and Breakfast Palace", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed varius sed nibh sit amet dignissim. Morbi commodo turpis nulla.", "-59.1235862000", "-34.5641632000", "PALACE");
+(4, 12, "Pasco 2404", "Bed and Breakfast Palace", 3, "Bed and Breakfast Palace", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed varius sed nibh sit amet dignissim. Morbi commodo turpis nulla.", "-59.1235862000", "-34.5641632000", "BUENO");
 
 INSERT INTO images (prod_id, img_url)
 VALUES
@@ -212,9 +212,9 @@ VALUES
 
 INSERT INTO policies (policies_title, policies_desc)
 VALUES
-("Normas de la casa", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus elit eu nulla commodo blandit."),
-("Salud y seguridad", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus elit eu nulla commodo blandit."),
-("Politica de Cancelación", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla finibus elit eu nulla commodo blandit.");
+("Normas de la casa", ["Check-out: 10:00", "No se permiten fiestas", "No fumar"]),
+("Salud y seguridad", ["Se aplican las pautas de distanciamiento social y otras normas relacionadas con el coronavirus", "Detector de humo", "Depósito de seguridad"]),
+("Politica de Cancelación", ["Agregá las fechas de tu viaje para obtener los detalles de cancelación de esta estadía."]);
 
 INSERT INTO products_characteristics (prod_id, charact_id)
 VALUES

@@ -17,7 +17,7 @@ build_job:
 #  script:
 #    - "mvn test"
 
-package_job:
+artifact_back:
   image: maven:latest
   stage: artefactback
   artifacts:

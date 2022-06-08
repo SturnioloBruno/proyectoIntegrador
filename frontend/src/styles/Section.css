@@ -15,7 +15,6 @@ h2 {
     display: flex;
     flex-direction: column-reverse;
     border-radius: 10px;
-    border: 1px solid #F3F1ED;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
@@ -30,14 +29,15 @@ h2 {
 .ul__categories-list article div, .ul__accommodation-list article > div {
     padding: 1em;
     background-color: white;
+    border-radius: 0 0 8px 8px;
 }
 
 .ul__accommodation-list article > div {
-    border-radius: 0 8px 8px 0;
+    border-radius: 0 0 8px 8px;
 }
 
 .ul__categories-list article div h3, .ul__accommodation-list article h3 {
-    font-size: 20px;
+    font-size: 18px;
     color: var(--grey);
 }
 
@@ -85,6 +85,7 @@ h2 {
 .div__category-stars {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     margin-bottom: .5em;
 }
 
@@ -93,12 +94,14 @@ h2 {
     color: var(--grey);
     opacity: .6;
     margin-right: .3em;
+    font-size: 14px;
 }
 
 .p__accommodation-direction {
     color: var(--grey);
     display: -webkit-inline-box;
-    margin: 1em 0;
+    margin-top: 1em;
+    font-size: 14px;
 }
 
 .p__accommodation-direction a:hover {
@@ -123,6 +126,7 @@ h2 {
 
 .div__puntuation-number p {
     color: var(--grey);
+    font-size: 14px;
 }
 
 .p__accommodation-direction::before {
@@ -139,30 +143,60 @@ h2 {
     text-transform: uppercase;
 }
 
+.p__accommodation-direction a span {
+    display: none;
+}
+
 .ul__services-list {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .ul__services-list li {
-    margin-right: 16px;
+    margin: 16px 16px 0 0;
     font-size: 0;
 }
 
 .ul__services-list li::after {
     content: "";
-    width: 32px;
-    height: 32px;
+    width: 24px;
+    height: 24px;
     display: block;
 }
 
 .ul__services-list li.li__wifi {
-    background: url(../assets/icons/wifi.svg) no-repeat center center;
+    background: url(../assets/icons/wifi-blue.svg) no-repeat center center;
     background-size: contain;
 }
 
 .ul__services-list li.li__pileta::after {
-    background: url(../assets/icons/pool.svg) no-repeat center center;
+    background: url(../assets/icons/pool-blue.svg) no-repeat center center;
+    background-size: contain;
+}
+
+.ul__services-list li.li__televisor::after {
+    background: url(../assets/icons/tv-blue.svg) no-repeat center center;
+    background-size: contain;
+}
+
+.ul__services-list li.li__cocina::after {
+    background: url(../assets/icons/kitchen-blue.svg) no-repeat center center;
+    background-size: contain;
+}
+
+.ul__services-list li.li__apto-mascotas::after {
+    background: url(../assets/icons/pets-blue.svg) no-repeat center center;
+    background-size: contain;
+}
+
+.ul__services-list li.li__aire-acondicionado::after {
+    background: url(../assets/icons/air-conditioning-blue.svg) no-repeat center center;
+    background-size: contain;
+}
+
+.ul__services-list li.li__estacionamiento-gratuito::after {
+    background: url(../assets/icons/parking-blue.svg) no-repeat center center;
     background-size: contain;
 }
 
@@ -204,6 +238,10 @@ h2 {
         margin-top: 2.5em;
         -webkit-line-clamp: 3;
     }
+
+    .p__accommodation-direction a span {
+        display: initial;
+    }
 }
 
 @media (min-width: 1280px) {
@@ -221,6 +259,10 @@ h2 {
 
     .ul__categories-list article, .ul__accommodation-list article {
         margin-top: 2em;
+    }
+
+    .ul__categories-list article div h3, .ul__accommodation-list article h3 {
+        font-size: 20px;
     }
 
     .ul__accommodation-list article {

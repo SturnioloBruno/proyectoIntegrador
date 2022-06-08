@@ -12,7 +12,7 @@ function Card({id, title, src, location, description, category, punctuation, sco
                         <div className="div__category-stars">
                            <p className="p__category-name">{category}</p>
                            <Stack spacing={1}>
-                                <Rating name="half-rating-read" defaultValue={stars + ".0"} value={stars + ".0"} precision={0.5} emptyIcon={<StarIcon style={{ opacity: 0.5 }} />} readOnly />
+                                <Rating name="half-rating-read" size="small" defaultValue={stars + ".0"} value={stars + ".0"} precision={0.5} emptyIcon={<StarIcon fontSize="inherit" style={{ opacity: 0.5 }} />} readOnly />
                             </Stack>
                         </div>
                         <h3>{title}</h3>
@@ -22,7 +22,7 @@ function Card({id, title, src, location, description, category, punctuation, sco
                         <p>{score}</p>
                     </div>
                 </div>
-                <p className="p__accommodation-direction">{location}<Link to="#"> mostrar en el mapa</Link></p>
+                <p className="p__accommodation-direction">{location} <Link to="#">mostrar <span>en el mapa</span></Link></p>
                 <ul className="ul__services-list">
                     {services?.map((service) => (
                         <li key={service.characteristic.id} className={`li__${(service.characteristic.title.toLowerCase().replace(/\s+/g, '-'))}`}>{service.characteristic.title}</li>

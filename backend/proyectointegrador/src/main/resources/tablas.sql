@@ -212,9 +212,9 @@ VALUES
 
 INSERT INTO policies (policies_title, policies_desc)
 VALUES
-("Normas de la casa", ["Check-out: 10:00", "No se permiten fiestas", "No fumar"]),
-("Salud y seguridad", ["Se aplican las pautas de distanciamiento social y otras normas relacionadas con el coronavirus", "Detector de humo", "Depósito de seguridad"]),
-("Politica de Cancelación", ["Agregá las fechas de tu viaje para obtener los detalles de cancelación de esta estadía."]);
+("Normas de la casa", '["Check-out: 10:00", "No se permiten fiestas", "No fumar"]'),
+("Salud y seguridad", '["Se aplican las pautas de distanciamiento social y otras normas relacionadas con el coronavirus", "Detector de humo", "Depósito de seguridad"]'),
+("Politica de Cancelación", '["Agregá las fechas de tu viaje para obtener los detalles de cancelación de esta estadía."]');
 
 INSERT INTO products_characteristics (prod_id, charact_id)
 VALUES
@@ -245,5 +245,7 @@ VALUES
 (10, 1), (10, 2), (10, 3),
 (11, 1), (11, 2), (11, 3),
 (12, 1), (12, 2), (12, 3);
+
+INSERT INTO customers (cus_name,cus_lastname,cus_password,cus_address,cus_email) VALUES ('Admin','Root','Admin1234','direccion root','admin@admin.com');
 
 

@@ -34,5 +34,9 @@ public class PunctuationController {
       return ResponseEntity.ok(punctuationService.actualizar(punctuation));
    }
 
-
+   @CrossOrigin(origins = "http://localhost:3000")
+   @GetMapping("/total/{id}")
+   public ResponseEntity<Long> totalPuntuaciones(@PathVariable Long id) throws Exception {
+      return ResponseEntity.ok(punctuationService.totalPunctuation(id));
+   }
 }

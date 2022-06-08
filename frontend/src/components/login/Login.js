@@ -1,12 +1,14 @@
+import {useContext, useState} from 'react';
 import { Link , useNavigate} from "react-router-dom";
 import Button from "../Button";
 import Register from "./Register";
 import '../../styles/Login.css';
-import {useState} from 'react';
+import { UserContext } from "../Context/UserContext";
 
-function Login({handlerLogIn, type,users}) {
+function Login({ type }) {
     const [errors,setError]=useState({})
     const navigate = useNavigate();
+    const {setUser} = useContext(UserContext);
 
     const handlerSubmit = (e)=>{
         e.preventDefault()
@@ -32,23 +34,40 @@ function Login({handlerLogIn, type,users}) {
             return
         }
 
-        //VALIDO CONTRA EL ARRAY DE USUARIOS QUE ESTA EN APP
-        let userVerificado = null;
-        users?.forEach((user)=>{
-            if(user.email===emailValue.value.trim() && user.password === passwordValue.value.trim()){
-                userVerificado = user;
-            }
-        })
-
-        //SI NO HUBO COINCIDENCIA DE PASSWORD E EMAIL DEVUELVO ERROR
-        if(!userVerificado){
-            setError({general:["Por favor vuelva a intentarlo, sus credenciales son inválidas"]})
-            return
+        const validate = async()=>{
+            await fetch("http://localhost:8080/customers/validate",{
+                method:'POST',
+                headers:{
+                    "Access-Control-Allow-Headers" : "Content-Type",
+                    'Access-Control-Allow-Origin':"*",
+                    'Content-Type':'application/json'
+                },body:JSON.stringify({
+                    email:emailValue.value.trim(),
+                    password:passwordValue.value.trim()
+                })
+            })
+            .then((response) => {
+                if (response.status === 200) {
+                  return response.json()        
+                }else{
+                   setError({password:["Por favor vuelva a intentarlo, sus credenciales son inválidas"]})
+                   return
+                }
+              })
+              .then((user)=>{
+                if(!user){
+                    return
+                }
+                setUser(user)  
+                navigate("/")   
+              })
+              .catch((error) => {
+                setError({password:["Error, intente de nuevo mas tarde"]})
+                return
+              });
         }
-
-        //SI LLEGO HASTA ACA ESTA VERIFICADO Y PUSHEO LOS DATOS DEL USUARIO PARA OBTENER NOMBRE Y APELLIDO 
-        handlerLogIn(userVerificado)
-        navigate("/")
+    
+        validate();
     }
 
     //VALIDO CAMPO EMAIL

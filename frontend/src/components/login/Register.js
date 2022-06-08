@@ -1,12 +1,14 @@
 import { Link , useNavigate} from "react-router-dom";
-import {useState} from 'react';
+import {useContext, useState} from 'react';
 import Button from "../Button";
 import Login from "./Login";
 import '../../styles/Login.css';
+import { UserContext } from "../Context/UserContext";
 
 function Register({type,handlerUser}) {
     const [errors,setError]=useState({})
     const navigate = useNavigate();
+    const {setUser} = useContext(UserContext);
 
     const handlerSubmit = (e)=>{
         e.preventDefault()
@@ -48,16 +50,46 @@ function Register({type,handlerUser}) {
             return
         }
 
-        //ARMO OBJETO DE REGISTRO
-        let data = {
-            nombre:nombreValue.value.trim(),
-            apellido:apellidoValue.value.trim(),
-            email:emailValue.value.trim(),
-            password:passwordValue.value.trim()
+        const register = async()=>{
+            await fetch("http://localhost:8080/customers/register",{
+                method:'POST',
+                headers:{
+                    "Access-Control-Allow-Headers" : "Content-Type",
+                    'Access-Control-Allow-Origin':"*",
+                    'Content-Type':'application/json'
+                },body:JSON.stringify({
+                    name:nombreValue.value.trim(),
+                    lastName:apellidoValue.value.trim(),
+                    email:emailValue.value.trim(),
+                    password:passwordValue.value.trim(),
+                    address:""
+                })
+            })
+            .then((response) => {
+                if (response.status === 200) {
+                  return response.json()        
+                }else if(response.status ===406){
+                   setError({password:["Ya existe un usuario con el email ingresado"]})
+                   return
+                }else{
+                    setError({password:["Error, intente de nuevo mas tarde"]})
+                    return
+                }
+              })
+              .then((user)=>{
+               if(!user){
+                    return
+                }
+                setUser(user)  
+                navigate("/")   
+              })
+              .catch((error) => {
+                setError({password:["Error, intente de nuevo mas tarde"]})
+                return
+              });
         }
-
-        handlerUser(data)
-        navigate("/Login")
+    
+        register();
     }
 
     //VALIDO CAMPO EMAIL

@@ -10,25 +10,33 @@ public class Punctuation {
 
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
+
     @Column (name = "punct_id")
     private Long id;
 
-    @Column(name = "punctuation")
-    private Integer punctuation;
+    @Column(name = "punct_value")
+    private Integer punctValue;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "prod_id", nullable = false)
     @JsonIgnore
     private Product prodId;
 
-    public Punctuation(Long id, Integer punctuation, Product prodId) {
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "cus_id", nullable = false)
+    @JsonIgnore
+    private Customer customerId;
+
+    public Punctuation(){}
+
+    public Punctuation(Long id, Integer punctValue, Product prodId) {
         this.id = id;
-        this.punctuation = punctuation;
+        this.punctValue = punctValue;
         this.prodId = prodId;
     }
 
-    public Punctuation(Integer punctuation, Product prodId) {
-        this.punctuation = punctuation;
+    public Punctuation(Integer punctValue, Product prodId) {
+        this.punctValue = punctValue;
         this.prodId = prodId;
     }
 
@@ -36,12 +44,12 @@ public class Punctuation {
         return id;
     }
 
-    public Integer getPunctuation() {
-        return punctuation;
+    public Integer getPunctValue() {
+        return punctValue;
     }
 
-    public void setPunctuation(Integer punctuation) {
-        this.punctuation = punctuation;
+    public void setPunctValue(Integer punctuation) {
+        this.punctValue = punctuation;
     }
 
     public Product getProdId() {
@@ -50,5 +58,13 @@ public class Punctuation {
 
     public void setProdId(Product prodId) {
         this.prodId = prodId;
+    }
+
+    public Customer getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(Customer customerId) {
+        this.customerId = customerId;
     }
 }

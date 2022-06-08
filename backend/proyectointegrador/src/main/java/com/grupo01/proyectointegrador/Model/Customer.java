@@ -1,6 +1,7 @@
 package com.grupo01.proyectointegrador.Model;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "customers")
@@ -15,7 +16,7 @@ public class Customer {
     private String name;
 
     @Column(name = "cus_lastname",nullable = false)
-    private String lastname;
+    private String lastName;
 
     @Column(name = "cus_password",nullable = false)
     private String password;
@@ -26,13 +27,35 @@ public class Customer {
     @Column(name = "cus_email",nullable = false)
     private String email;
 
-    public Customer(Long id, String name, String lastname, String password, String address, String email) {
+    @OneToMany(mappedBy = "customerId", fetch = FetchType.EAGER)
+    private Set<Punctuation> punctCustomer;
+
+    public Customer(Long id, String name, String lastName, String password, String address, String email) {
         this.id = id;
         this.name = name;
-        this.lastname = lastname;
+        this.lastName = lastName;
         this.password = password;
         this.address = address;
         this.email = email;
+    }
+
+    public Customer(Long id, String name, String lastName, String password, String address, String email, Set<Punctuation> punctCustomer) {
+        this.id = id;
+        this.name = name;
+        this.lastName = lastName;
+        this.password = password;
+        this.address = address;
+        this.email = email;
+        this.punctCustomer = punctCustomer;
+    }
+
+    public Customer(String name, String lastName, String password, String address, String email, Set<Punctuation> punctCustomer) {
+        this.name = name;
+        this.lastName = lastName;
+        this.password = password;
+        this.address = address;
+        this.email = email;
+        this.punctCustomer = punctCustomer;
     }
 
     public Customer(){}
@@ -49,12 +72,12 @@ public class Customer {
         this.name = name;
     }
 
-    public String getLastname() {
-        return lastname;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getPassword() {

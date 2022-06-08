@@ -20,7 +20,7 @@ public class Product {
     private String name;
 
     @Column(name = "prod_punctuation")
-    private int punctuation;
+    private Integer punctuation;
 
     @Column(name = "prod_stars")
     private Double stars;
@@ -60,12 +60,12 @@ public class Product {
     private Set<Image> images;
 
     @OneToMany(mappedBy = "prodId", fetch = FetchType.EAGER)
-    private Punctuation punctProd;
+    private Set<Punctuation> punctProd;
 
     public Product() {
     }
 
-    public Product(Long id, String address, String name, int punctuation, Double stars, String descTitle, String desc, Double x, Double y, String score) {
+    public Product(Long id, String address, String name, Integer punctuation, Double stars, String descTitle, String desc, Double x, Double y, String score, Category category, City city, Set<ProductCharacteristic> productsC, Set<ProductPolicy> productsP, Set<Image> images, Set<Punctuation> punctProd) {
         this.id = id;
         this.address = address;
         this.name = name;
@@ -76,9 +76,15 @@ public class Product {
         this.x = x;
         this.y = y;
         this.score = score;
+        this.category = category;
+        this.city = city;
+        this.productsC = productsC;
+        this.productsP = productsP;
+        this.images = images;
+        this.punctProd = punctProd;
     }
 
-    public Product(String address, String name, int punctuation, Double stars, String descTitle, String desc, Double x, Double y, String score) {
+    public Product(String address, String name, Integer punctuation, Double stars, String descTitle, String desc, Double x, Double y, String score, Category category, City city, Set<ProductCharacteristic> productsC, Set<ProductPolicy> productsP, Set<Image> images, Set<Punctuation> punctProd) {
         this.address = address;
         this.name = name;
         this.punctuation = punctuation;
@@ -88,6 +94,12 @@ public class Product {
         this.x = x;
         this.y = y;
         this.score = score;
+        this.category = category;
+        this.city = city;
+        this.productsC = productsC;
+        this.productsP = productsP;
+        this.images = images;
+        this.punctProd = punctProd;
     }
 
     public Long getId() {
@@ -110,11 +122,11 @@ public class Product {
         this.name = name;
     }
 
-    public int getPunctuation() {
+    public Integer getPunctuation() {
         return punctuation;
     }
 
-    public void setPunctuation(int punctuation) {
+    public void setPunctuation(Integer punctuation) {
         this.punctuation = punctuation;
     }
 
@@ -206,11 +218,11 @@ public class Product {
         this.productsP = productsP;
     }
 
-    public Punctuation getPunctProd() {
+    public Set<Punctuation> getPunctProd() {
         return punctProd;
     }
 
-    public void setPunctProd(Punctuation punctProd) {
+    public void setPunctProd(Set<Punctuation> punctProd) {
         this.punctProd = punctProd;
     }
 }

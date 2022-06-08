@@ -1,5 +1,8 @@
 package com.grupo01.proyectointegrador.Service;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.grupo01.proyectointegrador.DTO.CustomerDTO;
+import com.grupo01.proyectointegrador.Exception.NotAcceptableException;
 import com.grupo01.proyectointegrador.Model.Customer;
 import com.grupo01.proyectointegrador.Repository.ICustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +16,9 @@ public class CustomerService {
 
     @Autowired
     ICustomerRepository customerRepository;
+
+    @Autowired
+    ObjectMapper mapper;
 
     // Select All
     public List<Customer> listarTodos() throws Exception{
@@ -35,6 +41,14 @@ public class CustomerService {
 
     // Insert
     public Customer guardar(Customer customer) throws  Exception{
+        Customer customerCheck = null;
+
+        customerCheck = buscarEmail(customer.getEmail());
+
+        if(customerCheck!=null){
+            throw new NotAcceptableException("Ya existe un usuario con el email ingresado");
+        }
+
         return customerRepository.save(customer);
     }
 
@@ -61,17 +75,20 @@ public class CustomerService {
         return customerRepository.save(customer);
     }
 
-    public Boolean validarCustomer(String email,String password)throws Exception{
-        Customer customerBuscado = buscarEmail(email);
+    public CustomerDTO validarCustomer(String email, String password)throws Exception{
+        CustomerDTO customerReturn = null;
+        Customer customerByEmail = buscarEmail(email);
 
-        if(customerBuscado==null){
+        if(customerByEmail==null){
             throw new Exception("No se encuentra usuario con el email ingresado!");
         }
 
-        if(!customerBuscado.getPassword().equals(password)){
+        if(!customerByEmail.getPassword().equals(password)){
             throw new Exception("Contraseña incorrecta!");
         }
 
-        return true;
+        customerReturn =  mapper.convertValue(customerByEmail, CustomerDTO.class);
+
+        return customerReturn;
     }
 }

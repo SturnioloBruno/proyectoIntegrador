@@ -1,6 +1,6 @@
 import {useEffect,useState} from 'react';
 import {DateRangePicker} from 'react-dates';
-import { Link ,useNavigate,useLocation} from "react-router-dom";
+import { Link ,useNavigate} from "react-router-dom";
 import Button from "./Button";
 import '../styles/Search.css';
 import 'react-dates/lib/css/_datepicker.css';
@@ -8,6 +8,7 @@ import '../styles/DateRangePicker.css';
 import 'react-dates/initialize';
 import moment from 'moment';
 import 'moment/locale/es';
+//import { SearchContext } from './Context/SearchContext';
 moment.locale('es');
 
 function Search() {
@@ -22,7 +23,7 @@ function Search() {
     const [searchTerm, setSearchTerm]= useState("");
     const [isActive, setActive] = useState(false);
     const toggle = () => { setActive(!isActive) };
-    const location = useLocation();
+   // const {city,setCity} = useContext(SearchContext);
     
     //evento para que cambie dinamicamente 
     window.visualViewport.addEventListener('resize',(e)=>{
@@ -59,11 +60,12 @@ function Search() {
     const handlerSubmit = (e)=>{
         e.preventDefault();
 
-        if(inputLocality.value==""){
+        if(inputLocality.value===""){
             inputLocality.focus()
             return
         }
 
+      //  setCity(inputLocality.value.trim())
         navigate("/search/"+inputLocality.name);
     }
 
@@ -72,7 +74,7 @@ function Search() {
             <h2>Busca ofertas en hoteles, casas y mucho más</h2>
             <form method='POST' onSubmit={handlerSubmit}>
                 <label htmlFor="input__locality" className="input__text-location">
-                    <input type="text" name="city" placeholder="¿A dónde vamos?" id="input__locality" autoComplete='off'
+                  <input type="text" name="city" placeholder="¿A dónde vamos?" id="input__locality" autoComplete='off'
                     onChange={(e) => {
                         setSearchTerm(e.target.value);
                     }}

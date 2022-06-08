@@ -1,5 +1,7 @@
 package com.grupo01.proyectointegrador.Controller;
 
+import com.grupo01.proyectointegrador.DTO.CustomerDTO;
+import com.grupo01.proyectointegrador.DTO.CustomerValidateDTO;
 import com.grupo01.proyectointegrador.Model.Customer;
 import com.grupo01.proyectointegrador.Service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,18 +45,18 @@ public class CustomerController {
     }
 
     @CrossOrigin(origins = "http://localhost:3000")
-    @PostMapping("/insert")
+    @PostMapping("/register")
     public ResponseEntity<Customer> guardar(@RequestBody Customer customer)throws Exception{
         return ResponseEntity.ok(customerService.guardar(customer));
     }
 
     @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/validate")
-    public ResponseEntity<String> validarCustomer(@RequestBody Customer customer)throws Exception{
-        String mensaje="";
-        if(customerService.validarCustomer(customer.getEmail(),customer.getPassword())){
-            mensaje="Usuario validado";
+    public ResponseEntity<CustomerDTO> validarCustomer(@RequestBody CustomerValidateDTO customerValidate)throws Exception{
+        CustomerDTO customer = customerService.validarCustomer(customerValidate.getEmail(),customerValidate.getPassword());
+        if(customer==null){
+            ResponseEntity.badRequest();
         }
-        return ResponseEntity.ok(mensaje);
+        return ResponseEntity.ok(customer);
     }
 }

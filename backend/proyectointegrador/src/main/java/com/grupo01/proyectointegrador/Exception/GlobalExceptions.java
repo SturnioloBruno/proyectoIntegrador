@@ -16,7 +16,13 @@ public class GlobalExceptions {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
     }
 
-    @ExceptionHandler(BadRequestException.class)
+    @ExceptionHandler({NotAcceptableException.class})
+    public ResponseEntity<String> procesarNotAcceptable(Exception ex){
+        logger.error(ex.getMessage());
+        return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body(ex.getMessage());
+    }
+
+    @ExceptionHandler({BadRequestException.class})
     public ResponseEntity<String> procesarExceptionBadRequest(Exception ex){
         logger.error(ex.getMessage());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());

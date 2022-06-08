@@ -10,9 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 @RestController
 @RequestMapping("/products")
@@ -31,15 +29,16 @@ public class ProductController {
     @CrossOrigin(origins = "http://localhost:3000")
     @Operation(summary = "retorna productos segun filtros")
     @GetMapping("/getListProducts")
-    public Set<ProductDTO> getListProduct(@RequestParam Optional<Long> city,
-                                          @RequestParam Optional<Long> category,
-                                          @RequestParam Optional<LocalDate> dateStart,
-                                          @RequestParam Optional<LocalDate> dateEnd)throws  Exception{
+    public List<ProductDTO> getListProduct(@RequestParam Optional<Long> city,
+                                           @RequestParam Optional<Long> category,
+                                           @RequestParam Optional<LocalDate> dateStart,
+                                           @RequestParam Optional<LocalDate> dateEnd,
+                                           @RequestParam Optional<Boolean> sort)throws  Exception{
 
-        Set<ProductDTO> listReturn = new HashSet<>();
+        List<ProductDTO> listReturn = new ArrayList<>();
 
         if(city.isEmpty() && category.isEmpty()){
-            return productService.getProducts();
+                return productService.getProducts(sort);
         }
 
         if(!city.isEmpty()){

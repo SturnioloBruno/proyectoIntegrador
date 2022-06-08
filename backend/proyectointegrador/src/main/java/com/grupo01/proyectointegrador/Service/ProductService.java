@@ -8,10 +8,7 @@ import com.grupo01.proyectointegrador.Service.Interfaces.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 @Service
 public class ProductService implements IProductService {
@@ -28,9 +25,9 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public Set<ProductDTO> getProducts() throws Exception{
+    public List<ProductDTO> getProducts(Optional<Boolean> sort) throws Exception{
         List<Product> listaProducts = productRepository.findAll();
-        Set<ProductDTO> productsDTO = new HashSet<>();
+        List<ProductDTO> productsDTO = new ArrayList<>();
 
         for (Product p: listaProducts){
             ProductDTO productReturn = null;
@@ -40,6 +37,13 @@ public class ProductService implements IProductService {
             productReturn.setPolicy(p.getProductsP());
             productsDTO.add(productReturn);
         }
+
+        if(!sort.isEmpty()){
+            if(!sort.get()){
+                Collections.shuffle(productsDTO);
+            }
+        }
+        
         return productsDTO;
     }
 
@@ -97,9 +101,9 @@ public class ProductService implements IProductService {
     }
 
 
-    public Set<ProductDTO> findByCityId(Long idCiudad)throws Exception {
-        Set<Product> products = productRepository.findByCityId(idCiudad).get();
-        Set<ProductDTO> productDTOs = new HashSet<>();
+    public List<ProductDTO> findByCityId(Long idCiudad)throws Exception {
+        List<Product> products = productRepository.findByCityId(idCiudad).get();
+        List<ProductDTO> productDTOs = new ArrayList<>();
         for (Product p:products){
             ProductDTO productReturn = null;
             productReturn = mapper.convertValue(p,ProductDTO.class);
@@ -112,9 +116,9 @@ public class ProductService implements IProductService {
         return productDTOs;
     }
 
-    public Set<ProductDTO> findByCategoryId(Long idCategory)throws Exception {
-        Set<Product> products = productRepository.findByCategoryId(idCategory).get();
-        Set<ProductDTO> productDTOs = new HashSet<>();
+    public List<ProductDTO> findByCategoryId(Long idCategory)throws Exception {
+        List<Product> products = productRepository.findByCategoryId(idCategory).get();
+        List<ProductDTO> productDTOs = new ArrayList<>();
         for (Product p:products){
             ProductDTO productReturn = null;
             productReturn = mapper.convertValue(p,ProductDTO.class);

@@ -1,3 +1,10 @@
 
 [2022-06-08 18:27:44] [ ERROR] [GlobalExceptions:33] could not execute statement; SQL [n/a]; constraint [null]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
 [2022-06-08 18:30:12] [ ERROR] [GlobalExceptions:33] could not execute statement; SQL [n/a]; constraint [null]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+[2022-06-08 20:22:17] [ ERROR] [GlobalExceptions:33] No value present
+[2022-06-08 20:22:19] [ ERROR] [GlobalExceptions:33] No value present
+[2022-06-08 20:22:41] [ ERROR] [GlobalExceptions:33] No value present
+[2022-06-08 20:25:32] [ ERROR] [GlobalExceptions:33] No value present
+[2022-06-08 20:25:34] [ ERROR] [GlobalExceptions:33] No value present
+[2022-06-08 20:25:38] [ ERROR] [GlobalExceptions:33] No value present
+[2022-06-08 20:25:39] [ ERROR] [GlobalExceptions:33] No value present

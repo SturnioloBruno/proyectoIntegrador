@@ -249,7 +249,6 @@ VALUES
 
 INSERT INTO customers (cus_name,cus_lastname,cus_password,cus_address,cus_email) VALUES ('Admin','Root','Admin1234','direccion root','admin@admin.com');
 
-
 INSERT INTO customers (cus_name, cus_lastname, cus_password, cus_address, cus_email)
 VALUES
 ("Camila", "Koatz", "password1", "calle1 111", "camila@email.com"),
@@ -266,7 +265,7 @@ VALUES
 ("Andrés", "Cornejo", "password12", "calle12 12", "andres@email.com");
 
 
-INSERT into punctuations (prod_id, cus_id, punctuation)
+INSERT into punctuations (prod_id, cus_id, punct_value)
 VALUES
 (1, 1, 4),
 (2, 2, 3),

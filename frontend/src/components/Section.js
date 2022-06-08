@@ -1,12 +1,14 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState ,useContext} from 'react';
 import { Link } from "react-router-dom";
 import Category from './cards/Category';
 import Card from '../components/cards/Card';
 import '../styles/Section.css';
+import { UserContext } from './Context/UserContext';
 
 function Section({ type, title }) {
     const [categories, setCategories] = useState(null);
     const [products, setProducts] = useState(null);
+    const {user} = useContext(UserContext);
 
     useEffect(()=>{
         if(type==="Category"){
@@ -31,7 +33,7 @@ function Section({ type, title }) {
         if(type==="Card"){
         //Cargo productos
         const getProducts = async()=>{
-            await fetch("http://localhost:8080/products/getListProducts",{
+            await fetch(`http://localhost:8080/products/getListProducts${user?"?sort=true":"?sort=false"}`,{
                 method:'GET',
                 headers:{
                     'Content-Type':'application/json'
@@ -47,7 +49,7 @@ function Section({ type, title }) {
         getProducts();
         }
         
-    },[type]);
+    },[type,user]);
 
     return (
         <>

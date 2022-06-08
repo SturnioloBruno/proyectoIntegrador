@@ -1,12 +1,12 @@
 image: maven:latest
 
 variables:
-  MAVEN_OPTS: -Dmaven.repo.local=.m2/repository
+  MAVEN_OPTS: -Dmaven.repo.local=backend/proyectointegrador/.m2/repository
 
 cache:
   paths:
-    - .m2/repository
-    - target
+    - backend/proyectointegrador/.m2/repository
+    - backend/proyectointegrador/target
 
 stages:
   - build

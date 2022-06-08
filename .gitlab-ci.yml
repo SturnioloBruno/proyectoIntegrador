@@ -1,0 +1,34 @@
+variables:
+  MAVEN_OPTS: -Dmaven.repo.local=.m2/repository
+
+cache:
+  paths:
+    - .m2/repository
+    - target
+
+stages:
+  - build
+#  - test
+  - package
+
+build_job:
+  stage: build
+  script:
+    - echo "Maven compile started"
+    - "cd backend/proyectointegrador"
+    - "mvn compile"
+
+#test_job:
+#  stage: test
+#  script:
+#    - "mvn test"
+
+package_job:
+  stage: package
+  artifacts:
+    paths:
+      - target/*.jar
+  script:
+    - echo "Maven building api"
+    - "cd backend/proyectointegrador"
+    - "mvn package"

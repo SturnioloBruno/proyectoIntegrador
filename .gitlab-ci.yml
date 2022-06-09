@@ -1,16 +1,7 @@
 stages:
-  - build
 #  - test
   - artefactback
   - front
-
-build_job:
-  image: maven:latest
-  stage: build
-  script:
-    - echo "Maven compile started"
-    - "cd backend/proyectointegrador"
-    - "mvn compile"
 
 #test_job:
 #  stage: test
@@ -26,6 +17,7 @@ artifact_back:
   script:
     - echo "Maven building api"
     - "cd backend/proyectointegrador"
+    - "mvn compile"
     - "mvn package"
 
 

@@ -1,19 +1,11 @@
-image: maven:latest
-
-variables:
-  MAVEN_OPTS: -Dmaven.repo.local=backend/proyectointegrador/.m2/repository
-
-cache:
-  paths:
-    - backend/proyectointegrador/.m2/repository
-    - backend/proyectointegrador/target
-
 stages:
   - build
 #  - test
-  - package
+  - artefactback
+  - front
 
 build_job:
+  image: maven:latest
   stage: build
   script:
     - echo "Maven compile started"
@@ -25,8 +17,9 @@ build_job:
 #  script:
 #    - "mvn test"
 
-package_job:
-  stage: package
+artifact_back:
+  image: maven:latest
+  stage: artefactback
   artifacts:
     paths:
       - backend/proyectointegrador/target/*.jar
@@ -34,3 +27,16 @@ package_job:
     - echo "Maven building api"
     - "cd backend/proyectointegrador"
     - "mvn package"
+
+
+front_job:
+  image: node:latest
+  stage: front
+  artifacts:
+    paths:
+      - frontend
+  script:
+    - echo "building del front"
+    - "cd frontend"
+    - "npm install"
+    - "npm run build"

@@ -13,9 +13,18 @@ function Calendar() {
     const [dateRange, setDateRange] = useState([null, null]);
     const [startDate, endDate] = dateRange;
     const mobile = useMediaQuery({ query: '(max-width: 767px)' });
+    const {endDateCache,startDateCache} = useContext(SearchContext);
+
+    useEffect(()=>{
+
+        if(startDateCache&&endDateCache){
+            setDateRange([startDateCache._d,endDateCache._d]);
+        }
+
+    },[endDateCache,startDateCache]);
 
     return (
-        <DatePicker
+        <DatePicker 
             locale="es"
             selectsRange={true}
             startDate={startDate}
@@ -25,7 +34,7 @@ function Calendar() {
             }}
             isClearable={true}
             className="myDatePicker"
-            excludeDates={[addDays(new Date(), 1), addDays(new Date(), 5)]}
+           // excludeDates={[addDays(new Date(), 1), addDays(new Date(), 5)]}
             selectsDisabledDaysInRange
             monthsShown= {mobile ? 1 : 2}
             inline

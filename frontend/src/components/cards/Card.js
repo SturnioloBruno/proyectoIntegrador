@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Rating from '@mui/material/Rating';
 import Stack from '@mui/material/Stack';
@@ -10,16 +11,20 @@ import '../../styles/products/Maps.css'
 import '../../styles/cards/Card.css'
 
 function Card({id, title, src, address, description, category, punctuation, score, stars, services, latitude, longitude}) {
+    const [modal,setModal] = useState(false);
+
     //Para ver la modal
     function viewModal(e) {
         e.preventDefault();
         e.target.parentNode.parentNode.parentNode.parentNode.parentNode.querySelector(".div__map-modal").classList.remove("none");
+        setModal(!modal);
     }
 
     //Para ver la modal
     function closeModal(e) {
         e.preventDefault();
         e.target.parentNode.parentNode.querySelector(".div__map-modal").classList.add("none");
+        setModal(!modal);
     }
 
     return (
@@ -56,8 +61,11 @@ function Card({id, title, src, address, description, category, punctuation, scor
             <img src={src} alt={title} />
         </article>
         
-        <div className="div__map-modal none">
+        <div id="mapModal" className="div__map-modal none">
+            
             <Link to="#" class="a__close-modal" onClick={closeModal}>Cerrar</Link>
+
+            {modal?
             <div>
             {latitude&&longitude?
                 <MapContainer center={[latitude,longitude]} zoom={18} scrollWheelZoom={true}>
@@ -74,7 +82,8 @@ function Card({id, title, src, address, description, category, punctuation, scor
 
                 </MapContainer>:"Cargando.."/*VER QUE PONER CUANOD NO TIENE COORDENADAS*/
             }
-            </div>
+            </div>:""}
+
         </div>
         </> 
     )

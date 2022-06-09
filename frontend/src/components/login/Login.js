@@ -1,7 +1,6 @@
 import {useContext, useState} from 'react';
 import { Link , useNavigate} from "react-router-dom";
 import Button from "../Button";
-import Register from "./Register";
 import '../../styles/Login.css';
 import { UserContext } from "../Context/UserContext";
 

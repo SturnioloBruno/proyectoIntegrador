@@ -63,7 +63,7 @@ function Card({id, title, src, address, description, category, punctuation, scor
         
         <div id="mapModal" className="div__map-modal none">
             
-            <Link to="#" class="a__close-modal" onClick={closeModal}>Cerrar</Link>
+            <Link to="#" className="a__close-modal" onClick={closeModal}>Cerrar</Link>
 
             {modal?
             <div>

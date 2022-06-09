@@ -171,7 +171,7 @@ h2 {
 }
 
 .ul__services-list li.li__pileta::after {
-    background: url(../assets/icons/pool-blue.svg) no-repeat center center;
+    background: url(../assets/icons/pool-blue.svg) no-repeat center bottom;
     background-size: contain;
 }
 
@@ -181,7 +181,7 @@ h2 {
 }
 
 .ul__services-list li.li__cocina::after {
-    background: url(../assets/icons/kitchen-blue.svg) no-repeat center center;
+    background: url(../assets/icons/kitchen-blue.svg) no-repeat center bottom;
     background-size: contain;
 }
 

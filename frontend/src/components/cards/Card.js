@@ -9,7 +9,7 @@ import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility
 import '../../styles/products/Maps.css'
 import '../../styles/cards/Card.css'
 
-function Card({id, title, src, address, description, category, punctuation, score, stars, services, city, latitude, longitude}) {
+function Card({id, title, src, address, description, category, punctuation, score, stars, services, latitude, longitude}) {
     //Para ver la modal
     function viewModal(e) {
         e.preventDefault();

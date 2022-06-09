@@ -61,11 +61,16 @@ function Card({id, title, src, address, description, category, punctuation, scor
             <img src={src} alt={title} />
         </article>
         
+<<<<<<< HEAD
         <div id="mapModal" className="div__map-modal none">
             
             <Link to="#" class="a__close-modal" onClick={closeModal}>Cerrar</Link>
 
             {modal?
+=======
+        <div className="div__map-modal none">
+            <Link to="#" className="a__close-modal" onClick={closeModal}>Cerrar</Link>
+>>>>>>> 5cb7a1a82e5937e697526605effd87a73918b8d5
             <div>
             {latitude&&longitude?
                 <MapContainer center={[latitude,longitude]} zoom={18} scrollWheelZoom={true}>

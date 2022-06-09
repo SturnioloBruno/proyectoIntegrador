@@ -4,7 +4,7 @@ import '../styles/Footer.css';
 function Footer() {
     return (
         <footer>
-            <p>©2021 Digital Booking</p>
+            <p>©2022 Digital Booking</p>
             <ul>
                 <li><Link to="#" className="a__fb-white">Facebook</Link></li>
                 <li><Link to="#" className="a__li-white">LinkedIn</Link></li>

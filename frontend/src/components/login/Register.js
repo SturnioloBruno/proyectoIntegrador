@@ -188,7 +188,7 @@ function Register({type,handlerUser}) {
                 </label>
                 <Button text="Crear cuenta" type="submit" className="btn button__solid-type" />
             </form>
-            <p>¿Ya tienes una cuenta? <Link to="/login" element={<Login />}>Iniciar sesión</Link></p>
+            <p>¿Ya tienes una cuenta? <Link to="/login">Iniciar sesión</Link></p>
         </section>
     )
   }

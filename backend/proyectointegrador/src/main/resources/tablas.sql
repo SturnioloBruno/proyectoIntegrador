@@ -1,5 +1,5 @@
 SET FOREIGN_KEY_CHECKS = 0;
-DROP TABLE IF EXISTS `categories`,`cities`, `products`, `images`, `characteristics`, `products_characteristics`, `policies`, `products_policies`, `customers`, `punctuations`;
+DROP TABLE IF EXISTS `punctuations`, `customers`,`cities`, `images`, `policies`, `products_policies`, `characteristics`, `products_characteristics`,`products`,`categories`;
 SET FOREIGN_KEY_CHECKS = 1;
 
 CREATE TABLE IF NOT EXISTS categories (

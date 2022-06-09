@@ -12,23 +12,12 @@ registerLocale('es', es);
 function Calendar() {
     const [dateRange, setDateRange] = useState([null, null]);
     const [startDate, endDate] = dateRange;
-    const { endDateCache, startDateCache } = useContext(SearchContext);
     const mobile = useMediaQuery({ query: '(max-width: 767px)' });
-
-    useEffect(()=>{
-        if(endDateCache&&startDateCache){
-            setEndDate(endDateCache._d);
-            setStartDate(startDateCache._d)
-        }
-
-    },[endDateCache,startDateCache])
-
 
     return (
         <DatePicker
             locale="es"
             selectsRange={true}
-            selectsStart={startDateCache}
             startDate={startDate}
             endDate={endDate}
             onChange={(update) => {

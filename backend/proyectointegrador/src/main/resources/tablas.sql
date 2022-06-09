@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS `categories`,`cities`, `products`, `images`, `characteristics`, `products_characteristics`, `policies`, `products_policies`, `customers`, `punctuations`;
+
 CREATE TABLE IF NOT EXISTS categories (
 	cat_id INT NOT NULL AUTO_INCREMENT,
     cat_title VARCHAR(100) NOT NULL, 

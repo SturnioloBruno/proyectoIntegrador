@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import Search from '../components/Search';
 import Card from '../components/cards/Card';
 import "../styles/Home.css";
+import "../styles/Result.css";
 
 function Home({title}) {
   const [productsCities, setProductsCities] = useState(null);

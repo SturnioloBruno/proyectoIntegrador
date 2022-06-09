@@ -43,7 +43,7 @@ public class ProductService implements IProductService {
                 Collections.shuffle(productsDTO);
             }
         }
-        
+
         return productsDTO;
     }
 

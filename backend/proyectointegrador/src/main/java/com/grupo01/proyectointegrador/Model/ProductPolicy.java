@@ -13,7 +13,7 @@ public class ProductPolicy {
     @Column(name = "prod_policies_id")
     private Long id;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "prod_id", nullable = false)
     @JsonIgnore
     private Product product;

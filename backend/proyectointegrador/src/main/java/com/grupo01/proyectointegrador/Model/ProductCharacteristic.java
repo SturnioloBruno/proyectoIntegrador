@@ -13,7 +13,7 @@ public class ProductCharacteristic {
     @Column(name = "prod_charact_id")
     private Long id;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "prod_id", nullable = false)
     @JsonIgnore
     private Product product;

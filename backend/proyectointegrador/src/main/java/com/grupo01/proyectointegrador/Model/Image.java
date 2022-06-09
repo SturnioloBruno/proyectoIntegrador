@@ -16,7 +16,7 @@ public class Image {
     @Column(name = "img_url", nullable = false)
     private String nombreUrl;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "prod_id", nullable = false)
     @JsonIgnore
     private Product proId;
@@ -47,7 +47,7 @@ public class Image {
         this.nombreUrl = nombre_url;
     }
 
-    public Product getProId() {
+   public Product getProId() {
         return proId;
     }
 }

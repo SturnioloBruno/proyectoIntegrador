@@ -1,53 +1,54 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState ,useContext} from 'react';
 import { Link } from "react-router-dom";
 import Category from './cards/Category';
 import Card from '../components/cards/Card';
 import '../styles/Section.css';
+import { UserContext } from './Context/UserContext';
 
 function Section({ type, title }) {
     const [categories, setCategories] = useState(null);
     const [products, setProducts] = useState(null);
+    const {user} = useContext(UserContext);
 
     useEffect(()=>{
         if(type==="Category"){
-        //Cargo categorías
-        const getCategories = async()=>{
-            await fetch("http://localhost:8080/categories/getList",{
-                method:'GET',
-                headers:{
-                    'Content-Type':'application/json'
-                }
-            })
-            .then(function(respuesta){
-                return respuesta.json();
-            })
-            .then(function (categories) {
-                setCategories(categories);
-            })
-        }
-        getCategories();
+            //Cargo categorías
+            const getCategories = async()=>{
+                await fetch("http://localhost:8080/categories/getList",{
+                    method:'GET',
+                    headers:{
+                        'Content-Type':'application/json'
+                    }
+                })
+                .then(function(respuesta){
+                    return respuesta.json();
+                })
+                .then(function (categories) {
+                    setCategories(categories);
+                })
+            }
+            getCategories();
         }
 
         if(type==="Card"){
-        //Cargo productos
-        const getProducts = async()=>{
-            await fetch("http://localhost:8080/products/getListProducts",{
-                method:'GET',
-                headers:{
-                    'Content-Type':'application/json'
-                }
-            })
-            .then(function(respuesta){
-                return respuesta.json();
-            })
-            .then(function (products) {
-                setProducts(products)
-            })
+            //Cargo productos
+            const getProducts = async()=>{
+                await fetch(`http://localhost:8080/products/getListProducts${user?"?sort=true":"?sort=false"}`,{
+                    method:'GET',
+                    headers:{
+                        'Content-Type':'application/json'
+                    }
+                })
+                .then(function(respuesta){
+                    return respuesta.json();
+                })
+                .then(function (products) {
+                    setProducts(products)
+                })
+            }
+            getProducts();
         }
-        getProducts();
-        }
-        
-    },[type]);
+    },[type,user]);
 
     return (
         <>
@@ -64,7 +65,7 @@ function Section({ type, title }) {
             {type === "Card" &&
             <ul className="ul__accommodation-list">
                 {products?.map((product) => (
-                    <li key={product.id+"-prod"}><Card id={product.id} title={product.name} src={product.category.urlImagen} location={product.address} description={product.desc} category={product.category.title} punctuation={product.punctuation} score={product.score} stars={product.stars} services={product.characteristic} /></li>
+                    <li key={product.id+"-prod"}><Card id={product.id} title={product.name} src={product.images[0]?.nombre_url} address={product.address} description={product.desc} category={product.category.title} punctuation={product.punctuation} score={product.score} stars={product.stars} services={product.characteristic} latitude={product.y} longitude={product.x} /></li>
                 ))}
             </ul>
             }

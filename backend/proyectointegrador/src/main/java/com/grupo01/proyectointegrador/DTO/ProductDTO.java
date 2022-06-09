@@ -4,6 +4,7 @@ import com.grupo01.proyectointegrador.Model.Image;
 import com.grupo01.proyectointegrador.Model.ProductCharacteristic;
 import com.grupo01.proyectointegrador.Model.ProductPolicy;
 
+import java.util.List;
 import java.util.Set;
 
 public class ProductDTO {
@@ -19,9 +20,9 @@ public class ProductDTO {
     private String score;
     private CityDTO city;
     private CategoryDTO category;
-    private Set<Image> images;
-    private Set<ProductCharacteristic> characteristic;
-    private Set<ProductPolicy> policy;
+    private List<Image> images;
+    private List<ProductCharacteristic> characteristic;
+    private List<ProductPolicy> policy;
 
     public Long getId() {
         return id;
@@ -107,27 +108,27 @@ public class ProductDTO {
         this.category = category;
     }
 
-    public Set<Image> getImages() {
+    public List<Image> getImages() {
         return images;
     }
 
-    public void setImages(Set<Image> images) {
+    public void setImages(List<Image> images) {
         this.images = images;
     }
 
-    public Set<ProductCharacteristic> getCharacteristic() {
+    public List<ProductCharacteristic> getCharacteristic() {
         return characteristic;
     }
 
-    public void setCharacteristic(Set<ProductCharacteristic> characteristic) {
+    public void setCharacteristic(List<ProductCharacteristic> characteristic) {
         this.characteristic = characteristic;
     }
 
-    public Set<ProductPolicy> getPolicy() {
+    public List<ProductPolicy> getPolicy() {
         return policy;
     }
 
-    public void setPolicy(Set<ProductPolicy> policy) {
+    public void setPolicy(List<ProductPolicy> policy) {
         this.policy = policy;
     }
 }

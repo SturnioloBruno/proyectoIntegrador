@@ -36,7 +36,7 @@ function Home({title}) {
           <h2>{title === undefined ? `Resultados de: ${category}` : title}</h2>
           <ul className="ul__accommodation-list">
             {productsCities?.map((city) => {
-              return <li key={city?.id}><Card id={city?.id} title={city?.name} src={city?.category.urlImagen} location={city?.address} description={city?.desc} category={city?.category.title} punctuation={city?.punctuation} stars={city?.stars} score={city?.score} /></li>;
+              return <li key={city?.id}><Card id={city?.id} title={city?.name} src={city?.category.urlImagen} address={city?.address} description={city?.desc} category={city?.category.title} punctuation={city?.punctuation} stars={city?.stars} score={city?.score} latitude={city?.y} longitude={city?.x} services={city?.characteristic} /></li>;
             })}
           </ul>
         </section>

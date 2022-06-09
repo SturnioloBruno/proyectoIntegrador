@@ -1,0 +1,42 @@
+stages:
+  - build
+#  - test
+  - artefactback
+  - front
+
+build_job:
+  image: maven:latest
+  stage: build
+  script:
+    - echo "Maven compile started"
+    - "cd backend/proyectointegrador"
+    - "mvn compile"
+
+#test_job:
+#  stage: test
+#  script:
+#    - "mvn test"
+
+artifact_back:
+  image: maven:latest
+  stage: artefactback
+  artifacts:
+    paths:
+      - backend/proyectointegrador/target/*.jar
+  script:
+    - echo "Maven building api"
+    - "cd backend/proyectointegrador"
+    - "mvn package"
+
+
+front_job:
+  image: node:latest
+  stage: front
+  artifacts:
+    paths:
+      - frontend
+  script:
+    - echo "building del front"
+    - "cd frontend"
+    - "npm install"
+    - "npm run build"

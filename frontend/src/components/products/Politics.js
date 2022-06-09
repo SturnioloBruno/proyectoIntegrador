@@ -1,13 +1,18 @@
-function Politis({policy}) {
+function Politics({policy}) {
+    const listPolicy = policy?.map((policy) => (
+        JSON.parse((policy?.policy.desc).replace(/'/g, '"'))
+    ))
     return (
         <section className="section__politics section__title-border">
             <h2>Qué tenés que saber</h2>
             <ul>
                 {policy?.map((policy) => (
-                    <li>
+                    <li key={policy.policy.id}>
                         <h3>{policy.policy.title}</h3>
                         <ul>
-                            <li>{policy.policy.desc}</li>
+                            {listPolicy[policy.policy.id - 1]?.map((list, i) => (
+                                <li key={i}>{list}</li>
+                            ))}
                         </ul>
                     </li>
                 ))}
@@ -16,4 +21,4 @@ function Politis({policy}) {
     )
 }
 
-export default Politis;
+export default Politics;

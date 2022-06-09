@@ -300,7 +300,7 @@
 
     .article__info-product .button__open-gallery {
         position: absolute;
-        bottom: 1.5em;
+        bottom: 2.5em;
         right: calc(5% + 1.5em);
         text-decoration: underline;
         color: white;

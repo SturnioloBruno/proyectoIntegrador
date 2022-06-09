@@ -1,4 +1,6 @@
+SET FOREIGN_KEY_CHECKS = 0;
 DROP TABLE IF EXISTS `categories`,`cities`, `products`, `images`, `characteristics`, `products_characteristics`, `policies`, `products_policies`, `customers`, `punctuations`;
+SET FOREIGN_KEY_CHECKS = 1;
 
 CREATE TABLE IF NOT EXISTS categories (
 	cat_id INT NOT NULL AUTO_INCREMENT,

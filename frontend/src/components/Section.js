@@ -12,43 +12,42 @@ function Section({ type, title }) {
 
     useEffect(()=>{
         if(type==="Category"){
-        //Cargo categorías
-        const getCategories = async()=>{
-            await fetch("http://localhost:8080/categories/getList",{
-                method:'GET',
-                headers:{
-                    'Content-Type':'application/json'
-                }
-            })
-            .then(function(respuesta){
-                return respuesta.json();
-            })
-            .then(function (categories) {
-                setCategories(categories);
-            })
-        }
-        getCategories();
+            //Cargo categorías
+            const getCategories = async()=>{
+                await fetch("http://localhost:8080/categories/getList",{
+                    method:'GET',
+                    headers:{
+                        'Content-Type':'application/json'
+                    }
+                })
+                .then(function(respuesta){
+                    return respuesta.json();
+                })
+                .then(function (categories) {
+                    setCategories(categories);
+                })
+            }
+            getCategories();
         }
 
         if(type==="Card"){
-        //Cargo productos
-        const getProducts = async()=>{
-            await fetch(`http://localhost:8080/products/getListProducts${user?"?sort=true":"?sort=false"}`,{
-                method:'GET',
-                headers:{
-                    'Content-Type':'application/json'
-                }
-            })
-            .then(function(respuesta){
-                return respuesta.json();
-            })
-            .then(function (products) {
-                setProducts(products)
-            })
+            //Cargo productos
+            const getProducts = async()=>{
+                await fetch(`http://localhost:8080/products/getListProducts${user?"?sort=true":"?sort=false"}`,{
+                    method:'GET',
+                    headers:{
+                        'Content-Type':'application/json'
+                    }
+                })
+                .then(function(respuesta){
+                    return respuesta.json();
+                })
+                .then(function (products) {
+                    setProducts(products)
+                })
+            }
+            getProducts();
         }
-        getProducts();
-        }
-        
     },[type,user]);
 
     return (

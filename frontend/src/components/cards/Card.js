@@ -12,7 +12,7 @@ function Card({id, title, src, location, description, category, punctuation, sco
                         <div className="div__category-stars">
                            <p className="p__category-name">{category}</p>
                            <Stack spacing={1}>
-                                <Rating name="half-rating-read" size="small" defaultValue={stars + ".0"} value={stars + ".0"} precision={0.5} emptyIcon={<StarIcon fontSize="inherit" style={{ opacity: 0.5 }} />} readOnly />
+                                <Rating name="half-rating-read" size="small" defaultValue={stars} value={stars} precision={0.5} emptyIcon={<StarIcon fontSize="inherit" style={{ opacity: 0.5 }} />} readOnly />
                             </Stack>
                         </div>
                         <h3>{title}</h3>

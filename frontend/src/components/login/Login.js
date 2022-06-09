@@ -148,7 +148,7 @@ function Login({ type }) {
 
                 <Button text="Ingresar" type="submit" className="btn button__solid-type" />
             </form>
-            <p>¿Aún no tenes cuenta? <Link to="/register" element={<Register />}>Registrate</Link></p>
+            <p>¿Aún no tenes cuenta? <Link to="/register">Registrate</Link></p>
         </section>
     )
   }

@@ -35,7 +35,7 @@ function Product() {
             })
         }      
         getProduct();
-    },[]);
+    },[id]);
 
     return <article className="article__info-product">
         <HeaderProduct name={product?.name} category={product?.category.title} />

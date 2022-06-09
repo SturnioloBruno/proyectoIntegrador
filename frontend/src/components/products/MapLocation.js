@@ -10,7 +10,7 @@ function MapLocation({city,latitude,longitude,title,address}) {
         <section className="section__map-location section__title-border">
             <h2>¿Dónde vas a estar?</h2>
             <p className="p__bold-style">{address}, {city}</p>
-            <div>{latitude&&longitude?
+            <div id="section__map-location">{latitude&&longitude?
 
             <MapContainer center={[latitude,longitude]} zoom={18} scrollWheelZoom={true}>
               

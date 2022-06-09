@@ -2,16 +2,35 @@ import { Link } from "react-router-dom";
 import Rating from '@mui/material/Rating';
 import Stack from '@mui/material/Stack';
 import StarIcon from '@mui/icons-material/Star';
+import { MapContainer, TileLayer , Popup , Marker } from 'react-leaflet'
+import 'leaflet/dist/leaflet.css'
+import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.webpack.css'; // Re-uses images from ~leaflet package
+import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility';
+import '../../styles/products/Maps.css'
+import '../../styles/cards/Card.css'
 
-function Card({id, title, src, location, description, category, punctuation, score, stars, services}) {
+function Card({id, title, src, address, description, category, punctuation, score, stars, services, city, latitude, longitude}) {
+    //Para ver la modal
+    function viewModal(e) {
+        e.preventDefault();
+        e.target.parentNode.parentNode.parentNode.parentNode.parentNode.querySelector(".div__map-modal").classList.remove("none");
+    }
+
+    //Para ver la modal
+    function closeModal(e) {
+        e.preventDefault();
+        e.target.parentNode.parentNode.querySelector(".div__map-modal").classList.add("none");
+    }
+
     return (
+        <>
         <article>
             <div>
                 <div className="div__info-accommodation">
                     <div>
                         <div className="div__category-stars">
-                           <p className="p__category-name">{category}</p>
-                           <Stack spacing={1}>
+                        <p className="p__category-name">{category}</p>
+                        <Stack spacing={1}>
                                 <Rating name="half-rating-read" size="small" defaultValue={stars} value={stars} precision={0.5} emptyIcon={<StarIcon fontSize="inherit" style={{ opacity: 0.5 }} />} readOnly />
                             </Stack>
                         </div>
@@ -22,7 +41,7 @@ function Card({id, title, src, location, description, category, punctuation, sco
                         <p>{score}</p>
                     </div>
                 </div>
-                <p className="p__accommodation-direction">{location} <Link to="#">mostrar <span>en el mapa</span></Link></p>
+                <p className="p__accommodation-direction">{address} <Link to="/" onClick={viewModal}>mostrar <span>en el mapa</span></Link></p>
                 <ul className="ul__services-list">
                     {services?.map((service) => (
                         <li key={service.characteristic.id} className={`li__${(service.characteristic.title.toLowerCase().replace(/\s+/g, '-'))}`}>{service.characteristic.title}</li>
@@ -36,6 +55,28 @@ function Card({id, title, src, location, description, category, punctuation, sco
             </div>
             <img src={src} alt={title} />
         </article>
+        
+        <div className="div__map-modal none">
+            <Link to="#" class="a__close-modal" onClick={closeModal}>Cerrar</Link>
+            <div>
+            {latitude&&longitude?
+                <MapContainer center={[latitude,longitude]} zoom={18} scrollWheelZoom={true}>
+                
+                <TileLayer
+                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    />
+                    <Marker position={[latitude,longitude]} animate={true} title={title}>
+                        <Popup>
+                        <strong> {title}</strong> <br /> {address}
+                        </Popup>
+                    </Marker>
+
+                </MapContainer>:"Cargando.."/*VER QUE PONER CUANOD NO TIENE COORDENADAS*/
+            }
+            </div>
+        </div>
+        </> 
     )
 }
 

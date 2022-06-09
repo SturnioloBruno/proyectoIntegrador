@@ -1,6 +1,7 @@
 import React, { useState,useContext, useEffect } from "react";
 import { useMediaQuery } from 'react-responsive';
 import DatePicker from "react-datepicker";
+import { addDays } from 'date-fns';
 import "react-datepicker/dist/react-datepicker.css";
 import "../../styles/products/Calendar.css";
 import { registerLocale } from  "react-datepicker";
@@ -9,17 +10,11 @@ import { SearchContext } from "../Context/SearchContext";
 registerLocale('es', es);
 
 function Calendar() {
-    const [startDate, setStartDate] = useState(new Date());
-    const [endDate, setEndDate] = useState(null);
-    const { endDateCache,startDateCache } = useContext(SearchContext);
+    const [dateRange, setDateRange] = useState([null, null]);
+    const [startDate, endDate] = dateRange;
+    const { endDateCache, startDateCache } = useContext(SearchContext);
     const mobile = useMediaQuery({ query: '(max-width: 767px)' });
 
-    const onChange = (dates) => {
-        const [start, end] = dates;
-        setStartDate(start);
-        setEndDate(end);
-    };
-   
     useEffect(()=>{
         if(endDateCache&&startDateCache){
             setEndDate(endDateCache._d);
@@ -28,17 +23,20 @@ function Calendar() {
 
     },[endDateCache,startDateCache])
 
+
     return (
         <DatePicker
             locale="es"
-            selected={startDate}
-            onChange={onChange}
+            selectsRange={true}
+            selectsStart={startDateCache}
             startDate={startDate}
             endDate={endDate}
-            selectsRange
-            selectsStart={startDateCache}
+            onChange={(update) => {
+                setDateRange(update);
+            }}
+            isClearable={true}
             className="myDatePicker"
-          //  excludeDates={[addDays(new Date(), 1), addDays(new Date(), 5)]}
+            excludeDates={[addDays(new Date(), 1), addDays(new Date(), 5)]}
             selectsDisabledDaysInRange
             monthsShown= {mobile ? 1 : 2}
             inline

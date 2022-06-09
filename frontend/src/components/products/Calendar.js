@@ -34,7 +34,7 @@ function Calendar() {
             }}
             isClearable={true}
             className="myDatePicker"
-           // excludeDates={[addDays(new Date(), 1), addDays(new Date(), 5)]}
+            excludeDates={[addDays(new Date(), 1), addDays(new Date(), 5)]}
             selectsDisabledDaysInRange
             monthsShown= {mobile ? 1 : 2}
             inline

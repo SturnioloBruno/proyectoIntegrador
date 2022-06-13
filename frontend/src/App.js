@@ -7,6 +7,7 @@ import Login from './components/Login/Login';
 import Register from './components/Login/Register';
 import Result from "./components/Result";
 import Footer from './components/Footer';
+import SuccessfulBooking from "./components/Booking/SuccessfulBooking";
 import { UserProvider } from './components/Context/UserContext';
 import { SearchProvider } from './components/Context/SearchContext';
 
@@ -24,6 +25,7 @@ function App() {
         <Route path="/categories/" element={<Result type="categories" />} />
         <Route path="/login" element={<Login  type="login" />} />
         <Route path="/register" element={<Register type="register" />} />
+        <Route path="/ok" element={<SuccessfulBooking type="ok" />} />
       </Routes>
 
       <Footer />

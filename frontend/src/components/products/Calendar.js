@@ -6,7 +6,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import "../../styles/products/Calendar.css";
 import { registerLocale } from  "react-datepicker";
 import es from 'date-fns/locale/es';
-import { SearchContext } from "../Context/SearchContext";
+import { SearchContext } from "../context/SearchContext";
 registerLocale('es', es);
 
 function Calendar() {

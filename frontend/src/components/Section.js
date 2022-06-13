@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Category from './cards/Category';
 import Card from '../components/cards/Card';
 import '../styles/Section.css';
-import { UserContext } from './Context/UserContext';
+import { UserContext } from './context/UserContext';
 
 function Section({ type, title }) {
     const [categories, setCategories] = useState(null);

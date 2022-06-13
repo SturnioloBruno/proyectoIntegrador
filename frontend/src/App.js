@@ -7,8 +7,8 @@ import Login from './components/login/Login';
 import Register from './components/login/Register';
 import Result from "./components/Result";
 import Footer from './components/Footer';
-import { UserProvider } from './components/Context/UserContext';
-import { SearchProvider } from './components/Context/SearchContext';
+import { UserProvider } from './components/context/UserContext';
+import { SearchProvider } from './components/context/SearchContext';
 
 function App() {
   return (

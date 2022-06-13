@@ -4,7 +4,7 @@ import '../styles/Header.css';
 import { Link } from "react-router-dom";
 import Login from "./login/Login";
 import Register from "./login/Register";
-import { UserContext } from './Context/UserContext';
+import { UserContext } from './context/UserContext';
 
 function Header() {
     const {user,setUser} = useContext(UserContext);

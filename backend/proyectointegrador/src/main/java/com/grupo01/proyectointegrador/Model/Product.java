@@ -63,6 +63,9 @@ public class Product {
     @OneToMany(mappedBy = "prodId", fetch = FetchType.LAZY)
     private List<Punctuation> punctProd;
 
+    @OneToMany(mappedBy = "prodId", fetch = FetchType.LAZY)
+    private Set<Booking> bookings;
+
     public Product() {
     }
 

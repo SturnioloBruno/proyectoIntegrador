@@ -2,7 +2,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination } from "swiper";
 import 'swiper/css';
 import "swiper/css/pagination";
-import "../../styles/products/GalleryMobile.css";
+import "../../styles/Products/GalleryMobile.css";
 
 function GalleryMobile({srcImg, altImg}) {
     return (

@@ -3,10 +3,10 @@ import { useMediaQuery } from 'react-responsive';
 import DatePicker from "react-datepicker";
 import { addDays } from 'date-fns';
 import "react-datepicker/dist/react-datepicker.css";
-import "../../styles/products/Calendar.css";
+import "../../styles/Products/Calendar.css";
 import { registerLocale } from  "react-datepicker";
 import es from 'date-fns/locale/es';
-import { SearchContext } from "../context/SearchContext";
+import { SearchContext } from "../Context/SearchContext";
 registerLocale('es', es);
 
 function Calendar() {

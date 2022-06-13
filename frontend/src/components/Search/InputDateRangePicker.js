@@ -2,7 +2,7 @@ import React from "react";
 import { DateRangePicker } from "react-dates";
 import { useEffect, useState} from "react";
 import "react-dates/lib/css/_datepicker.css";
-import "../../styles/DateRangePicker.css";
+import "../../styles/Search/DateRangePicker.css";
 import "react-dates/initialize";
 import moment from "moment";
 import "moment/locale/es";

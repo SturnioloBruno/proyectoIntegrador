@@ -2,13 +2,13 @@ import React, {Fragment } from 'react';
 import { Routes, Route } from "react-router-dom";
 import Header from './components/Header';
 import Home from './Home';
-import Product from './components/products/Product';
-import Login from './components/login/Login';
-import Register from './components/login/Register';
+import Product from './components/Products/Product';
+import Login from './components/Login/Login';
+import Register from './components/Login/Register';
 import Result from "./components/Result";
 import Footer from './components/Footer';
-import { UserProvider } from './components/context/UserContext';
-import { SearchProvider } from './components/context/SearchContext';
+import { UserProvider } from './components/Context/UserContext';
+import { SearchProvider } from './components/Context/SearchContext';
 
 function App() {
   return (

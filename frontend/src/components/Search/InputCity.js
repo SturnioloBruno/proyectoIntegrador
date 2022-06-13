@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
-import { SearchContext } from "../context/SearchContext";
+import { SearchContext } from "../Context/SearchContext";
 
 const InputCity = ({ cities }) => {
   const [searchTerm, setSearchTerm] = useState("");

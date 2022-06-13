@@ -7,8 +7,8 @@ import { MapContainer, TileLayer , Popup , Marker } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css'
 import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.webpack.css'; // Re-uses images from ~leaflet package
 import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility';
-import '../../styles/products/Maps.css'
-import '../../styles/cards/Card.css'
+import '../../styles/Products/Maps.css'
+import '../../styles/Cards/Card.css'
 
 function Card({id, title, src, address, description, category, punctuation, score, stars, services, latitude, longitude}) {
     const [modal,setModal] = useState(false);

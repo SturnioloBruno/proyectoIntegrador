@@ -3,7 +3,7 @@ import { MapContainer, TileLayer , Popup , Marker } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css'
 import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.webpack.css'; // Re-uses images from ~leaflet package
 import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility';
-import '../../styles/products/Maps.css'
+import '../../styles/Products/Maps.css'
 
 function MapLocation({city,latitude,longitude,title,address}) {
     return (

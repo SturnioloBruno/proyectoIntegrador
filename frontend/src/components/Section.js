@@ -1,9 +1,9 @@
 import { useEffect, useState ,useContext} from 'react';
 import { Link } from "react-router-dom";
-import Category from './cards/Category';
-import Card from '../components/cards/Card';
+import Category from './Cards/Category';
+import Card from './Cards/Card';
 import '../styles/Section.css';
-import { UserContext } from './context/UserContext';
+import { UserContext } from './Context/UserContext';
 
 function Section({ type, title }) {
     const [categories, setCategories] = useState(null);

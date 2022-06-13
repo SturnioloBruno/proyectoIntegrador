@@ -1,10 +1,10 @@
 import {useEffect,useState,useContext} from 'react';
 import { useNavigate} from "react-router-dom";
-import Button from "./Button";
-import '../styles/Search.css';
-import InputCity from './search/InputCity';
-import InputDateRangePicker from './search/InputDateRangePicker';
-import { SearchContext } from './context/SearchContext';
+import Button from "../Button";
+import '../../styles/Search/Search.css';
+import InputCity from './InputCity';
+import InputDateRangePicker from './InputDateRangePicker';
+import { SearchContext } from '../Context/SearchContext';
 
 function Search() {
     const inputLocality = document.getElementById("input__locality")

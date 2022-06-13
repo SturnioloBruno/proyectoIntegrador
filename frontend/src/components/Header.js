@@ -2,9 +2,9 @@ import {useContext} from 'react';
 import Title from "./Title";
 import '../styles/Header.css';
 import { Link } from "react-router-dom";
-import Login from "./login/Login";
-import Register from "./login/Register";
-import { UserContext } from './context/UserContext';
+import Login from "./Login/Login";
+import Register from "./Login/Register";
+import { UserContext } from './Context/UserContext';
 
 function Header() {
     const {user,setUser} = useContext(UserContext);

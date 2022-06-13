@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from "react-router-dom";
-import Search from '../components/Search';
-import Card from '../components/cards/Card';
+import Search from './Search/Search';
+import Card from './Cards/Card';
 import "../styles/Home.css";
 import "../styles/Result.css";
 

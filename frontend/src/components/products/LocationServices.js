@@ -1,4 +1,4 @@
-import "../../styles/products/LocationServices.css";
+import "../../styles/Products/LocationServices.css";
 
 function LocationServices({services}) {
     return (

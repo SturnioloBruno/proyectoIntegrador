@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ReactBnbGallery from 'react-bnb-gallery';
 import 'react-bnb-gallery/dist/style.css';
-import "../../styles/products/GalleryDesktop.css";
+import "../../styles/Products/GalleryDesktop.css";
 
 function GalleryDesktop({srcImg, altImg}) {
     let photos = [];

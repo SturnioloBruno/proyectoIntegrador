@@ -10,7 +10,7 @@ import LocationServices from "./LocationServices";
 import MapLocation from "./MapLocation";
 import Politics from './Politics';
 import HotelDate from "./HotelDate";
-import "../../styles/products/Product.css";
+import "../../styles/Products/Product.css";
 
 function Product() {
     const mobileTablet = useMediaQuery({ query: '(max-width: 1024px)' });

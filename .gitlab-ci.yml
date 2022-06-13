@@ -2,6 +2,7 @@ stages:
 #  - test
   - artefactback
   - front
+  - deploy
 
 #test_job:
 #  stage: test
@@ -13,7 +14,7 @@ artifact_back:
   stage: artefactback
   artifacts:
     paths:
-      - backend/proyectointegrador/target/*.jar
+      - backend/proyectointegrador/target/consoleapp.jar
   script:
     - echo "Maven building api"
     - "cd backend/proyectointegrador"
@@ -32,3 +33,22 @@ front_job:
     - "cd frontend"
     - "npm install"
     - "npm run build"
+
+
+deploy:
+    stage: deploy
+    image: alpine:3.11
+    before_script:
+        - apk update && apk add openssh-client bash
+        - mkdir -p ~/.ssh
+        - eval $(ssh-agent -s)
+        - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
+        - touch ~/.ssh/config
+        - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+        - ssh-keyscan -H $DEPLOY_SERVER_IP >> ~/.ssh/known_hosts
+    script:
+        - ssh ubuntu@$DEPLOY_SERVER_IP "sudo apt-get update"
+        - ssh ubuntu@$DEPLOY_SERVER_IP "sudo apt install openjdk-8-jdk -y"
+        - ssh ubuntu@$DEPLOY_SERVER_IP "sudo systemctl stop consoleapp.service"
+        - scp ./target/consoleapp.jar ubuntu@$DEPLOY_SERVER_IP:~/console-app/
+        - ssh ubuntu@$DEPLOY_SERVER_IP "sudo systemctl start consoleapp.service"

@@ -14,7 +14,7 @@ artifact_back:
   stage: artefactback
   artifacts:
     paths:
-      - backend/proyectointegrador/target/consoleapp.jar
+      - backend/proyectointegrador/target/*.jar
   script:
     - echo "Maven building api"
     - "cd backend/proyectointegrador"
@@ -50,5 +50,5 @@ deploy:
         - ssh ubuntu@$DEPLOY_SERVER_IP "sudo apt-get update"
         - ssh ubuntu@$DEPLOY_SERVER_IP "sudo apt install openjdk-8-jdk -y"
         - ssh ubuntu@$DEPLOY_SERVER_IP "sudo systemctl stop consoleapp.service"
-        - scp /backend/proyectointegrador/target/consoleapp.jar ubuntu@$DEPLOY_SERVER_IP:~/console-app/
+        - scp ./backend/proyectointegrador/target/*.jar ubuntu@$DEPLOY_SERVER_IP:~/console-app/
         - ssh ubuntu@$DEPLOY_SERVER_IP "sudo systemctl start consoleapp.service"

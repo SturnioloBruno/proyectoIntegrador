@@ -35,13 +35,17 @@ function Booking() {
     return (
         <section className='section__booking-hotel'>
             <HeaderProduct name={product?.name} category={product?.category.title} />
-            <Form />
-            <section className='section__booking-date'>
-                <h2>Seleccioná tu fecha de reserva</h2>
-                <Calendar />
-            </section>
-            <Hour />
-            <Details src={product?.images[0]?.nombre_url} name={product?.name} category={product?.category.title} address={product?.address} city={product? product.city?.cityName + ", " + product.city?.country : ""} stars={product?.stars} />
+            <div className='div__booking-hotel'>
+                <div>
+                    <Form />
+                    <section className='section__booking-date'>
+                        <h2>Seleccioná tu fecha de reserva</h2>
+                        <Calendar />
+                    </section>
+                    <Hour />
+                </div>
+                <Details src={product?.images[0]?.nombre_url} name={product?.name} category={product?.category.title} address={product?.address} city={product? product.city?.cityName + ", " + product.city?.country : ""} stars={product?.stars} />
+            </div>
             <Politics policy={product?.policy} />
         </section>
     )

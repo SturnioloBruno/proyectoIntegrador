@@ -79,3 +79,46 @@
         padding: 0;
     }
 }
+
+@media (min-width: 1280px) {
+    .section__booking-details {
+        padding: 5.4em 5% 2em 1em;
+        width: 40%;
+    }
+
+    .section__booking-details h2 {
+        padding: 0 1em 1em;
+    }
+
+    .section__booking-details > div {
+        padding: 2em 0;
+        height: 100%;
+    }
+
+    .section__booking-details .div__hotel-details {
+        flex-direction: column;
+        justify-content: flex-start;
+        height: 100%;
+    }
+
+    .section__booking-details .div__hotel-details > div {
+        padding: 1em 1.5em 0;
+        width: 100%;
+        height: calc(100% - 348px);
+        display: flex;
+        flex-direction: column;
+    }
+
+    .section__booking-details img {
+        width: 100%;
+        height: 300px;
+    }
+
+    .section__booking-details ul {
+        flex: 14;
+    }
+
+    .section__booking-details .btn {
+        flex: 1;
+    }
+}

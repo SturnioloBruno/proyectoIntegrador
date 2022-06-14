@@ -27,3 +27,29 @@ section .div__background-white {
         padding: 98px 0 0;
     }
 }
+
+@media (min-width: 1280px) {
+    .section__booking-hotel .div__booking-hotel {
+        display: flex;
+    }
+
+    .div__booking-hotel > div {
+        width: 60%;
+    }
+
+    .div__booking-hotel > div section {
+        padding: 2em 1em 2em 5%;
+    }
+
+    .div__booking-hotel > div .section__booking-date, .div__booking-hotel > div .section__booking-hour {
+        padding-top: 0;
+    }
+
+    .section__booking-politics.section__title-border {
+        padding: 2em 0 0;
+    }
+
+    .section__booking-politics.section__politics > ul > li {
+        margin-bottom: 2em;
+    }
+}

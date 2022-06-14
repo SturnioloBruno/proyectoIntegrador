@@ -3,9 +3,11 @@ package com.grupo01.proyectointegrador.Service;
 import com.grupo01.proyectointegrador.Model.Booking;
 import com.grupo01.proyectointegrador.Repository.IBookingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+@Service
 public class BookingService {
 
     @Autowired

@@ -41,6 +41,43 @@ h1, h2, h3, h4, p, button {
     line-height: 130%;
 }
 
+.p__category-name {
+    text-transform: uppercase;
+    color: var(--grey);
+    opacity: .6;
+    margin-right: .3em;
+    font-size: 14px;
+}
+
+.p__accommodation-direction {
+    color: var(--grey);
+    display: -webkit-inline-box;
+    margin-top: 1em;
+    font-size: 14px;
+}
+
+.p__accommodation-direction::before {
+    content: "";
+    width: 16px;
+    height: 16px;
+    display: block;
+    background: url(../assets/icons/location.svg) no-repeat center center;
+    background-size: contain;
+}
+
+.section__title-border {
+    padding: 1.5em 0 0;
+}
+
+.section__title-border h2 {
+    border-bottom: 1px solid var(--orange);
+    padding-bottom: 1em;
+}
+
+.section__title-border > * {
+    padding: 0 5%;
+}
+
 .btn {
     padding: 1em 3em;
     border-radius: 5px;
@@ -93,6 +130,10 @@ input.error {
     background: #FFE1E1;
 }
 
+input:disabled {
+    background: var(--light-grey);
+}
+
 .small__error{
     margin-top: 1em;
     color: #FF0000;
@@ -105,6 +146,12 @@ input.error {
 
 .MuiRating-iconFilled {
     color: var(--orange);
+}
+
+@media (min-width: 1024px) {
+    .section__title-border {
+        padding: 3em 0 0;
+    }
 }
 
 @media (min-width: 1280px) {

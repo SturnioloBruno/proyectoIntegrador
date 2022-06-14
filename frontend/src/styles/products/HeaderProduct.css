@@ -1,0 +1,30 @@
+.section__header-product {
+    padding: 1em 5%;
+    background-color: var(--grey);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.section__header-product .div__info-name {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.section__header-product h2, .section__header-product p {
+    color: white;
+}
+
+.section__header-product p {
+    text-transform: uppercase;
+}
+
+.section__header-product .a__show-more::after {
+    content: "";
+    width: 24px;
+    height: 24px;
+    display: block;
+    background: url(../../assets/icons/show.svg) no-repeat center center;
+    background-size: contain;
+}
+

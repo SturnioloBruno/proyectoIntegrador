@@ -89,21 +89,6 @@ h2 {
     margin-bottom: .5em;
 }
 
-.p__category-name {
-    text-transform: uppercase;
-    color: var(--grey);
-    opacity: .6;
-    margin-right: .3em;
-    font-size: 14px;
-}
-
-.p__accommodation-direction {
-    color: var(--grey);
-    display: -webkit-inline-box;
-    margin-top: 1em;
-    font-size: 14px;
-}
-
 .p__accommodation-direction a:hover {
     text-decoration: underline;
 }
@@ -127,15 +112,6 @@ h2 {
 .div__puntuation-number p {
     color: var(--grey);
     font-size: 14px;
-}
-
-.p__accommodation-direction::before {
-    content: "";
-    width: 16px;
-    height: 16px;
-    display: block;
-    background: url(../assets/icons/location.svg) no-repeat center center;
-    background-size: contain;
 }
 
 .p__accommodation-direction a {

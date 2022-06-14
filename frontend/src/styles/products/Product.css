@@ -10,49 +10,6 @@
     margin-bottom: 1em;
 }
 
-.article__info-product .section__title-border {
-    padding: 1.5em 0 0;
-}
-
-.article__info-product .section__title-border h2 {
-    border-bottom: 1px solid var(--orange);
-    padding-bottom: 1em;
-}
-
-.article__info-product .section__title-border > * {
-    padding: 0 5%;
-}
-
-.article__info-product .section__header-product {
-    padding: 1em 5%;
-    background-color: var(--grey);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.article__info-product .section__header-product .div__info-name {
-    display: flex;
-    flex-direction: column-reverse;
-}
-
-.article__info-product .section__header-product h2, .section__header-product p {
-    color: white;
-}
-
-.article__info-product .section__header-product p {
-    text-transform: uppercase;
-}
-
-.article__info-product .section__header-product .a__show-more::after {
-    content: "";
-    width: 24px;
-    height: 24px;
-    display: block;
-    background: url(../../assets/icons/show.svg) no-repeat center center;
-    background-size: contain;
-}
-
 .article__info-product .section__address-score {
     padding: 1em 5%;
     background: rgba(49, 54, 63, .1);
@@ -168,14 +125,6 @@
     width: 100%;
 }
 
-.article__info-product .section__politics ul li h3, .article__info-product .section__politics ul li ul li {
-    margin-bottom: 1em;
-}
-
-.article__info-product .section__politics > ul > li {
-    margin-bottom: 1.5em;
-}
-
 @media (min-width: 768px) {
     .article__info-product {
         padding: 98px 0 0;
@@ -244,25 +193,11 @@
     .article__info-product .section__hotel-date button.btn {
         width: auto;
     }
-
-    .article__info-product .section__politics > ul {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-    }
-
-    .article__info-product .section__politics > ul > li {
-        width: calc(50% - .75em);
-    }
 }
 
 @media (min-width: 1024px) {
     .article__info-product section {
         padding: 2em 5% 0;    
-    }
-
-    .article__info-product .section__title-border {
-        padding: 3em 0 0;
     }
 
     .article__info-product .div__buttons-bar {
@@ -333,20 +268,6 @@
 
     .article__info-product .section__hotel-date .div__calendar-info .div__button-selected button {
         width: 100%;
-    }
-
-    .article__info-product .section__politics > ul {
-        margin-top: 3em;
-        justify-content: flex-start;
-    }
-
-    .article__info-product .section__politics > ul > li {
-        width: calc(25% - 1.5em);
-        margin-right: 3em;
-    }
-
-    .article__info-product .section__politics > ul > li {
-        margin-bottom: 3em;
     }
 
     .div__calendar-info > div:first-of-type {

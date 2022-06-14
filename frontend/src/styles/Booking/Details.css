@@ -1,0 +1,48 @@
+.section__booking-details {
+    padding-top: 0;
+}
+
+.section__booking-details h2 {
+    padding: 0 1em 1em;
+}
+
+.section__booking-details > div {
+    padding: 2em 0;
+    background-color: white;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+}
+
+.section__booking-details h3 {
+    margin: .2em 0 .3em;
+}
+
+.section__booking-details .p__accommodation-direction {
+    margin-top: 1.5em;
+}
+
+.section__booking-details img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.section__booking-details > div > div {
+    padding: 1em 1.5em 0;
+}
+
+.section__booking-details ul {
+    padding-top: 1em;
+}
+
+.section__booking-details ul li {
+    padding: 1em 0;
+    border-top: 1px solid var(--light-grey);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.section__booking-details ul li h4 {
+    color: var(--grey);
+}

@@ -1,9 +1,11 @@
+import "../../styles/Products/Politics.css";
+
 function Politics({policy}) {
     const listPolicy = policy?.map((policy) => (
         JSON.parse((policy?.policy.desc).replace(/'/g, '"'))
     ))
     return (
-        <section className="section__politics section__title-border">
+        <section className="section__politics section__title-border section__booking-politics">
             <h2>Qué tenés que saber</h2>
             <ul>
                 {policy?.map((policy) => (

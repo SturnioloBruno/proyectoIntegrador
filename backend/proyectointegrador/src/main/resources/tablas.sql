@@ -117,7 +117,7 @@ role_id INT NOT NULL,
 user_name VARCHAR(100) NOT NULL,
 user_surname VARCHAR(100) NOT NULL,
 user_email VARCHAR(100) NOT NULL,
-user_password VARCHAR(100) NOT NULL,
+user_password CHAR(60) NOT NULL,
 user_city VARCHAR(100) NOT NULL,
 PRIMARY KEY(user_id),
 FOREIGN KEY (role_id) REFERENCES roles(role_id)

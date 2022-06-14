@@ -27,7 +27,7 @@ function App() {
         <Route path="/login" element={<Login  type="login" />} />
         <Route path="/register" element={<Register type="register" />} />
         <Route path="/ok" element={<SuccessfulBooking type="ok" />} />
-        <Route path="/booking/:id" element={<Booking type="booking" />} />
+        <Route path="/product/:id/booking" element={<Booking type="booking" />} />
       </Routes>
 
       <Footer />

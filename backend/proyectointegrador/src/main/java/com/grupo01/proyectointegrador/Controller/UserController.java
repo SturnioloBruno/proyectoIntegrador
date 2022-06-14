@@ -15,7 +15,7 @@ public class UserController {
 
     @PostMapping("/insert")
     public ResponseEntity<User> guardar(@RequestBody User user) throws Exception {
-        return ResponseEntity.ok(userService.guardar(user));
+        return ResponseEntity.status(201).body(userService.guardar(user));
     }
 
     @GetMapping("/findById/{id}")

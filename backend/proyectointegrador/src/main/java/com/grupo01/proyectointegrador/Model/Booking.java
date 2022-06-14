@@ -34,6 +34,8 @@ public class Booking {
     @JsonIgnore
     private User userId;
 
+    public Booking() {}
+
     public Booking(Long id, Time bookingStartTime, Date bookingStartDate, Date bookingFinishDate) {
         this.id = id;
         this.bookingStartTime = bookingStartTime;

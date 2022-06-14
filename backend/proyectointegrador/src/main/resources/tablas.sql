@@ -105,6 +105,36 @@ CREATE TABLE IF NOT EXISTS punctuations (
 --    FOREIGN KEY(cus_id) REFERENCES customers(cus_id)
 --);
 
+CREATE TABLE IF NOT EXISTS roles(
+role_id INT NOT NULL AUTO_INCREMENT,
+role_name VARCHAR(100) NOT NULL,
+PRIMARY KEY(role_id)
+);
+
+CREATE TABLE IF NOT EXISTS users (
+user_id INT NOT NULL AUTO_INCREMENT,
+role_id INT NOT NULL,
+user_name VARCHAR(100) NOT NULL,
+user_surname VARCHAR(100) NOT NULL,
+user_email VARCHAR(100) NOT NULL,
+user_password VARCHAR(100) NOT NULL,
+user_city VARCHAR(100) NOT NULL,
+PRIMARY KEY(user_id),
+FOREIGN KEY (role_id) REFERENCES roles(role_id)
+);
+
+CREATE TABLE IF NOT EXISTS bookings (
+booking_id INT NOT NULL AUTO_INCREMENT,
+prod_id INT NOT NULL,
+user_id INT NOT NULL,
+booking_start_time TIME,
+booking_start_date DATE,
+booking_finish_date DATE,
+PRIMARY KEY(booking_id),
+FOREIGN KEY (prod_id) REFERENCES products(prod_id),
+FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+
 INSERT INTO categories (cat_title,cat_description,cat_url_img)
 VALUES ("Hotel","821.458 hoteles","https://images.unsplash.com/photo-1629140727571-9b5c6f6267b4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1527&q=80"),
 ("Hostels","821.458 Hostels","https://images.unsplash.com/photo-1555854877-bab0e564b8d5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80"),

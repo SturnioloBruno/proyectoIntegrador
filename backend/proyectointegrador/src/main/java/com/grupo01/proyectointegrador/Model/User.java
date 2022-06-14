@@ -37,6 +37,8 @@ public class User {
     @OneToMany(mappedBy = "userId", fetch = FetchType.EAGER)
     private Set<Booking> bookings;
 
+    public User() {}
+
     public User(Long id, String userName, String userSurname, String userEmail, String userPassword, String userCity) {
         this.id = id;
         this.userName = userName;

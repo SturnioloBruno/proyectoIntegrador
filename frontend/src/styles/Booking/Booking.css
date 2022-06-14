@@ -15,6 +15,15 @@ section .div__background-white {
     background-color: white;
 }
 
-.section__booking-politics ul li:first-child {
+.section__booking-politics ul {
     margin-top: 1.5em;
+}
+
+@media (min-width: 768px) {
+    section {
+        padding: 2em 5%;
+    }
+    .section__booking-hotel {
+        padding: 98px 0 0;
+    }
 }

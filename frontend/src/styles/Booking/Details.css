@@ -27,7 +27,7 @@
     object-fit: cover;
 }
 
-.section__booking-details > div > div {
+.section__booking-details .div__hotel-details > div {
     padding: 1em 1.5em 0;
 }
 
@@ -43,6 +43,39 @@
     justify-content: space-between;
 }
 
+.section__booking-details ul li:last-child {
+    border-bottom: 1px solid var(--light-grey);
+}
+
 .section__booking-details ul li h4 {
     color: var(--grey);
+}
+
+.section__booking-details .btn {
+    margin-top: 1em;
+}
+
+@media (min-width: 768px) {
+    .section__booking-details > div {
+        padding: 2em;
+    }
+
+    .section__booking-details .div__hotel-details {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .section__booking-details h2 {
+        padding: 0 0 1em;
+    }
+
+    .section__booking-details img {
+        width: calc(50% - 1em);
+        height: auto;
+    }
+
+    .section__booking-details .div__hotel-details > div {
+        width: 50%;
+        padding: 0;
+    }
 }

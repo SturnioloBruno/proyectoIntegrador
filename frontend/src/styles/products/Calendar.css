@@ -65,6 +65,7 @@
 @media (min-width: 768px) {
     .react-datepicker {
         display: flex;
+        justify-content: center;
         margin-bottom: 3em;
     }
 

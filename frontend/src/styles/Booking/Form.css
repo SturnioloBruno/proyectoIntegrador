@@ -12,3 +12,19 @@
 .section__booking-form div label:last-child input {
     margin-bottom: 0;
 }
+
+@media (min-width: 768px) {
+    .section__booking-form div {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .section__booking-form div label {
+        width: calc(50% - 1em);
+    }
+
+    .section__booking-form div label input[type=email] {
+        margin-bottom: 0;
+    }
+}

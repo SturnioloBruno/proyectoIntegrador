@@ -19,8 +19,8 @@ public class UserService {
     ObjectMapper mapper;
 
 
-    public void crearUser(User user) throws Exception {
-        userRepository.save(user);
+    public User crearUser(User user) throws Exception {
+        return userRepository.save(user);
     }
 
 

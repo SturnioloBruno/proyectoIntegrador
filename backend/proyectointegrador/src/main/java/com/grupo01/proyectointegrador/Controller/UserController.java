@@ -2,6 +2,7 @@ package com.grupo01.proyectointegrador.Controller;
 
 import com.grupo01.proyectointegrador.Model.User;
 import com.grupo01.proyectointegrador.Service.UserService;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,9 +14,11 @@ public class UserController {
     @Autowired
     UserService userService;
 
+    @CrossOrigin(origins = "http://localhost:3000")
+    @Operation(summary = "crea un usuario")
     @PostMapping("/insert")
     public ResponseEntity<User> guardar(@RequestBody User user) throws Exception {
-        return ResponseEntity.status(201).body(userService.guardar(user));
+        return ResponseEntity.status(201).body(userService.crearUser(user));
     }
 
     @GetMapping("/findById/{id}")
@@ -31,6 +34,6 @@ public class UserController {
 
     @PutMapping("/update")
     public ResponseEntity<User> actualizar(@RequestBody User user) throws Exception {
-        return ResponseEntity.ok(userService.guardar(user));
+        return ResponseEntity.ok(userService.crearUser(user));
     }
 }

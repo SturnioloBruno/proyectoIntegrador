@@ -1,4 +1,4 @@
-import {useContext} from 'react';
+import { useContext } from 'react';
 import Title from "./Title";
 import '../styles/Header.css';
 import { Link } from "react-router-dom";
@@ -7,7 +7,7 @@ import Register from "./Login/Register";
 import { UserContext } from './Context/UserContext';
 
 function Header() {
-    const {user,setUser} = useContext(UserContext);
+    const {user, setUser} = useContext(UserContext);
 
     function clicNav() {
         document.querySelector("header").classList.toggle("div__open-menu");

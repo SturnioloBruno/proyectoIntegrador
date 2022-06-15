@@ -1,5 +1,5 @@
-import {useContext, useState} from 'react';
-import { Link , useNavigate} from "react-router-dom";
+import { useContext, useState, useEffect } from 'react';
+import { Link , useNavigate } from "react-router-dom";
 import Button from "../Button";
 import '../../styles/Login.css';
 import { UserContext } from "../Context/UserContext";
@@ -8,6 +8,7 @@ function Login({ type }) {
     const [errors,setError]=useState({})
     const navigate = useNavigate();
     const {setUser} = useContext(UserContext);
+    const [email, setEmail] = useState("");
 
     const handlerSubmit = (e)=>{
         e.preventDefault()
@@ -122,13 +123,17 @@ function Login({ type }) {
         document.querySelector("#password_login").type === "password" ? document.querySelector("#password_login").type = "text" : document.querySelector("#password_login").type = "password";
     }
 
+    useEffect(() => {
+        localStorage.setItem("email", JSON.stringify(email));
+    }, [email]);
+
     return (
         <section className="section__form-data">
             <h2>Iniciar sesión</h2>
             <form action="POST" onSubmit={handlerSubmit}>
                 <label htmlFor="email_login">
                     <span>Correo electrónico</span>
-                    <input type="email" name="email" id="email_login" required className={`${errors.email ||errors.general ? "error" : ""}`} autoComplete="off" />
+                    <input type="email" name="email" id="email_login" required className={`${errors.email ||errors.general ? "error" : ""}`} autoComplete="off" value={email} onChange={(e) => setEmail(e.target.value)} />
                 </label>
 
                 <label htmlFor="password_login" className='label__password-input'>

@@ -1,5 +1,5 @@
-import { Link , useNavigate} from "react-router-dom";
-import {useContext, useState} from 'react';
+import { Link , useNavigate } from "react-router-dom";
+import { useContext, useState, useEffect } from 'react';
 import Button from "../Button";
 import '../../styles/Login.css';
 import { UserContext } from "../Context/UserContext";
@@ -8,6 +8,9 @@ function Register({type,handlerUser}) {
     const [errors,setError]=useState({})
     const navigate = useNavigate();
     const {setUser} = useContext(UserContext);
+    const [name, setName] = useState("");
+    const [lastname, setLastname] = useState("");
+    const [email, setEmail] = useState("");
 
     const handlerSubmit = (e)=>{
         e.preventDefault()
@@ -144,21 +147,27 @@ function Register({type,handlerUser}) {
     
     if(type) document.body.className = `${type}`;
 
+    useEffect(() => {
+        localStorage.setItem("name", JSON.stringify(name));
+        localStorage.setItem("lastname", JSON.stringify(lastname));
+        localStorage.setItem("email", JSON.stringify(email));
+    }, [name, lastname, email]);
+
     return (
         <section className="section__form-data">
             <h2>Crear cuenta</h2>
             <form action="POST" onSubmit={handlerSubmit}>
                 <label htmlFor="input__name" className="label__input-name">
                     <span>Nombre</span>
-                    <input type="text" name="name" id="input__name" autoComplete="off" />
+                    <input type="text" name="name" id="input__name" autoComplete="off" value={name} onChange={(e) => setName(e.target.value)} />
                 </label>
                 <label htmlFor="input__lastname" className="label__input-name">
                     <span>Apellido</span>
-                    <input type="text" name="lastname" id="input__lastname" autoComplete="off" />
+                    <input type="text" name="lastname" id="input__lastname" autoComplete="off" value={lastname} onChange={(e) => setLastname(e.target.value)} />
                 </label>
                 <label htmlFor="email_login">
                     <span>Correo electrónico</span>
-                    <input type="email" name="email" id="email_login" required autoComplete="off" className={`${errors.email ? "error" : ""}`} />
+                    <input type="email" name="email" id="email_login" required autoComplete="off" className={`${errors.email ? "error" : ""}`} value={email} onChange={(e) => setEmail(e.target.value)} />
 
                     {errors.email?
                     <small className="small__error" id="error_email">{errors.email[0]}</small>:

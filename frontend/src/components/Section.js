@@ -1,4 +1,4 @@
-import { useEffect, useState ,useContext} from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { Link } from "react-router-dom";
 import Category from './Cards/Category';
 import Card from './Cards/Card';
@@ -28,6 +28,10 @@ function Section({ type, title }) {
                 })
             }
             getCategories();
+
+            /* Info del usuario que inicia sesión */
+            localStorage.setItem("name", JSON.stringify(user?.name));
+            localStorage.setItem("lastname", JSON.stringify(user?.lastName));
         }
 
         if(type==="Card"){

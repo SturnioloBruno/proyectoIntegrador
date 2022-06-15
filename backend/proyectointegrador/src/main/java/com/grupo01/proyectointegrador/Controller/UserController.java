@@ -1,5 +1,6 @@
 package com.grupo01.proyectointegrador.Controller;
 
+import com.grupo01.proyectointegrador.DTO.UserDTO;
 import com.grupo01.proyectointegrador.Model.User;
 import com.grupo01.proyectointegrador.Service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -33,7 +34,8 @@ public class UserController {
     }
 
     @PutMapping("/update")
-    public ResponseEntity<User> actualizar(@RequestBody User user) throws Exception {
-        return ResponseEntity.ok(userService.crearUser(user));
+    @Operation(summary = "actualiza un usuarioDTO")
+    public ResponseEntity<UserDTO> actualizar(@RequestBody UserDTO userDTO) throws Exception {
+        return ResponseEntity.ok(userService.actualizar(userDTO));
     }
 }

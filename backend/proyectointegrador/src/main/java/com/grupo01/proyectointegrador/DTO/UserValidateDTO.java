@@ -1,18 +1,12 @@
 package com.grupo01.proyectointegrador.DTO;
 
-public class UserDTO {
-    private Long id;
+public class UserValidateDTO {
+
     private String userName;
     private String userSurname;
     private String userEmail;
-    private String userPassword;
-    private String userCity;
 
-    public UserDTO() {
-    }
-
-    public Long getId() {
-        return id;
+    public UserValidateDTO() {
     }
 
     public String getUserName() {
@@ -37,21 +31,5 @@ public class UserDTO {
 
     public void setUserEmail(String userEmail) {
         this.userEmail = userEmail;
-    }
-
-    public String getUserPassword() {
-        return userPassword;
-    }
-
-    public void setUserPassword(String userPassword) {
-        this.userPassword = userPassword;
-    }
-
-    public String getUserCity() {
-        return userCity;
-    }
-
-    public void setUserCity(String userCity) {
-        this.userCity = userCity;
     }
 }

@@ -34,8 +34,6 @@ public class UserService {
             userEncontrado.setUserEmail(user.get().getUserEmail());
             userEncontrado.setUserPassword(user.get().getUserPassword());
             userEncontrado.setUserCity(user.get().getUserCity());
-
-
         }
             return userEncontrado;
     }

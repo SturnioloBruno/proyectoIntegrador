@@ -30,7 +30,6 @@
 }
 
 .section__booking-hour label select {
-    color: var(--light-grey);
     border-radius: 5px;
     padding: 1em;
     width: 100%;

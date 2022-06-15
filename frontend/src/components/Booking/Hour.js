@@ -25,7 +25,7 @@ function Hour() {
         { "value": 20, "hour": "20:00AM" },
         { "value": 21, "hour": "21:00AM" },
         { "value": 22, "hour": "22:00AM" },
-        { "value": 23, "hour": "23:00AM" },
+        { "value": 23, "hour": "23:00AM" }
     ]
 
     return (

@@ -8,6 +8,9 @@ public class UserDTO {
     private String userPassword;
     private String userCity;
 
+    public UserDTO() {
+    }
+
     public Long getId() {
         return id;
     }

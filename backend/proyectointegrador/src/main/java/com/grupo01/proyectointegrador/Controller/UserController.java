@@ -18,13 +18,19 @@ public class UserController {
     @CrossOrigin(origins = "http://localhost:3000")
     @Operation(summary = "crea un usuario")
     @PostMapping("/insert")
-    public ResponseEntity<User> guardar(@RequestBody User user) throws Exception {
-        return ResponseEntity.status(201).body(userService.crearUser(user));
+    public ResponseEntity<UserDTO> guardar(@RequestBody UserDTO userDTO) throws Exception {
+        return ResponseEntity.status(201).body(userService.guardar(userDTO));
     }
 
     @GetMapping("/findById/{id}")
     public ResponseEntity<User> buscarId(@PathVariable Long id) throws Exception{
         return ResponseEntity.ok(userService.buscarId(id));
+    }
+
+    @CrossOrigin(origins = "http://localhost:3000")
+    @GetMapping("/findByEmail/{email}")
+    public ResponseEntity<User> buscarEmail(@PathVariable String email) throws Exception{
+        return ResponseEntity.ok(userService.buscarEmail(email));
     }
 
     @DeleteMapping("/delete/{id}")

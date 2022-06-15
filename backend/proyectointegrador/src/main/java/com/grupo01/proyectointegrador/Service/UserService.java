@@ -2,6 +2,7 @@ package com.grupo01.proyectointegrador.Service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.grupo01.proyectointegrador.DTO.UserDTO;
+import com.grupo01.proyectointegrador.Model.Customer;
 import com.grupo01.proyectointegrador.Model.User;
 import com.grupo01.proyectointegrador.Repository.IUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,11 +19,31 @@ public class UserService {
     @Autowired
     ObjectMapper mapper;
 
+    // Insert
+    /*public User guardarDTO(User user) throws Exception {
+        UserDTO userDTO = null;
+        UserDTO userDTOCheck = buscarPorIdDT0(userDTO.getId());
 
-    public User crearUser(User user) throws Exception {
-        return userRepository.save(user);
+        User userEncontrado = user;
+
+        if (userDTOCheck != null){
+
+            userEncontrado = mapper.convertValue(userDTO,User.class);
+            userEncontrado.setUserName(userDTO.getUserName());
+            userEncontrado.setUserSurname(userDTO.getUserSurname());
+            userEncontrado.setUserEmail(userDTO.getUserEmail());
+            userEncontrado.setUserPassword(userDTO.getUserPassword());
+            userEncontrado.setUserCity(userDTO.getUserCity());
+        }
+        return userEncontrado;
+    }*/
+
+    // Select for name
+    public User buscarEmail(String email) throws  Exception{
+        Optional<User> user = userRepository.findByUserEmail(email);
+
+        return user.orElse(null);//si esta lo retorna si no manda null
     }
-
 
     public UserDTO buscarPorIdDT0(Long id) throws Exception{
         Optional<User> user = userRepository.findById(id);
@@ -63,6 +84,12 @@ public class UserService {
         if(userBuscado == null){
            throw new Exception("Usuario con id: "+ userDTO.getId() + " no existe");
         }
+        User user=mapper.convertValue(userDTO,User.class);
+        userRepository.save(user);
+        return userDTO;
+    }
+
+    public UserDTO guardar (UserDTO userDTO) throws Exception {
         User user=mapper.convertValue(userDTO,User.class);
         userRepository.save(user);
         return userDTO;

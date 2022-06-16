@@ -3,6 +3,7 @@ package com.grupo01.proyectointegrador.Service;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.grupo01.proyectointegrador.DTO.CustomerDTO;
 import com.grupo01.proyectointegrador.DTO.UserDTO;
+import com.grupo01.proyectointegrador.DTO.UserRoleDTO;
 import com.grupo01.proyectointegrador.Model.Customer;
 import com.grupo01.proyectointegrador.Model.User;
 import com.grupo01.proyectointegrador.Repository.IUserRepository;
@@ -95,6 +96,12 @@ public class UserService {
         userRepository.save(user);
         return userDTO;
     }
+    public UserRoleDTO guardarConRol (UserRoleDTO userRoleDTO) throws Exception {
+        User user=mapper.convertValue(userRoleDTO,User.class);
+        userRepository.save(user);
+        return userRoleDTO;
+    }
+
 
     public UserDTO validarUser(String email, String password)throws Exception{
         UserDTO userReturn = null;

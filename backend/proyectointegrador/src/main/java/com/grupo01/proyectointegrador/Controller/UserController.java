@@ -1,6 +1,7 @@
 package com.grupo01.proyectointegrador.Controller;
 
 import com.grupo01.proyectointegrador.DTO.UserDTO;
+import com.grupo01.proyectointegrador.DTO.UserRoleDTO;
 import com.grupo01.proyectointegrador.DTO.UserValidateDTO;
 import com.grupo01.proyectointegrador.Model.User;
 import com.grupo01.proyectointegrador.Service.UserService;
@@ -18,10 +19,16 @@ public class UserController {
 
     @CrossOrigin(origins = "http://localhost:3000")
     @Operation(summary = "crea un usuario")
-    @PostMapping("/insert")
+    @PostMapping("/register")
     public ResponseEntity<UserDTO> guardar(@RequestBody UserDTO userDTO) throws Exception {
         return ResponseEntity.status(201).body(userService.guardar(userDTO));
     }
+
+    @PostMapping("/registerWithRole")
+    public ResponseEntity<UserRoleDTO> guardar(@RequestBody UserRoleDTO userRoleDTO) throws Exception {
+        return ResponseEntity.status(201).body(userService.guardarConRol(userRoleDTO));
+    }
+
 
     @GetMapping("/findById/{id}")
     public ResponseEntity<User> buscarId(@PathVariable Long id) throws Exception{

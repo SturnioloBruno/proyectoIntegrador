@@ -1,6 +1,7 @@
 package com.grupo01.proyectointegrador.Controller;
 
 import com.grupo01.proyectointegrador.DTO.UserDTO;
+import com.grupo01.proyectointegrador.DTO.UserValidateDTO;
 import com.grupo01.proyectointegrador.Model.User;
 import com.grupo01.proyectointegrador.Service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -43,5 +44,15 @@ public class UserController {
     @Operation(summary = "actualiza un usuarioDTO")
     public ResponseEntity<UserDTO> actualizar(@RequestBody UserDTO userDTO) throws Exception {
         return ResponseEntity.ok(userService.actualizar(userDTO));
+    }
+
+    @CrossOrigin(origins = "http://localhost:3000")
+    @PostMapping("/validate")
+    public ResponseEntity<UserDTO> validarUser(@RequestBody UserValidateDTO userValidate)throws Exception{
+        UserDTO user = userService.validarUser(userValidate.getUserEmail(),userValidate.getUserPassword());
+        if(user==null){
+            ResponseEntity.badRequest();
+        }
+        return ResponseEntity.ok(user);
     }
 }

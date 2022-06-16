@@ -1,6 +1,7 @@
 package com.grupo01.proyectointegrador.Service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.grupo01.proyectointegrador.DTO.CustomerDTO;
 import com.grupo01.proyectointegrador.DTO.UserDTO;
 import com.grupo01.proyectointegrador.Model.Customer;
 import com.grupo01.proyectointegrador.Model.User;
@@ -93,5 +94,22 @@ public class UserService {
         User user=mapper.convertValue(userDTO,User.class);
         userRepository.save(user);
         return userDTO;
+    }
+
+    public UserDTO validarUser(String email, String password)throws Exception{
+        UserDTO userReturn = null;
+        User userByEmail = buscarEmail(email);
+
+        if(userByEmail==null){
+            throw new Exception("No se encuentra usuario con el email ingresado!");
+        }
+
+        if(!userByEmail.getUserPassword().equals(password)){
+            throw new Exception("Contraseña incorrecta!");
+        }
+
+        userReturn =  mapper.convertValue(userByEmail, UserDTO.class);
+
+        return userReturn;
     }
 }

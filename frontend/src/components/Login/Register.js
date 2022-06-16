@@ -53,28 +53,28 @@ function Register({type,handlerUser}) {
         }
 
         const register = async()=>{
-            await fetch("http://localhost:8080/customers/register",{
+            await fetch("http://localhost:8080/register",{
                 method:'POST',
                 headers:{
                     "Access-Control-Allow-Headers" : "Content-Type",
                     'Access-Control-Allow-Origin':"*",
                     'Content-Type':'application/json'
                 },body:JSON.stringify({
-                    name:nombreValue.value.trim(),
-                    lastName:apellidoValue.value.trim(),
-                    email:emailValue.value.trim(),
-                    password:passwordValue.value.trim(),
-                    address:""
+                    userName:nombreValue.value.trim(),
+                    userSurname:apellidoValue.value.trim(),
+                    userEmail:emailValue.value.trim(),
+                    userPassword:passwordValue.value.trim(),
+                    userCity:""
                 })
             })
             .then((response) => {
                 if (response.status === 200) {
                   return response.json()        
                 }else if(response.status ===406){
-                   setError({password:["Ya existe un usuario con el email ingresado"]})
+                   setError({userPassword:["Ya existe un usuario con el email ingresado"]})
                    return
                 }else{
-                    setError({password:["Error, intente de nuevo mas tarde"]})
+                    setError({userPassword:["Error, intente de nuevo mas tarde"]})
                     return
                 }
               })
@@ -85,7 +85,7 @@ function Register({type,handlerUser}) {
                 navigate("/login")
               })
               .catch((error) => {
-                setError({password:["Error, intente de nuevo mas tarde"]})
+                setError({userPassword:["Error, intente de nuevo mas tarde"]})
                 return
               });
         }

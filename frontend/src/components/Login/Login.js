@@ -8,7 +8,7 @@ function Login({ type }) {
     const [errors,setError]=useState({})
     const navigate = useNavigate();
     const {setUser} = useContext(UserContext);
-    const [email, setEmail] = useState("");
+    const [userEmail, setEmail] = useState("");
 
     const handlerSubmit = (e)=>{
         e.preventDefault()
@@ -23,14 +23,14 @@ function Login({ type }) {
         //VALIDO EMAIL
         ret = validateInput("EMAIL",emailValue.value)
         if(ret !== ''){   
-            setError({email:[ret]})
+            setError({userEmail:[ret]})
             return
         }
 
         //VALIDO PASSWORD
         ret =validateInput("PASSWORD",passwordValue.value)
         if(ret !== ''){       
-            setError({password:[ret]})
+            setError({userPassword:[ret]})
             return
         }
 
@@ -42,15 +42,15 @@ function Login({ type }) {
                     'Access-Control-Allow-Origin':"*",
                     'Content-Type':'application/json'
                 },body:JSON.stringify({
-                    email:emailValue.value.trim(),
-                    password:passwordValue.value.trim()
+                    userEmail:emailValue.value.trim(),
+                    userPassword:passwordValue.value.trim()
                 })
             })
             .then((response) => {
                 if (response.status === 200) {
                   return response.json()        
                 }else{
-                   setError({password:["Por favor vuelva a intentarlo, sus credenciales son inválidas"]})
+                   setError({userPassword:["Por favor vuelva a intentarlo, sus credenciales son inválidas"]})
                    return
                 }
               })
@@ -62,7 +62,7 @@ function Login({ type }) {
                 navigate("/")   
               })
               .catch((error) => {
-                setError({password:["Error, intente de nuevo mas tarde"]})
+                setError({userPassword:["Error, intente de nuevo mas tarde"]})
                 return
               });
         }
@@ -124,8 +124,8 @@ function Login({ type }) {
     }
 
     useEffect(() => {
-        localStorage.setItem("email", JSON.stringify(email));
-    }, [email]);
+        localStorage.setItem("email", JSON.stringify(userEmail));
+    }, [userEmail]);
 
     return (
         <section className="section__form-data">
@@ -133,7 +133,7 @@ function Login({ type }) {
             <form action="POST" onSubmit={handlerSubmit}>
                 <label htmlFor="email_login">
                     <span>Correo electrónico</span>
-                    <input type="email" name="email" id="email_login" required className={`${errors.email ||errors.general ? "error" : ""}`} autoComplete="off" value={email} onChange={(e) => setEmail(e.target.value)} />
+                    <input type="email" name="email" id="email_login" required className={`${errors.email ||errors.general ? "error" : ""}`} autoComplete="off" value={userEmail} onChange={(e) => setEmail(e.target.value)} />
                 </label>
 
                 <label htmlFor="password_login" className='label__password-input'>

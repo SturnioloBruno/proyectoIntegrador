@@ -28,8 +28,8 @@ function Header() {
                     <div className={"div__menu-login"}>
                         {user?
                         <div className="div__user-login">
-                            <span>{user?user.name[0]+user.lastName[0]:''}</span>
-                            <p>Hola, <span>{`${user?.name} ${user?.lastName}`}</span></p>
+                            <span>{user?user.userName[0]+user.userSurname[0]:''}</span>
+                            <p>Hola, <span>{`${user?.userName} ${user?.userSurname}`}</span></p>
                         </div>
                         :<p>Menú</p>
                         }

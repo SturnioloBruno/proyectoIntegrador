@@ -35,7 +35,7 @@ function Login({ type }) {
         }
 
         const validate = async()=>{
-            await fetch("http://localhost:8080/customers/validate",{
+            await fetch("http://localhost:8080/user/validate",{
                 method:'POST',
                 headers:{
                     "Access-Control-Allow-Headers" : "Content-Type",

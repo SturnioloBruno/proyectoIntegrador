@@ -8,9 +8,9 @@ function Register({type,handlerUser}) {
     const [errors,setError]=useState({})
     const navigate = useNavigate();
     const {setUser} = useContext(UserContext);
-    const [name, setName] = useState("");
-    const [lastname, setLastname] = useState("");
-    const [email, setEmail] = useState("");
+    const [name, setUserName] = useState("");
+    const [lastname, setUserSurname] = useState("");
+    const [email, setUserEmail] = useState("");
 
     const handlerSubmit = (e)=>{
         e.preventDefault()
@@ -158,15 +158,15 @@ function Register({type,handlerUser}) {
             <form action="POST" onSubmit={handlerSubmit}>
                 <label htmlFor="input__name" className="label__input-name">
                     <span>Nombre</span>
-                    <input type="text" name="name" id="input__name" autoComplete="off" value={name} onChange={(e) => setName(e.target.value)} />
+                    <input type="text" name="name" id="input__name" autoComplete="off" value={name} onChange={(e) => setUserName(e.target.value)} />
                 </label>
                 <label htmlFor="input__lastname" className="label__input-name">
                     <span>Apellido</span>
-                    <input type="text" name="lastname" id="input__lastname" autoComplete="off" value={lastname} onChange={(e) => setLastname(e.target.value)} />
+                    <input type="text" name="lastname" id="input__lastname" autoComplete="off" value={lastname} onChange={(e) => setUserSurname(e.target.value)} />
                 </label>
                 <label htmlFor="email_login">
                     <span>Correo electrónico</span>
-                    <input type="email" name="email" id="email_login" required autoComplete="off" className={`${errors.email ? "error" : ""}`} value={email} onChange={(e) => setEmail(e.target.value)} />
+                    <input type="email" name="email" id="email_login" required autoComplete="off" className={`${errors.email ? "error" : ""}`} value={email} onChange={(e) => setUserEmail(e.target.value)} />
 
                     {errors.email?
                     <small className="small__error" id="error_email">{errors.email[0]}</small>:

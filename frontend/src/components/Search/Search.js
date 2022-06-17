@@ -11,6 +11,7 @@ function Search() {
     const [cities, setCities] = useState(null);
     const [endDate,setEndDate] = useState(null);
     const [startDate,setStartDate] = useState(null);
+    const [citySelected,setCitySelected] = useState(null);
     const navigate = useNavigate();
     const {setCityCache} = useContext(SearchContext);
     const { endDateCache,setEndDateCache,startDateCache,setStartDateCache } = useContext(SearchContext);
@@ -18,6 +19,10 @@ function Search() {
     const handlerDates=(start,end)=>{
         setStartDate(start);
         setEndDate(end);
+    }
+
+    const handlerCity = (city)=>{
+        setCitySelected(city)
     }
 
     useEffect(()=>{
@@ -46,20 +51,32 @@ function Search() {
     const handlerSubmit = (e)=>{
         e.preventDefault();
 
-        if(inputLocality.value.trim()===""){
+        //valido que ciudad o fecha tengan algo
+        if(!citySelected&&!endDate&&!startDate){
             inputLocality.focus()
             return
         }
 
-        if(!startDate&&!endDate){
-            //ver de hacer focus en los input de fechas          
+        if((!endDate&&startDate)||(endDate&&!startDate)){
             return 
         }
+    
+        if(citySelected){
+            setCityCache({value:inputLocality.value.trim(),name:inputLocality.name})
+        }
 
+        let start,end;
+
+        if(endDate&&startDate){
         setStartDateCache(startDate);
         setEndDateCache(endDate);
-        setCityCache({value:inputLocality.value.trim(),name:inputLocality.name})
-        navigate("/search/"+inputLocality.name);
+      
+        //Armo fechas, al mes se le suma 1 porque los meses van de 0 a 11.
+        start= `${startDate._d.getFullYear()}-${(startDate._d.getMonth()+1)>9?startDate._d.getMonth()+1:`0${startDate._d.getMonth()+1}`}-${startDate._d.getDate()}`; 
+        end = `${endDate._d.getFullYear()}-${(endDate._d.getMonth()+1)>9?endDate._d.getMonth()+1:`0${endDate._d.getMonth()+1}`}-${endDate._d.getDate()}`; 
+        }
+       
+        navigate(`/search/?${citySelected?`city=${citySelected}&`:""}${startDate&&endDate?`dateStart=${start}&dateEnd=${end}`:""}`);
     }
 
     return (
@@ -67,7 +84,7 @@ function Search() {
             <h2>Busca ofertas en hoteles, casas y mucho más</h2>
             <form method='POST' onSubmit={handlerSubmit}>
                 <label htmlFor="input__locality" className="input__text-location">
-                    <InputCity cities={cities}/>            
+                    <InputCity cities={cities} handlerCity={handlerCity}/>            
                 </label>
                 <label className="input__calendar-day">
                     <InputDateRangePicker handlerDates={handlerDates} endDateCache={endDateCache} startDateCache={startDateCache}/>              

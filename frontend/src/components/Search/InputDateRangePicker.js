@@ -49,7 +49,6 @@ const InputDateRangePicker = ({handlerDates,endDateCache,startDateCache}) => {
         }} //Requerido
         focusedInput={focusedInput} // Requerido
         onFocusChange={(focusedInput) => setFocusedInpuf(focusedInput)} // Requerido
-        required={true}
         monthFormat={"MMMM"} //formato de como muestra el Mes
         numberOfMonths={numberOfMonths()} //cantidad de meses que muestra
         showClearDates={true}

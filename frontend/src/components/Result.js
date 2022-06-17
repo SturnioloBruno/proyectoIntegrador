@@ -12,6 +12,7 @@ function Home({title}) {
   useEffect(()=>{
     //Cargo productos por ciudad
     const getProductsperCities = async()=>{
+      console.log(location.search);
         await fetch("http://localhost:8080/products/getListProducts/" + location.search, {
             method:'GET',
             headers:{

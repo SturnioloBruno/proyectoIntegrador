@@ -27,8 +27,6 @@ public class Customer {
     @Column(name = "cus_email",nullable = false)
     private String email;
 
-    @OneToMany(mappedBy = "customerId", fetch = FetchType.EAGER)
-    private Set<Punctuation> punctCustomer;
 
     public Customer(Long id, String name, String lastName, String password, String address, String email) {
         this.id = id;
@@ -39,23 +37,12 @@ public class Customer {
         this.email = email;
     }
 
-    public Customer(Long id, String name, String lastName, String password, String address, String email, Set<Punctuation> punctCustomer) {
-        this.id = id;
+    public Customer(String name, String lastName, String password, String address, String email) {
         this.name = name;
         this.lastName = lastName;
         this.password = password;
         this.address = address;
         this.email = email;
-        this.punctCustomer = punctCustomer;
-    }
-
-    public Customer(String name, String lastName, String password, String address, String email, Set<Punctuation> punctCustomer) {
-        this.name = name;
-        this.lastName = lastName;
-        this.password = password;
-        this.address = address;
-        this.email = email;
-        this.punctCustomer = punctCustomer;
     }
 
     public Customer(){}

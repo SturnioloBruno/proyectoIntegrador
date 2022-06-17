@@ -31,25 +31,11 @@ public class ProductController {
     @GetMapping("/getListProducts")
     public List<ProductDTO> getListProduct(@RequestParam Optional<Long> city,
                                            @RequestParam Optional<Long> category,
-                                           @RequestParam Optional<LocalDate> dateStart,
-                                           @RequestParam Optional<LocalDate> dateEnd,
+                                           @RequestParam Optional<String> dateStart,
+                                           @RequestParam Optional<String> dateEnd,
                                            @RequestParam Optional<Boolean> sort)throws  Exception{
 
-        List<ProductDTO> listReturn = new ArrayList<>();
-
-        if(city.isEmpty() && category.isEmpty()){
-                return productService.getProducts(sort);
-        }
-
-        if(!city.isEmpty()){
-            listReturn = productService.findByCityId(city.get());
-        }
-
-        if(!category.isEmpty()){
-            listReturn = productService.findByCategoryId(category.get());
-        }
-
-        return  listReturn;
+        return  productService.findByFilter(city,category,dateStart,dateEnd,sort);
     }
 
     @CrossOrigin(origins = "http://localhost:3000")

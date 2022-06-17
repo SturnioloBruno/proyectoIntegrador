@@ -1,12 +1,12 @@
 package com.grupo01.proyectointegrador.Service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.grupo01.proyectointegrador.DTO.CustomerDTO;
 import com.grupo01.proyectointegrador.DTO.UserDTO;
-import com.grupo01.proyectointegrador.Model.Customer;
+import com.grupo01.proyectointegrador.DTO.UserDTOResponse;
 import com.grupo01.proyectointegrador.Model.User;
 import com.grupo01.proyectointegrador.Repository.IUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -19,6 +19,9 @@ public class UserService {
 
     @Autowired
     ObjectMapper mapper;
+
+    @Autowired
+    PasswordEncoder passwordEncoder;
 
     // Insert
     /*public User guardarDTO(User user) throws Exception {
@@ -48,6 +51,7 @@ public class UserService {
 
     public UserDTO buscarPorIdDT0(Long id) throws Exception{
         Optional<User> user = userRepository.findById(id);
+
         UserDTO userEncontrado = null;
         if (user.isPresent()){
             userEncontrado = mapper.convertValue(user.get(),UserDTO.class);
@@ -79,25 +83,26 @@ public class UserService {
         }
     }
 
-    public UserDTO actualizar (UserDTO userDTO) throws Exception {
-        UserDTO userBuscado = buscarPorIdDT0(userDTO.getId());
+    public User actualizar (User user) throws Exception {
+        User userBuscado = buscarId(user.getId());
 
         if(userBuscado == null){
-           throw new Exception("Usuario con id: "+ userDTO.getId() + " no existe");
+           throw new Exception("Usuario con id: "+ user.getId() + " no existe");
         }
-        User user=mapper.convertValue(userDTO,User.class);
+
         userRepository.save(user);
-        return userDTO;
+        return user;
     }
 
-    public UserDTO guardar (UserDTO userDTO) throws Exception {
-        User user=mapper.convertValue(userDTO,User.class);
+    public void guardar (UserDTO userDTO) throws Exception {
+        User user = mapper.convertValue(userDTO,User.class);
+        user.setRoleId(userDTO.getRole());
+        user.setUserPassword(passwordEncoder.encode(userDTO.getUserPassword()));
         userRepository.save(user);
-        return userDTO;
     }
 
-    public UserDTO validarUser(String email, String password)throws Exception{
-        UserDTO userReturn = null;
+    public UserDTOResponse validarUser(String email, String password)throws Exception{
+        UserDTOResponse userReturn = null;
         User userByEmail = buscarEmail(email);
 
         if(userByEmail==null){
@@ -108,7 +113,7 @@ public class UserService {
             throw new Exception("Contraseña incorrecta!");
         }
 
-        userReturn =  mapper.convertValue(userByEmail, UserDTO.class);
+        userReturn =  mapper.convertValue(userByEmail, UserDTOResponse.class);
 
         return userReturn;
     }

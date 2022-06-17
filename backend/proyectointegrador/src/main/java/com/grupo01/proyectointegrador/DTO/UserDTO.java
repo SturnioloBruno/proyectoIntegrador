@@ -1,19 +1,15 @@
 package com.grupo01.proyectointegrador.DTO;
 
+import com.grupo01.proyectointegrador.Model.Role;
+
 public class UserDTO {
-    private Long id;
+
     private String userName;
     private String userSurname;
     private String userEmail;
     private String userPassword;
     private String userCity;
-
-    public UserDTO() {
-    }
-
-    public Long getId() {
-        return id;
-    }
+    private Role roleId;
 
     public String getUserName() {
         return userName;
@@ -53,5 +49,13 @@ public class UserDTO {
 
     public void setUserCity(String userCity) {
         this.userCity = userCity;
+    }
+
+    public Role getRole() {
+        return roleId;
+    }
+
+    public void setRole(Role role) {
+        this.roleId = role;
     }
 }

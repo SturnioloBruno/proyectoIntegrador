@@ -1,11 +1,14 @@
 package com.grupo01.proyectointegrador.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "roles")
-public class Role {
+public class Role{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,8 +18,9 @@ public class Role {
     @Column (name = "role_name", nullable = false)
     private String roleName;
 
-    @OneToMany(mappedBy = "roleId", fetch = FetchType.EAGER)
-    private Set<User> users;
+    @OneToMany(mappedBy = "roleId", fetch = FetchType.LAZY)
+    @JsonIgnore
+    private List<User> users;
 
     public Role() {}
 
@@ -37,11 +41,11 @@ public class Role {
         this.roleName = roleName;
     }
 
-    public Set<User> getUsers() {
+    public List<User> getUsers() {
         return users;
     }
 
-    public void setUsers(Set<User> users) {
+    public void setUsers(List<User> users) {
         this.users = users;
     }
 }

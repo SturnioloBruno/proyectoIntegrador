@@ -59,7 +59,7 @@ function Login({ type }) {
                     return
                 }
                 setUser(user)  
-                navigate("/")   
+                navigate("/login")   
               })
               .catch((error) => {
                 setError({password:["Error, intente de nuevo mas tarde"]})

@@ -2,15 +2,22 @@ package com.grupo01.proyectointegrador.DTO;
 
 import com.grupo01.proyectointegrador.Model.Role;
 
-public class UserRoleDTO {
-
-
+public class UserDTOResponse {
     private String userName;
     private String userSurname;
     private String userEmail;
-    private String userPassword;
     private String userCity;
     private Role role;
+
+    public UserDTOResponse(){}
+
+    public UserDTOResponse(String userName, String userSurname, String userEmail, String userCity, Role role) {
+        this.userName = userName;
+        this.userSurname = userSurname;
+        this.userEmail = userEmail;
+        this.userCity = userCity;
+        this.role = role;
+    }
 
     public String getUserName() {
         return userName;
@@ -34,14 +41,6 @@ public class UserRoleDTO {
 
     public void setUserEmail(String userEmail) {
         this.userEmail = userEmail;
-    }
-
-    public String getUserPassword() {
-        return userPassword;
-    }
-
-    public void setUserPassword(String userPassword) {
-        this.userPassword = userPassword;
     }
 
     public String getUserCity() {

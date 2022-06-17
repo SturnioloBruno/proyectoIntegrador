@@ -1,5 +1,5 @@
 SET FOREIGN_KEY_CHECKS = 0;
-DROP TABLE IF EXISTS `punctuations`, `customers`,`cities`, `images`, `policies`, `products_policies`, `characteristics`, `products_characteristics`,`products`,`categories`;
+DROP TABLE IF EXISTS `users`,`roles`,`punctuations`, `customers`,`cities`, `images`, `policies`, `products_policies`, `characteristics`, `products_characteristics`,`products`,`categories`;
 SET FOREIGN_KEY_CHECKS = 1;
 
 CREATE TABLE IF NOT EXISTS categories (
@@ -117,7 +117,7 @@ role_id INT NOT NULL,
 user_name VARCHAR(100) NOT NULL,
 user_surname VARCHAR(100) NOT NULL,
 user_email VARCHAR(100) NOT NULL,
-user_password CHAR(60) NOT NULL,
+user_password VARCHAR(8000) NOT NULL,
 user_city VARCHAR(100) NOT NULL,
 PRIMARY KEY(user_id),
 FOREIGN KEY (role_id) REFERENCES roles(role_id)
@@ -281,7 +281,9 @@ VALUES
 (12, 1), (12, 2), (12, 3);
 
 
-INSERT INTO customers (cus_name,cus_lastname,cus_password,cus_address,cus_email) VALUES ('Admin','Root','Admin1234','direccion root','admin@admin.com');
+INSERT INTO roles (role_name) VALUES("ADMIN"),("USER");
+
+--INSERT INTO users (user_name,user_surname,user_password,user_city,user_email,role_id) VALUES ('Admin','Root','Admin1234','una ciudad','admin@admin.com',1);
 
 INSERT INTO customers (cus_name, cus_lastname, cus_password, cus_address, cus_email)
 VALUES

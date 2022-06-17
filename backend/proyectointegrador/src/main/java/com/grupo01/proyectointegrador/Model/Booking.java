@@ -3,8 +3,9 @@ package com.grupo01.proyectointegrador.Model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
-import java.sql.Date;
-import java.sql.Time;
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 
 @Entity
 @Table (name = "bookings")
@@ -16,13 +17,13 @@ public class Booking {
     private Long id;
 
     @Column (name = "booking_start_time")
-    private Time bookingStartTime;
+    private LocalTime bookingStartTime;
 
     @Column (name = "booking_start_date", nullable = false)
-    private Date bookingStartDate;
+    private LocalDate bookingStartDate;
 
     @Column (name = "booking_finish_date", nullable = false)
-    private Date bookingFinishDate;
+    private LocalDate bookingFinishDate;
 
     @ManyToOne (fetch = FetchType.EAGER)
     @JoinColumn(name = "prod_id", nullable = false)
@@ -36,14 +37,14 @@ public class Booking {
 
     public Booking() {}
 
-    public Booking(Long id, Time bookingStartTime, Date bookingStartDate, Date bookingFinishDate) {
+    public Booking(Long id, LocalTime bookingStartTime, LocalDate bookingStartDate, LocalDate bookingFinishDate) {
         this.id = id;
         this.bookingStartTime = bookingStartTime;
         this.bookingStartDate = bookingStartDate;
         this.bookingFinishDate = bookingFinishDate;
     }
 
-    public Booking(Time bookingStartTime, Date bookingStartDate, Date bookingFinishDate) {
+    public Booking(LocalTime bookingStartTime, LocalDate bookingStartDate, LocalDate bookingFinishDate) {
         this.bookingStartTime = bookingStartTime;
         this.bookingStartDate = bookingStartDate;
         this.bookingFinishDate = bookingFinishDate;
@@ -53,27 +54,31 @@ public class Booking {
         return id;
     }
 
-    public Time getBookingStartTime() {
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public LocalTime getBookingStartTime() {
         return bookingStartTime;
     }
 
-    public void setBookingStartTime(Time bookingStartTime) {
+    public void setBookingStartTime(LocalTime bookingStartTime) {
         this.bookingStartTime = bookingStartTime;
     }
 
-    public Date getBookingStartDate() {
+    public LocalDate getBookingStartDate() {
         return bookingStartDate;
     }
 
-    public void setBookingStartDate(Date bookingStartDate) {
+    public void setBookingStartDate(LocalDate bookingStartDate) {
         this.bookingStartDate = bookingStartDate;
     }
 
-    public Date getBookingFinishDate() {
+    public LocalDate getBookingFinishDate() {
         return bookingFinishDate;
     }
 
-    public void setBookingFinishDate(Date bookingFinishDate) {
+    public void setBookingFinishDate(LocalDate bookingFinishDate) {
         this.bookingFinishDate = bookingFinishDate;
     }
 

@@ -33,41 +33,69 @@ function Login({ type }) {
             setError({password:[ret]})
             return
         }
-
-        const validate = async()=>{
-            await fetch("http://localhost:8080/customers/validate",{
+        
+        const login = async() => {
+            await fetch("http://localhost:8080/authenticate", {
                 method:'POST',
                 headers:{
                     "Access-Control-Allow-Headers" : "Content-Type",
                     'Access-Control-Allow-Origin':"*",
                     'Content-Type':'application/json'
-                },body:JSON.stringify({
+                }, body:JSON.stringify({
                     email:emailValue.value.trim(),
                     password:passwordValue.value.trim()
                 })
             })
             .then((response) => {
                 if (response.status === 200) {
-                  return response.json()        
-                }else{
-                   setError({password:["Por favor vuelva a intentarlo, sus credenciales son inválidas"]})
+                  return response.json()
+                } else{
+                   setError({password:["No es posible loguearse"]})
                    return
                 }
-              })
-              .then((user)=>{
+            })
+            .then((user)=>{
                 if(!user){
                     return
                 }
-                setUser(user)  
-                navigate("/login")   
-              })
-              .catch((error) => {
+                sessionStorage.setItem("token",user.jwt)
+                findUserData();
+            })
+            .catch((error) => {
                 setError({password:["Error, intente de nuevo mas tarde"]})
                 return
-              });
+            });
         }
+        login();
     
-        validate();
+        const findUserData = async()=>{
+            await fetch("http://localhost:8080/users/findByEmail/" + emailValue.value.trim(), {
+                method:'GET',
+                headers: {
+                    "Access-Control-Allow-Headers" : "Content-Type"
+                }
+            })
+            .then((response) => {
+                if (response.status === 200) {
+                    return response.json()
+                } else{
+                    setError({password:["No es posible loguearse"]})
+                    return
+                }
+            })
+            .then((user)=>{
+                if(!user){
+                    return
+                }
+                setUser(user);
+                sessionStorage.setItem("user", JSON.stringify(user));
+                navigate("/");
+            })
+            .catch((error) => {
+                setError({password:["Error, intente de nuevo mas tarde"]})
+                return
+            });
+        }
     }
 
     //VALIDO CAMPO EMAIL

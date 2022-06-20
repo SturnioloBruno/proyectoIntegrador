@@ -4,7 +4,7 @@ import Button from "../Button";
 import '../../styles/Login.css';
 import { UserContext } from "../Context/UserContext";
 
-function Register({type,handlerUser}) {
+function Register({type}) {
     const [errors,setError]=useState({})
     const navigate = useNavigate();
     const {setUser} = useContext(UserContext);
@@ -16,7 +16,7 @@ function Register({type,handlerUser}) {
         e.preventDefault()
 
         const nombreValue = document.querySelector("#input__name")
-        const apellidoValue = document.querySelector("#input__lastname")
+        const apellidoValue = document.querySelector("#input__lastname");
         const emailValue =  document.querySelector("#email_login");
         const passwordValue = document.querySelector("#password_login");
         const passwordRepeat = document.querySelector("#repeat_login");
@@ -52,50 +52,104 @@ function Register({type,handlerUser}) {
             return
         }
 
-        const register = async()=>{
-            await fetch("http://localhost:8080/customers/register",{
+        const register = async() => {
+            await fetch("http://localhost:8080/users/register", {
                 method:'POST',
                 headers:{
                     "Access-Control-Allow-Headers" : "Content-Type",
                     'Access-Control-Allow-Origin':"*",
                     'Content-Type':'application/json'
-                },body:JSON.stringify({
-                    name:nombreValue.value.trim(),
-                    lastName:apellidoValue.value.trim(),
-                    email:emailValue.value.trim(),
-                    password:passwordValue.value.trim(),
-                    address:""
+                }, body:JSON.stringify ({
+                    userName:nombreValue.value.trim(),
+                    userSurname:apellidoValue.value.trim(),
+                    userEmail:emailValue.value.trim(),
+                    userPassword:passwordValue.value.trim(),
+                    userCity:"",
+                    role: {id:2}
                 })
             })
             .then((response) => {
-                if (response.status === 200) {
-                  return response.json()        
-                }else if(response.status ===406){
+                if(response.status === 201) {
+                    login(); // logueo para obtener token
+                } else if(response.status === 406) {
                    setError({password:["Ya existe un usuario con el email ingresado"]})
                    return
-                }else{
-                    setError({password:["Error, intente de nuevo mas tarde"]})
+                } else {
+                    setError({password:["Lamentablemente no ha podido registrarse. Por favor intente más tarde"]})
                     return
                 }
-              })
-              .then((user)=>{
-               if(!user){
-                    return
-                }
-                setUser(user)  
-                navigate("/")   
-              })
-              .catch((error) => {
+              }).catch((error) => {
                 setError({password:["Error, intente de nuevo mas tarde"]})
                 return
               });
         }
-    
         register();
+
+        const login = async() => {
+            await fetch("http://localhost:8080/authenticate", {
+                method:'POST',
+                headers:{
+                    "Access-Control-Allow-Headers" : "Content-Type",
+                    'Access-Control-Allow-Origin':"*",
+                    'Content-Type':'application/json'
+                }, body:JSON.stringify({
+                    email:emailValue.value.trim(),
+                    password:passwordValue.value.trim()
+                })
+            })
+            .then((response) => {
+                if(response.status === 200) {
+                  return response.json()
+                } else {
+                   setError({password:["No es posible loguearse"]})
+                   return
+                }
+            })
+            .then((token) => {
+                if(!token) {
+                    return
+                }
+                sessionStorage.setItem("token",token.jwt)
+                findUserData();
+            })
+            .catch((error) => {
+                setError({password:["Error, intente de nuevo mas tarde"]})
+                return
+            });
+        }
+    
+        const findUserData = async() => {
+            await fetch("http://localhost:8080/users/findByEmail/" + emailValue.value.trim(), {
+                method:'GET',
+                headers: {
+                    "Access-Control-Allow-Headers" : "Content-Type"
+                }
+            })
+            .then((response) => {
+                if (response.status === 200) {
+                    return response.json()
+                } else {
+                    setError({password:["No es posible loguearse"]})
+                    return
+                }
+            })
+            .then((user) => {
+                if(!user) {
+                    return
+                }
+                setUser(user);
+                sessionStorage.setItem("user", JSON.stringify(user));
+                navigate("/");
+            })
+            .catch((error) => {
+                setError({password:["Error, intente de nuevo mas tarde"]})
+                return
+            });
+        }
     }
 
     //VALIDO CAMPO EMAIL
-    const validateInput = (type,value)=>{ 
+    const validateInput = (type,value) => { 
         value = value.trim() //hago un trim para sacar los espacios
 
         switch (type) {

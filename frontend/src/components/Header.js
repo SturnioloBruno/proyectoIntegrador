@@ -28,8 +28,8 @@ function Header() {
                     <div className={"div__menu-login"}>
                         {user?
                         <div className="div__user-login">
-                            <span>{user?user.name[0]+user.lastName[0]:''}</span>
-                            <p>Hola, <span>{`${user?.name} ${user?.lastName}`}</span></p>
+                            <span>{user?.userName[0]+user?.userSurname[0]}</span>
+                            <p>Hola, <span>{`${user?.userName} ${user?.userSurname}`}</span></p>
                         </div>
                         :<p>Menú</p>
                         }
@@ -43,7 +43,11 @@ function Header() {
                             </ul>
                         </nav>}
                         <div className="div__social-menu">
-                           {user?<span>¿Deseas <Link to="#" onClick={()=>setUser(null)}>cerrar sesión</Link>?</span>:''}
+                           {user?<span>¿Deseas <Link to="#" onClick={()=>{
+                                setUser(null)
+                                sessionStorage.removeItem("token")
+                                sessionStorage.removeItem("user")
+                            }}>cerrar sesión</Link>?</span>:''}
                             <ul className="ul__social-links">
                                 <li><Link to="#" className="a__icon-fb">Facebook</Link></li>
                                 <li><Link to="#" className="a__icon-li">LinkedIn</Link></li>

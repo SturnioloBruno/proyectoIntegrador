@@ -89,6 +89,9 @@ function Login({ type }) {
                 }
                 setUser(user);
                 sessionStorage.setItem("user", JSON.stringify(user));
+                localStorage.setItem("email", JSON.stringify(email));
+                localStorage.setItem("name", JSON.stringify(user.userName));
+                localStorage.setItem("lastname", JSON.stringify(user.userSurname));
                 navigate("/");
             })
             .catch((error) => {
@@ -150,10 +153,6 @@ function Login({ type }) {
         document.querySelector(".a__show-hide").classList.toggle("show");
         document.querySelector("#password_login").type === "password" ? document.querySelector("#password_login").type = "text" : document.querySelector("#password_login").type = "password";
     }
-
-    useEffect(() => {
-        localStorage.setItem("email", JSON.stringify(email));
-    }, [email]);
 
     return (
         <section className="section__form-data">

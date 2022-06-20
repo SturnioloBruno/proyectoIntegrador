@@ -47,6 +47,9 @@ function Header() {
                                 setUser(null)
                                 sessionStorage.removeItem("token")
                                 sessionStorage.removeItem("user")
+                                localStorage.removeItem("email");
+                                localStorage.removeItem("name");
+                                localStorage.removeItem("lastname");
                             }}>cerrar sesión</Link>?</span>:''}
                             <ul className="ul__social-links">
                                 <li><Link to="#" className="a__icon-fb">Facebook</Link></li>

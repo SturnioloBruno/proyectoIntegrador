@@ -28,10 +28,6 @@ function Section({ type, title }) {
                 })
             }
             getCategories();
-
-            /* Info del usuario que inicia sesión */
-            localStorage.setItem("name", JSON.stringify(user?.userName));
-            localStorage.setItem("lastname", JSON.stringify(user?.userSurname));
         }
 
         if(type==="Card"){

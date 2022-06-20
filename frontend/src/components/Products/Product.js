@@ -68,7 +68,7 @@ function Product() {
         </div>
         <DescriptionHotel title={product?.descTitle} text={product?.desc} />
         <LocationServices services={product?.characteristic} />
-        <HotelDate />
+        <HotelDate id={product?.id} />
         <MapLocation city={product?
             product.city?.cityName + ". " + product.city?.country
             :""} latitude={product?.y} longitude={product?.x} title={product?.descTitle} address={product?.address}/>

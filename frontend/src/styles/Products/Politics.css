@@ -1,8 +1,8 @@
-.section__politics ul li h3, .section__politics ul li ul li {
+.section__politics ul li h3, .section__politics ul li ul li:not(:last-child) {
     margin-bottom: 1em;
 }
 
-.section__politics > ul > li {
+.section__politics > ul > li:not(:last-child) {
     margin-bottom: 1.5em;
 }
 
@@ -20,16 +20,16 @@
 
 @media (min-width: 1024px) {
     .section__politics > ul {
-        margin-top: 3em;
+        margin-top: 2em;
         justify-content: flex-start;
     }
 
     .section__politics > ul > li {
-        width: calc(25% - 1.5em);
-        margin-right: 3em;
+        width: calc(25% - 1em);
+        margin-right: 2em;
     }
 
     .section__politics > ul > li {
-        margin-bottom: 3em;
+        margin-bottom: 2em;
     }
 }

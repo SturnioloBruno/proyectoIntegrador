@@ -1,0 +1,19 @@
+[2022-06-20 17:14:14] [ ERROR] [GlobalExceptions:33] UserDetailsService returned null, which is an interface contract violation
+[2022-06-20 17:14:17] [ ERROR] [GlobalExceptions:33] UserDetailsService returned null, which is an interface contract violation
+[2022-06-20 17:15:51] [ ERROR] [GlobalExceptions:33] UserDetailsService returned null, which is an interface contract violation
+[2022-06-20 17:18:34] [ ERROR] [GlobalExceptions:33] UserDetailsService returned null, which is an interface contract violation
+[2022-06-20 17:18:42] [ ERROR] [GlobalExceptions:21] Ya existe usuario registrado con el email ingresado
+[2022-06-20 17:26:59] [ ERROR] [GlobalExceptions:21] Ya existe usuario registrado con el email ingresado
+[2022-06-20 17:27:11] [ ERROR] [GlobalExceptions:33] UserDetailsService returned null, which is an interface contract violation
+[2022-06-20 17:29:01] [ ERROR] [GlobalExceptions:33] UserDetailsService returned null, which is an interface contract violation
+[2022-06-20 17:29:06] [ ERROR] [GlobalExceptions:21] Ya existe usuario registrado con el email ingresado
+[2022-06-20 17:30:35] [ ERROR] [GlobalExceptions:21] Ya existe usuario registrado con el email ingresado
+[2022-06-20 17:30:47] [ ERROR] [GlobalExceptions:33] UserDetailsService returned null, which is an interface contract violation
+[2022-06-20 17:31:17] [ ERROR] [GlobalExceptions:21] Ya existe usuario registrado con el email ingresado
+[2022-06-20 17:31:41] [ ERROR] [GlobalExceptions:21] Ya existe usuario registrado con el email ingresado
+[2022-06-20 17:32:33] [ ERROR] [GlobalExceptions:21] Ya existe usuario registrado con el email ingresado
+[2022-06-20 17:39:16] [ ERROR] [GlobalExceptions:21] Ya existe usuario registrado con el email ingresado
+[2022-06-20 17:47:27] [ ERROR] [GlobalExceptions:21] Ya existe usuario registrado con el email ingresado
+[2022-06-20 17:48:13] [ ERROR] [GlobalExceptions:21] Ya existe usuario registrado con el email ingresado
+[2022-06-20 19:03:19] [ ERROR] [GlobalExceptions:33] no encontrado
+[2022-06-20 19:03:26] [ ERROR] [GlobalExceptions:33] no encontrado

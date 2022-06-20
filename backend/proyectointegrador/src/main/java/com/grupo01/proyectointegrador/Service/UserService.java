@@ -3,6 +3,7 @@ package com.grupo01.proyectointegrador.Service;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.grupo01.proyectointegrador.DTO.UserDTO;
 import com.grupo01.proyectointegrador.DTO.UserDTOResponse;
+import com.grupo01.proyectointegrador.Exception.NotAcceptableException;
 import com.grupo01.proyectointegrador.Model.User;
 import com.grupo01.proyectointegrador.Repository.IUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,25 +23,6 @@ public class UserService {
 
     @Autowired
     PasswordEncoder passwordEncoder;
-
-    // Insert
-    /*public User guardarDTO(User user) throws Exception {
-        UserDTO userDTO = null;
-        UserDTO userDTOCheck = buscarPorIdDT0(userDTO.getId());
-
-        User userEncontrado = user;
-
-        if (userDTOCheck != null){
-
-            userEncontrado = mapper.convertValue(userDTO,User.class);
-            userEncontrado.setUserName(userDTO.getUserName());
-            userEncontrado.setUserSurname(userDTO.getUserSurname());
-            userEncontrado.setUserEmail(userDTO.getUserEmail());
-            userEncontrado.setUserPassword(userDTO.getUserPassword());
-            userEncontrado.setUserCity(userDTO.getUserCity());
-        }
-        return userEncontrado;
-    }*/
 
     // Select for name
     public User buscarEmail(String email) throws  Exception{
@@ -94,11 +76,25 @@ public class UserService {
         return user;
     }
 
-    public void guardar (UserDTO userDTO) throws Exception {
+    public UserDTOResponse guardar (UserDTO userDTO) throws Exception {
+
+        //ANTES DE REGISTRAR VERIFICO EL EMAIL
+        User userFindByEmail = buscarEmail(userDTO.getUserEmail());
+
+        if(userFindByEmail != null){
+            throw new NotAcceptableException("Ya existe usuario registrado con el email ingresado");
+        }
+
         User user = mapper.convertValue(userDTO,User.class);
         user.setRoleId(userDTO.getRole());
         user.setUserPassword(passwordEncoder.encode(userDTO.getUserPassword()));
-        userRepository.save(user);
+
+        User userInsert =  userRepository.save(user);
+
+        UserDTOResponse userDTOResponse = mapper.convertValue(userInsert,UserDTOResponse.class);
+        userDTOResponse.setRole(userInsert.getRoleId());
+
+        return userDTOResponse;
     }
 
     public UserDTOResponse validarUser(String email, String password)throws Exception{

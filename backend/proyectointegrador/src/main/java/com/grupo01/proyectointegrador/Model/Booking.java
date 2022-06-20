@@ -25,7 +25,7 @@ public class Booking {
     @Column (name = "booking_finish_date", nullable = false)
     private LocalDate bookingFinishDate;
 
-    @ManyToOne (fetch = FetchType.EAGER)
+    @ManyToOne (fetch = FetchType.LAZY)
     @JoinColumn(name = "prod_id", nullable = false)
     @JsonIgnore
     private Product prodId;
@@ -37,17 +37,21 @@ public class Booking {
 
     public Booking() {}
 
-    public Booking(Long id, LocalTime bookingStartTime, LocalDate bookingStartDate, LocalDate bookingFinishDate) {
+    public Booking(Long id, LocalTime bookingStartTime, LocalDate bookingStartDate, LocalDate bookingFinishDate, Product prodId, User userId) {
         this.id = id;
         this.bookingStartTime = bookingStartTime;
         this.bookingStartDate = bookingStartDate;
         this.bookingFinishDate = bookingFinishDate;
+        this.prodId = prodId;
+        this.userId = userId;
     }
 
-    public Booking(LocalTime bookingStartTime, LocalDate bookingStartDate, LocalDate bookingFinishDate) {
+    public Booking(LocalTime bookingStartTime, LocalDate bookingStartDate, LocalDate bookingFinishDate, Product prodId, User userId) {
         this.bookingStartTime = bookingStartTime;
         this.bookingStartDate = bookingStartDate;
         this.bookingFinishDate = bookingFinishDate;
+        this.prodId = prodId;
+        this.userId = userId;
     }
 
     public Long getId() {

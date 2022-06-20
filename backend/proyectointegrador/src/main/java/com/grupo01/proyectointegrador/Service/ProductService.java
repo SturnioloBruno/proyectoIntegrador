@@ -58,6 +58,7 @@ public class ProductService implements IProductService {
             productEncontrado.setImages(product.get().getImages());
             productEncontrado.setCharacteristic(product.get().getProductsC());
             productEncontrado.setPolicy(product.get().getProductsP());
+            productEncontrado.setBookings(product.get().getBookings());
         }
         return productEncontrado;
     }

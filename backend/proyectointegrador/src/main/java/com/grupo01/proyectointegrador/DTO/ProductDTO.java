@@ -1,5 +1,6 @@
 package com.grupo01.proyectointegrador.DTO;
 
+import com.grupo01.proyectointegrador.Model.Booking;
 import com.grupo01.proyectointegrador.Model.Image;
 import com.grupo01.proyectointegrador.Model.ProductCharacteristic;
 import com.grupo01.proyectointegrador.Model.ProductPolicy;
@@ -23,6 +24,7 @@ public class ProductDTO {
     private List<Image> images;
     private List<ProductCharacteristic> characteristic;
     private List<ProductPolicy> policy;
+    private List<Booking> bookings;
 
     public Long getId() {
         return id;
@@ -130,5 +132,13 @@ public class ProductDTO {
 
     public void setPolicy(List<ProductPolicy> policy) {
         this.policy = policy;
+    }
+
+    public List<Booking> getBookings() {
+        return bookings;
+    }
+
+    public void setBookings(List<Booking> bookings) {
+        this.bookings = bookings;
     }
 }

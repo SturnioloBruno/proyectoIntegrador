@@ -42,6 +42,6 @@ public class ProductController {
     @Operation(summary = "crea un producto")
     @PostMapping("/insert")
     public ResponseEntity<Product> createProduct(@RequestBody Product product)throws Exception{
-        return ResponseEntity.ok(productService.crearProduct(product));
+        return ResponseEntity.ok(productService.crearProduct(product)); 
     }
 }

@@ -130,10 +130,12 @@ input:disabled {
     background: var(--light-grey);
 }
 
-.small__error{
-    margin-top: 1em;
+.small__error {
+    margin: 1em 0 1.5em;
     color: #FF0000;
     text-align: right;
+    width: 100%;
+    display: block;
 }
 
 .show {
@@ -144,9 +146,36 @@ input:disabled {
     color: var(--orange);
 }
 
+.div__background-white {
+    padding: 1.5em;
+    box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+    border-radius: 8px;
+    background-color: white;
+    margin-top: 1.5em;
+}
+
+.a__close-modal {
+    position: fixed;
+    top: 1.5em;
+    right: 2em;
+    color: white
+}
+
+.a__close-modal:hover {
+    text-decoration: underline;
+}
+
+.none {
+    display: none;
+}
+
 @media (min-width: 1024px) {
     .section__title-border {
         padding: 3em 0 0;
+    }
+
+    .small__error {
+        margin: 1em 0 0;
     }
 }
 

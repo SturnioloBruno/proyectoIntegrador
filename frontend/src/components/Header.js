@@ -43,10 +43,15 @@ function Header() {
                             </ul>
                         </nav>}
                         <div className="div__social-menu">
-                           {user?<span>¿Deseas <Link to="#" onClick={()=>{
+                           {user?<span>¿Deseas <Link to="/" onClick={()=>{
                                 setUser(null)
-                                sessionStorage.removeItem("token")
-                                sessionStorage.removeItem("user")
+                                sessionStorage.removeItem("token");
+                                sessionStorage.removeItem("user");
+                                localStorage.removeItem("email");
+                                localStorage.removeItem("name");
+                                localStorage.removeItem("lastname");
+                                localStorage.removeItem("msg");
+                                localStorage.removeItem("url");
                             }}>cerrar sesión</Link>?</span>:''}
                             <ul className="ul__social-links">
                                 <li><Link to="#" className="a__icon-fb">Facebook</Link></li>

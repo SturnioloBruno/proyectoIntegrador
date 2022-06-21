@@ -53,6 +53,7 @@
 
 .section__booking-details .btn {
     margin-top: 1em;
+    width: 100%;
 }
 
 @media (min-width: 768px) {

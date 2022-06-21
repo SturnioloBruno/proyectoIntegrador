@@ -72,9 +72,6 @@
 @media (min-width: 768px) {
     .section__form-data {
         min-height: calc(100vh - 72px);
-    }
-
-    .section__form-data form {
         width: 60%;
         margin: auto;
     }
@@ -89,16 +86,18 @@
 }
 
 @media (min-width: 1280px) {
-    .section__form-data h2, .section__form-data p {
-        flex: none;
+    .section__form-data {
+        width: 35%;
     }
 
     .section__form-data form {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
-        width: 35%;
-        margin: 0 auto;
+    }
+
+    .section__form-data h2, .section__form-data p {
+        flex: none;
     }
 
     .section__form-data label.label__input-name {

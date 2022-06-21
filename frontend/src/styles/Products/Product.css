@@ -105,6 +105,11 @@
     background-size: contain;
 }
 
+.article__info-product .a__share-icon:hover::before {
+    background: url(../../assets/icons/share-orange.svg) no-repeat center center;
+    background-size: contain;
+}
+
 .article__info-product .a__like-icon::before {
     background: url(../../assets/icons/like.svg) no-repeat center center;
     background-size: contain;

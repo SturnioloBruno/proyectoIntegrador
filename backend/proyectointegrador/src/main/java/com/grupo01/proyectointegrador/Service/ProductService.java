@@ -21,9 +21,8 @@ public class ProductService implements IProductService {
     @Autowired
     ObjectMapper mapper;
 
-    @Override
-    public void crearProduct(Product product) throws Exception{
-        productRepository.save(product);
+    public Product crearProduct(Product product) throws Exception{
+       return  productRepository.save(product);
     }
 
     @Override

@@ -17,3 +17,6 @@
 [2022-06-20 17:48:13] [ ERROR] [GlobalExceptions:21] Ya existe usuario registrado con el email ingresado
 [2022-06-20 19:03:19] [ ERROR] [GlobalExceptions:33] no encontrado
 [2022-06-20 19:03:26] [ ERROR] [GlobalExceptions:33] no encontrado
+[2022-06-21 18:47:51] [ ERROR] [GlobalExceptions:33] UserDetailsService returned null, which is an interface contract violation
+[2022-06-21 18:48:33] [ ERROR] [GlobalExceptions:33] JSON parse error: Cannot deserialize value of type `java.time.LocalTime` from Object value (token `JsonToken.START_OBJECT`); nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize value of type `java.time.LocalTime` from Object value (token `JsonToken.START_OBJECT`)
+ at [Source: (org.springframework.util.StreamUtils$NonClosingInputStream); line: 2, column: 23] (through reference chain: com.grupo01.proyectointegrador.Model.Booking["bookingStartTime"])

@@ -109,6 +109,8 @@ user_id INT NOT NULL,
 booking_start_time TIME,
 booking_start_date DATE,
 booking_finish_date DATE,
+booking_vaccine_covid BIT,
+booking_userinfo_covid VARCHAR(500),
 PRIMARY KEY(booking_id),
 FOREIGN KEY (prod_id) REFERENCES products(prod_id),
 FOREIGN KEY (user_id) REFERENCES users(user_id)
@@ -282,3 +284,10 @@ VALUES
 (10, 2, 1),
 (11, 3, 3),
 (12, 4, 3);
+
+INSERT INTO bookings (prod_id, user_id, booking_vaccine_covid)
+VALUES
+(1, 1, 1),
+(2, 2, 0),
+(3, 3, 0),
+(4, 4, 1);

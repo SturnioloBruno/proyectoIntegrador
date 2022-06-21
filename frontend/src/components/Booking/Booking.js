@@ -36,7 +36,7 @@ function Booking() {
     return (
         <section className='section__booking-hotel'>
             <HeaderProduct name={product?.name} category={product?.category.title} />
-            <div className='div__booking-hotel'>
+            <form className='div__booking-hotel'>
                 <div>
                     <Form />
                     <section className='section__booking-date'>
@@ -46,7 +46,7 @@ function Booking() {
                     <Hour />
                 </div>
                 <Details src={product?.images[0]?.nombre_url} name={product?.name} category={product?.category.title} address={product?.address} city={product? product.city?.cityName + ", " + product.city?.country : ""} stars={product?.stars} />
-            </div>
+            </form>
             <Politics policy={product?.policy} />
         </section>
     )

@@ -74,16 +74,6 @@ CREATE TABLE IF NOT EXISTS products_policies (
     FOREIGN KEY(policies_id) REFERENCES policies(policies_id)
 );
 
-CREATE TABLE IF NOT EXISTS punctuations (
-	punct_id INT NOT NULL AUTO_INCREMENT,
-    prod_id INT NOT NULL,
-    user_id INT NOT NULL,
-    punct_value SMALLINT NOT NULL,
-    PRIMARY KEY(punct_id),
-    FOREIGN KEY(prod_id) REFERENCES products(prod_id),
-    FOREIGN KEY(user_id) REFERENCES users(user_id)
-);
-
 CREATE TABLE IF NOT EXISTS roles(
 role_id INT NOT NULL AUTO_INCREMENT,
 role_name VARCHAR(100) NOT NULL,
@@ -100,6 +90,16 @@ user_password CHAR(60) NOT NULL,
 user_city VARCHAR(100) NOT NULL,
 PRIMARY KEY(user_id),
 FOREIGN KEY (role_id) REFERENCES roles(role_id)
+);
+
+CREATE TABLE IF NOT EXISTS punctuations (
+	punct_id INT NOT NULL AUTO_INCREMENT,
+    prod_id INT NOT NULL,
+    user_id INT NOT NULL,
+    punct_value SMALLINT NOT NULL,
+    PRIMARY KEY(punct_id),
+    FOREIGN KEY(prod_id) REFERENCES products(prod_id),
+    FOREIGN KEY(user_id) REFERENCES users(user_id)
 );
 
 CREATE TABLE IF NOT EXISTS bookings (

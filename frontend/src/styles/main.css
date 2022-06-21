@@ -130,10 +130,12 @@ input:disabled {
     background: var(--light-grey);
 }
 
-.small__error{
-    margin-top: 1em;
+.small__error {
+    margin: 1em 0 1.5em;
     color: #FF0000;
     text-align: right;
+    width: 100%;
+    display: block;
 }
 
 .show {
@@ -147,6 +149,10 @@ input:disabled {
 @media (min-width: 1024px) {
     .section__title-border {
         padding: 3em 0 0;
+    }
+
+    .small__error {
+        margin: 1em 0 0;
     }
 }
 

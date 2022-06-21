@@ -49,7 +49,7 @@ function Login({ type }) {
             .then((response) => {
                 if (response.status === 200) {
                   return response.json()
-                } else{
+                } else {
                    setError({password:["No es posible loguearse"]})
                    return
                 }
@@ -168,15 +168,14 @@ function Login({ type }) {
                     <input type="password" name="password" id="password_login" required className={`${errors.password || errors.general? "error" : ""}`} autoComplete="off" />
                     <Link to="#" className="a__show-hide" onClick={show}>Show/Hide</Link>
                     
-                    {errors.password||errors.email||errors.general?
-                    <small className="small__error" id="error_password">{
-                        errors.password?errors.password:''}
+                    {errors.password || errors.email || errors.general ?
+                    <small className="small__error" id="error_password">
+                        {errors.password?errors.password:''}
                         {errors.email?errors.email:''}
-                        {errors.general?errors.general:''}</small>:
-                    <small className="small__error"></small>
-                    }
+                        {errors.general?errors.general:''}
+                    </small> : "" }
                 </label>
-
+                {localStorage.getItem("msg") != undefined ? <small className='small__error'>{localStorage.getItem("msg")}</small> : "" }
                 <Button text="Ingresar" type="submit" className="btn button__solid-type" />
             </form>
             <p>¿Aún no tenes cuenta? <Link to="/register">Registrate</Link></p>

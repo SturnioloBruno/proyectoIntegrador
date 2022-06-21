@@ -2,7 +2,10 @@ import { Link } from "react-router-dom";
 import Calendar from "./Calendar";
 
 function HotelDate({id}) {
-    if(localStorage.name == undefined) localStorage.setItem("url", `/product/${id}/booking`);
+    if(localStorage.name == undefined) {
+        localStorage.setItem("url", `/product/${id}/booking`);
+        localStorage.setItem("msg", "Debe iniciar sesión para realizar reservas.");
+    }
 
     return (
         <section className="section__hotel-date">

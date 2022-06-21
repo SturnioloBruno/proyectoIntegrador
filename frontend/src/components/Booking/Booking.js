@@ -12,6 +12,7 @@ import "../../styles/Booking/Date.css";
 function Booking() {
     const [product, setProduct] = useState(null);
     const {id} = useParams();
+    localStorage.removeItem("url");
 
     useEffect(()=>{
         //Cargo datos del producto

@@ -92,7 +92,7 @@ function Login({ type }) {
                 localStorage.setItem("email", JSON.stringify(email));
                 localStorage.setItem("name", JSON.stringify(user.userName));
                 localStorage.setItem("lastname", JSON.stringify(user.userSurname));
-                navigate("/");
+                localStorage.getItem("url") == undefined ? navigate("/") : navigate(localStorage.getItem("url"));
             })
             .catch((error) => {
                 setError({password:["Error, intente de nuevo mas tarde"]})

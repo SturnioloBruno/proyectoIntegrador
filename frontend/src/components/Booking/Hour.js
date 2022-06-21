@@ -36,7 +36,7 @@ function Hour() {
                 <label>
                     <span>Indicá tu horario estimado de llegada</span>
                     <select name="hour" required>
-                        <option defaultValue={"Seleccionar hora"}>Seleccionar hora</option>
+                        <option value="">Seleccionar hora</option>
                         {hours.map((hour, i) => {
                             return <option key={i} value={hour.value}>{hour.hour}</option>;
                         })}

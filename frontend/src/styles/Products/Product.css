@@ -2,7 +2,7 @@
     padding: 82px 0 0;
 }
 
-.article__info-product section {
+.article__info-product section:not(.section__header-product, .section__address-score, .section__hotel-date) {
     padding: 1.5em 5% 0;
 }
 
@@ -105,6 +105,11 @@
     background-size: contain;
 }
 
+.article__info-product .a__share-icon:hover::before {
+    background: url(../../assets/icons/share-orange.svg) no-repeat center center;
+    background-size: contain;
+}
+
 .article__info-product .a__like-icon::before {
     background: url(../../assets/icons/like.svg) no-repeat center center;
     background-size: contain;
@@ -162,11 +167,6 @@
         background-size: contain;
     }
 
-    .article__info-product .section__location-services ul li {
-        width: calc(50% - 1em);
-        margin-bottom: 2em;
-    }
-
     .article__info-product .section__location-services ul li::before {
         width: 24px;
         height: 24px;
@@ -180,6 +180,14 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+    }
+
+    .article__info-product .section__hotel-date .div__calendar-info .div__button-selected p {
+        width: calc(60% - 1.5em);
+    }
+
+    .article__info-product .section__hotel-date .div__calendar-info .div__button-selected a {
+        width: 40%;
     }
 
     .article__info-product .section__hotel-date {
@@ -196,7 +204,7 @@
 }
 
 @media (min-width: 1024px) {
-    .article__info-product section {
+    .article__info-product section:not(.section__header-product, .section__address-score, .section__hotel-date) {
         padding: 2em 5% 0;    
     }
 
@@ -264,9 +272,10 @@
     
     .article__info-product .section__hotel-date .div__calendar-info .div__button-selected p {
         margin-bottom: 1em;
+        width: 100%;
     }
 
-    .article__info-product .section__hotel-date .div__calendar-info .div__button-selected button {
+    .article__info-product .section__hotel-date .div__calendar-info .div__button-selected a {
         width: 100%;
     }
 

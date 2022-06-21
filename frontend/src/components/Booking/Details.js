@@ -1,8 +1,8 @@
 import "../../styles/Booking/Details.css";
-import { Link } from "react-router-dom";
 import Rating from '@mui/material/Rating';
 import Stack from '@mui/material/Stack';
 import StarIcon from '@mui/icons-material/Star';
+import Button from "../../components/Button";
 
 function Details({ src, name, category, address, city, stars }) {
     return (
@@ -28,7 +28,7 @@ function Details({ src, name, category, address, city, stars }) {
                                 <span>-/-/-</span>
                             </li>
                         </ul>
-                        <Link to="/ok" className="btn button__solid-type">Confirmar reserva</Link>
+                        <Button text="Confirmar reserva" className="btn button__solid-type" />
                     </div>
                 </div>
             </div>

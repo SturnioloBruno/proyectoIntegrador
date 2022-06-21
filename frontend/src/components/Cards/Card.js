@@ -20,7 +20,7 @@ function Card({id, title, src, address, description, category, punctuation, scor
         setModal(!modal);
     }
 
-    //Para ver la modal
+    //Para cerrar la modal
     function closeModal(e) {
         e.preventDefault();
         e.target.parentNode.parentNode.querySelector(".div__map-modal").classList.add("none");

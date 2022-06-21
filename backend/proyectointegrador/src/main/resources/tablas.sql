@@ -1,5 +1,5 @@
 SET FOREIGN_KEY_CHECKS = 0;
-DROP TABLE IF EXISTS `users`,`roles`,`punctuations`, `cities`, `images`, `policies`, `products_policies`, `characteristics`, `products_characteristics`,`products`,`categories`;
+DROP TABLE IF EXISTS `punctuations`, `cities`, `images`, `policies`, `products_policies`, `characteristics`, `products_characteristics`,`products`,`categories`;
 SET FOREIGN_KEY_CHECKS = 1;
 
 CREATE TABLE IF NOT EXISTS categories (
@@ -74,14 +74,6 @@ CREATE TABLE IF NOT EXISTS products_policies (
     FOREIGN KEY(policies_id) REFERENCES policies(policies_id)
 );
 
-CREATE TABLE IF NOT EXISTS punctuations (
-	punct_id INT NOT NULL AUTO_INCREMENT,
-    prod_id INT NOT NULL,
-    punct_value SMALLINT NOT NULL,
-    PRIMARY KEY(punct_id),
-    FOREIGN KEY(prod_id) REFERENCES products(prod_id)
-);
-
 CREATE TABLE IF NOT EXISTS roles(
 role_id INT NOT NULL AUTO_INCREMENT,
 role_name VARCHAR(100) NOT NULL,
@@ -94,10 +86,20 @@ role_id INT NOT NULL,
 user_name VARCHAR(100) NOT NULL,
 user_surname VARCHAR(100) NOT NULL,
 user_email VARCHAR(100) NOT NULL,
-user_password VARCHAR(1000) NOT NULL,
+user_password CHAR(60) NOT NULL,
 user_city VARCHAR(100) NOT NULL,
 PRIMARY KEY(user_id),
 FOREIGN KEY (role_id) REFERENCES roles(role_id)
+);
+
+CREATE TABLE IF NOT EXISTS punctuations (
+	punct_id INT NOT NULL AUTO_INCREMENT,
+    prod_id INT NOT NULL,
+    user_id INT NOT NULL,
+    punct_value SMALLINT NOT NULL,
+    PRIMARY KEY(punct_id),
+    FOREIGN KEY(prod_id) REFERENCES products(prod_id),
+    FOREIGN KEY(user_id) REFERENCES users(user_id)
 );
 
 CREATE TABLE IF NOT EXISTS bookings (
@@ -113,6 +115,13 @@ FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
 
 INSERT INTO roles (role_name) VALUES("ADMIN"),("USER");
+
+INSERT INTO users (role_id, user_name, user_surname, user_email, user_password, user_city)
+VALUES
+(2, "Maria", "Acosta", "maria@email.com", "password1", 1),
+(2, "Juan", "Corral", "juan@email.com", "password2", 2),
+(2, "Valeria", "Lopez", "valeria@email.com", "password3", 3),
+(2, "Franco", "Elias", "franco@email.com", "password4", 4);
 
 INSERT INTO categories (cat_title,cat_description,cat_url_img)
 VALUES ("Hotel","821.458 hoteles","https://images.unsplash.com/photo-1629140727571-9b5c6f6267b4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1527&q=80"),
@@ -259,17 +268,17 @@ VALUES
 (11, 1), (11, 2), (11, 3),
 (12, 1), (12, 2), (12, 3);
 
-INSERT into punctuations (prod_id, punct_value)
+INSERT into punctuations (prod_id, user_id, punct_value)
 VALUES
-(1, 4),
-(2, 3),
-(3, 5),
-(4, 2),
-(5, 3),
-(6, 4),
-(7, 3),
-(8, 5),
-(9, 4),
-(10, 1),
-(11, 3),
-(12, 3);
+(1, 1, 5),
+(2, 2, 3),
+(3, 3, 5),
+(4, 4, 2),
+(5, 1, 3),
+(6, 2, 4),
+(7, 3, 3),
+(8, 4, 5),
+(9, 1, 4),
+(10, 2, 1),
+(11, 3, 3),
+(12, 4, 3);

@@ -36,6 +36,9 @@ public class User  {
     @OneToMany(mappedBy = "userId", fetch = FetchType.EAGER)
     private Set<Booking> bookings;
 
+    @OneToMany(mappedBy = "userId", fetch = FetchType.EAGER)
+    private Set<Punctuation> punctuations;
+
     public User() {}
 
     public User(Long id, String userName, String userSurname, String userEmail, String userPassword, String userCity) {
@@ -113,5 +116,13 @@ public class User  {
 
     public void setBookings(Set<Booking> bookings) {
         this.bookings = bookings;
+    }
+
+    public Set<Punctuation> getPunctuations() {
+        return punctuations;
+    }
+
+    public void setPunctuations(Set<Punctuation> punctuations) {
+        this.punctuations = punctuations;
     }
 }

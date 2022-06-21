@@ -1,3 +1,7 @@
+.article__info-product {
+    position: relative;
+}
+
 .article__info-product .section__location-services ul {
     display: flex;
     flex-wrap: wrap;

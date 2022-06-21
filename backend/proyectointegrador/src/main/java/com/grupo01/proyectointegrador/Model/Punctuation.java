@@ -29,15 +29,17 @@ public class Punctuation {
 
     public Punctuation(){}
 
-    public Punctuation(Long id, Integer punctValue, Product prodId) {
+    public Punctuation(Long id, Integer punctValue, Product prodId, User userId) {
         this.id = id;
         this.punctValue = punctValue;
         this.prodId = prodId;
+        this.userId = userId;
     }
 
-    public Punctuation(Integer punctValue, Product prodId) {
+    public Punctuation(Integer punctValue, Product prodId, User userId) {
         this.punctValue = punctValue;
         this.prodId = prodId;
+        this.userId = userId;
     }
 
     public Long getId() {

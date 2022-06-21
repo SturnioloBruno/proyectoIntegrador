@@ -22,6 +22,11 @@ public class Punctuation {
     @JsonIgnore
     private Product prodId;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id", nullable = false)
+    @JsonIgnore
+    private User userId;
+
     public Punctuation(){}
 
     public Punctuation(Long id, Integer punctValue, Product prodId) {
@@ -53,5 +58,13 @@ public class Punctuation {
 
     public void setProdId(Product prodId) {
         this.prodId = prodId;
+    }
+
+    public User getUserId() {
+        return userId;
+    }
+
+    public void setUserId(User userId) {
+        this.userId = userId;
     }
 }

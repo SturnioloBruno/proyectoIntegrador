@@ -1,5 +1,5 @@
 SET FOREIGN_KEY_CHECKS = 0;
-DROP TABLE IF EXISTS `bookings`,`punctuations`, `cities`, `images`, `policies`, `products_policies`, `characteristics`, `products_characteristics`,`products`,`categories`;
+DROP TABLE IF EXISTS `punctuations`, `cities`, `images`, `policies`, `products_policies`, `characteristics`, `products_characteristics`,`products`,`categories`;
 SET FOREIGN_KEY_CHECKS = 1;
 
 CREATE TABLE IF NOT EXISTS categories (
@@ -96,7 +96,7 @@ CREATE TABLE IF NOT EXISTS punctuations (
 	punct_id INT NOT NULL AUTO_INCREMENT,
     prod_id INT NOT NULL,
     user_id INT NOT NULL,
-    punct_value SMALLINT NOT NULL,
+    punct_value DECIMAL(2,1) NOT NULL,
     PRIMARY KEY(punct_id),
     FOREIGN KEY(prod_id) REFERENCES products(prod_id),
     FOREIGN KEY(user_id) REFERENCES users(user_id)
@@ -272,22 +272,15 @@ VALUES
 
 INSERT into punctuations (prod_id, user_id, punct_value)
 VALUES
-(1, 1, 5),
-(2, 2, 3),
-(3, 3, 5),
-(4, 4, 2),
+(1, 1, 4),
+(2, 2, 3.5),
+(3, 3, 4.5),
+(4, 4, 1.5),
 (5, 1, 3),
-(6, 2, 4),
-(7, 3, 3),
-(8, 4, 5),
-(9, 1, 4),
+(6, 2, 5),
+(7, 3, 3.5),
+(8, 4, 4),
+(9, 1, 3.5),
 (10, 2, 1),
-(11, 3, 3),
-(12, 4, 3);
-
-INSERT INTO bookings (prod_id, user_id, booking_vaccine_covid,booking_start_date,booking_finish_date)
-VALUES
-(1, 1, 1,'2022-06-12','2022-06-20'),
-(2, 2, 0,'2022-06-04','2022-06-06'),
-(3, 3, 0,'2022-07-10','2022-08-10'),
-(4, 4, 1,'2022-06-12','2022-07-20');
+(11, 3, 2.5),
+(12, 4, 2.5);

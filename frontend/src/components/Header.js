@@ -8,6 +8,9 @@ import { UserContext } from './Context/UserContext';
 
 function Header() {
     const {user, setUser} = useContext(UserContext);
+    const name = JSON.parse(localStorage.getItem("name"));
+    const lastname = JSON.parse(localStorage.getItem("lastname"));
+    if(name != undefined) setUser(localStorage);
 
     function clicNav() {
         document.querySelector("header").classList.toggle("div__open-menu");
@@ -26,16 +29,16 @@ function Header() {
                 <Link to="#" className="a__button-nav" onClick={clicNav}>Abrir/Cerrar</Link>
                 <div className="div__menu-bar">
                     <div className={"div__menu-login"}>
-                        {user?
+                        {user ?
                         <div className="div__user-login">
-                            <span>{user?.userName[0]+user?.userSurname[0]}</span>
-                            <p>Hola, <span>{`${user?.userName} ${user?.userSurname}`}</span></p>
+                            <span>{name[0] + lastname[0]}</span>
+                            <p>Hola, <span>{`${name} ${lastname}`}</span></p>
                         </div>
                         :<p>Menú</p>
                         }
                     </div>
-                    <div className={`div__menu-navigation ${user?.user? "login":""}`}>
-                        {user? ""
+                    <div className={`div__menu-navigation ${user ? "login" : ""}`}>
+                        {user ? ""
                         :<nav>
                             <ul className="ul__bar-links">
                             <li><Link to="/login" element={<Login />} id="link__login-btn" onClick={clicButton}>Iniciar sesión</Link></li>
@@ -44,7 +47,7 @@ function Header() {
                         </nav>}
                         <div className="div__social-menu">
                            {user?<span>¿Deseas <Link to="/" onClick={()=>{
-                                setUser(null)
+                                setUser(undefined)
                                 sessionStorage.removeItem("token");
                                 sessionStorage.removeItem("user");
                                 localStorage.removeItem("email");

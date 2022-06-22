@@ -7,12 +7,12 @@ import {useEffect,useState,useContext} from 'react';
 import { SearchContext } from '../Context/SearchContext';
 
 function Details({ src, name, category, address, city, stars }) {
-    const dayStart = useContext(SearchContext).startDateCache._d.getDate();
+    /*const dayStart = useContext(SearchContext).startDateCache._d.getDate();
     const monthStart = useContext(SearchContext).startDateCache._d.getMonth();
     const yearStart = parseInt(useContext(SearchContext).startDateCache._d.getFullYear().toString().substr(-2));
     const dayEnd = useContext(SearchContext).endDateCache._d.getDate();
     const monthEnd = useContext(SearchContext).endDateCache._d.getMonth();
-    const yearEnd = parseInt(useContext(SearchContext).endDateCache._d.getFullYear().toString().substr(-2));
+    const yearEnd = parseInt(useContext(SearchContext).endDateCache._d.getFullYear().toString().substr(-2));*/
 
     return (
         <section className="section__booking-details">
@@ -30,11 +30,13 @@ function Details({ src, name, category, address, city, stars }) {
                         <ul>
                             <li>
                                 <h4>Check in</h4>
-                                <span>{`${dayStart}/${monthStart}/${yearStart}`}</span>
+                                <span>-/-/-</span>
+                                {/*<span>{`${dayStart}/${monthStart}/${yearStart}`}</span>*/}
                             </li>
                             <li>
                                 <h4>Check out</h4>
-                                <span>{`${dayEnd}/${monthEnd}/${yearEnd}`}</span>
+                                <span>-/-/-</span>
+                                {/*<span>{`${dayEnd}/${monthEnd}/${yearEnd}`}</span>*/}
                             </li>
                         </ul>
                         <Button text="Confirmar reserva" className="btn button__solid-type" />

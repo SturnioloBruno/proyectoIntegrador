@@ -17,7 +17,7 @@ function Product() {
     const mobileTablet = useMediaQuery({ query: '(max-width: 1024px)' });
     const desktop = useMediaQuery({ query: '(min-width: 1025px)' });
     const [product, setProduct] = useState(null);
-    /*const [punctuation, setPunctuation] = useState(null);*/
+    const [punctuation, setPunctuation] = useState(null);
     const {id} = useParams();
 
     useEffect(()=>{
@@ -38,7 +38,7 @@ function Product() {
         }      
         getProduct();
         
-        /*//Cargo puntuación
+        //Cargo puntuación
         const getPunctuation = async()=>{
             await fetch("http://localhost:8080/punctuations/findById/" + id,{
                 method:'GET',
@@ -53,7 +53,7 @@ function Product() {
                 setPunctuation(punctuation);
             })
         }
-        getPunctuation();*/
+        getPunctuation();
     }, [id]);
 
     //Para ver la modal
@@ -64,7 +64,7 @@ function Product() {
 
     return <><article className="article__info-product">
         <HeaderProduct name={product?.name} category={product?.category.title} />
-        <InfoProduct address={product?.address} punctuation={product?.punctuation} stars={product?.stars} score={product?.score} />
+        <InfoProduct address={product?.address} punctuation={product?.punctuation} stars={punctuation?.punctValue} score={product?.score} />
         <div className="div__img-actions">
             <div className="div__buttons-bar">
                 <Link to="#" className="a__share-icon" onClick={viewModal}>Compartir</Link>

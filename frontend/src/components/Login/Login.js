@@ -58,7 +58,7 @@ function Login({ type }) {
                 if(!user){
                     return
                 }
-                sessionStorage.setItem("token",user.jwt)
+                localStorage.setItem("token",user.jwt)
                 findUserData();
             })
             .catch((error) => {
@@ -88,10 +88,10 @@ function Login({ type }) {
                     return
                 }
                 setUser(user);
-                sessionStorage.setItem("user", JSON.stringify(user));
-                localStorage.setItem("email", JSON.stringify(email));
+                localStorage.setItem("user", JSON.stringify(user));
+               /* localStorage.setItem("email", JSON.stringify(email));
                 localStorage.setItem("name", JSON.stringify(user.userName));
-                localStorage.setItem("lastname", JSON.stringify(user.userSurname));
+                localStorage.setItem("lastname", JSON.stringify(user.userSurname));*/
                 localStorage.getItem("url") == undefined ? navigate("/") : navigate(localStorage.getItem("url"));
             })
             .catch((error) => {

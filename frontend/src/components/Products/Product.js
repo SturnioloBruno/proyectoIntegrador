@@ -13,7 +13,7 @@ import HotelDate from "./HotelDate";
 import Share from './Share';
 import "../../styles/Products/Product.css";
 
-function Product() {
+function Product({type}) {
     const mobileTablet = useMediaQuery({ query: '(max-width: 1024px)' });
     const desktop = useMediaQuery({ query: '(min-width: 1025px)' });
     const [product, setProduct] = useState(null);
@@ -63,7 +63,7 @@ function Product() {
     }
 
     return <><article className="article__info-product">
-        <HeaderProduct name={product?.name} category={product?.category.title} />
+        <HeaderProduct type={type} name={product?.name} category={product?.category.title} />
         <InfoProduct address={product?.address} punctuation={product?.punctuation} stars={punctuation?.punctValue} score={product?.score} />
         <div className="div__img-actions">
             <div className="div__buttons-bar">

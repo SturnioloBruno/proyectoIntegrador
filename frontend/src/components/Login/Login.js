@@ -89,9 +89,6 @@ function Login({ type }) {
                 }
                 setUser(user);
                 localStorage.setItem("user", JSON.stringify(user));
-               /* localStorage.setItem("email", JSON.stringify(email));
-                localStorage.setItem("name", JSON.stringify(user.userName));
-                localStorage.setItem("lastname", JSON.stringify(user.userSurname));*/
                 localStorage.getItem("url") === undefined ? navigate("/") : navigate(localStorage.getItem("url"));
             })
             .catch((error) => {

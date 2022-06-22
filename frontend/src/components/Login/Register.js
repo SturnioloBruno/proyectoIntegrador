@@ -109,7 +109,7 @@ function Register({type}) {
                 if(!token) {
                     return
                 }
-                sessionStorage.setItem("token",token.jwt)
+                localStorage.setItem("token",token.jwt)
                 findUserData();
             })
             .catch((error) => {
@@ -138,7 +138,7 @@ function Register({type}) {
                     return
                 }
                 setUser(user);
-                sessionStorage.setItem("user", JSON.stringify(user));
+                localStorage.setItem("user", JSON.stringify(user));
                 navigate("/");
             })
             .catch((error) => {

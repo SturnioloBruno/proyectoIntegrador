@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext ,useEffect} from 'react';
 import Title from "./Title";
 import '../styles/Header.css';
 import { Link } from "react-router-dom";
@@ -8,9 +8,14 @@ import { UserContext } from './Context/UserContext';
 
 function Header() {
     const {user, setUser} = useContext(UserContext);
-    const name = JSON.parse(localStorage.getItem("name"));
-    const lastname = JSON.parse(localStorage.getItem("lastname"));
-    if(name != undefined) setUser(localStorage);
+
+    useEffect(()=>{
+
+        if(localStorage.getItem("user")){
+            setUser(JSON.parse(localStorage.user));
+        }
+       
+    },[]);
 
     function clicNav() {
         document.querySelector("header").classList.toggle("div__open-menu");
@@ -31,8 +36,8 @@ function Header() {
                     <div className={"div__menu-login"}>
                         {user ?
                         <div className="div__user-login">
-                            <span>{name[0] + lastname[0]}</span>
-                            <p>Hola, <span>{`${name} ${lastname}`}</span></p>
+                            <span>{user?.userName[0] + user?.userSurname[0]}</span>
+                            <p>Hola, <span>{`${user?.userName} ${user?.userSurname}`}</span></p>
                         </div>
                         :<p>Menú</p>
                         }
@@ -48,11 +53,8 @@ function Header() {
                         <div className="div__social-menu">
                            {user?<span>¿Deseas <Link to="/" onClick={()=>{
                                 setUser(undefined)
-                                sessionStorage.removeItem("token");
-                                sessionStorage.removeItem("user");
-                                localStorage.removeItem("email");
-                                localStorage.removeItem("name");
-                                localStorage.removeItem("lastname");
+                                localStorage.removeItem("token");
+                                localStorage.removeItem("user");
                                 localStorage.removeItem("msg");
                                 localStorage.removeItem("url");
                             }}>cerrar sesión</Link>?</span>:''}

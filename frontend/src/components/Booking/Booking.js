@@ -41,7 +41,7 @@ function Booking() {
                     <Form />
                     <section className='section__booking-date'>
                         <h2>Seleccioná tu fecha de reserva</h2>
-                        <Calendar />
+                        <Calendar bookings={product?.bookings}/>
                     </section>
                     <Hour />
                 </div>

@@ -1,4 +1,4 @@
-import {React,useState,useEffect} from 'react';
+import React,{useState,useEffect} from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { Link, useParams } from "react-router-dom";
 import HeaderProduct from './HeaderProduct';

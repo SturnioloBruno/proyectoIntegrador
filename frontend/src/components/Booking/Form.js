@@ -1,25 +1,25 @@
+import { useContext } from "react";
 import "../../styles/Booking/Form.css";
+import { UserContext } from "../Context/UserContext";
 
 function Form() {
-    const name = JSON.parse(localStorage.getItem("name"));
-    const lastname = JSON.parse(localStorage.getItem("lastname"));
-    const email = JSON.parse(localStorage.getItem("email"));
-    
+    const {user} = useContext(UserContext);
+
     return (
         <section className="section__booking-form">
             <h2>Completá tus datos</h2>
             <div className="div__background-white">
                 <label>
                     <span>Nombre</span>
-                    <input type="text" name="name" value={name} disabled />
+                    <input type="text" name="name" value={user?.userName} disabled />
                 </label>
                 <label>
                     <span>Apellido</span>
-                    <input type="text" name="lastname" value={lastname} disabled />
+                    <input type="text" name="lastname" value={user?.userSurname} disabled />
                 </label>
                 <label>
                     <span>Correo electronico</span>
-                    <input type="email" name="email" value={email} disabled />
+                    <input type="email" name="email" value={user?.userEmail} disabled />
                 </label>
                 <label>
                     <span>Ciudad</span>

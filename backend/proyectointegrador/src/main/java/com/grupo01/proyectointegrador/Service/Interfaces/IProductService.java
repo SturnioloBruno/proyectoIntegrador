@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Optional;
 
 public interface IProductService {
-    void crearProduct(Product product) throws Exception;
     //ProductDTO save(ProductDTO productDTO) throws Exception;
     List<ProductDTO> getProducts(Optional<Boolean> sort) throws Exception;
     ProductDTO buscarPorIdDTO(Long id) throws Exception;

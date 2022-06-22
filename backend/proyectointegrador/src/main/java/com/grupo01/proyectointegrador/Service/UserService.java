@@ -1,13 +1,13 @@
 package com.grupo01.proyectointegrador.Service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.grupo01.proyectointegrador.DTO.CustomerDTO;
 import com.grupo01.proyectointegrador.DTO.UserDTO;
-import com.grupo01.proyectointegrador.DTO.UserRoleDTO;
-import com.grupo01.proyectointegrador.Model.Customer;
+import com.grupo01.proyectointegrador.DTO.UserDTOResponse;
+import com.grupo01.proyectointegrador.Exception.NotAcceptableException;
 import com.grupo01.proyectointegrador.Model.User;
 import com.grupo01.proyectointegrador.Repository.IUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -21,24 +21,8 @@ public class UserService {
     @Autowired
     ObjectMapper mapper;
 
-    // Insert
-    /*public User guardarDTO(User user) throws Exception {
-        UserDTO userDTO = null;
-        UserDTO userDTOCheck = buscarPorIdDT0(userDTO.getId());
-
-        User userEncontrado = user;
-
-        if (userDTOCheck != null){
-
-            userEncontrado = mapper.convertValue(userDTO,User.class);
-            userEncontrado.setUserName(userDTO.getUserName());
-            userEncontrado.setUserSurname(userDTO.getUserSurname());
-            userEncontrado.setUserEmail(userDTO.getUserEmail());
-            userEncontrado.setUserPassword(userDTO.getUserPassword());
-            userEncontrado.setUserCity(userDTO.getUserCity());
-        }
-        return userEncontrado;
-    }*/
+    @Autowired
+    PasswordEncoder passwordEncoder;
 
     // Select for name
     public User buscarEmail(String email) throws  Exception{
@@ -49,6 +33,7 @@ public class UserService {
 
     public UserDTO buscarPorIdDT0(Long id) throws Exception{
         Optional<User> user = userRepository.findById(id);
+
         UserDTO userEncontrado = null;
         if (user.isPresent()){
             userEncontrado = mapper.convertValue(user.get(),UserDTO.class);
@@ -80,31 +65,40 @@ public class UserService {
         }
     }
 
-    public UserDTO actualizar (UserDTO userDTO) throws Exception {
-        UserDTO userBuscado = buscarPorIdDT0(userDTO.getId());
+    public User actualizar (User user) throws Exception {
+        User userBuscado = buscarId(user.getId());
 
         if(userBuscado == null){
-           throw new Exception("Usuario con id: "+ userDTO.getId() + " no existe");
+           throw new Exception("Usuario con id: "+ user.getId() + " no existe");
         }
-        User user=mapper.convertValue(userDTO,User.class);
+
         userRepository.save(user);
-        return userDTO;
+        return user;
     }
 
-    public UserDTO guardar (UserDTO userDTO) throws Exception {
-        User user=mapper.convertValue(userDTO,User.class);
-        userRepository.save(user);
-        return userDTO;
-    }
-    public UserRoleDTO guardarConRol (UserRoleDTO userRoleDTO) throws Exception {
-        User user=mapper.convertValue(userRoleDTO,User.class);
-        userRepository.save(user);
-        return userRoleDTO;
+    public UserDTOResponse guardar (UserDTO userDTO) throws Exception {
+
+        //ANTES DE REGISTRAR VERIFICO EL EMAIL
+        User userFindByEmail = buscarEmail(userDTO.getUserEmail());
+
+        if(userFindByEmail != null){
+            throw new NotAcceptableException("Ya existe usuario registrado con el email ingresado");
+        }
+
+        User user = mapper.convertValue(userDTO,User.class);
+        user.setRoleId(userDTO.getRole());
+        user.setUserPassword(passwordEncoder.encode(userDTO.getUserPassword()));
+
+        User userInsert =  userRepository.save(user);
+
+        UserDTOResponse userDTOResponse = mapper.convertValue(userInsert,UserDTOResponse.class);
+        userDTOResponse.setRole(userInsert.getRoleId());
+
+        return userDTOResponse;
     }
 
-
-    public UserDTO validarUser(String email, String password)throws Exception{
-        UserDTO userReturn = null;
+    public UserDTOResponse validarUser(String email, String password)throws Exception{
+        UserDTOResponse userReturn = null;
         User userByEmail = buscarEmail(email);
 
         if(userByEmail==null){
@@ -115,7 +109,7 @@ public class UserService {
             throw new Exception("Contraseña incorrecta!");
         }
 
-        userReturn =  mapper.convertValue(userByEmail, UserDTO.class);
+        userReturn =  mapper.convertValue(userByEmail, UserDTOResponse.class);
 
         return userReturn;
     }

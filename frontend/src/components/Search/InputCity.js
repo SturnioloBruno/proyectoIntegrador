@@ -3,7 +3,7 @@ import { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { SearchContext } from "../Context/SearchContext";
 
-const InputCity = ({ cities }) => {
+const InputCity = ({ cities , handlerCity }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [isActive, setActive] = useState(false);
   const inputLocality = document.getElementById("input__locality");
@@ -56,6 +56,7 @@ const InputCity = ({ cities }) => {
               <li
                 key={city.cityName + city.id}
                 onClick={(e) => {
+                  handlerCity(city.id)
                   inputLocality.name = `?city=${city.id}`;
                   inputLocality.value = city.cityName + ", " + city.country;
                   toggle();

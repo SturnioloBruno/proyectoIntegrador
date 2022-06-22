@@ -29,17 +29,6 @@
     width: calc(100% - 4em);
 }
 
-.none {
-    display: none;
-}
-
-.a__close-modal {
-    position: fixed;
-    top: 1.5em;
-    right: 2em;
-    color: white
-}
-
 @media (min-width: 768px) {
     .div__map-modal > div {
         left: calc(50vw - 40%);

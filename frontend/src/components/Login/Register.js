@@ -4,19 +4,19 @@ import Button from "../Button";
 import '../../styles/Login.css';
 import { UserContext } from "../Context/UserContext";
 
-function Register({type,handlerUser}) {
+function Register({type}) {
     const [errors,setError]=useState({})
     const navigate = useNavigate();
     const {setUser} = useContext(UserContext);
-    const [name, setUserName] = useState("");
-    const [lastname, setUserSurname] = useState("");
-    const [email, setUserEmail] = useState("");
+    const [name, setName] = useState("");
+    const [lastname, setLastname] = useState("");
+    const [email, setEmail] = useState("");
 
     const handlerSubmit = (e)=>{
         e.preventDefault()
 
         const nombreValue = document.querySelector("#input__name")
-        const apellidoValue = document.querySelector("#input__lastname")
+        const apellidoValue = document.querySelector("#input__lastname");
         const emailValue =  document.querySelector("#email_login");
         const passwordValue = document.querySelector("#password_login");
         const passwordRepeat = document.querySelector("#repeat_login");
@@ -52,49 +52,104 @@ function Register({type,handlerUser}) {
             return
         }
 
-        const register = async()=>{
-            await fetch("http://localhost:8080/register",{
+        const register = async() => {
+            await fetch("http://localhost:8080/users/register", {
                 method:'POST',
                 headers:{
                     "Access-Control-Allow-Headers" : "Content-Type",
                     'Access-Control-Allow-Origin':"*",
                     'Content-Type':'application/json'
-                },body:JSON.stringify({
+                }, body:JSON.stringify ({
                     userName:nombreValue.value.trim(),
                     userSurname:apellidoValue.value.trim(),
                     userEmail:emailValue.value.trim(),
                     userPassword:passwordValue.value.trim(),
-                    userCity:""
+                    userCity:"",
+                    role: {id:2}
                 })
             })
             .then((response) => {
-                if (response.status === 200) {
-                  return response.json()        
-                }else if(response.status ===406){
-                   setError({userPassword:["Ya existe un usuario con el email ingresado"]})
+                if(response.status === 201) {
+                    login(); // logueo para obtener token
+                } else if(response.status === 406) {
+                   setError({password:["Ya existe un usuario con el email ingresado"]})
                    return
-                }else{
-                    setError({userPassword:["Error, intente de nuevo mas tarde"]})
+                } else {
+                    setError({password:["Lamentablemente no ha podido registrarse. Por favor intente más tarde"]})
                     return
                 }
-              })
-              .then((user)=>{
-               if(!user){
-                    return
-                }
-                navigate("/login")
-              })
-              .catch((error) => {
-                setError({userPassword:["Error, intente de nuevo mas tarde"]})
+              }).catch((error) => {
+                setError({password:["Error, intente de nuevo mas tarde"]})
                 return
               });
         }
-    
         register();
+
+        const login = async() => {
+            await fetch("http://localhost:8080/authenticate", {
+                method:'POST',
+                headers:{
+                    "Access-Control-Allow-Headers" : "Content-Type",
+                    'Access-Control-Allow-Origin':"*",
+                    'Content-Type':'application/json'
+                }, body:JSON.stringify({
+                    email:emailValue.value.trim(),
+                    password:passwordValue.value.trim()
+                })
+            })
+            .then((response) => {
+                if(response.status === 200) {
+                  return response.json()
+                } else {
+                   setError({password:["No es posible loguearse"]})
+                   return
+                }
+            })
+            .then((token) => {
+                if(!token) {
+                    return
+                }
+                sessionStorage.setItem("token",token.jwt)
+                findUserData();
+            })
+            .catch((error) => {
+                setError({password:["Error, intente de nuevo mas tarde"]})
+                return
+            });
+        }
+    
+        const findUserData = async() => {
+            await fetch("http://localhost:8080/users/findByEmail/" + emailValue.value.trim(), {
+                method:'GET',
+                headers: {
+                    "Access-Control-Allow-Headers" : "Content-Type"
+                }
+            })
+            .then((response) => {
+                if (response.status === 200) {
+                    return response.json()
+                } else {
+                    setError({password:["No es posible loguearse"]})
+                    return
+                }
+            })
+            .then((user) => {
+                if(!user) {
+                    return
+                }
+                setUser(user);
+                sessionStorage.setItem("user", JSON.stringify(user));
+                navigate("/");
+            })
+            .catch((error) => {
+                setError({password:["Error, intente de nuevo mas tarde"]})
+                return
+            });
+        }
     }
 
     //VALIDO CAMPO EMAIL
-    const validateInput = (type,value)=>{ 
+    const validateInput = (type,value) => { 
         value = value.trim() //hago un trim para sacar los espacios
 
         switch (type) {
@@ -158,15 +213,15 @@ function Register({type,handlerUser}) {
             <form action="POST" onSubmit={handlerSubmit}>
                 <label htmlFor="input__name" className="label__input-name">
                     <span>Nombre</span>
-                    <input type="text" name="name" id="input__name" autoComplete="off" value={name} onChange={(e) => setUserName(e.target.value)} />
+                    <input type="text" name="name" id="input__name" autoComplete="off" value={name} onChange={(e) => setName(e.target.value)} />
                 </label>
                 <label htmlFor="input__lastname" className="label__input-name">
                     <span>Apellido</span>
-                    <input type="text" name="lastname" id="input__lastname" autoComplete="off" value={lastname} onChange={(e) => setUserSurname(e.target.value)} />
+                    <input type="text" name="lastname" id="input__lastname" autoComplete="off" value={lastname} onChange={(e) => setLastname(e.target.value)} />
                 </label>
                 <label htmlFor="email_login">
                     <span>Correo electrónico</span>
-                    <input type="email" name="email" id="email_login" required autoComplete="off" className={`${errors.email ? "error" : ""}`} value={email} onChange={(e) => setUserEmail(e.target.value)} />
+                    <input type="email" name="email" id="email_login" required autoComplete="off" className={`${errors.email ? "error" : ""}`} value={email} onChange={(e) => setEmail(e.target.value)} />
 
                     {errors.email?
                     <small className="small__error" id="error_email">{errors.email[0]}</small>:

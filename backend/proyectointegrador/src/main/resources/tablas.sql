@@ -1,10 +1,10 @@
 SET FOREIGN_KEY_CHECKS = 0;
-DROP TABLE IF EXISTS `punctuations`, `customers`,`cities`, `images`, `policies`, `products_policies`, `characteristics`, `products_characteristics`,`products`,`categories`;
+DROP TABLE IF EXISTS `bookings`,`punctuations`, `cities`, `images`, `policies`, `products_policies`, `characteristics`, `products_characteristics`,`products`,`categories`;
 SET FOREIGN_KEY_CHECKS = 1;
 
 CREATE TABLE IF NOT EXISTS categories (
 	cat_id INT NOT NULL AUTO_INCREMENT,
-    cat_title VARCHAR(100) NOT NULL, 
+    cat_title VARCHAR(100) NOT NULL,
     cat_description VARCHAR(500),
     cat_url_img VARCHAR(500) NOT NULL,
     PRIMARY KEY(cat_id)
@@ -74,37 +74,6 @@ CREATE TABLE IF NOT EXISTS products_policies (
     FOREIGN KEY(policies_id) REFERENCES policies(policies_id)
 );
 
-CREATE TABLE IF NOT EXISTS customers (
-  cus_id INT NOT NULL AUTO_INCREMENT,
-  cus_name VARCHAR(100) NOT NULL,
-  cus_lastname VARCHAR(50) NOT NULL,
-  cus_password VARCHAR(30) NOT NULL,
-  cus_address VARCHAR(100) NOT NULL,
-  cus_email VARCHAR(200) NOT NULL,
-  PRIMARY KEY (cus_id)
-);
-
-CREATE TABLE IF NOT EXISTS punctuations (
-	punct_id INT NOT NULL AUTO_INCREMENT,
-    prod_id INT NOT NULL,
-    cus_id INT NOT NULL,
-    punct_value SMALLINT NOT NULL,
-    PRIMARY KEY(punct_id),
-    FOREIGN KEY(prod_id) REFERENCES products(prod_id),
-    FOREIGN KEY(cus_id) REFERENCES customers(cus_id)
-);
-
---CREATE TABLE IF NOT EXISTS bookings (
---	book_id INT NOT NULL AUTO_INCREMENT,
---    hab_id INT NOT NULL,
---   cus_id INT NOT NULL,
---    book_start_date DATE NOT NULL,
---    book_end_date DATE NOT NULL,
---    PRIMARY KEY (book_id),
---    FOREIGN KEY(hab_id) REFERENCES habitaciones(hab_id),
---    FOREIGN KEY(cus_id) REFERENCES customers(cus_id)
---);
-
 CREATE TABLE IF NOT EXISTS roles(
 role_id INT NOT NULL AUTO_INCREMENT,
 role_name VARCHAR(100) NOT NULL,
@@ -123,6 +92,16 @@ PRIMARY KEY(user_id),
 FOREIGN KEY (role_id) REFERENCES roles(role_id)
 );
 
+CREATE TABLE IF NOT EXISTS punctuations (
+	punct_id INT NOT NULL AUTO_INCREMENT,
+    prod_id INT NOT NULL,
+    user_id INT NOT NULL,
+    punct_value SMALLINT NOT NULL,
+    PRIMARY KEY(punct_id),
+    FOREIGN KEY(prod_id) REFERENCES products(prod_id),
+    FOREIGN KEY(user_id) REFERENCES users(user_id)
+);
+
 CREATE TABLE IF NOT EXISTS bookings (
 booking_id INT NOT NULL AUTO_INCREMENT,
 prod_id INT NOT NULL,
@@ -130,10 +109,21 @@ user_id INT NOT NULL,
 booking_start_time TIME,
 booking_start_date DATE,
 booking_finish_date DATE,
+booking_vaccine_covid BIT,
+booking_userinfo_covid VARCHAR(500),
 PRIMARY KEY(booking_id),
 FOREIGN KEY (prod_id) REFERENCES products(prod_id),
 FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
+
+INSERT INTO roles (role_name) VALUES("ADMIN"),("USER");
+
+INSERT INTO users (role_id, user_name, user_surname, user_email, user_password, user_city)
+VALUES
+(2, "Maria", "Acosta", "maria@email.com", "password1", 1),
+(2, "Juan", "Corral", "juan@email.com", "password2", 2),
+(2, "Valeria", "Lopez", "valeria@email.com", "password3", 3),
+(2, "Franco", "Elias", "franco@email.com", "password4", 4);
 
 INSERT INTO categories (cat_title,cat_description,cat_url_img)
 VALUES ("Hotel","821.458 hoteles","https://images.unsplash.com/photo-1629140727571-9b5c6f6267b4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1527&q=80"),
@@ -280,36 +270,24 @@ VALUES
 (11, 1), (11, 2), (11, 3),
 (12, 1), (12, 2), (12, 3);
 
-
-INSERT INTO customers (cus_name,cus_lastname,cus_password,cus_address,cus_email) VALUES ('Admin','Root','Admin1234','direccion root','admin@admin.com');
-
-INSERT INTO customers (cus_name, cus_lastname, cus_password, cus_address, cus_email)
+INSERT into punctuations (prod_id, user_id, punct_value)
 VALUES
-("Camila", "Koatz", "password1", "calle1 111", "camila@email.com"),
-("Elida", "Alastra", "password2", "calle2 222", "elida@email.com"),
-("Nicolás", "Grieco", "password3", "calle3 333", "nicolas@email.com"),
-("Julian", "Paz", "password4", "calle4 444", "julian@email.com"),
-("Miranda", "Perafán", "password5", "calle5 555", "miranda@email.com"),
-("Tiago", "Ceballos", "password6", "calle6 666", "tiago@email.com"),
-("Julieta", "Carboni", "password7", "calle7 777", "julieta@email.com"),
-("Cato", "Yuvone", "password8", "calle8 888", "cato@email.com"),
-("Karina", "Valenzuela", "password9", "calle9 999", "karina@email.com"),
-("Luciano", "Belardo", "password10", "calle10 10", "luciano@email.com"),
-("Victoria", "Fiori", "password11", "calle11 11", "victoria@email.com"),
-("Andrés", "Cornejo", "password12", "calle12 12", "andres@email.com");
-
-
-INSERT into punctuations (prod_id, cus_id, punct_value)
-VALUES
-(1, 1, 4),
+(1, 1, 5),
 (2, 2, 3),
 (3, 3, 5),
 (4, 4, 2),
-(5, 5, 3),
-(6, 6, 4),
-(7, 7, 3),
-(8, 8, 5),
-(9, 9, 4),
-(10, 10, 1),
-(11, 11, 3),
-(12, 12, 3);
+(5, 1, 3),
+(6, 2, 4),
+(7, 3, 3),
+(8, 4, 5),
+(9, 1, 4),
+(10, 2, 1),
+(11, 3, 3),
+(12, 4, 3);
+
+INSERT INTO bookings (prod_id, user_id, booking_vaccine_covid,booking_start_date,booking_finish_date)
+VALUES
+(1, 1, 1,'2022-06-12','2022-06-20'),
+(2, 2, 0,'2022-06-04','2022-06-06'),
+(3, 3, 0,'2022-07-10','2022-08-10'),
+(4, 4, 1,'2022-06-12','2022-07-20');

@@ -8,7 +8,7 @@ function Login({ type }) {
     const [errors,setError]=useState({})
     const navigate = useNavigate();
     const {setUser} = useContext(UserContext);
-    const [userEmail, setEmail] = useState("");
+    const [email, setEmail] = useState("");
 
     const handlerSubmit = (e)=>{
         e.preventDefault()
@@ -23,51 +23,82 @@ function Login({ type }) {
         //VALIDO EMAIL
         ret = validateInput("EMAIL",emailValue.value)
         if(ret !== ''){   
-            setError({userEmail:[ret]})
+            setError({email:[ret]})
             return
         }
 
         //VALIDO PASSWORD
         ret =validateInput("PASSWORD",passwordValue.value)
         if(ret !== ''){       
-            setError({userPassword:[ret]})
+            setError({password:[ret]})
             return
         }
-
-        const validate = async()=>{
-            await fetch("http://localhost:8080/user/validate",{
+        
+        const login = async() => {
+            await fetch("http://localhost:8080/authenticate", {
                 method:'POST',
                 headers:{
                     "Access-Control-Allow-Headers" : "Content-Type",
                     'Access-Control-Allow-Origin':"*",
                     'Content-Type':'application/json'
-                },body:JSON.stringify({
-                    userEmail:emailValue.value.trim(),
-                    userPassword:passwordValue.value.trim()
+                }, body:JSON.stringify({
+                    email:emailValue.value.trim(),
+                    password:passwordValue.value.trim()
                 })
             })
             .then((response) => {
                 if (response.status === 200) {
-                  return response.json()        
-                }else{
-                   setError({userPassword:["Por favor vuelva a intentarlo, sus credenciales son inválidas"]})
+                  return response.json()
+                } else {
+                   setError({password:["No es posible loguearse"]})
                    return
                 }
-              })
-              .then((user)=>{
+            })
+            .then((user)=>{
                 if(!user){
                     return
                 }
-                setUser(user)  
-                navigate("/")   
-              })
-              .catch((error) => {
-                setError({userPassword:["Error, intente de nuevo mas tarde"]})
+                sessionStorage.setItem("token",user.jwt)
+                findUserData();
+            })
+            .catch((error) => {
+                setError({password:["Error, intente de nuevo mas tarde"]})
                 return
-              });
+            });
         }
+        login();
     
-        validate();
+        const findUserData = async()=>{
+            await fetch("http://localhost:8080/users/findByEmail/" + emailValue.value.trim(), {
+                method:'GET',
+                headers: {
+                    "Access-Control-Allow-Headers" : "Content-Type"
+                }
+            })
+            .then((response) => {
+                if (response.status === 200) {
+                    return response.json()
+                } else{
+                    setError({password:["No es posible loguearse"]})
+                    return
+                }
+            })
+            .then((user)=>{
+                if(!user){
+                    return
+                }
+                setUser(user);
+                sessionStorage.setItem("user", JSON.stringify(user));
+                localStorage.setItem("email", JSON.stringify(email));
+                localStorage.setItem("name", JSON.stringify(user.userName));
+                localStorage.setItem("lastname", JSON.stringify(user.userSurname));
+                localStorage.getItem("url") == undefined ? navigate("/") : navigate(localStorage.getItem("url"));
+            })
+            .catch((error) => {
+                setError({password:["Error, intente de nuevo mas tarde"]})
+                return
+            });
+        }
     }
 
     //VALIDO CAMPO EMAIL
@@ -123,17 +154,13 @@ function Login({ type }) {
         document.querySelector("#password_login").type === "password" ? document.querySelector("#password_login").type = "text" : document.querySelector("#password_login").type = "password";
     }
 
-    useEffect(() => {
-        localStorage.setItem("email", JSON.stringify(userEmail));
-    }, [userEmail]);
-
     return (
         <section className="section__form-data">
             <h2>Iniciar sesión</h2>
             <form action="POST" onSubmit={handlerSubmit}>
                 <label htmlFor="email_login">
                     <span>Correo electrónico</span>
-                    <input type="email" name="email" id="email_login" required className={`${errors.email ||errors.general ? "error" : ""}`} autoComplete="off" value={userEmail} onChange={(e) => setEmail(e.target.value)} />
+                    <input type="email" name="email" id="email_login" required className={`${errors.email ||errors.general ? "error" : ""}`} autoComplete="off" value={email} onChange={(e) => setEmail(e.target.value)} />
                 </label>
 
                 <label htmlFor="password_login" className='label__password-input'>
@@ -141,15 +168,14 @@ function Login({ type }) {
                     <input type="password" name="password" id="password_login" required className={`${errors.password || errors.general? "error" : ""}`} autoComplete="off" />
                     <Link to="#" className="a__show-hide" onClick={show}>Show/Hide</Link>
                     
-                    {errors.password||errors.email||errors.general?
-                    <small className="small__error" id="error_password">{
-                        errors.password?errors.password:''}
+                    {errors.password || errors.email || errors.general ?
+                    <small className="small__error" id="error_password">
+                        {errors.password?errors.password:''}
                         {errors.email?errors.email:''}
-                        {errors.general?errors.general:''}</small>:
-                    <small className="small__error"></small>
-                    }
+                        {errors.general?errors.general:''}
+                    </small> : "" }
                 </label>
-
+                {localStorage.getItem("msg") != undefined ? <small className='small__error'>{localStorage.getItem("msg")}</small> : "" }
                 <Button text="Ingresar" type="submit" className="btn button__solid-type" />
             </form>
             <p>¿Aún no tenes cuenta? <Link to="/register">Registrate</Link></p>

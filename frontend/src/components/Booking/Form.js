@@ -25,6 +25,14 @@ function Form() {
                     <span>Ciudad</span>
                     <input type="text" name="city" required />
                 </label>
+                <label className="label__description">
+                    <span>Datos para el vendedor (opcional)</span>
+                    <textarea></textarea>
+                </label>
+                <label for="label__covid" className="label__covid">
+                    <span>¿Se encuentra vacunado contra el COVID-19?</span>
+                    <input type="checkbox" name="covid" id="label__covid" required />
+                </label>
             </div>
         </section>
     )

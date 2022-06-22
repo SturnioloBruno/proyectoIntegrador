@@ -7,7 +7,7 @@ import java.util.Set;
 
 @Entity
 @Table (name = "users")
-public class User {
+public class User  {
 
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
@@ -29,13 +29,15 @@ public class User {
     @Column(name = "user_city", nullable = false)
     private String userCity;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "role_id", nullable = false)
-    @JsonIgnore
     private Role roleId;
 
     @OneToMany(mappedBy = "userId", fetch = FetchType.EAGER)
     private Set<Booking> bookings;
+
+    @OneToMany(mappedBy = "userId", fetch = FetchType.EAGER)
+    private Set<Punctuation> punctuations;
 
     public User() {}
 
@@ -114,5 +116,13 @@ public class User {
 
     public void setBookings(Set<Booking> bookings) {
         this.bookings = bookings;
+    }
+
+    public Set<Punctuation> getPunctuations() {
+        return punctuations;
+    }
+
+    public void setPunctuations(Set<Punctuation> punctuations) {
+        this.punctuations = punctuations;
     }
 }

@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect } from 'react';
+import { useContext, useState } from 'react';
 import { Link , useNavigate } from "react-router-dom";
 import Button from "../Button";
 import '../../styles/Login.css';
@@ -92,7 +92,7 @@ function Login({ type }) {
                /* localStorage.setItem("email", JSON.stringify(email));
                 localStorage.setItem("name", JSON.stringify(user.userName));
                 localStorage.setItem("lastname", JSON.stringify(user.userSurname));*/
-                localStorage.getItem("url") == undefined ? navigate("/") : navigate(localStorage.getItem("url"));
+                localStorage.getItem("url") === undefined ? navigate("/") : navigate(localStorage.getItem("url"));
             })
             .catch((error) => {
                 setError({password:["Error, intente de nuevo mas tarde"]})
@@ -175,7 +175,7 @@ function Login({ type }) {
                         {errors.general?errors.general:''}
                     </small> : "" }
                 </label>
-                {localStorage.getItem("msg") != undefined ? <small className='small__error'>{localStorage.getItem("msg")}</small> : "" }
+                {localStorage.getItem("msg") !== undefined ? <small className='small__error'>{localStorage.getItem("msg")}</small> : "" }
                 <Button text="Ingresar" type="submit" className="btn button__solid-type" />
             </form>
             <p>¿Aún no tenes cuenta? <Link to="/register">Registrate</Link></p>

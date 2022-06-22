@@ -1,5 +1,5 @@
 SET FOREIGN_KEY_CHECKS = 0;
-DROP TABLE IF EXISTS `punctuations`, `cities`, `images`, `policies`, `products_policies`, `characteristics`, `products_characteristics`,`products`,`categories`;
+DROP TABLE IF EXISTS `bookings`,`punctuations`, `cities`, `images`, `policies`, `products_policies`, `characteristics`, `products_characteristics`,`products`,`categories`;
 SET FOREIGN_KEY_CHECKS = 1;
 
 CREATE TABLE IF NOT EXISTS categories (
@@ -285,9 +285,9 @@ VALUES
 (11, 3, 3),
 (12, 4, 3);
 
-INSERT INTO bookings (prod_id, user_id, booking_vaccine_covid)
+INSERT INTO bookings (prod_id, user_id, booking_vaccine_covid,booking_start_date,booking_finish_date)
 VALUES
-(1, 1, 1),
-(2, 2, 0),
-(3, 3, 0),
-(4, 4, 1);
+(1, 1, 1,'2022-06-12','2022-06-20'),
+(2, 2, 0,'2022-06-04','2022-06-06'),
+(3, 3, 0,'2022-07-10','2022-08-10'),
+(4, 4, 1,'2022-06-12','2022-07-20');

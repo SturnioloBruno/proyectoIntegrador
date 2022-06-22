@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import Calendar from "./Calendar";
 
-function HotelDate({id}) {
+function HotelDate({id,bookings}) {
     if(localStorage.name == undefined) {
         localStorage.setItem("url", `/product/${id}/booking`);
         localStorage.setItem("msg", "Debe iniciar sesión para realizar reservas.");
@@ -11,7 +11,7 @@ function HotelDate({id}) {
         <section className="section__hotel-date">
             <h2>Fechas disponibles</h2>
             <div className="div__calendar-info">
-                <Calendar />
+                <Calendar bookings={bookings}/>
                 <div className="div__button-selected">
                     <p className="p__bold-style">Agregá tus fechas de viaje para obtener precios exactos</p>
                     {localStorage.name == undefined ?

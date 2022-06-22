@@ -87,7 +87,7 @@ function Search() {
                     <InputCity cities={cities} handlerCity={handlerCity}/>            
                 </label>
                 <label className="input__calendar-day">
-                    <InputDateRangePicker handlerDates={handlerDates} endDateCache={endDateCache} startDateCache={startDateCache}/>              
+                    <InputDateRangePicker handlerDates={handlerDates}/>              
                 </label>
                 <Button text="Buscar" type="submit" className="btn button__solid-type" />
             </form>

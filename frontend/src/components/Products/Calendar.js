@@ -13,13 +13,13 @@ function Calendar({bookings}) {
     const [dateRange, setDateRange] = useState([null, null]);
     const [startDate, endDate] = dateRange;
     const mobile = useMediaQuery({ query: '(max-width: 767px)' });
-    const {endDateCache,startDateCache} = useContext(SearchContext);
+    const {endDateCache,setStartDateCache,startDateCache,setEndDateCache} = useContext(SearchContext);
     const [bookingsDates,setBookingsDates] = useState(null);
 
     useEffect(()=>{
 
         if(startDateCache&&endDateCache){
-            setDateRange([startDateCache._d,endDateCache._d]);
+            setDateRange([startDateCache._d?startDateCache._d:startDateCache,endDateCache._d?endDateCache._d:endDateCache]);
         }
 
         //SI HAY RESERVAS ARMO ARRAY CON FECHAS
@@ -45,7 +45,7 @@ function Calendar({bookings}) {
             setBookingsDates(arrayBookings);
         }
 
-    },[endDateCache,startDateCache,bookings]);
+    },[bookings]);
 
     return (
         <DatePicker 
@@ -77,6 +77,8 @@ function Calendar({bookings}) {
 
                     //SI PASO HASTA ACA ES PORQUE NO SELECCIONO FECHAS RESERVADAS
                     setDateRange(update)  
+                    setStartDateCache(update[0])
+                    setEndDateCache(update[1])
                 }  
             
             //SI SOLO SELECCIONO LA FECHA INICIAL DEJO SETEAR
@@ -85,8 +87,10 @@ function Calendar({bookings}) {
             isClearable={true}
             className="myDatePicker"
             excludeDates={bookingsDates}
+           // excludeDateIntervals={[{start: new Date(),end:new Date()}]}// ver de simplificar utilizando esta forma
             selectsDisabledDaysInRange
             monthsShown= {mobile ? 1 : 2}
+            minDate ={new Date()}
             inline
         />
     );

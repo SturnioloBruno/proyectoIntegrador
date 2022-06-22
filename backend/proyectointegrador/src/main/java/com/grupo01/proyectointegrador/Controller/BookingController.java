@@ -14,6 +14,7 @@ public class BookingController {
     @Autowired
     BookingService bookingService;
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/insert")
     public ResponseEntity<Booking> guardar(@RequestBody BookingDTO booking) throws Exception {
         return ResponseEntity.ok(bookingService.guardar(booking));

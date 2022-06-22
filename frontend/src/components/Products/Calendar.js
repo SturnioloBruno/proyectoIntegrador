@@ -40,8 +40,6 @@ function Calendar({bookings}) {
                     dateStart = addDays(dateStart,1) 
                     
                 } while (dateStart.toString() !== dateEnd.toString());
-
-                arrayBookings.push(dateStart)
             });
 
             setBookingsDates(arrayBookings);

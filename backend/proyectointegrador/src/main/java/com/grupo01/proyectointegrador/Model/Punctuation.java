@@ -15,7 +15,7 @@ public class Punctuation {
     private Long id;
 
     @Column(name = "punct_value")
-    private Integer punctValue;
+    private Double punctValue;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "prod_id", nullable = false)
@@ -29,14 +29,14 @@ public class Punctuation {
 
     public Punctuation(){}
 
-    public Punctuation(Long id, Integer punctValue, Product prodId, User userId) {
+    public Punctuation(Long id, Double punctValue, Product prodId, User userId) {
         this.id = id;
         this.punctValue = punctValue;
         this.prodId = prodId;
         this.userId = userId;
     }
 
-    public Punctuation(Integer punctValue, Product prodId, User userId) {
+    public Punctuation(Double punctValue, Product prodId, User userId) {
         this.punctValue = punctValue;
         this.prodId = prodId;
         this.userId = userId;
@@ -46,11 +46,11 @@ public class Punctuation {
         return id;
     }
 
-    public Integer getPunctValue() {
+    public Double getPunctValue() {
         return punctValue;
     }
 
-    public void setPunctValue(Integer punctuation) {
+    public void setPunctValue(Double punctuation) {
         this.punctValue = punctuation;
     }
 

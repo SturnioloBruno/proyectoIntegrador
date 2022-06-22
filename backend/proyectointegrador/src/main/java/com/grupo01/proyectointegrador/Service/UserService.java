@@ -65,15 +65,16 @@ public class UserService {
         }
     }
 
-    public User actualizar (User user) throws Exception {
-        User userBuscado = buscarId(user.getId());
+    public UserDTOResponse actualizar (UserDTOResponse userDTOResponse) throws Exception {
+        User userBuscado = buscarId(userDTOResponse.getId());
 
         if(userBuscado == null){
-           throw new Exception("Usuario con id: "+ user.getId() + " no existe");
+           throw new Exception("Usuario con id: "+ userDTOResponse.getId() + " no existe");
         }
 
+        User user = mapper.convertValue(userDTOResponse,User.class);
         userRepository.save(user);
-        return user;
+        return userDTOResponse;
     }
 
     public UserDTOResponse guardar (UserDTO userDTO) throws Exception {
@@ -95,22 +96,5 @@ public class UserService {
         userDTOResponse.setRole(userInsert.getRoleId());
 
         return userDTOResponse;
-    }
-
-    public UserDTOResponse validarUser(String email, String password)throws Exception{
-        UserDTOResponse userReturn = null;
-        User userByEmail = buscarEmail(email);
-
-        if(userByEmail==null){
-            throw new Exception("No se encuentra usuario con el email ingresado!");
-        }
-
-        if(!userByEmail.getUserPassword().equals(password)){
-            throw new Exception("Contraseña incorrecta!");
-        }
-
-        userReturn =  mapper.convertValue(userByEmail, UserDTOResponse.class);
-
-        return userReturn;
     }
 }

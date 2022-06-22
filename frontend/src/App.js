@@ -11,10 +11,12 @@ import SuccessfulBooking from "./components/Booking/SuccessfulBooking";
 import Booking from "./components/Booking/Booking";
 import { UserProvider } from './components/Context/UserContext';
 import { SearchProvider } from './components/Context/SearchContext';
+import Meta from './components/Meta';
 
 function App() {
   return (
     <Fragment>
+      <Meta/>
       <UserProvider>
         <SearchProvider>
       <Header/>

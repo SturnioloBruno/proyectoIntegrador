@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from 'react';
+import { React, useState, useEffect, useContext } from 'react';
 import { useParams } from "react-router-dom";
 import HeaderProduct from "../Products/HeaderProduct";
 import Form from "./Form";
@@ -6,6 +6,8 @@ import Calendar from "../Products/Calendar";
 import Hour from "./Hour";
 import Details from "./Details";
 import Politics from "../Products/Politics";
+import { UserContext } from "../Context/UserContext";
+import { SearchContext } from '../Context/SearchContext';
 import "../../styles/Booking/Booking.css";
 import "../../styles/Booking/Date.css";
 
@@ -13,6 +15,24 @@ function Booking() {
     const [product, setProduct] = useState(null);
     const {id} = useParams();
     localStorage.removeItem("url");
+    const {user} = useContext(UserContext);
+
+    const city = document.querySelector("#input__city-booking");
+    const description = document.querySelector("#textarea__description-booking");
+    const checkCovid = document.querySelector("#label__covid");
+    const hour = document.querySelector("#select__option-hour");
+
+    const startDayGet = useContext(SearchContext).startDateCache.getDate().toString();
+    const startDay = startDayGet.length === 1 ? "0" + startDayGet : startDayGet;
+    const startMonthGet = useContext(SearchContext).startDateCache.getMonth().toString();
+    const startMonth = startMonthGet.length === 1 ? "0" + startMonthGet : startMonthGet;
+    const startYear = useContext(SearchContext).startDateCache.getFullYear();
+
+    const endDayGet = useContext(SearchContext).endDateCache.getDate().toString();
+    const endDay = endDayGet.length === 1 ? "0" + endDayGet : endDayGet;
+    const endMonthGet = useContext(SearchContext).endDateCache.getMonth().toString();
+    const endMonth = endMonthGet.length === 1 ? "0" + endMonthGet : endMonthGet;
+    const endYear = useContext(SearchContext).endDateCache.getFullYear();
 
     useEffect(()=>{
         //Cargo datos del producto
@@ -33,10 +53,42 @@ function Booking() {
         getProduct();
     }, [id]);
 
+    const handlerSubmit = (e) => {
+        e.preventDefault();
+
+        //Insert con datos de la reserva
+        const insertBooking = async()=>{
+            await fetch("http://localhost:8080/bookings/insert", {
+                method:'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                  },
+                body: JSON.stringify({
+                    bookingStarTime: hour.value,
+                    bookingStartDate: `${startYear}-${startMonth}-${startDay}`,
+                    bookingFinishDate: `${endYear}-${endMonth}-${endDay}`,
+                    bookingVaccineCovid: checkCovid.checked,
+                    bookingUserInfoCovid: description.value,
+                    prodId:{
+                        id: parseInt(id)
+                    },
+                    userId:{
+                        id: user.id
+                    }
+                })
+            })
+            .then(function(respuesta){
+                return respuesta.json();
+            })
+        }
+        insertBooking();
+    }
+
     return (
         <section className='section__booking-hotel'>
             <HeaderProduct name={product?.name} category={product?.category.title} />
-            <form className='div__booking-hotel'>
+            <form method="POST" className='div__booking-hotel' onSubmit={handlerSubmit}>
                 <div>
                     <Form />
                     <section className='section__booking-date'>

@@ -1,59 +1,9 @@
-import { React, useEffect, useContext } from 'react';
-import { useParams } from "react-router-dom";
+import { React, useContext } from 'react';
 import { UserContext } from "../Context/UserContext";
-import { SearchContext } from '../Context/SearchContext';
 import "../../styles/Booking/Form.css";
 
 function Form() {
     const {user} = useContext(UserContext);
-    const {id} = useParams();
-
-    const city = document.querySelector("#input__city-booking");
-    const description = document.querySelector("#textarea__description-booking");
-    const checkCovid = document.querySelector("#label__covid");
-    const hour = document.querySelector("#select__option-hour");
-
-    const startDayGet = useContext(SearchContext).startDateCache.getDate().toString();
-    const startDay = startDayGet.length === 1 ? "0" + startDayGet : startDayGet;
-    const startMonthGet = useContext(SearchContext).startDateCache.getMonth().toString();
-    const startMonth = startMonthGet.length === 1 ? "0" + startMonthGet : startMonthGet;
-    const startYear = useContext(SearchContext).startDateCache.getFullYear();
-
-    const endDayGet = useContext(SearchContext).endDateCache.getDate().toString();
-    const endDay = endDayGet.length === 1 ? "0" + endDayGet : endDayGet;
-    const endMonthGet = useContext(SearchContext).endDateCache.getMonth().toString();
-    const endMonth = endMonthGet.length === 1 ? "0" + endMonthGet : endMonthGet;
-    const endYear = useContext(SearchContext).endDateCache.getFullYear();
-
-    useEffect(()=>{
-        //Insert con datos de la reserva
-        const getProduct = async()=>{
-            await fetch("http://localhost:8080/bookings/insert", {
-                method:'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                  },
-                body: JSON.stringify({
-                    bookingStarTime: hour.value,
-                    bookingStartDate: `${startYear}-${startMonth}-${startDay}`,
-                    bookingFinishDate: `${endYear}-${endMonth}-${endDay}`,
-                    bookingVaccineCovid: checkCovid.checked,
-                    bookingUserInfoCovid: description.value,
-                    prodId:{
-                        id: parseInt(id)
-                    },
-                    userId:{
-                        id: user.id
-                    }
-                })
-            })
-            .then(function(respuesta){
-                return respuesta.json();
-            })
-        }      
-        getProduct();
-    }, []);
 
     return (
         <section className="section__booking-form">

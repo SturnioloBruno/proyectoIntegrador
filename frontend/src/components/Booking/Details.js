@@ -7,13 +7,6 @@ import {useEffect,useState,useContext} from 'react';
 import { SearchContext } from '../Context/SearchContext';
 
 function Details({ src, name, category, address, city, stars}) {
-   /*const dayStart = useContext(SearchContext).startDateCache._d.getDate();
-    const monthStart = useContext(SearchContext).startDateCache._d.getMonth();
-    const yearStart = parseInt(useContext(SearchContext).startDateCache._d
-    const dayEnd = useContext(SearchContext).endDateCache._d.getDate();
-    const monthEnd = useContext(SearchContext).endDateCache._d.getMonth();
-    const yearEnd = parseInt(useContext(SearchContext).endDateCache._d.getFullYear().toString().substr(-2));*/
-
     const {endDateCache,startDateCache} = useContext(SearchContext);
     const [dateStartFormat,setDateStartFormat] = useState(null);
     let [dateEndFormat,setDateEndFormat]= useState(null); 

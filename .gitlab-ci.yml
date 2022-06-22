@@ -22,7 +22,7 @@ artifact_back:
 
 
 front_job:
-  image: node:latest
+  image: node:16.14.0
   stage: front
   artifacts:
     paths:

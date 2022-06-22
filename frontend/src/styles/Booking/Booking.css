@@ -35,10 +35,11 @@
 
     .div__booking-hotel > div {
         width: 60%;
+        padding: 2em 1em 0 5%;
     }
 
     .div__booking-hotel > div section {
-        padding: 2em 1em 2em 5%;
+        padding: 0 0 2em;
     }
 
     .div__booking-hotel > div .section__booking-date, .div__booking-hotel > div .section__booking-hour {

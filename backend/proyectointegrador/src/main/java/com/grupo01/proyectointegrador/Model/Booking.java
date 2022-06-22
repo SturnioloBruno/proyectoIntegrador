@@ -25,6 +25,12 @@ public class Booking {
     @Column (name = "booking_finish_date", nullable = false)
     private LocalDate bookingFinishDate;
 
+    @Column (name = "booking_vaccine_covid")
+    private Boolean bookingVaccineCovid;
+
+    @Column (name = "booking_userinfo_covid")
+    private String bookingUserInfoCovid;
+
     @ManyToOne (fetch = FetchType.LAZY)
     @JoinColumn(name = "prod_id", nullable = false)
     @JsonIgnore
@@ -37,19 +43,23 @@ public class Booking {
 
     public Booking() {}
 
-    public Booking(Long id, LocalTime bookingStartTime, LocalDate bookingStartDate, LocalDate bookingFinishDate, Product prodId, User userId) {
+    public Booking(Long id, LocalTime bookingStartTime, LocalDate bookingStartDate, LocalDate bookingFinishDate, Boolean bookingVaccineCovid, String bookingUserInfoCovid, Product prodId, User userId) {
         this.id = id;
         this.bookingStartTime = bookingStartTime;
         this.bookingStartDate = bookingStartDate;
         this.bookingFinishDate = bookingFinishDate;
+        this.bookingVaccineCovid = bookingVaccineCovid;
+        this.bookingUserInfoCovid = bookingUserInfoCovid;
         this.prodId = prodId;
         this.userId = userId;
     }
 
-    public Booking(LocalTime bookingStartTime, LocalDate bookingStartDate, LocalDate bookingFinishDate, Product prodId, User userId) {
+    public Booking(LocalTime bookingStartTime, LocalDate bookingStartDate, LocalDate bookingFinishDate, Boolean bookingVaccineCovid, String bookingUserInfoCovid, Product prodId, User userId) {
         this.bookingStartTime = bookingStartTime;
         this.bookingStartDate = bookingStartDate;
         this.bookingFinishDate = bookingFinishDate;
+        this.bookingVaccineCovid = bookingVaccineCovid;
+        this.bookingUserInfoCovid = bookingUserInfoCovid;
         this.prodId = prodId;
         this.userId = userId;
     }
@@ -100,5 +110,21 @@ public class Booking {
 
     public void setUserId(User userId) {
         this.userId = userId;
+    }
+
+    public Boolean getBookingVaccineCovid() {
+        return bookingVaccineCovid;
+    }
+
+    public void setBookingVaccineCovid(Boolean bookingVaccineCovid) {
+        this.bookingVaccineCovid = bookingVaccineCovid;
+    }
+
+    public String getBookingUserInfoCovid() {
+        return bookingUserInfoCovid;
+    }
+
+    public void setBookingUserInfoCovid(String bookingUserInfoCovid) {
+        this.bookingUserInfoCovid = bookingUserInfoCovid;
     }
 }

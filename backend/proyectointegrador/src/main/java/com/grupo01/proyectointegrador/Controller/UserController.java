@@ -24,7 +24,7 @@ public class UserController {
     @Operation(summary = "crea un usuario")
     @PostMapping("/register")
     public ResponseEntity<Object> guardar(@RequestBody UserDTO userDTO) throws Exception {
-        
+
         return ResponseEntity.status(201).body(userService.guardar(userDTO));
     }
 

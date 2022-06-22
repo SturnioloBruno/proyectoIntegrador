@@ -1,5 +1,5 @@
 SET FOREIGN_KEY_CHECKS = 0;
-DROP TABLE IF EXISTS `punctuations`, `cities`, `images`, `policies`, `products_policies`, `characteristics`, `products_characteristics`,`products`,`categories`;
+DROP TABLE IF EXISTS `bookings`,`punctuations`, `cities`, `images`, `policies`, `products_policies`, `characteristics`, `products_characteristics`,`products`,`categories`;
 SET FOREIGN_KEY_CHECKS = 1;
 
 CREATE TABLE IF NOT EXISTS categories (
@@ -109,6 +109,8 @@ user_id INT NOT NULL,
 booking_start_time TIME,
 booking_start_date DATE,
 booking_finish_date DATE,
+booking_vaccine_covid BIT,
+booking_userinfo_covid VARCHAR(500),
 PRIMARY KEY(booking_id),
 FOREIGN KEY (prod_id) REFERENCES products(prod_id),
 FOREIGN KEY (user_id) REFERENCES users(user_id)
@@ -282,3 +284,10 @@ VALUES
 (10, 2, 1),
 (11, 3, 3),
 (12, 4, 3);
+
+INSERT INTO bookings (prod_id, user_id, booking_vaccine_covid,booking_start_date,booking_finish_date)
+VALUES
+(1, 1, 1,'2022-06-12','2022-06-20'),
+(2, 2, 0,'2022-06-04','2022-06-06'),
+(3, 3, 0,'2022-07-10','2022-08-10'),
+(4, 4, 1,'2022-06-12','2022-07-20');

@@ -3,7 +3,6 @@ package com.grupo01.proyectointegrador.Controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.grupo01.proyectointegrador.DTO.UserDTO;
 import com.grupo01.proyectointegrador.DTO.UserDTOResponse;
-import com.grupo01.proyectointegrador.DTO.UserValidateDTO;
 import com.grupo01.proyectointegrador.Model.User;
 import com.grupo01.proyectointegrador.Service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -57,17 +56,7 @@ public class UserController {
 
     @PutMapping("/update")
     @Operation(summary = "actualiza un usuarioDTO")
-    public ResponseEntity<User> actualizar(@RequestBody User user) throws Exception {
-        return ResponseEntity.ok(userService.actualizar(user));
-    }
-
-    @CrossOrigin(origins = "http://localhost:3000")
-    @PostMapping("/validate")
-    public ResponseEntity<UserDTOResponse> validarUser(@RequestBody UserValidateDTO userValidate)throws Exception{
-        UserDTOResponse user = userService.validarUser(userValidate.getUserEmail(),userValidate.getUserPassword());
-        if(user==null){
-            ResponseEntity.badRequest();
-        }
-        return ResponseEntity.ok(user);
+    public ResponseEntity<UserDTOResponse> actualizar(@RequestBody UserDTOResponse userDTOResponse) throws Exception {
+        return ResponseEntity.ok(userService.actualizar(userDTOResponse));
     }
 }

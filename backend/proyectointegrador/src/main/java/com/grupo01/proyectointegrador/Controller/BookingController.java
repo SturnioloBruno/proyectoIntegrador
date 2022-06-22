@@ -1,5 +1,6 @@
 package com.grupo01.proyectointegrador.Controller;
 
+import com.grupo01.proyectointegrador.DTO.BookingDTO;
 import com.grupo01.proyectointegrador.Model.Booking;
 import com.grupo01.proyectointegrador.Service.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,7 @@ public class BookingController {
     BookingService bookingService;
 
     @PostMapping("/insert")
-    public ResponseEntity<Booking> guardar(@RequestBody Booking booking) throws Exception {
+    public ResponseEntity<Booking> guardar(@RequestBody BookingDTO booking) throws Exception {
         return ResponseEntity.ok(bookingService.guardar(booking));
     }
 
@@ -30,7 +31,7 @@ public class BookingController {
     }
 
     @PutMapping("/update")
-    public ResponseEntity<Booking> actualizar(@RequestBody Booking booking) throws Exception {
+    public ResponseEntity<Booking> actualizar(@RequestBody BookingDTO booking) throws Exception {
         return ResponseEntity.ok(bookingService.guardar(booking));
     }
 }

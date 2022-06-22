@@ -33,12 +33,10 @@ public class Booking {
 
     @ManyToOne (fetch = FetchType.LAZY)
     @JoinColumn(name = "prod_id", nullable = false)
-    @JsonIgnore
     private Product prodId;
 
     @ManyToOne (fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id", nullable = false)
-    @JsonIgnore
     private User userId;
 
     public Booking() {}

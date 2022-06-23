@@ -24,7 +24,7 @@ public class JwtController {
     @Autowired
     private JwtUtil jwtUtil;
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = {"http://localhost:3000","http://10.0.0.189","http://db-group1.ckiqtgesdyez.us-east-1.rds.amazonaws.com"})
     @PostMapping()
     public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest) throws Exception{
         try {

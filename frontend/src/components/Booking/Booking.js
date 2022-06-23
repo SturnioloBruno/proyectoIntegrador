@@ -65,7 +65,7 @@ function Booking() {
                     "Access-Control-Allow-Headers" : "Content-Type",
                     'Access-Control-Allow-Origin': "*",
                     'Content-Type': 'application/json',
-                    "X-Authorization": `Bearer Token ${token}`
+                    "Authorization": `Bearer ${token}`
                 }, body: JSON.stringify({
                     bookingStarTime: hour.value,
                     bookingStartDate: `${startYear}-${startMonth}-${startDay}`,

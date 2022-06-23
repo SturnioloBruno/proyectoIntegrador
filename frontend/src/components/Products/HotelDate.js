@@ -9,14 +9,10 @@ function HotelDate({id,bookings}) {
     }
 
     const handlerClick = (e)=>{
-
         if(!sessionStorage.getItem("dateStart")&&!sessionStorage.getItem("dateEnd")){
-          
-         e.preventDefault()
-
+            e.preventDefault()
             return //VER DE MOSTRAR ALGO
         }
-
     }
 
     return (

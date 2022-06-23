@@ -18,11 +18,7 @@ function Booking() {
     localStorage.removeItem("url");
     const {user} = useContext(UserContext);
     const token = localStorage.getItem("token");
-<<<<<<< HEAD
     const handlerChange = ()=>{setChange(!change)}
-=======
-    let error;
->>>>>>> a7a4ce8282151748e58ba23bdbca6c8e9f45ed9f
 
     const city = document.querySelector("#input__city-booking");
     const description = document.querySelector("#textarea__description-booking");

@@ -34,8 +34,8 @@ const InputDateRangePicker = ({handlerDates}) => {
           setEndDate(moment(objEnd))
       }
     }else{
-          sessionStorage.removeItem("dateStart")
-          sessionStorage.removeItem("dateEmd")
+      sessionStorage.removeItem("dateStart");
+      sessionStorage.removeItem("dateEnd");
     }
 
   },[location.pathname]);

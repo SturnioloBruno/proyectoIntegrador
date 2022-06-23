@@ -6,8 +6,9 @@ import Button from "../../components/Button";
 import {useEffect,useState,useContext} from 'react';
 import { SearchContext } from '../Context/SearchContext';
 
-function Details({ src, name, category, address, city, stars}) {
-    const {endDateCache,startDateCache} = useContext(SearchContext);
+function Details({ src, name, category, address, city, stars , change}) {
+    const startDateCache = useContext(SearchContext);
+    const endDateCache = sessionStorage.getItem("dateEnd")?sessionStorage.getItem("dateEnd"):null
     const [dateStartFormat,setDateStartFormat] = useState(null);
     let [dateEndFormat,setDateEndFormat]= useState(null); 
 
@@ -15,17 +16,16 @@ function Details({ src, name, category, address, city, stars}) {
 
         if(endDateCache&&startDateCache){
 
-            //SI ES CON _d ES PORQUE DESDE QUE SE REALIZO LA BUSQUEDA NO SE TOCO LA FECHA, ENTONCES LO EVALUO
-            if(endDateCache._d&&startDateCache._d){
-                setDateStartFormat(startDateCache._d.getDate() +"/"+ startDateCache._d.getMonth() + "/" + startDateCache._d.getFullYear().toString().substr(-2))
-                setDateEndFormat(endDateCache._d.getDate() +"/"+ endDateCache._d.getMonth() + "/" + endDateCache._d.getFullYear().toString().substr(-2) )
-            }else{
-                setDateStartFormat(startDateCache.getDate() +"/"+ startDateCache.getMonth() + "/" + startDateCache.getFullYear().toString().substr(-2))
-                setDateEndFormat(endDateCache.getDate() +"/"+ endDateCache.getMonth() + "/" + endDateCache.getFullYear().toString().substr(-2) )
-            }   
+            if(sessionStorage.getItem("dateStart")&&sessionStorage.getItem("dateEnd")){
+                let objStart = new Date(sessionStorage.getItem("dateStart"))
+                let objEnd = new Date(sessionStorage.getItem("dateEnd"))
+                setDateStartFormat(objStart.getDate() +"/"+ objStart.getMonth() + "/" + objStart.getFullYear().toString().substr(-2))
+                setDateEndFormat(objEnd.getDate() +"/"+ objEnd.getMonth() + "/" + objEnd.getFullYear().toString().substr(-2) )
+            }
+    
         }
 
-    },[endDateCache,startDateCache])
+    },[change])
 
     return (
         <section className="section__booking-details">
@@ -47,8 +47,7 @@ function Details({ src, name, category, address, city, stars}) {
                             </li>
                             <li>
                                 <h4>Check out</h4>
-                                <span>{dateEndFormat?dateEndFormat:"-/-/-"}</span>
-                         
+                                <span>{dateEndFormat?dateEndFormat:"-/-/-"}</span>                         
                             </li>
                         </ul>
                         <Button text="Confirmar reserva" className="btn button__solid-type" />

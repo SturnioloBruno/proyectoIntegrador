@@ -7,33 +7,36 @@ import Hour from "./Hour";
 import Details from "./Details";
 import Politics from "../Products/Politics";
 import { UserContext } from "../Context/UserContext";
-import { SearchContext } from '../Context/SearchContext';
 import "../../styles/Booking/Booking.css";
 import "../../styles/Booking/Date.css";
 
 function Booking() {
     const [product, setProduct] = useState(null);
+    const [change,setChange] = useState(false);
     const {id} = useParams();
     localStorage.removeItem("url");
     const {user} = useContext(UserContext);
     const token = localStorage.getItem("token");
+    const handlerChange = ()=>{setChange(!change)}
 
     const city = document.querySelector("#input__city-booking");
     const description = document.querySelector("#textarea__description-booking");
     const checkCovid = document.querySelector("#label__covid");
     const hour = document.querySelector("#select__option-hour");
 
-    const startDayGet = useContext(SearchContext).startDateCache.getDate().toString();
+    const startDateCache =  new Date(sessionStorage.getItem("dateStart"))
+    const startDayGet = startDateCache.getDate().toString();
     const startDay = startDayGet.length === 1 ? "0" + startDayGet : startDayGet;
-    const startMonthGet = useContext(SearchContext).startDateCache.getMonth().toString();
+    const startMonthGet = startDateCache.getMonth().toString();
     const startMonth = startMonthGet.length === 1 ? "0" + startMonthGet : startMonthGet;
-    const startYear = useContext(SearchContext).startDateCache.getFullYear();
+    const startYear = startDateCache.getFullYear();
 
-    const endDayGet = useContext(SearchContext).endDateCache.getDate().toString();
+    const endDateCache =  new Date(sessionStorage.getItem("dateEnd"))
+    const endDayGet = endDateCache.getDate().toString();
     const endDay = endDayGet.length === 1 ? "0" + endDayGet : endDayGet;
-    const endMonthGet = useContext(SearchContext).endDateCache.getMonth().toString();
+    const endMonthGet = endDateCache.getMonth().toString();
     const endMonth = endMonthGet.length === 1 ? "0" + endMonthGet : endMonthGet;
-    const endYear = useContext(SearchContext).endDateCache.getFullYear();
+    const endYear = endDateCache.getFullYear();
 
     useEffect(()=>{
         //Cargo datos del producto
@@ -98,11 +101,11 @@ function Booking() {
                     <Form />
                     <section className='section__booking-date'>
                         <h2>Seleccioná tu fecha de reserva</h2>
-                        <Calendar bookings={product?.bookings}/>
+                        <Calendar bookings={product?.bookings} handlerChange={handlerChange}/>
                     </section>
                     <Hour />
                 </div>
-                <Details src={product?.images[0]?.nombre_url} name={product?.name} category={product?.category.title} address={product?.address} city={product? product.city?.cityName + ", " + product.city?.country : ""} stars={product?.stars} />
+                <Details src={product?.images[0]?.nombre_url} change={change} name={product?.name} category={product?.category.title} address={product?.address} city={product? product.city?.cityName + ", " + product.city?.country : ""} stars={product?.stars} />
             </form>
             <Politics policy={product?.policy} />
         </section>

@@ -1,10 +1,7 @@
-import { useContext } from "react";
 import { Link } from "react-router-dom";
-import { SearchContext } from "../Context/SearchContext";
 import Calendar from "./Calendar";
 
 function HotelDate({id,bookings}) {
-    const {endDateCache,startDateCache} = useContext(SearchContext);
 
     if(!localStorage.getItem("user")) {
         localStorage.setItem("url", `/product/${id}/booking`);
@@ -12,12 +9,14 @@ function HotelDate({id,bookings}) {
     }
 
     const handlerClick = (e)=>{
-       
-        if(!endDateCache||!startDateCache){
-             e.preventDefault()
+
+        if(!sessionStorage.getItem("dateStart")&&!sessionStorage.getItem("dateEnd")){
+          
+         e.preventDefault()
 
             return //VER DE MOSTRAR ALGO
         }
+
     }
 
     return (

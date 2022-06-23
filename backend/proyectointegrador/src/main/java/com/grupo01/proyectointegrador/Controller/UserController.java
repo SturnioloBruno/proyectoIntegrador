@@ -20,7 +20,7 @@ public class UserController {
     @Autowired
     ObjectMapper mapper;
 
-    @CrossOrigin(origins = {"http://localhost:3000","http://10.0.0.189","http://db-group1.ckiqtgesdyez.us-east-1.rds.amazonaws.com"})
+    @CrossOrigin(origins = {"http://localhost:3000","http://10.0.0.9"})
     @Operation(summary = "crea un usuario")
     @PostMapping("/register")
     public ResponseEntity<Object> guardar(@RequestBody UserDTO userDTO) throws Exception {
@@ -33,7 +33,7 @@ public class UserController {
         return ResponseEntity.ok(userService.buscarId(id));
     }
 
-    @CrossOrigin(origins = {"http://localhost:3000","http://10.0.0.189","http://db-group1.ckiqtgesdyez.us-east-1.rds.amazonaws.com"})
+    @CrossOrigin(origins = {"http://localhost:3000","http://10.0.0.9"})
     @GetMapping("/findByEmail/{email}")
     public ResponseEntity<UserDTOResponse> buscarEmail(@PathVariable String email) throws Exception{
         User user = userService.buscarEmail(email);

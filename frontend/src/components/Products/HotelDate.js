@@ -2,15 +2,18 @@ import { Link } from "react-router-dom";
 import Calendar from "./Calendar";
 
 function HotelDate({id,bookings}) {
-
     if(!localStorage.getItem("user")) {
         localStorage.setItem("url", `/product/${id}/booking`);
         localStorage.setItem("msg", "Debe iniciar sesión para realizar reservas.");
     }
 
     const handlerClick = (e)=>{
+        if(sessionStorage.getItem("dateStart") === null || sessionStorage.getItem("dateEnd") === null) {
+            alert("Seleccione un rango de fechas para continuar.");
+        }
+
         if(!sessionStorage.getItem("dateStart")&&!sessionStorage.getItem("dateEnd")){
-            e.preventDefault()
+            e.preventDefault();
             return //VER DE MOSTRAR ALGO
         }
     }

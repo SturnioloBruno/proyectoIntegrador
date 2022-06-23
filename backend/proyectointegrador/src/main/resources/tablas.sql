@@ -96,7 +96,7 @@ CREATE TABLE IF NOT EXISTS punctuations (
 	punct_id INT NOT NULL AUTO_INCREMENT,
     prod_id INT NOT NULL,
     user_id INT NOT NULL,
-    punct_value SMALLINT NOT NULL,
+    punct_value DECIMAL(2,1) NOT NULL,
     PRIMARY KEY(punct_id),
     FOREIGN KEY(prod_id) REFERENCES products(prod_id),
     FOREIGN KEY(user_id) REFERENCES users(user_id)
@@ -109,6 +109,9 @@ user_id INT NOT NULL,
 booking_start_time TIME,
 booking_start_date DATE,
 booking_finish_date DATE,
+booking_vaccine_covid BIT,
+booking_userinfo_covid VARCHAR(500),
+booking_city VARCHAR(500),
 PRIMARY KEY(booking_id),
 FOREIGN KEY (prod_id) REFERENCES products(prod_id),
 FOREIGN KEY (user_id) REFERENCES users(user_id)
@@ -270,15 +273,15 @@ VALUES
 
 INSERT into punctuations (prod_id, user_id, punct_value)
 VALUES
-(1, 1, 5),
-(2, 2, 3),
-(3, 3, 5),
-(4, 4, 2),
+(1, 1, 4),
+(2, 2, 3.5),
+(3, 3, 4.5),
+(4, 4, 1.5),
 (5, 1, 3),
-(6, 2, 4),
-(7, 3, 3),
-(8, 4, 5),
-(9, 1, 4),
+(6, 2, 5),
+(7, 3, 3.5),
+(8, 4, 4),
+(9, 1, 3.5),
 (10, 2, 1),
-(11, 3, 3),
-(12, 4, 3);
+(11, 3, 2.5),
+(12, 4, 2.5);

@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect } from 'react';
+import { useContext, useState } from 'react';
 import { Link , useNavigate } from "react-router-dom";
 import Button from "../Button";
 import '../../styles/Login.css';
@@ -58,7 +58,7 @@ function Login({ type }) {
                 if(!user){
                     return
                 }
-                sessionStorage.setItem("token",user.jwt)
+                localStorage.setItem("token",user.jwt)
                 findUserData();
             })
             .catch((error) => {
@@ -88,11 +88,9 @@ function Login({ type }) {
                     return
                 }
                 setUser(user);
-                sessionStorage.setItem("user", JSON.stringify(user));
-                localStorage.setItem("email", JSON.stringify(email));
-                localStorage.setItem("name", JSON.stringify(user.userName));
-                localStorage.setItem("lastname", JSON.stringify(user.userSurname));
-                localStorage.getItem("url") == undefined ? navigate("/") : navigate(localStorage.getItem("url"));
+                localStorage.setItem("user", JSON.stringify(user));
+                sessionStorage.getItem("url") === null ? navigate("/") : navigate(sessionStorage.getItem("url"));
+                sessionStorage.removeItem("msg");
             })
             .catch((error) => {
                 setError({password:["Error, intente de nuevo mas tarde"]})
@@ -175,7 +173,7 @@ function Login({ type }) {
                         {errors.general?errors.general:''}
                     </small> : "" }
                 </label>
-                {localStorage.getItem("msg") != undefined ? <small className='small__error'>{localStorage.getItem("msg")}</small> : "" }
+                {sessionStorage.getItem("msg") !== undefined ? <small className='small__error'>{sessionStorage.getItem("msg")}</small> : "" }
                 <Button text="Ingresar" type="submit" className="btn button__solid-type" />
             </form>
             <p>¿Aún no tenes cuenta? <Link to="/register">Registrate</Link></p>

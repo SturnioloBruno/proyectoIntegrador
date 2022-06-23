@@ -1,8 +1,10 @@
 import { Link , useNavigate } from "react-router-dom";
 import { useContext, useState, useEffect } from 'react';
+import emailjs from 'emailjs-com';
 import Button from "../Button";
 import '../../styles/Login.css';
 import { UserContext } from "../Context/UserContext";
+import EmailKey from "../SendEmail/EmailKey"
 
 function Register({type}) {
     const [errors,setError]=useState({})
@@ -70,6 +72,15 @@ function Register({type}) {
             })
             .then((response) => {
                 if(response.status === 201) {
+
+                   /* emailjs.send(`service_lmsq0hp`, EmailKey.TEMPLATE_ID, {name:"asd", lastname:"asdaaa",message:"aa mensaje"}, EmailKey.USER_ID)
+                    .then((result) => {
+                   console.log("envio"+result.text);
+                    },
+                    (error) => {
+                    console.log("error"+error.text);
+                    });
+                    return*/
                     login(); // logueo para obtener token
                 } else if(response.status === 406) {
                    setError({password:["Ya existe un usuario con el email ingresado"]})
@@ -109,7 +120,7 @@ function Register({type}) {
                 if(!token) {
                     return
                 }
-                sessionStorage.setItem("token",token.jwt)
+                localStorage.setItem("token",token.jwt)
                 findUserData();
             })
             .catch((error) => {
@@ -138,7 +149,7 @@ function Register({type}) {
                     return
                 }
                 setUser(user);
-                sessionStorage.setItem("user", JSON.stringify(user));
+                localStorage.setItem("user", JSON.stringify(user));
                 navigate("/");
             })
             .catch((error) => {

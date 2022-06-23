@@ -1,4 +1,4 @@
-import {React,useState,useEffect} from 'react';
+import React,{useState,useEffect} from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { Link, useParams } from "react-router-dom";
 import HeaderProduct from './HeaderProduct';
@@ -13,11 +13,11 @@ import HotelDate from "./HotelDate";
 import Share from './Share';
 import "../../styles/Products/Product.css";
 
-function Product() {
+function Product({type}) {
     const mobileTablet = useMediaQuery({ query: '(max-width: 1024px)' });
     const desktop = useMediaQuery({ query: '(min-width: 1025px)' });
     const [product, setProduct] = useState(null);
-    /*const [punctuation, setPunctuation] = useState(null);*/
+    const [punctuation, setPunctuation] = useState(null);
     const {id} = useParams();
 
     useEffect(()=>{
@@ -38,7 +38,7 @@ function Product() {
         }      
         getProduct();
         
-        /*//Cargo puntuación
+        //Cargo puntuación
         const getPunctuation = async()=>{
             await fetch("http://localhost:8080/punctuations/findById/" + id,{
                 method:'GET',
@@ -53,7 +53,7 @@ function Product() {
                 setPunctuation(punctuation);
             })
         }
-        getPunctuation();*/
+        getPunctuation();
     }, [id]);
 
     //Para ver la modal
@@ -63,8 +63,8 @@ function Product() {
     }
 
     return <><article className="article__info-product">
-        <HeaderProduct name={product?.name} category={product?.category.title} />
-        <InfoProduct address={product?.address} punctuation={product?.punctuation} stars={product?.stars} score={product?.score} />
+        <HeaderProduct type={type} name={product?.name} category={product?.category.title} />
+        <InfoProduct address={product?.address} punctuation={product?.punctuation} stars={punctuation?.punctValue} score={product?.score} />
         <div className="div__img-actions">
             <div className="div__buttons-bar">
                 <Link to="#" className="a__share-icon" onClick={viewModal}>Compartir</Link>
@@ -75,7 +75,7 @@ function Product() {
         </div>
         <DescriptionHotel title={product?.descTitle} text={product?.desc} />
         <LocationServices services={product?.characteristic} />
-        <HotelDate id={product?.id} />
+        <HotelDate id={product?.id} bookings={product?.bookings}/>
         <MapLocation city={product?
             product.city?.cityName + ". " + product.city?.country
             :""} latitude={product?.y} longitude={product?.x} title={product?.descTitle} address={product?.address}/>

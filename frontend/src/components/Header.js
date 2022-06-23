@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext ,useEffect} from 'react';
 import Title from "./Title";
 import '../styles/Header.css';
 import { Link } from "react-router-dom";
@@ -8,6 +8,14 @@ import { UserContext } from './Context/UserContext';
 
 function Header() {
     const {user, setUser} = useContext(UserContext);
+
+    useEffect(()=>{
+
+        if(localStorage.getItem("user")){
+            setUser(JSON.parse(localStorage.user));
+        }
+       
+    },[]);
 
     function clicNav() {
         document.querySelector("header").classList.toggle("div__open-menu");
@@ -26,16 +34,16 @@ function Header() {
                 <Link to="#" className="a__button-nav" onClick={clicNav}>Abrir/Cerrar</Link>
                 <div className="div__menu-bar">
                     <div className={"div__menu-login"}>
-                        {user?
+                        {user ?
                         <div className="div__user-login">
-                            <span>{user?.userName[0]+user?.userSurname[0]}</span>
-                            <p role= "banner" >Hola, <span>{`${user?.userName} ${user?.userSurname}`}</span></p>
+                            <span>{user?.userName[0] + user?.userSurname[0]}</span>
+                            <p role= "banner">Hola, <span>{`${user?.userName} ${user?.userSurname}`}</span></p>
                         </div>
                         :<p>Menú</p>
                         }
                     </div>
-                    <div className={`div__menu-navigation ${user?.user? "login":""}`}>
-                        {user? ""
+                    <div className={`div__menu-navigation ${user ? "login" : ""}`}>
+                        {user ? ""
                         :<nav>
                             <ul className="ul__bar-links">
                             <li><Link to="/login" data-testid="on-click-login" element={<Login />} id="link__login-btn" onClick={clicButton}>Iniciar sesión</Link></li>
@@ -43,15 +51,14 @@ function Header() {
                             </ul>
                         </nav>}
                         <div data-testid="on-click-logout" className="div__social-menu">
-                           {user?<span >¿Deseas <Link to="/" onClick={()=>{
-                                setUser(null)
-                                sessionStorage.removeItem("token");
-                                sessionStorage.removeItem("user");
-                                localStorage.removeItem("email");
-                                localStorage.removeItem("name");
-                                localStorage.removeItem("lastname");
-                                localStorage.removeItem("msg");
-                                localStorage.removeItem("url");
+                           {user?<span>¿Deseas <Link to="/" onClick={()=>{
+                                setUser(undefined)
+                                localStorage.removeItem("token");
+                                localStorage.removeItem("user");
+                                sessionStorage.removeItem("msg");
+                                sessionStorage.removeItem("url");
+                                sessionStorage.removeItem("dateStart")
+                                sessionStorage.removeItem("dateEnd")
                             }}>cerrar sesión</Link>?</span>:''}
                             <ul className="ul__social-links">
                                 <li><Link to="#" className="a__icon-fb">Facebook</Link></li>

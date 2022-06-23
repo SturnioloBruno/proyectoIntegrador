@@ -3,8 +3,30 @@ import Rating from '@mui/material/Rating';
 import Stack from '@mui/material/Stack';
 import StarIcon from '@mui/icons-material/Star';
 import Button from "../../components/Button";
+import {useEffect,useState,useContext} from 'react';
+import { SearchContext } from '../Context/SearchContext';
 
-function Details({ src, name, category, address, city, stars }) {
+function Details({ src, name, category, address, city, stars , change}) {
+    const startDateCache = useContext(SearchContext);
+    const endDateCache = sessionStorage.getItem("dateEnd")?sessionStorage.getItem("dateEnd"):null
+    const [dateStartFormat,setDateStartFormat] = useState(null);
+    let [dateEndFormat,setDateEndFormat]= useState(null); 
+
+    useEffect(()=>{
+
+        if(endDateCache&&startDateCache){
+
+            if(sessionStorage.getItem("dateStart")&&sessionStorage.getItem("dateEnd")){
+                let objStart = new Date(sessionStorage.getItem("dateStart"))
+                let objEnd = new Date(sessionStorage.getItem("dateEnd"))
+                setDateStartFormat(objStart.getDate() +"/"+ objStart.getMonth() + "/" + objStart.getFullYear().toString().substr(-2))
+                setDateEndFormat(objEnd.getDate() +"/"+ objEnd.getMonth() + "/" + objEnd.getFullYear().toString().substr(-2) )
+            }
+    
+        }
+
+    },[change])
+
     return (
         <section className="section__booking-details">
             <div>
@@ -21,11 +43,11 @@ function Details({ src, name, category, address, city, stars }) {
                         <ul>
                             <li>
                                 <h4>Check in</h4>
-                                <span>-/-/-</span>
+                                <span>{dateStartFormat?dateStartFormat:"-/-/-"}</span>                  
                             </li>
                             <li>
                                 <h4>Check out</h4>
-                                <span>-/-/-</span>
+                                <span>{dateEndFormat?dateEndFormat:"-/-/-"}</span>                         
                             </li>
                         </ul>
                         <Button text="Confirmar reserva" className="btn button__solid-type" />

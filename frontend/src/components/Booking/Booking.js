@@ -17,7 +17,7 @@ function Booking() {
     useEffect(()=>{
         //Cargo datos del producto
         const getProduct = async()=>{
-            await fetch("http://localhost:8080/products/findById/" + id,{
+            await fetch("http://10.0.0.189/products/findById/" + id,{
                 method:'GET',
                 headers:{
                     'Content-Type':'application/json'

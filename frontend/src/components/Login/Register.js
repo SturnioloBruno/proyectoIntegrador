@@ -53,7 +53,7 @@ function Register({type}) {
         }
 
         const register = async() => {
-            await fetch("http://localhost:8080/users/register", {
+            await fetch("http://10.0.0.189/users/register", {
                 method:'POST',
                 headers:{
                     "Access-Control-Allow-Headers" : "Content-Type",
@@ -86,7 +86,7 @@ function Register({type}) {
         register();
 
         const login = async() => {
-            await fetch("http://localhost:8080/authenticate", {
+            await fetch("http://10.0.0.189/authenticate", {
                 method:'POST',
                 headers:{
                     "Access-Control-Allow-Headers" : "Content-Type",
@@ -119,7 +119,7 @@ function Register({type}) {
         }
     
         const findUserData = async() => {
-            await fetch("http://localhost:8080/users/findByEmail/" + emailValue.value.trim(), {
+            await fetch("http://10.0.0.189/users/findByEmail/" + emailValue.value.trim(), {
                 method:'GET',
                 headers: {
                     "Access-Control-Allow-Headers" : "Content-Type"

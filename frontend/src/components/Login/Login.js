@@ -35,7 +35,7 @@ function Login({ type }) {
         }
         
         const login = async() => {
-            await fetch("http://localhost:8080/authenticate", {
+            await fetch("http://ip-10-0-0-189.ec2.internal/authenticate", {
                 method:'POST',
                 headers:{
                     "Access-Control-Allow-Headers" : "Content-Type",
@@ -69,7 +69,7 @@ function Login({ type }) {
         login();
     
         const findUserData = async()=>{
-            await fetch("http://localhost:8080/users/findByEmail/" + emailValue.value.trim(), {
+            await fetch("http://10.0.0.189/users/findByEmail/" + emailValue.value.trim(), {
                 method:'GET',
                 headers: {
                     "Access-Control-Allow-Headers" : "Content-Type"

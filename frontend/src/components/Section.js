@@ -14,7 +14,7 @@ function Section({ type, title }) {
         if(type==="Category"){
             //Cargo categorías
             const getCategories = async()=>{
-                await fetch("http://localhost:8080/categories/getList",{
+                await fetch("http://10.0.0.189/categories/getList",{
                     method:'GET',
                     headers:{
                         'Content-Type':'application/json'
@@ -33,7 +33,7 @@ function Section({ type, title }) {
         if(type==="Card"){
             //Cargo productos
             const getProducts = async()=>{
-                await fetch(`http://localhost:8080/products/getListProducts${user?"?sort=true":"?sort=false"}`,{
+                await fetch(`http://10.0.0.189/products/getListProducts${user?"?sort=true":"?sort=false"}`,{
                     method:'GET',
                     headers:{
                         'Content-Type':'application/json'

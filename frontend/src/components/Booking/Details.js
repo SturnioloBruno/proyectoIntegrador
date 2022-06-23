@@ -19,8 +19,8 @@ function Details({ src, name, category, address, city, stars , change}) {
             if(sessionStorage.getItem("dateStart")&&sessionStorage.getItem("dateEnd")){
                 let objStart = new Date(sessionStorage.getItem("dateStart"))
                 let objEnd = new Date(sessionStorage.getItem("dateEnd"))
-                setDateStartFormat(objStart.getDate() +"/"+ objStart.getMonth() + "/" + objStart.getFullYear().toString().substr(-2))
-                setDateEndFormat(objEnd.getDate() +"/"+ objEnd.getMonth() + "/" + objEnd.getFullYear().toString().substr(-2) )
+                setDateStartFormat(objStart.getDate() +"/"+ (objStart.getMonth() + 1) + "/" + objStart.getFullYear().toString().substr(-2))
+                setDateEndFormat(objEnd.getDate() +"/"+ (objEnd.getMonth() + 1) + "/" + objEnd.getFullYear().toString().substr(-2) )
             }
     
         }

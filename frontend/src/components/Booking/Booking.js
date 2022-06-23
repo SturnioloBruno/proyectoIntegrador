@@ -1,5 +1,5 @@
 import { React, useState, useEffect, useContext } from 'react';
-import { useParams } from "react-router-dom";
+import { useParams , useNavigate } from "react-router-dom";
 import HeaderProduct from "../Products/HeaderProduct";
 import Form from "./Form";
 import Calendar from "../Products/Calendar";
@@ -14,9 +14,11 @@ import "../../styles/Booking/Date.css";
 function Booking() {
     const [product, setProduct] = useState(null);
     const {id} = useParams();
+    const navigate = useNavigate();
     localStorage.removeItem("url");
     const {user} = useContext(UserContext);
     const token = localStorage.getItem("token");
+    let error;
 
     const city = document.querySelector("#input__city-booking");
     const description = document.querySelector("#textarea__description-booking");
@@ -56,6 +58,19 @@ function Booking() {
 
     const handlerSubmit = (e) => {
         e.preventDefault();
+        
+        console.log(city.value.trim());
+        if(city.value.trim() === ""){
+            city.focus();
+            city.className = "error";
+            return
+        }
+
+        if(hour.value === ""){
+            hour.focus();
+            hour.className = "error";
+            return
+        }
 
         //Insert con datos de la reserva
         const insertBooking = async()=>{
@@ -82,11 +97,9 @@ function Booking() {
                 })
             })
             .then((response) => {
+                if(response.status === 200) navigate("/ok");
                 return response.json();
             })
-            .catch((error) => {
-                console.log(error);
-            });
         }
         insertBooking();
     }

@@ -42,11 +42,11 @@ public class Booking {
     private User userId;
 
     @Column (name = "booking_city")
-    private String city;
+    private String bookingCity;
 
     public Booking() {}
 
-    public Booking(Long id, LocalTime bookingStartTime, LocalDate bookingStartDate, LocalDate bookingFinishDate, Boolean bookingVaccineCovid, String bookingUserInfoCovid, Product prodId, User userId, String city) {
+    public Booking(Long id, LocalTime bookingStartTime, LocalDate bookingStartDate, LocalDate bookingFinishDate, Boolean bookingVaccineCovid, String bookingUserInfoCovid, Product prodId, User userId, String bookingCity) {
         this.id = id;
         this.bookingStartTime = bookingStartTime;
         this.bookingStartDate = bookingStartDate;
@@ -55,10 +55,10 @@ public class Booking {
         this.bookingUserInfoCovid = bookingUserInfoCovid;
         this.prodId = prodId;
         this.userId = userId;
-        this.city = city;
+        this.bookingCity = bookingCity;
     }
 
-    public Booking(LocalTime bookingStartTime, LocalDate bookingStartDate, LocalDate bookingFinishDate, Boolean bookingVaccineCovid, String bookingUserInfoCovid, Product prodId, User userId, String city) {
+    public Booking(LocalTime bookingStartTime, LocalDate bookingStartDate, LocalDate bookingFinishDate, Boolean bookingVaccineCovid, String bookingUserInfoCovid, Product prodId, User userId, String bookingCity) {
         this.bookingStartTime = bookingStartTime;
         this.bookingStartDate = bookingStartDate;
         this.bookingFinishDate = bookingFinishDate;
@@ -66,7 +66,7 @@ public class Booking {
         this.bookingUserInfoCovid = bookingUserInfoCovid;
         this.prodId = prodId;
         this.userId = userId;
-        this.city = city;
+        this.bookingCity = bookingCity;
     }
 
     public Long getId() {
@@ -134,10 +134,10 @@ public class Booking {
     }
 
     public String getCity() {
-        return city;
+        return bookingCity;
     }
 
     public void setCity(String city) {
-        this.city = city;
+        this.bookingCity = city;
     }
 }

@@ -12,7 +12,7 @@ public class BookingDTO {
     private String bookingUserInfoCovid;
     private Product prodId;
     private User userId;
-    private String city;
+    private String bookingCity;
 
     public void setId(Long id) {
         this.id = id;
@@ -74,11 +74,11 @@ public class BookingDTO {
         this.userId = userId;
     }
 
-    public String getCity() {
-        return city;
+    public String getBookingCity() {
+        return bookingCity;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setBookingCity(String bookingCity) {
+        this.bookingCity = bookingCity;
     }
 }

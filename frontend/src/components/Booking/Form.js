@@ -31,7 +31,7 @@ function Form() {
                 </label>
                 <label htmlFor="label__covid" className="label__covid">
                     <span>¿Se encuentra vacunado contra el COVID-19?</span>
-                    <input type="checkbox" name="covid" id="label__covid" required />
+                    <input type="checkbox" name="covid" id="label__covid" />
                 </label>
             </div>
         </section>

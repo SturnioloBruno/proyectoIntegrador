@@ -70,6 +70,7 @@ function Booking() {
                     bookingStarTime: hour.value,
                     bookingStartDate: `${startYear}-${startMonth}-${startDay}`,
                     bookingFinishDate: `${endYear}-${endMonth}-${endDay}`,
+                    bookingCity: city.value,
                     bookingVaccineCovid: checkCovid.checked,
                     bookingUserInfoCovid: description.value,
                     prodId:{

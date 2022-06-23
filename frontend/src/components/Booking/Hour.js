@@ -35,7 +35,7 @@ function Hour() {
                 <p className="p__hotel-room">Tu habitación va a estar lista para el check-in entre las 10:00 AM y las 11:00 PM</p>
                 <label>
                     <span>Indicá tu horario estimado de llegada</span>
-                    <select name="hour" required id="select__option-hour">
+                    <select name="hour" id="select__option-hour">
                         <option value="">Seleccionar hora</option>
                         {hours.map((hour, i) => {
                             return <option key={i} value={hour.value}>{hour.hour}</option>;

@@ -111,6 +111,7 @@ booking_start_date DATE,
 booking_finish_date DATE,
 booking_vaccine_covid BIT,
 booking_userinfo_covid VARCHAR(500),
+booking_city VARCHAR(500),
 PRIMARY KEY(booking_id),
 FOREIGN KEY (prod_id) REFERENCES products(prod_id),
 FOREIGN KEY (user_id) REFERENCES users(user_id)

@@ -125,7 +125,7 @@ textarea {
     resize: none;
 }
 
-input.error {
+input.error, select.error {
     border: 1px solid #FF0000;
     background: #FFE1E1;
 }

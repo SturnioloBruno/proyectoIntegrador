@@ -41,9 +41,12 @@ public class Booking {
     @JsonIgnore
     private User userId;
 
+    @Column (name = "booking_city")
+    private String city;
+
     public Booking() {}
 
-    public Booking(Long id, LocalTime bookingStartTime, LocalDate bookingStartDate, LocalDate bookingFinishDate, Boolean bookingVaccineCovid, String bookingUserInfoCovid, Product prodId, User userId) {
+    public Booking(Long id, LocalTime bookingStartTime, LocalDate bookingStartDate, LocalDate bookingFinishDate, Boolean bookingVaccineCovid, String bookingUserInfoCovid, Product prodId, User userId, String city) {
         this.id = id;
         this.bookingStartTime = bookingStartTime;
         this.bookingStartDate = bookingStartDate;
@@ -52,9 +55,10 @@ public class Booking {
         this.bookingUserInfoCovid = bookingUserInfoCovid;
         this.prodId = prodId;
         this.userId = userId;
+        this.city = city;
     }
 
-    public Booking(LocalTime bookingStartTime, LocalDate bookingStartDate, LocalDate bookingFinishDate, Boolean bookingVaccineCovid, String bookingUserInfoCovid, Product prodId, User userId) {
+    public Booking(LocalTime bookingStartTime, LocalDate bookingStartDate, LocalDate bookingFinishDate, Boolean bookingVaccineCovid, String bookingUserInfoCovid, Product prodId, User userId, String city) {
         this.bookingStartTime = bookingStartTime;
         this.bookingStartDate = bookingStartDate;
         this.bookingFinishDate = bookingFinishDate;
@@ -62,6 +66,7 @@ public class Booking {
         this.bookingUserInfoCovid = bookingUserInfoCovid;
         this.prodId = prodId;
         this.userId = userId;
+        this.city = city;
     }
 
     public Long getId() {
@@ -126,5 +131,13 @@ public class Booking {
 
     public void setBookingUserInfoCovid(String bookingUserInfoCovid) {
         this.bookingUserInfoCovid = bookingUserInfoCovid;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
     }
 }

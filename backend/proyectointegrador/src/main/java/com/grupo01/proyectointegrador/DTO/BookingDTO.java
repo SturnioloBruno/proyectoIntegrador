@@ -12,6 +12,7 @@ public class BookingDTO {
     private String bookingUserInfoCovid;
     private Product prodId;
     private User userId;
+    private String city;
 
     public void setId(Long id) {
         this.id = id;
@@ -71,5 +72,13 @@ public class BookingDTO {
 
     public void setUserId(User userId) {
         this.userId = userId;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
     }
 }

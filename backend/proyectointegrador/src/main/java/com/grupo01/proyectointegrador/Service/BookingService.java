@@ -27,7 +27,7 @@ public class BookingService {
         LocalDate bookingStartDate=LocalDate.parse(bookingDTO.getBookingStartDate());
         LocalDate bookingFinishDate=LocalDate.parse(bookingDTO.getBookingFinishDate());
 
-        Booking opcion2=new Booking(bookingStartTime,bookingStartDate,bookingFinishDate,bookingDTO.getBookingVaccineCovid(),bookingDTO.getBookingUserInfoCovid(),bookingDTO.getProdId(),bookingDTO.getUserId());
+        Booking opcion2=new Booking(bookingStartTime,bookingStartDate,bookingFinishDate,bookingDTO.getBookingVaccineCovid(),bookingDTO.getBookingUserInfoCovid(),bookingDTO.getProdId(),bookingDTO.getUserId(), bookingDTO.getCity());
         return bookingRepository.save(opcion2);
     }
 

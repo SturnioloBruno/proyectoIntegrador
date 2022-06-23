@@ -55,8 +55,8 @@ function Header() {
                                 setUser(undefined)
                                 localStorage.removeItem("token");
                                 localStorage.removeItem("user");
-                                localStorage.removeItem("msg");
-                                localStorage.removeItem("url");
+                                sessionStorage.removeItem("msg");
+                                sessionStorage.removeItem("url");
                                 sessionStorage.removeItem("dateStart")
                                 sessionStorage.removeItem("dateEnd")
                             }}>cerrar sesión</Link>?</span>:''}

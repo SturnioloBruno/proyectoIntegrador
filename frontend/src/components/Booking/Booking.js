@@ -15,7 +15,7 @@ function Booking() {
     const [change,setChange] = useState(false);
     const {id} = useParams();
     const navigate = useNavigate();
-    localStorage.removeItem("url");
+    sessionStorage.removeItem("url");
     const {user} = useContext(UserContext);
     const token = localStorage.getItem("token");
     const handlerChange = ()=>{setChange(!change)}
@@ -61,7 +61,6 @@ function Booking() {
     const handlerSubmit = (e) => {
         e.preventDefault();
         
-        console.log(city.value.trim());
         if(city.value.trim() === ""){
             city.focus();
             city.className = "error";

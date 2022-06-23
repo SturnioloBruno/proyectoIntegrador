@@ -62,7 +62,6 @@ function Login({ type }) {
                 findUserData();
             })
             .catch((error) => {
-                console.log(1);
                 setError({password:["Error, intente de nuevo mas tarde"]})
                 return
             });
@@ -90,11 +89,10 @@ function Login({ type }) {
                 }
                 setUser(user);
                 localStorage.setItem("user", JSON.stringify(user));
-                localStorage.getItem("url") === null ? navigate("/") : navigate(localStorage.getItem("url"));
+                sessionStorage.getItem("url") === null ? navigate("/") : navigate(sessionStorage.getItem("url"));
+                sessionStorage.removeItem("msg");
             })
             .catch((error) => {
-                console.log(2);
-                console.log(error);
                 setError({password:["Error, intente de nuevo mas tarde"]})
                 return
             });
@@ -175,7 +173,7 @@ function Login({ type }) {
                         {errors.general?errors.general:''}
                     </small> : "" }
                 </label>
-                {localStorage.getItem("msg") !== undefined ? <small className='small__error'>{localStorage.getItem("msg")}</small> : "" }
+                {sessionStorage.getItem("msg") !== undefined ? <small className='small__error'>{sessionStorage.getItem("msg")}</small> : "" }
                 <Button text="Ingresar" type="submit" className="btn button__solid-type" />
             </form>
             <p>¿Aún no tenes cuenta? <Link to="/register">Registrate</Link></p>

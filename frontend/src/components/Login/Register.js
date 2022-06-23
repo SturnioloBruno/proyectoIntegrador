@@ -90,7 +90,6 @@ function Register({type}) {
                     return
                 }
               }).catch((error) => {
-                console.log(error +" linea 93");
                 setError({password:["Error, intente de nuevo mas tarde"]})
                 return
               });

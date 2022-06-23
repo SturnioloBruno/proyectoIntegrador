@@ -3,8 +3,8 @@ import Calendar from "./Calendar";
 
 function HotelDate({id,bookings}) {
     if(!localStorage.getItem("user")) {
-        localStorage.setItem("url", `/product/${id}/booking`);
-        localStorage.setItem("msg", "Debe iniciar sesión para realizar reservas.");
+        sessionStorage.setItem("url", `/product/${id}/booking`);
+        sessionStorage.setItem("msg", "Debe iniciar sesión para realizar reservas.");
     }
 
     const handlerClick = (e)=>{

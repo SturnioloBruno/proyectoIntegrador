@@ -29,7 +29,7 @@ function Header() {
                         {user?
                         <div className="div__user-login">
                             <span>{user?.userName[0]+user?.userSurname[0]}</span>
-                            <p>Hola, <span>{`${user?.userName} ${user?.userSurname}`}</span></p>
+                            <p role= "banner" >Hola, <span>{`${user?.userName} ${user?.userSurname}`}</span></p>
                         </div>
                         :<p>Menú</p>
                         }
@@ -38,12 +38,12 @@ function Header() {
                         {user? ""
                         :<nav>
                             <ul className="ul__bar-links">
-                            <li><Link to="/login" element={<Login />} id="link__login-btn" onClick={clicButton}>Iniciar sesión</Link></li>
-                            <li><Link to="/register" element={<Register />} id="link__register-btn" onClick={clicButton}>Crear cuenta</Link></li>
+                            <li><Link to="/login" data-testid="on-click-login" element={<Login />} id="link__login-btn" onClick={clicButton}>Iniciar sesión</Link></li>
+                            <li><Link to="/register" data-testid="on-click-register" element={<Register />} id="link__register-btn" onClick={clicButton}>Crear cuenta</Link></li>
                             </ul>
                         </nav>}
-                        <div className="div__social-menu">
-                           {user?<span>¿Deseas <Link to="/" onClick={()=>{
+                        <div data-testid="on-click-logout" className="div__social-menu">
+                           {user?<span >¿Deseas <Link to="/" onClick={()=>{
                                 setUser(null)
                                 sessionStorage.removeItem("token");
                                 sessionStorage.removeItem("user");

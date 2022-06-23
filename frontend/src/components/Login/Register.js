@@ -230,7 +230,7 @@ function Register({type}) {
                 </label>
                 <label htmlFor="password_login" className='label__password-input'>
                     <span>Contraseña</span>
-                    <input type="password" name="password" id="password_login" required autoComplete="off" className={`${errors.password ? "error" : ""}`} />
+                    <input type="password" name="password" data-testid="password_input" id="password_login" required autoComplete="off" className={`${errors.password ? "error" : ""}`} />
                     <Link to="#" className="a__show-hide" onClick={show}>Show/Hide</Link>
 
                     {errors.password?
@@ -248,7 +248,7 @@ function Register({type}) {
                     <small className="small__error"></small>
                     }
                 </label>
-                <Button text="Crear cuenta" type="submit" className="btn button__solid-type" />
+                <Button text="Crear cuenta" type="submit"  className="btn button__solid-type" />
             </form>
             <p>¿Ya tienes una cuenta? <Link to="/login">Iniciar sesión</Link></p>
         </section>

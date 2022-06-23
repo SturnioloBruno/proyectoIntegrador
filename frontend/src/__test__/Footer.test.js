@@ -4,10 +4,13 @@ import Footer from "../components/Footer.js";
 import { render, screen, act, fireEvent, cleanUp } from "@testing-library/react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import '@testing-library/jest-dom'
+import { UserProvider } from "../components/Context/UserContext.js";
 
 const setup = () => render(
         <BrowserRouter>
-            <Footer />
+            <UserProvider>
+                <Footer />
+            </UserProvider>
         </BrowserRouter>
 );
 

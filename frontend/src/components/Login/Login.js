@@ -165,7 +165,7 @@ function Login({ type }) {
 
                 <label htmlFor="password_login" className='label__password-input'>
                     <span>Contraseña</span>
-                    <input type="password" name="password" id="password_login" required className={`${errors.password || errors.general? "error" : ""}`} autoComplete="off" />
+                    <input type="password" name="password" id="password_login" data-testid="password_input" required className={`${errors.password || errors.general? "error" : ""}`} autoComplete="off" />
                     <Link to="#" className="a__show-hide" onClick={show}>Show/Hide</Link>
                     
                     {errors.password || errors.email || errors.general ?

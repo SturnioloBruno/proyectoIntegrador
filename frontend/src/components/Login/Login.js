@@ -62,6 +62,7 @@ function Login({ type }) {
                 findUserData();
             })
             .catch((error) => {
+                console.log(1);
                 setError({password:["Error, intente de nuevo mas tarde"]})
                 return
             });
@@ -89,9 +90,11 @@ function Login({ type }) {
                 }
                 setUser(user);
                 localStorage.setItem("user", JSON.stringify(user));
-                localStorage.getItem("url") === undefined ? navigate("/") : navigate(localStorage.getItem("url"));
+                localStorage.getItem("url") === null ? navigate("/") : navigate(localStorage.getItem("url"));
             })
             .catch((error) => {
+                console.log(2);
+                console.log(error);
                 setError({password:["Error, intente de nuevo mas tarde"]})
                 return
             });

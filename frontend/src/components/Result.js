@@ -12,8 +12,8 @@ function Home({title}) {
   useEffect(()=>{
     //Cargo productos por ciudad
     const getProductsperCities = async()=>{
-      
-        await fetch("http://10.0.0.189/products/getListProducts/" + location.search, {
+
+        await fetch("http://ec2-54-146-47-89.compute-1.amazonaws.com:8080/products/getListProducts/" + location.search, {
             method:'GET',
             headers:{
                 'Content-Type':'application/json'

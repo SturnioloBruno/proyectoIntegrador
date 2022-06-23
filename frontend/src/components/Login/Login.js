@@ -69,7 +69,7 @@ function Login({ type }) {
         login();
     
         const findUserData = async()=>{
-            await fetch("http://10.0.0.189/users/findByEmail/" + emailValue.value.trim(), {
+            await fetch("http://ec2-54-146-47-89.compute-1.amazonaws.com:8080/users/findByEmail/" + emailValue.value.trim(), {
                 method:'GET',
                 headers: {
                     "Access-Control-Allow-Headers" : "Content-Type"

@@ -16,6 +16,7 @@ function Booking() {
     const {id} = useParams();
     localStorage.removeItem("url");
     const {user} = useContext(UserContext);
+    const token = localStorage.getItem("token");
 
     const city = document.querySelector("#input__city-booking");
     const description = document.querySelector("#textarea__description-booking");
@@ -61,10 +62,11 @@ function Booking() {
             await fetch("http://localhost:8080/bookings/insert", {
                 method:'POST',
                 headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                  },
-                body: JSON.stringify({
+                    "Access-Control-Allow-Headers" : "Content-Type",
+                    'Access-Control-Allow-Origin': "*",
+                    'Content-Type': 'application/json',
+                    "X-Authorization": `Bearer Token ${token}`
+                }, body: JSON.stringify({
                     bookingStarTime: hour.value,
                     bookingStartDate: `${startYear}-${startMonth}-${startDay}`,
                     bookingFinishDate: `${endYear}-${endMonth}-${endDay}`,
@@ -78,9 +80,12 @@ function Booking() {
                     }
                 })
             })
-            .then(function(respuesta){
-                return respuesta.json();
+            .then((response) => {
+                return response.json();
             })
+            .catch((error) => {
+                console.log(error);
+            });
         }
         insertBooking();
     }

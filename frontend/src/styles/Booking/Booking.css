@@ -1,0 +1,60 @@
+.section__booking-hotel {
+    padding: 82px 0 0;
+    background-color: var(--light-grey);
+}
+
+.section__booking-hotel .section__title-border > * {
+    padding: 0 5%;
+}
+
+.section__booking-hotel .section__title-border > h2 {
+    padding-bottom: 1em;
+}
+
+.section__booking-politics {
+    background-color: white;
+}
+
+.section__booking-politics > ul {
+    margin: 1.5em 0;
+}
+
+@media (min-width: 768px) {
+    section {
+        padding: 2em 5%;
+    }
+    .section__booking-hotel {
+        padding: 98px 0 0;
+    }
+}
+
+@media (min-width: 1280px) {
+    .section__booking-hotel .div__booking-hotel {
+        display: flex;
+    }
+
+    .div__booking-hotel > div {
+        width: 60%;
+        padding: 2em 1em 0 5%;
+    }
+
+    .div__booking-hotel > div section {
+        padding: 0 0 2em;
+    }
+
+    .div__booking-hotel > div .section__booking-date, .div__booking-hotel > div .section__booking-hour {
+        padding-top: 0;
+    }
+
+    .section__booking-politics.section__title-border {
+        padding: 2em 0 0;
+    }
+
+    .section__booking-politics > ul {
+        margin: 2em 0 0;
+    }
+
+    .section__booking-politics.section__politics > ul > li {
+        margin-bottom: 2em;
+    }
+}

@@ -1,0 +1,62 @@
+.section__booking-form div label span {
+    margin-bottom: .5em;
+    display: block;
+}
+
+.section__booking-form div label input:not([type="checkbox"]), .section__booking-form div label textarea {
+    margin-bottom: 1.5em;
+    width: 100%;
+    padding: 1em;
+}
+
+.section__booking-form div label:last-child input, .section__booking-form div .label__covid span {
+    margin-bottom: 0;
+}
+
+.section__booking-form div label:last-of-type {
+    width: 100%;
+}
+
+.section__booking-form div textarea {
+    width: 100%;
+    height: 150px;
+}
+
+.section__booking-form div .label__covid {
+    display: flex;
+    align-items: center;
+}
+
+.section__booking-form div .label__covid span {
+    margin-right: 8px;
+    width: calc(100% - 32px);
+}
+
+.section__booking-form div .label__covid input {
+    height: 24px;
+    width: 24px;
+}
+
+@media (min-width: 768px) {
+    .section__booking-form div {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .section__booking-form div label:not(.label__description, .label__covid) {
+        width: calc(50% - 1em);
+    }
+
+    .section__booking-form div label.label__description {
+        width: 100%;
+    }
+
+    .section__booking-form div label input[type=email] {
+        margin-bottom: 0;
+    }
+
+    .section__booking-form div .label__covid span {
+        width: max-content;
+    }
+}

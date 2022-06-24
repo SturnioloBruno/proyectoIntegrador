@@ -1,5 +1,5 @@
 import React, {Fragment} from 'react';
-import Search from './components/Search';
+import Search from './components/Search/Search';
 import Section from './components/Section';
 import './styles/Home.css';
 

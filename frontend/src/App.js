@@ -2,17 +2,21 @@ import React, {Fragment } from 'react';
 import { Routes, Route } from "react-router-dom";
 import Header from './components/Header';
 import Home from './Home';
-import Product from './components/products/Product';
-import Login from './components/login/Login';
-import Register from './components/login/Register';
+import Product from './components/Products/Product';
+import Login from './components/Login/Login';
+import Register from './components/Login/Register';
 import Result from "./components/Result";
 import Footer from './components/Footer';
+import SuccessfulBooking from "./components/Booking/SuccessfulBooking";
+import Booking from "./components/Booking/Booking";
 import { UserProvider } from './components/Context/UserContext';
 import { SearchProvider } from './components/Context/SearchContext';
+import Meta from './components/Meta';
 
 function App() {
   return (
     <Fragment>
+      <Meta/>
       <UserProvider>
         <SearchProvider>
       <Header/>
@@ -24,6 +28,8 @@ function App() {
         <Route path="/categories/" element={<Result type="categories" />} />
         <Route path="/login" element={<Login  type="login" />} />
         <Route path="/register" element={<Register type="register" />} />
+        <Route path="/ok" element={<SuccessfulBooking type="ok" />} />
+        <Route path="/product/:id/booking" element={<Booking type="booking" />} />
       </Routes>
 
       <Footer />

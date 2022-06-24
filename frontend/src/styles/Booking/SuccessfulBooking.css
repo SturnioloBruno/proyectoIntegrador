@@ -1,0 +1,63 @@
+.section__successful-booking {
+    min-height: calc(100vh - 50.2px);
+    background-color: var(--light-grey);
+}
+
+.section__successful-booking, .section__successful-booking div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.section__successful-booking div {
+    background-color: white;
+    padding: 2em;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+    margin-top: 82px;
+    width: 100%;
+}
+
+.section__successful-booking div h2 {
+    font-size: 20px;
+}
+
+.section__successful-booking div h2::before {
+    content: "";
+    width: 48px;
+    height: 48px;
+    display: block;
+    background: url(../../assets/icons/successful.svg) no-repeat center center;
+    background-size: contain;
+    margin: 0 auto 1em;
+}
+
+.section__successful-booking div p {
+    margin: 1em 0 1.5em;
+    text-align: center;
+}
+
+.section__successful-booking div .btn {
+    width: 50%;
+}
+
+@media (min-width: 768px) {
+    .section__successful-booking div {
+        width: 80%;
+    }
+
+    .section__successful-booking div .btn {
+        width: 40%;
+    }
+}
+
+@media (min-width: 1280px) {
+    .section__successful-booking div {
+        width: 40%;
+    }
+
+    .section__successful-booking div .btn {
+        width: 35%;
+    }
+}

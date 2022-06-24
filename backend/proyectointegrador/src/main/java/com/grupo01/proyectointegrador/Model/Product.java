@@ -63,10 +63,13 @@ public class Product {
     @OneToMany(mappedBy = "prodId", fetch = FetchType.LAZY)
     private List<Punctuation> punctProd;
 
+    @OneToMany(mappedBy = "prodId", fetch = FetchType.LAZY)
+    private List<Booking> bookings;
+
     public Product() {
     }
 
-    public Product(Long id, String address, String name, Integer punctuation, Double stars, String descTitle, String desc, Double x, Double y, String score, Category category, City city, List<ProductCharacteristic> productsC, List<ProductPolicy> productsP, List<Image> images, List<Punctuation> punctProd) {
+    public Product(Long id, String address, String name, Integer punctuation, Double stars, String descTitle, String desc, Double x, Double y, String score, Category category, City city, List<ProductCharacteristic> productsC, List<ProductPolicy> productsP, List<Image> images, List<Punctuation> punctProd, List<Booking> bookings) {
         this.id = id;
         this.address = address;
         this.name = name;
@@ -83,9 +86,10 @@ public class Product {
         this.productsP = productsP;
         this.images = images;
         this.punctProd = punctProd;
+        this.bookings = bookings;
     }
 
-    public Product(String address, String name, Integer punctuation, Double stars, String descTitle, String desc, Double x, Double y, String score, Category category, City city, List<ProductCharacteristic> productsC, List<ProductPolicy> productsP, List<Image> images, List<Punctuation> punctProd) {
+    public Product(String address, String name, Integer punctuation, Double stars, String descTitle, String desc, Double x, Double y, String score, Category category, City city, List<ProductCharacteristic> productsC, List<ProductPolicy> productsP, List<Image> images, List<Punctuation> punctProd, List<Booking> bookings) {
         this.address = address;
         this.name = name;
         this.punctuation = punctuation;
@@ -101,6 +105,7 @@ public class Product {
         this.productsP = productsP;
         this.images = images;
         this.punctProd = punctProd;
+        this.bookings = bookings;
     }
 
     public Long getId() {
@@ -225,5 +230,13 @@ public class Product {
 
     public void setPunctProd(List<Punctuation> punctProd) {
         this.punctProd = punctProd;
+    }
+
+    public List<Booking> getBookings() {
+        return bookings;
+    }
+
+    public void setBookings(List<Booking> bookings) {
+        this.bookings = bookings;
     }
 }

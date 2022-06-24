@@ -41,6 +41,39 @@ h1, h2, h3, h4, p, button {
     line-height: 130%;
 }
 
+.p__category-name {
+    text-transform: uppercase;
+    color: var(--grey);
+    opacity: .6;
+    margin-right: .3em;
+    font-size: 14px;
+}
+
+.p__accommodation-direction {
+    color: var(--grey);
+    display: -webkit-inline-box;
+    margin-top: 1em;
+    font-size: 14px;
+}
+
+.p__accommodation-direction::before {
+    content: "";
+    width: 16px;
+    height: 16px;
+    display: block;
+    background: url(../assets/icons/location.svg) no-repeat center center;
+    background-size: contain;
+}
+
+.section__title-border {
+    padding: 1.5em 0 0;
+}
+
+.section__title-border h2 {
+    border-bottom: 1px solid var(--orange);
+    padding-bottom: 1em;
+}
+
 .btn {
     padding: 1em 3em;
     border-radius: 5px;
@@ -78,8 +111,8 @@ a {
     text-decoration: none;
 }
 
-input {
-    padding: 1em 3.2em;
+input:not([type="checkbox"], .input__calendar-day input), textarea {
+    padding: 1em;
     color: var(--grey);
     border-radius: 5px;
     font-weight: 700;
@@ -88,15 +121,25 @@ input {
     box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.15);
 }
 
-input.error {
+textarea {
+    resize: none;
+}
+
+input.error, select.error {
     border: 1px solid #FF0000;
     background: #FFE1E1;
 }
 
-.small__error{
-    margin-top: 1em;
+input:disabled {
+    background: var(--light-grey);
+}
+
+.small__error {
+    margin: 1em 0 1.5em;
     color: #FF0000;
     text-align: right;
+    width: 100%;
+    display: block;
 }
 
 .show {
@@ -107,8 +150,41 @@ input.error {
     color: var(--orange);
 }
 
+.div__background-white {
+    padding: 1.5em;
+    box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+    border-radius: 8px;
+    background-color: white;
+    margin-top: 1.5em;
+}
+
+.a__close-modal {
+    position: fixed;
+    top: 1.5em;
+    right: 2em;
+    color: white
+}
+
+.a__close-modal:hover {
+    text-decoration: underline;
+}
+
+.none {
+    display: none;
+}
+
+@media (min-width: 1024px) {
+    .section__title-border {
+        padding: 3em 0 0;
+    }
+
+    .small__error {
+        margin: 1em 0 0;
+    }
+}
+
 @media (min-width: 1280px) {
-    input {
+    input:not([type="checkbox"]) {
         height: 50px;
     }
 }

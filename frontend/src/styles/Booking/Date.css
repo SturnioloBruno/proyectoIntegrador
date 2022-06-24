@@ -1,0 +1,11 @@
+.section__booking-date {
+    padding-top: 0;
+}
+
+.section__booking-date h2 {
+    margin-bottom: 1em;
+}
+
+.section__booking-date .react-datepicker {
+    margin-bottom: 0;
+}

@@ -1,13 +1,21 @@
-import {useContext} from 'react';
+import { useContext ,useEffect} from 'react';
 import Title from "./Title";
 import '../styles/Header.css';
 import { Link } from "react-router-dom";
-import Login from "./login/Login";
-import Register from "./login/Register";
+import Login from "./Login/Login";
+import Register from "./Login/Register";
 import { UserContext } from './Context/UserContext';
 
 function Header() {
-    const {user,setUser} = useContext(UserContext);
+    const {user, setUser} = useContext(UserContext);
+
+    useEffect(()=>{
+
+        if(localStorage.getItem("user")){
+            setUser(JSON.parse(localStorage.user));
+        }
+       
+    },[]);
 
     function clicNav() {
         document.querySelector("header").classList.toggle("div__open-menu");
@@ -26,16 +34,16 @@ function Header() {
                 <Link to="#" className="a__button-nav" onClick={clicNav}>Abrir/Cerrar</Link>
                 <div className="div__menu-bar">
                     <div className={"div__menu-login"}>
-                        {user?
+                        {user ?
                         <div className="div__user-login">
-                            <span>{user?user.name[0]+user.lastName[0]:''}</span>
-                            <p>Hola, <span>{`${user?.name} ${user?.lastName}`}</span></p>
+                            <span>{user?.userName[0] + user?.userSurname[0]}</span>
+                            <p>Hola, <span>{`${user?.userName} ${user?.userSurname}`}</span></p>
                         </div>
                         :<p>Menú</p>
                         }
                     </div>
-                    <div className={`div__menu-navigation ${user?.user? "login":""}`}>
-                        {user? ""
+                    <div className={`div__menu-navigation ${user ? "login" : ""}`}>
+                        {user ? ""
                         :<nav>
                             <ul className="ul__bar-links">
                             <li><Link to="/login" element={<Login />} id="link__login-btn" onClick={clicButton}>Iniciar sesión</Link></li>
@@ -43,7 +51,15 @@ function Header() {
                             </ul>
                         </nav>}
                         <div className="div__social-menu">
-                           {user?<span>¿Deseas <Link to="#" onClick={()=>setUser(null)}>cerrar sesión</Link>?</span>:''}
+                           {user?<span>¿Deseas <Link to="/" onClick={()=>{
+                                setUser(undefined)
+                                localStorage.removeItem("token");
+                                localStorage.removeItem("user");
+                                sessionStorage.removeItem("msg");
+                                sessionStorage.removeItem("url");
+                                sessionStorage.removeItem("dateStart")
+                                sessionStorage.removeItem("dateEnd")
+                            }}>cerrar sesión</Link>?</span>:''}
                             <ul className="ul__social-links">
                                 <li><Link to="#" className="a__icon-fb">Facebook</Link></li>
                                 <li><Link to="#" className="a__icon-li">LinkedIn</Link></li>

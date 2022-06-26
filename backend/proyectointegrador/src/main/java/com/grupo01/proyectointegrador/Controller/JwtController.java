@@ -24,7 +24,6 @@ public class JwtController {
     @Autowired
     private JwtUtil jwtUtil;
 
-    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping()
     public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest) throws Exception{
         try {

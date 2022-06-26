@@ -8,6 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class SampleController {
     @GetMapping("/aws")
     public ResponseEntity<String> health() {
-        return ResponseEntity.ok("Spring Boot Application on EC2");
+        return ResponseEntity.ok("Hola Mundo");
     }
 }

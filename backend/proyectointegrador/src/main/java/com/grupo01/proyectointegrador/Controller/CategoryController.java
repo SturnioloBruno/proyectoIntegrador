@@ -16,14 +16,12 @@ public class CategoryController {
     @Autowired
     CategoryService categoryService;
 
-    @CrossOrigin(origins = "http://localhost:3000")
     @Operation(summary = "Listar todas las categorias")
     @GetMapping("/getList")
     public ResponseEntity<List<Category>> listar()throws Exception{
         return ResponseEntity.ok(categoryService.listarTodos());
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/getListNames")
     public ResponseEntity<List<String>> listarTitulos()throws Exception{
         return ResponseEntity.ok(categoryService.listarTitulos());

@@ -1,4 +1,4 @@
-import React, {Fragment } from 'react';
+import React, { Fragment } from 'react';
 import { Routes, Route } from "react-router-dom";
 import Header from './components/Header';
 import Home from './Home';
@@ -12,6 +12,7 @@ import Booking from "./components/Booking/Booking";
 import { UserProvider } from './components/Context/UserContext';
 import { SearchProvider } from './components/Context/SearchContext';
 import Meta from './components/Meta';
+import CreateHotel from './components/Admin/CreateHotel';
 
 function App() {
   return (
@@ -28,8 +29,9 @@ function App() {
         <Route path="/categories/" element={<Result type="categories" />} />
         <Route path="/login" element={<Login  type="login" />} />
         <Route path="/register" element={<Register type="register" />} />
-        <Route path="/booking-ok" element={<SuccessfulBooking type="booking-ok" />} />
         <Route path="/product/:id/booking" element={<Booking type="booking" />} />
+        <Route path="/booking-ok" element={<SuccessfulBooking type="booking-ok" />} />
+        <Route path="/administracion" element={<CreateHotel type="create" />} />
         <Route path="/create-ok" element={<SuccessfulBooking type="create-ok" />} />
       </Routes>
 

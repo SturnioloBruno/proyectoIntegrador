@@ -1,0 +1,93 @@
+.section__admin-create {
+    padding: 82px 0 1.5em;
+    background-color: #E5E5E5;
+}
+
+.section__admin-create > h3 {
+    padding: 1em 5%;
+}
+
+.section__admin-create form {
+    background-color: white;
+    padding-bottom: 1.5em;
+}
+
+.section__admin-create form > .btn {
+    width: 90%;
+    margin: auto;
+}
+
+.section__admin-create form > section.section__info-hotel label:first-child {
+    margin-top: 0;
+}
+
+.section__admin-create form label {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1.5em;
+}
+
+.section__admin-create form label span {
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: .5em;
+}
+
+.section__admin-create form textarea {
+    height: 150px;
+    width: 100%;
+}
+
+.section__admin-create .section__info-attributes {
+    padding-top: 0;
+}
+
+.section__admin-create .section__info-policies {
+    background-color: transparent;
+}
+
+.section__admin-create .section__info-policies h3 {
+    margin-bottom: 1.5em;
+}
+
+.section__admin-create .section__info-policies h4 {
+    margin: 1em 0;
+}
+
+.section__admin-create .section__info-policies h5 {
+    margin-bottom: .5em;
+    color: var(--grey);
+}
+
+.section__admin-create .section__upload-images {
+    padding: 0 5%;
+}
+
+.section__admin-create .section__upload-images div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--light-grey);
+    padding: 0 1.5em;
+    border-radius: 8px;
+    margin: 1.5em 0;
+}
+
+.section__admin-create .section__upload-images input {
+    width: calc(100% - 66px);
+    margin: 1.5em 0;
+}
+
+.section__admin-create .section__upload-images button {
+    font-size: 0;
+}
+
+.section__admin-create .section__upload-images button::after {
+    content: "+";
+    width: 50px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+}

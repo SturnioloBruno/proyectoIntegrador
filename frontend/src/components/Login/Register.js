@@ -55,7 +55,7 @@ function Register({type}) {
         }
 
         const register = async() => {
-            await fetch("3.88.46.2:8080/users/register", {
+            await fetch("http://3.88.46.2:8080/users/register", {
                 method:'POST',
                 headers:{
                     "Access-Control-Allow-Headers" : "Content-Type",
@@ -97,7 +97,7 @@ function Register({type}) {
         register();
 
         const login = async() => {
-            await fetch("3.88.46.2:8080/authenticate", {
+            await fetch("http://3.88.46.2:8080/authenticate", {
                 method:'POST',
                 headers:{
                     "Access-Control-Allow-Headers" : "Content-Type",
@@ -130,7 +130,7 @@ function Register({type}) {
         }
     
         const findUserData = async() => {
-            await fetch("3.88.46.2:8080/users/findByEmail/" + emailValue.value.trim(), {
+            await fetch("http://3.88.46.2:8080/users/findByEmail/" + emailValue.value.trim(), {
                 method:'GET',
                 headers: {
                     "Access-Control-Allow-Headers" : "Content-Type"

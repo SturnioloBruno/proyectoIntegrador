@@ -78,5 +78,7 @@ deployFront_Job:
     - ssh-keyscan -H $FRONTEND_IP >> ~/.ssh/known_hosts
   script:
     - cd frontend
-    - scp /frontend ubuntu@$FRONTEND_IP:~/artefacto
+    - ls
+    - ifconfig
+    - scp /frontend/build ubuntu@$FRONTEND_IP:~/artefacto
 

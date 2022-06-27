@@ -98,7 +98,7 @@ function Booking() {
                 })
             })
             .then((response) => {
-                if(response.status === 200) navigate("/ok");
+                if(response.status === 200) navigate("/booking-ok");
                 if(response.status === 400) alert("Lamentablemente la reserva no ha podido realizarse. Por favor, intente más tarde.");
                 return response.json();
             })

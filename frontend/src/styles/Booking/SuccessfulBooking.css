@@ -23,7 +23,7 @@
     font-size: 20px;
 }
 
-.section__successful-booking div h2::before {
+.section__successful-booking div::before {
     content: "";
     width: 48px;
     height: 48px;
@@ -55,6 +55,11 @@
 @media (min-width: 1280px) {
     .section__successful-booking div {
         width: 40%;
+    }
+
+    .section__successful-booking div::before {
+        width: 64px;
+        height: 64px;
     }
 
     .section__successful-booking div .btn {

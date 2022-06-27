@@ -43,8 +43,9 @@ function CreateHotel() {
     }, []);
 
     return (
+        <>
+        <HeaderProduct name="Administración de productos" />
         <section className="section__admin-create">
-            <HeaderProduct name="Administración de productos" />
             <h3>Crear propiedad</h3>
             <form method='POST'>
                 <section className='section__info-hotel'>
@@ -121,6 +122,7 @@ function CreateHotel() {
                 <button type="submit" className='btn button__solid-type'>Crear</button>
             </form>
         </section>
+        </>
     )
 }
 

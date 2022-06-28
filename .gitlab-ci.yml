@@ -86,5 +86,10 @@ deployFront_Job:
     - scp ./logo512.png ubuntu@$FRONTEND_IP:~/artefacto
     - scp ./manifest.json ubuntu@$FRONTEND_IP:~/artefacto
     - scp ./robots.txt ubuntu@$FRONTEND_IP:~/artefacto
-    - scp ./static ubuntu@$FRONTEND_IP:~/artefacto
+    - scp ./static/css/main.27fccdc8.css ubuntu@$FRONTEND_IP:~/artefacto/static/css
+    - scp ./static/css/main.27fccdc8.css.map ubuntu@$FRONTEND_IP:~/artefacto/static/css
+    - scp ./static/js/main.7ee650f9.js ubuntu@$FRONTEND_IP:~/artefacto/static/js
+    - scp ./static/js/main.7ee650f9.js.LICENSE.txt ubuntu@$FRONTEND_IP:~/artefacto/static/js
+    - scp ./static/js/main.7ee650f9.js.map ubuntu@$FRONTEND_IP:~/artefacto/static/js
+    - scp ./static/media/*.svg ubuntu@$FRONTEND_IP:~/artefacto/static/media
 

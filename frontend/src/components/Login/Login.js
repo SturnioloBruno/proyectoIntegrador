@@ -49,8 +49,11 @@ function Login({ type }) {
             .then((response) => {
                 if (response.status === 200) {
                   return response.json()
-                } else {
-                   setError({password:["No es posible loguearse"]})
+                } else if(response.status === 406){
+                   setError({email:["La cuanta ingresada no ha sido confirmada"]})
+                   return
+                }else{
+                    setError({password:["No es posible loguearse"]})
                    return
                 }
             })
@@ -159,6 +162,10 @@ function Login({ type }) {
                 <label htmlFor="email_login">
                     <span>Correo electrónico</span>
                     <input type="email" name="email" id="email_login" required className={`${errors.email ||errors.general ? "error" : ""}`} autoComplete="off" value={email} onChange={(e) => setEmail(e.target.value)} />
+                    {errors.email?
+                    <small className="small__error" id="error_email">
+                        {errors.email?errors.email:''}
+                    </small> : "" }
                 </label>
 
                 <label htmlFor="password_login" className='label__password-input'>
@@ -166,10 +173,9 @@ function Login({ type }) {
                     <input type="password" name="password" id="password_login" required className={`${errors.password || errors.general? "error" : ""}`} autoComplete="off" />
                     <Link to="#" className="a__show-hide" onClick={show}>Show/Hide</Link>
                     
-                    {errors.password || errors.email || errors.general ?
+                    {errors.password || errors.general ?
                     <small className="small__error" id="error_password">
                         {errors.password?errors.password:''}
-                        {errors.email?errors.email:''}
                         {errors.general?errors.general:''}
                     </small> : "" }
                 </label>

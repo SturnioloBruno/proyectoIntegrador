@@ -35,6 +35,7 @@ function App() {
         <Route path="/administracion" element={<CreateHotel type="create" />} />
         <Route path="/create-ok" element={<SuccessfulBooking type="create-ok" />} />
         <Route path="/bookings/:userId" element={<BookingList type="booking-list" />} />
+        <Route path="/accountconfirmation/:id" element={<SuccessfulBooking type="confimation-ok" />} />
       </Routes>
 
       <Footer />

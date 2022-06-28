@@ -89,6 +89,7 @@ user_surname VARCHAR(100) NOT NULL,
 user_email VARCHAR(100) NOT NULL,
 user_password CHAR(60) NOT NULL,
 user_city VARCHAR(100) NOT NULL,
+user_confirmation CHAR,
 PRIMARY KEY(user_id),
 FOREIGN KEY (role_id) REFERENCES roles(role_id)
 );
@@ -120,12 +121,12 @@ FOREIGN KEY (user_id) REFERENCES users(user_id)
 
 INSERT INTO roles (role_name) VALUES("ADMIN"),("USER");
 
-INSERT INTO users (role_id, user_name, user_surname, user_email, user_password, user_city)
+INSERT INTO users (role_id, user_name, user_surname, user_email, user_password, user_city,user_confirmation)
 VALUES
-(2, "Maria", "Acosta", "maria@email.com", "password1", 1),
-(2, "Juan", "Corral", "juan@email.com", "password2", 2),
-(2, "Valeria", "Lopez", "valeria@email.com", "password3", 3),
-(2, "Franco", "Elias", "franco@email.com", "password4", 4);
+(2, "Maria", "Acosta", "maria@email.com", "password1", 1,0),
+(2, "Juan", "Corral", "juan@email.com", "password2", 2,0),
+(2, "Valeria", "Lopez", "valeria@email.com", "password3", 3,0),
+(2, "Franco", "Elias", "franco@email.com", "password4", 4,0);
 
 INSERT INTO categories (cat_title,cat_description,cat_url_img)
 VALUES ("Hotel","821.458 hoteles","https://images.unsplash.com/photo-1629140727571-9b5c6f6267b4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1527&q=80"),

@@ -97,4 +97,10 @@ public class UserService {
 
         return userDTOResponse;
     }
+
+    public void confirmationAccount(Long id) throws Exception{
+        User user = buscarId(id);
+        user.setConfirmation(true);
+        userRepository.save(user);
+    }
 }

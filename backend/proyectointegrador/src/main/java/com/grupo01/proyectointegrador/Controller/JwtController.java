@@ -1,5 +1,6 @@
 package com.grupo01.proyectointegrador.Controller;
 
+import com.grupo01.proyectointegrador.Exception.NotAcceptableException;
 import com.grupo01.proyectointegrador.Jwt.JwtUtil;
 import com.grupo01.proyectointegrador.Model.AuthenticationRequest;
 import com.grupo01.proyectointegrador.Model.AuthenticationResponse;
@@ -35,6 +36,10 @@ public class JwtController {
         }
 
         final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getEmail());
+
+        if(userDetails.getUsername().equals("NotAccountConfirmation")){
+            throw new NotAcceptableException("Cuenta no confirmada");
+        }
 
         final String jwt = jwtUtil.generateToken(userDetails);
 

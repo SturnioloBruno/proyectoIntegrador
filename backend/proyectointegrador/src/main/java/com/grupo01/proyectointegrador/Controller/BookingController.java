@@ -27,6 +27,7 @@ public class BookingController {
         return ResponseEntity.ok(bookingService.buscarId(id));
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/findByUserId/{id}")
     public ResponseEntity<List<BookingDTO>> finByUserId(@PathVariable Long id) throws Exception{
         return ResponseEntity.ok(bookingService.getByUserId(id));

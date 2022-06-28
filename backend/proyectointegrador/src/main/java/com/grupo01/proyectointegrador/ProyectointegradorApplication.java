@@ -17,9 +17,20 @@ public class ProyectointegradorApplication {
 		return new WebMvcConfigurer() {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
+<<<<<<< Updated upstream
 				registry.addMapping("/**").allowedOrigins("http://localhost:3000","http://10.0.0.9").allowedMethods("*").allowedHeaders("*");
+=======
+				registry.addMapping("/**")
+						.allowedOrigins("*")
+						.allowedMethods("*")
+						.allowedHeaders("*");
+>>>>>>> Stashed changes
 			}
 		};
 	}
 }
+
+
+
+
 	

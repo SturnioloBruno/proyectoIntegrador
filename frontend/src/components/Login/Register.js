@@ -3,6 +3,11 @@ import { useContext, useState, useEffect } from 'react';
 import Button from "../Button";
 import '../../styles/Login.css';
 import { UserContext } from "../Context/UserContext";
+<<<<<<< Updated upstream
+=======
+import EmailKey from "../SendEmail/EmailKey"
+import Api from "../Helpers/Api";
+>>>>>>> Stashed changes
 
 function Register({type}) {
     const [errors,setError]=useState({})
@@ -53,7 +58,11 @@ function Register({type}) {
         }
 
         const register = async() => {
+<<<<<<< Updated upstream
             await fetch("http://ec2-54-146-47-89.compute-1.amazonaws.com:8080/users/register", {
+=======
+            await fetch(Api + "users/register", {
+>>>>>>> Stashed changes
                 method:'POST',
                 headers:{
                     "Access-Control-Allow-Headers" : "Content-Type",
@@ -86,7 +95,11 @@ function Register({type}) {
         register();
 
         const login = async() => {
+<<<<<<< Updated upstream
             await fetch("http://ec2-54-146-47-89.compute-1.amazonaws.com:8080/authenticate", {
+=======
+            await fetch(Api + "authenticate", {
+>>>>>>> Stashed changes
                 method:'POST',
                 headers:{
                     "Access-Control-Allow-Headers" : "Content-Type",
@@ -119,7 +132,11 @@ function Register({type}) {
         }
     
         const findUserData = async() => {
+<<<<<<< Updated upstream
             await fetch("http://ec2-54-146-47-89.compute-1.amazonaws.com:8080/users/findByEmail/" + emailValue.value.trim(), {
+=======
+            await fetch(Api + "users/findByEmail/" + emailValue.value.trim(), {
+>>>>>>> Stashed changes
                 method:'GET',
                 headers: {
                     "Access-Control-Allow-Headers" : "Content-Type"

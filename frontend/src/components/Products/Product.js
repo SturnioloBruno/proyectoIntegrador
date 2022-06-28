@@ -12,6 +12,7 @@ import Politics from './Politics';
 import HotelDate from "./HotelDate";
 import Share from './Share';
 import "../../styles/Products/Product.css";
+import Api from '../Helpers/Api';
 
 function Product() {
     const mobileTablet = useMediaQuery({ query: '(max-width: 1024px)' });
@@ -23,7 +24,11 @@ function Product() {
     useEffect(()=>{
         //Cargo datos del producto
         const getProduct = async()=>{
+<<<<<<< Updated upstream
             await fetch("http://ec2-54-146-47-89.compute-1.amazonaws.com:8080/products/findById/" + id,{
+=======
+            await fetch(Api + "products/findById/" + id,{
+>>>>>>> Stashed changes
                 method:'GET',
                 headers:{
                     'Content-Type':'application/json'
@@ -40,7 +45,11 @@ function Product() {
         
         //Cargo puntuación
         const getPunctuation = async()=>{
+<<<<<<< Updated upstream
             await fetch("http://ec2-54-146-47-89.compute-1.amazonaws.com:8080/punctuations/findById/" + id,{
+=======
+            await fetch(Api + "punctuations/findById/" + id,{
+>>>>>>> Stashed changes
                 method:'GET',
                 headers:{
                     'Content-Type':'application/json'

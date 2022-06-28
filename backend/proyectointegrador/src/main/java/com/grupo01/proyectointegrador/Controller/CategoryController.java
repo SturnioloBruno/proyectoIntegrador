@@ -16,14 +16,22 @@ public class CategoryController {
     @Autowired
     CategoryService categoryService;
 
+<<<<<<< Updated upstream
     @CrossOrigin(origins = {"http://localhost:3000","http://10.0.0.9"})
+=======
+
+>>>>>>> Stashed changes
     @Operation(summary = "Listar todas las categorias")
     @GetMapping("/getList")
     public ResponseEntity<List<Category>> listar()throws Exception{
         return ResponseEntity.ok(categoryService.listarTodos());
     }
 
+<<<<<<< Updated upstream
     @CrossOrigin(origins = {"http://localhost:3000","http://10.0.0.9"})
+=======
+
+>>>>>>> Stashed changes
     @GetMapping("/getListNames")
     public ResponseEntity<List<String>> listarTitulos()throws Exception{
         return ResponseEntity.ok(categoryService.listarTitulos());

@@ -4,6 +4,7 @@ import Category from './Cards/Category';
 import Card from './Cards/Card';
 import '../styles/Section.css';
 import { UserContext } from './Context/UserContext';
+import Api from "./Helpers/Api"
 
 function Section({ type, title }) {
     const [categories, setCategories] = useState(null);
@@ -14,7 +15,11 @@ function Section({ type, title }) {
         if(type==="Category"){
             //Cargo categorías
             const getCategories = async()=>{
+<<<<<<< Updated upstream
                 await fetch("http://ec2-54-146-47-89.compute-1.amazonaws.com:8080/categories/getList",{
+=======
+                await fetch(Api +"categories/getList",{
+>>>>>>> Stashed changes
                     method:'GET',
                     headers:{
                         'Content-Type':'application/json'

@@ -4,6 +4,7 @@ import Search from './Search/Search';
 import Card from './Cards/Card';
 import "../styles/Home.css";
 import "../styles/Result.css";
+import Api from "./Helpers/Api";
 
 function Home({title}) {
   const [productsCities, setProductsCities] = useState(null);
@@ -12,8 +13,12 @@ function Home({title}) {
   useEffect(()=>{
     //Cargo productos por ciudad
     const getProductsperCities = async()=>{
+<<<<<<< Updated upstream
 
         await fetch("http://ec2-54-146-47-89.compute-1.amazonaws.com:8080/products/getListProducts/" + location.search, {
+=======
+        await fetch(Api + "products/getListProducts/" + location.search, {
+>>>>>>> Stashed changes
             method:'GET',
             headers:{
                 'Content-Type':'application/json'

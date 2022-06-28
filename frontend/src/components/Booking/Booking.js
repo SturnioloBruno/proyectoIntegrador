@@ -8,6 +8,7 @@ import Details from "./Details";
 import Politics from "../Products/Politics";
 import "../../styles/Booking/Booking.css";
 import "../../styles/Booking/Date.css";
+import Api from "../Helpers/Api";
 
 function Booking() {
     const [product, setProduct] = useState(null);
@@ -17,7 +18,11 @@ function Booking() {
     useEffect(()=>{
         //Cargo datos del producto
         const getProduct = async()=>{
+<<<<<<< Updated upstream
             await fetch("http://ec2-54-146-47-89.compute-1.amazonaws.com:8080/products/findById/" + id,{
+=======
+            await fetch(Api + "products/findById/" + id,{
+>>>>>>> Stashed changes
                 method:'GET',
                 headers:{
                     'Content-Type':'application/json'
@@ -33,6 +38,57 @@ function Booking() {
         getProduct();
     }, [id]);
 
+<<<<<<< Updated upstream
+=======
+    const handlerSubmit = (e) => {
+        e.preventDefault();
+        
+        if(city.value.trim() === ""){
+            city.focus();
+            city.className = "error";
+            return
+        }
+
+        if(hour.value === ""){
+            hour.focus();
+            hour.className = "error";
+            return
+        }
+
+        //Insert con datos de la reserva
+        const insertBooking = async()=>{
+            await fetch(Api + "bookings/insert", {
+                method:'POST',
+                headers: {
+                    "Access-Control-Allow-Headers" : "Content-Type",
+                    'Access-Control-Allow-Origin': "*",
+                    'Content-Type': 'application/json',
+                    "Authorization": `Bearer ${token}`
+                }, body: JSON.stringify({
+                    bookingStarTime: hour.value,
+                    bookingStartDate: `${startYear}-${startMonth}-${startDay}`,
+                    bookingFinishDate: `${endYear}-${endMonth}-${endDay}`,
+                    bookingCity: city.value,
+                    bookingVaccineCovid: checkCovid.checked,
+                    bookingUserInfoCovid: description.value,
+                    prodId:{
+                        id: parseInt(id)
+                    },
+                    userId:{
+                        id: user.id
+                    }
+                })
+            })
+            .then((response) => {
+                if(response.status === 200) navigate("/ok");
+                if(response.status === 400) alert("Lamentablemente la reserva no ha podido realizarse. Por favor, intente más tarde.");
+                return response.json();
+            })
+        }
+        insertBooking();
+    }
+
+>>>>>>> Stashed changes
     return (
         <section className='section__booking-hotel'>
             <HeaderProduct name={product?.name} category={product?.category.title} />

@@ -29,7 +29,11 @@ public class ImageController {
         return ResponseEntity.ok(imageService.actualizar(image));
     }
 
+<<<<<<< Updated upstream
     @CrossOrigin(origins = {"http://localhost:3000","http://10.0.0.9"})
+=======
+
+>>>>>>> Stashed changes
     @PostMapping("/insert")
     public ResponseEntity<Image> save(@RequestBody Image image)throws Exception{
         return ResponseEntity.ok(imageService.guardar(image));

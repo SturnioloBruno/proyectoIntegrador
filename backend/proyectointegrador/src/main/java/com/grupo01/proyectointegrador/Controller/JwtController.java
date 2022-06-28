@@ -24,7 +24,11 @@ public class JwtController {
     @Autowired
     private JwtUtil jwtUtil;
 
+<<<<<<< Updated upstream
     @CrossOrigin(origins = {"http://localhost:3000","http://10.0.0.9"})
+=======
+
+>>>>>>> Stashed changes
     @PostMapping()
     public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest) throws Exception{
         try {

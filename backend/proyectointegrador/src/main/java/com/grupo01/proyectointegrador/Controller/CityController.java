@@ -16,7 +16,11 @@ public class CityController {
     @Autowired
     CityService cityService;
 
+<<<<<<< Updated upstream
     @CrossOrigin(origins = {"http://localhost:3000","http://10.0.0.9"})
+=======
+
+>>>>>>> Stashed changes
     @Operation(summary = "Listar todas las ciudades")
     @GetMapping("/getList")
     public ResponseEntity<List<City>> listar()throws Exception{

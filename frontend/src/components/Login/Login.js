@@ -3,6 +3,7 @@ import { Link , useNavigate } from "react-router-dom";
 import Button from "../Button";
 import '../../styles/Login.css';
 import { UserContext } from "../Context/UserContext";
+import Api from "../Helpers/Api";
 
 function Login({ type }) {
     const [errors,setError]=useState({})
@@ -35,7 +36,11 @@ function Login({ type }) {
         }
         
         const login = async() => {
+<<<<<<< Updated upstream
             await fetch("http://ip-10-0-0-189.ec2.internal/authenticate", {
+=======
+            await fetch(Api + "authenticate", {
+>>>>>>> Stashed changes
                 method:'POST',
                 headers:{
                     "Access-Control-Allow-Headers" : "Content-Type",
@@ -69,7 +74,11 @@ function Login({ type }) {
         login();
     
         const findUserData = async()=>{
+<<<<<<< Updated upstream
             await fetch("http://ec2-54-146-47-89.compute-1.amazonaws.com:8080/users/findByEmail/" + emailValue.value.trim(), {
+=======
+            await fetch(Api + "users/findByEmail/" + emailValue.value.trim(), {
+>>>>>>> Stashed changes
                 method:'GET',
                 headers: {
                     "Access-Control-Allow-Headers" : "Content-Type"

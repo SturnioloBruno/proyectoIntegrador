@@ -5,6 +5,7 @@ import '../../styles/Search/Search.css';
 import InputCity from './InputCity';
 import InputDateRangePicker from './InputDateRangePicker';
 import { SearchContext } from '../Context/SearchContext';
+import Api from "../Helpers/Api";
 
 function Search() {
     const inputLocality = document.getElementById("input__locality")
@@ -27,7 +28,11 @@ function Search() {
 
     useEffect(()=>{
         const getCities = async()=>{
+<<<<<<< Updated upstream
             await fetch("http://ec2-54-146-47-89.compute-1.amazonaws.com:8080/cities/getList",{
+=======
+            await fetch(Api + "cities/getList",{
+>>>>>>> Stashed changes
                 method:'GET',
                 headers:{
                     'Content-Type':'application/json'

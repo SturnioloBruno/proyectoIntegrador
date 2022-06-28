@@ -23,6 +23,11 @@ public class BookingController {
         return ResponseEntity.ok(bookingService.buscarId(id));
     }
 
+    @GetMapping("/findByUserId/{id}")
+    public ResponseEntity<List<BookingDTO>> finByUserId(@PathVariable Long id) throws Exception{
+        return ResponseEntity.ok(bookingService.getByUserId(id));
+    }
+
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> borrar(@PathVariable Long id) throws Exception {
         bookingService.borrar(id);

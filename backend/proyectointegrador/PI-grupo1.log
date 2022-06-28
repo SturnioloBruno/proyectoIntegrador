@@ -1,30 +1,5 @@
-[2022-06-20 17:14:14] [ ERROR] [GlobalExceptions:33] UserDetailsService returned null, which is an interface contract violation
-[2022-06-20 17:14:17] [ ERROR] [GlobalExceptions:33] UserDetailsService returned null, which is an interface contract violation
-[2022-06-20 17:15:51] [ ERROR] [GlobalExceptions:33] UserDetailsService returned null, which is an interface contract violation
-[2022-06-20 17:18:34] [ ERROR] [GlobalExceptions:33] UserDetailsService returned null, which is an interface contract violation
-[2022-06-20 17:18:42] [ ERROR] [GlobalExceptions:21] Ya existe usuario registrado con el email ingresado
-[2022-06-20 17:26:59] [ ERROR] [GlobalExceptions:21] Ya existe usuario registrado con el email ingresado
-[2022-06-20 17:27:11] [ ERROR] [GlobalExceptions:33] UserDetailsService returned null, which is an interface contract violation
-[2022-06-20 17:29:01] [ ERROR] [GlobalExceptions:33] UserDetailsService returned null, which is an interface contract violation
-[2022-06-20 17:29:06] [ ERROR] [GlobalExceptions:21] Ya existe usuario registrado con el email ingresado
-[2022-06-20 17:30:35] [ ERROR] [GlobalExceptions:21] Ya existe usuario registrado con el email ingresado
-[2022-06-20 17:30:47] [ ERROR] [GlobalExceptions:33] UserDetailsService returned null, which is an interface contract violation
-[2022-06-20 17:31:17] [ ERROR] [GlobalExceptions:21] Ya existe usuario registrado con el email ingresado
-[2022-06-20 17:31:41] [ ERROR] [GlobalExceptions:21] Ya existe usuario registrado con el email ingresado
-[2022-06-20 17:32:33] [ ERROR] [GlobalExceptions:21] Ya existe usuario registrado con el email ingresado
-[2022-06-20 17:39:16] [ ERROR] [GlobalExceptions:21] Ya existe usuario registrado con el email ingresado
-[2022-06-20 17:47:27] [ ERROR] [GlobalExceptions:21] Ya existe usuario registrado con el email ingresado
-[2022-06-20 17:48:13] [ ERROR] [GlobalExceptions:21] Ya existe usuario registrado con el email ingresado
-[2022-06-20 19:03:19] [ ERROR] [GlobalExceptions:33] no encontrado
-[2022-06-20 19:03:26] [ ERROR] [GlobalExceptions:33] no encontrado
-[2022-06-21 18:47:51] [ ERROR] [GlobalExceptions:33] UserDetailsService returned null, which is an interface contract violation
-[2022-06-21 18:48:33] [ ERROR] [GlobalExceptions:33] JSON parse error: Cannot deserialize value of type `java.time.LocalTime` from Object value (token `JsonToken.START_OBJECT`); nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize value of type `java.time.LocalTime` from Object value (token `JsonToken.START_OBJECT`)
- at [Source: (org.springframework.util.StreamUtils$NonClosingInputStream); line: 2, column: 23] (through reference chain: com.grupo01.proyectointegrador.Model.Booking["bookingStartTime"])
-[2022-06-21 19:16:25] [ ERROR] [GlobalExceptions:33] JSON parse error: Cannot deserialize value of type `java.time.LocalTime` from Object value (token `JsonToken.START_OBJECT`); nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize value of type `java.time.LocalTime` from Object value (token `JsonToken.START_OBJECT`)
- at [Source: (org.springframework.util.StreamUtils$NonClosingInputStream); line: 38, column: 27] (through reference chain: com.grupo01.proyectointegrador.Model.Product["bookings"]->java.util.ArrayList[0]->com.grupo01.proyectointegrador.Model.Booking["bookingStartTime"])
-[2022-06-21 19:16:57] [ ERROR] [GlobalExceptions:33] Unable to find com.grupo01.proyectointegrador.Model.Category with id 0; nested exception is javax.persistence.EntityNotFoundException: Unable to find com.grupo01.proyectointegrador.Model.Category with id 0
-[2022-06-21 19:17:12] [ ERROR] [GlobalExceptions:33] JSON parse error: Unexpected close marker ']': expected '}' (for Object starting at [Source: (org.springframework.util.StreamUtils$NonClosingInputStream); line: 1, column: 1]); nested exception is com.fasterxml.jackson.core.JsonParseException: Unexpected close marker ']': expected '}' (for Object starting at [Source: (org.springframework.util.StreamUtils$NonClosingInputStream); line: 1, column: 1])
- at [Source: (org.springframework.util.StreamUtils$NonClosingInputStream); line: 36, column: 4]
-[2022-06-21 19:17:22] [ ERROR] [GlobalExceptions:33] Unable to find com.grupo01.proyectointegrador.Model.Category with id 0; nested exception is javax.persistence.EntityNotFoundException: Unable to find com.grupo01.proyectointegrador.Model.Category with id 0
-[2022-06-21 19:17:35] [ ERROR] [GlobalExceptions:33] Unable to find com.grupo01.proyectointegrador.Model.Image with id 0; nested exception is javax.persistence.EntityNotFoundException: Unable to find com.grupo01.proyectointegrador.Model.Image with id 0
-[2022-06-22 18:13:35] [ ERROR] [GlobalExceptions:21] Ya existe usuario registrado con el email ingresado
+[2022-06-28 18:14:47] [ ERROR] [GlobalExceptions:33] Type definition error: [simple type, class org.hibernate.proxy.pojo.bytebuddy.ByteBuddyInterceptor]; nested exception is com.fasterxml.jackson.databind.exc.InvalidDefinitionException: No serializer found for class org.hibernate.proxy.pojo.bytebuddy.ByteBuddyInterceptor and no properties discovered to create BeanSerializer (to avoid exception, disable SerializationFeature.FAIL_ON_EMPTY_BEANS) (through reference chain: java.util.ArrayList[0]->com.grupo01.proyectointegrador.DTO.BookingDTO["prodId"]->com.grupo01.proyectointegrador.Model.Product$HibernateProxy$Vp1cMhwn["hibernateLazyInitializer"])
+[2022-06-28 18:26:45] [ ERROR] [GlobalExceptions:33] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-06-28 18:26:45] [ ERROR] [GlobalExceptions:33] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-06-28 18:26:50] [ ERROR] [GlobalExceptions:33] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-06-28 18:26:50] [ ERROR] [GlobalExceptions:33] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"

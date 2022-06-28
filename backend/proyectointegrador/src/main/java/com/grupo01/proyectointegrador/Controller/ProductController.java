@@ -41,4 +41,11 @@ public class ProductController {
     public ResponseEntity<Product> createProduct(@RequestBody Product product)throws Exception{
         return ResponseEntity.ok(productService.crearProduct(product));
     }
+
+    @CrossOrigin(origins = "http://localhost:3000")
+    @Operation(summary = "actualiza porductoDTO")
+    @PutMapping("/update")
+    public ResponseEntity<ProductDTO> actualizar(@RequestBody ProductDTO product) throws Exception {
+        return ResponseEntity.ok(productService.update(product));
+    }
 }

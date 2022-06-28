@@ -1,10 +1,10 @@
-import { useContext } from "react";
-import "../../styles/Booking/Form.css";
+import { React, useContext } from 'react';
 import { UserContext } from "../Context/UserContext";
+import "../../styles/Booking/Form.css";
 
 function Form() {
     const {user} = useContext(UserContext);
-
+    
     return (
         <section className="section__booking-form">
             <h2>Completá tus datos</h2>
@@ -23,15 +23,15 @@ function Form() {
                 </label>
                 <label>
                     <span>Ciudad</span>
-                    <input type="text" name="city" required />
+                    <input type="text" name="city" id="input__city-booking" />
                 </label>
                 <label className="label__description">
                     <span>Datos para el vendedor (opcional)</span>
-                    <textarea name="textarea"></textarea>
+                    <textarea name="textarea" id="textarea__description-booking"></textarea>
                 </label>
                 <label htmlFor="label__covid" className="label__covid">
                     <span>¿Se encuentra vacunado contra el COVID-19?</span>
-                    <input type="checkbox" name="covid" id="label__covid" required />
+                    <input type="checkbox" name="covid" id="label__covid" />
                 </label>
             </div>
         </section>

@@ -13,7 +13,7 @@
     --light-grey: #DFE4EA;
 }
 
-body {
+body, textarea {
     font-family: 'Poppins', sans-serif;
 }
 
@@ -111,8 +111,8 @@ a {
     text-decoration: none;
 }
 
-input:not([type="checkbox"]), textarea {
-    padding: 1em 3.2em;
+input:not([type="checkbox"], .input__calendar-day input), textarea {
+    padding: 1em;
     color: var(--grey);
     border-radius: 5px;
     font-weight: 700;
@@ -121,11 +121,19 @@ input:not([type="checkbox"]), textarea {
     box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.15);
 }
 
+.select__option {
+    border-radius: 5px;
+    padding: 1em;
+    width: 100%;
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.15);
+    border: none;
+}
+
 textarea {
     resize: none;
 }
 
-input.error {
+input.error, select.error {
     border: 1px solid #FF0000;
     background: #FFE1E1;
 }

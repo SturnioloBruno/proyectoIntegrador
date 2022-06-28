@@ -1,4 +1,4 @@
-import React, { useContext ,useEffect, useState} from "react";
+import React, { useEffect, useState} from "react";
 import { DateRangePicker } from "react-dates";
 import { useLocation } from "react-router-dom";
 import "react-dates/lib/css/_datepicker.css";
@@ -6,7 +6,6 @@ import "../../styles/Search/DateRangePicker.css";
 import "react-dates/initialize";
 import moment from "moment";
 import "moment/locale/es";
-import { SearchContext } from "../Context/SearchContext";
 moment.locale("es");
 
 const InputDateRangePicker = ({handlerDates}) => {
@@ -14,7 +13,6 @@ const InputDateRangePicker = ({handlerDates}) => {
   const [endDate, setEndDate] = useState(null);
   const [focusedInput, setFocusedInpuf] = useState(null);
   const location = useLocation();
-  const {endDateCache,setStartDateCache,startDateCache,setEndDateCache} = useContext(SearchContext);
 
   //evento para que cambie dinamicamente
   const numberOfMonths = () => {
@@ -28,16 +26,19 @@ const InputDateRangePicker = ({handlerDates}) => {
   useEffect(()=>{
     //SI NO ESTA EN EL HOME MUESTRO FECHAS GUARDADAS
     if(location.pathname !== "/"){
-      if(endDateCache&&startDateCache){
-          setStartDate(startDateCache)
-          setEndDate(endDateCache)
+      if(sessionStorage.getItem("dateStart")&&sessionStorage.getItem("dateEnd")){
+        let objStart = new Date(sessionStorage.getItem("dateStart"))
+        let objEnd = new Date(sessionStorage.getItem("dateEnd"))
+  
+          setStartDate(moment(objStart))
+          setEndDate(moment(objEnd))
       }
     }else{
-          setStartDateCache(null);
-          setEndDateCache(null);
+      sessionStorage.removeItem("dateStart");
+      sessionStorage.removeItem("dateEnd");
     }
 
-  },[endDateCache,startDateCache,location.pathname]);
+  },[location.pathname]);
 
   return (
     <>

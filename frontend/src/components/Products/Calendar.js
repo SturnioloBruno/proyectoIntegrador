@@ -1,4 +1,4 @@
-import React, { useState,useContext, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useMediaQuery } from 'react-responsive';
 import DatePicker from "react-datepicker";
 import { addDays } from 'date-fns';
@@ -6,20 +6,21 @@ import "react-datepicker/dist/react-datepicker.css";
 import "../../styles/Products/Calendar.css";
 import { registerLocale } from  "react-datepicker";
 import es from 'date-fns/locale/es';
-import { SearchContext } from "../Context/SearchContext";
 registerLocale('es', es);
 
-function Calendar({bookings}) {
+function Calendar({bookings , handlerChange}) {
     const [dateRange, setDateRange] = useState([null, null]);
     const [startDate, endDate] = dateRange;
     const mobile = useMediaQuery({ query: '(max-width: 767px)' });
-    const {endDateCache,setStartDateCache,startDateCache,setEndDateCache} = useContext(SearchContext);
     const [bookingsDates,setBookingsDates] = useState(null);
 
     useEffect(()=>{
 
-        if(startDateCache&&endDateCache){
-            setDateRange([startDateCache._d?startDateCache._d:startDateCache,endDateCache._d?endDateCache._d:endDateCache]);
+        if(sessionStorage.getItem("dateStart")&&sessionStorage.getItem("dateEnd")){
+            let objStart = new Date(sessionStorage.getItem("dateStart"))
+            let objEnd = new Date(sessionStorage.getItem("dateEnd"))
+
+            setDateRange([objStart,objEnd]);
         }
 
         //SI HAY RESERVAS ARMO ARRAY CON FECHAS
@@ -77,8 +78,11 @@ function Calendar({bookings}) {
 
                     //SI PASO HASTA ACA ES PORQUE NO SELECCIONO FECHAS RESERVADAS
                     setDateRange(update)  
-                    setStartDateCache(update[0])
-                    setEndDateCache(update[1])
+                    let start = update[0].getFullYear() + "/"+(update[0].getMonth()+1) + "/" + update[0].getDate()
+                    let end = update[1].getFullYear() + "/"+(update[1].getMonth()+1) + "/" + update[1].getDate()
+                    sessionStorage.setItem("dateStart",JSON.stringify(start))
+                    sessionStorage.setItem("dateEnd",JSON.stringify(end))
+                    handlerChange()
                 }  
             
             //SI SOLO SELECCIONO LA FECHA INICIAL DEJO SETEAR

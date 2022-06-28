@@ -1,21 +1,19 @@
-import { useContext } from "react";
 import { Link } from "react-router-dom";
-import { SearchContext } from "../Context/SearchContext";
 import Calendar from "./Calendar";
 
 function HotelDate({id,bookings}) {
-    const {endDateCache,startDateCache} = useContext(SearchContext);
-
     if(!localStorage.getItem("user")) {
-        localStorage.setItem("url", `/product/${id}/booking`);
-        localStorage.setItem("msg", "Debe iniciar sesión para realizar reservas.");
+        sessionStorage.setItem("url", `/product/${id}/booking`);
+        sessionStorage.setItem("msg", "Debe iniciar sesión para realizar reservas.");
     }
 
     const handlerClick = (e)=>{
-       
-        if(!endDateCache||!startDateCache){
-             e.preventDefault()
+        if(sessionStorage.getItem("dateStart") === null || sessionStorage.getItem("dateEnd") === null) {
+            alert("Seleccione un rango de fechas para continuar.");
+        }
 
+        if(!sessionStorage.getItem("dateStart")&&!sessionStorage.getItem("dateEnd")){
+            e.preventDefault();
             return //VER DE MOSTRAR ALGO
         }
     }

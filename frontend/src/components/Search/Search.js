@@ -14,7 +14,6 @@ function Search() {
     const [citySelected,setCitySelected] = useState(null);
     const navigate = useNavigate();
     const {setCityCache} = useContext(SearchContext);
-    const { endDateCache,setEndDateCache,startDateCache,setStartDateCache } = useContext(SearchContext);
 
     const handlerDates=(start,end)=>{
         setStartDate(start);
@@ -42,11 +41,15 @@ function Search() {
         }
         getCities();
 
-        if(endDateCache&&startDateCache){
-            setEndDate(endDateCache);
-            setStartDate(startDateCache);
+        if(sessionStorage.getItem("dateStart")&&sessionStorage.getItem("dateEnd")){
+            let objStart = new Date(sessionStorage.getItem("dateStart"))
+            let objEnd = new Date(sessionStorage.getItem("dateEnd"))
+
+            setEndDate(objStart);
+            setStartDate(objEnd);   
         }
-    },[endDateCache,startDateCache]);
+
+    },[]);
 
     const handlerSubmit = (e)=>{
         e.preventDefault();
@@ -68,12 +71,15 @@ function Search() {
         let start,end;
 
         if(endDate&&startDate){
-        setStartDateCache(startDate);
-        setEndDateCache(endDate);
+
+            let startSave = (startDate._d? startDate._d.getFullYear() : startDate.getFullYear()) + "/"+(startDate._d? startDate._d.getMonth()+1 : startDate.getMonth()+1) + "/" + (startDate._d? startDate._d.getDate() : startDate.getDate())
+            let endSave = (endDate._d? endDate._d.getFullYear() : endDate.getFullYear()) + "/"+(endDate._d? endDate._d.getMonth()+1 : endDate.getMonth()+1) + "/" + (endDate._d? endDate._d.getDate() : endDate.getDate())
+            sessionStorage.setItem("dateStart",JSON.stringify(startSave))
+            sessionStorage.setItem("dateEnd",JSON.stringify(endSave))
       
         //Armo fechas, al mes se le suma 1 porque los meses van de 0 a 11.
-        start= `${startDate._d.getFullYear()}-${(startDate._d.getMonth()+1)>9?startDate._d.getMonth()+1:`0${startDate._d.getMonth()+1}`}-${startDate._d.getDate()}`; 
-        end = `${endDate._d.getFullYear()}-${(endDate._d.getMonth()+1)>9?endDate._d.getMonth()+1:`0${endDate._d.getMonth()+1}`}-${endDate._d.getDate()}`; 
+        start = (startDate._d? startDate._d.getFullYear() : startDate.getFullYear()) + "-"+ ((startDate._d? startDate._d.getMonth() : startDate.getMonth()+1)<=9?"0"+(startDate._d? startDate._d.getMonth() : startDate.getMonth()+1):(startDate._d? startDate._d.getMonth() : startDate.getMonth()+1))+ "-" + (startDate._d? startDate._d.getDate() : startDate.getDate())
+        end = (endDate._d? endDate._d.getFullYear() : endDate.getFullYear()) + "-"+ ((endDate._d? endDate._d.getMonth() : endDate.getMonth()+1)<=9?"0"+(endDate._d? endDate._d.getMonth() : endDate.getMonth()+1):(endDate._d? endDate._d.getMonth() : endDate.getMonth()+1))+ "-" + (endDate._d? endDate._d.getDate() : endDate.getDate()) 
         }
        
         navigate(`/search/?${citySelected?`city=${citySelected}&`:""}${startDate&&endDate?`dateStart=${start}&dateEnd=${end}`:""}`);

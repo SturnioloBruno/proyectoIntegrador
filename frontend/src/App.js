@@ -13,6 +13,7 @@ import { UserProvider } from './components/Context/UserContext';
 import { SearchProvider } from './components/Context/SearchContext';
 import Meta from './components/Meta';
 import CreateHotel from './components/Admin/CreateHotel';
+import BookingList from "./components/Booking/BookingList";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
         <Route path="/booking-ok" element={<SuccessfulBooking type="booking-ok" />} />
         <Route path="/administracion" element={<CreateHotel type="create" />} />
         <Route path="/create-ok" element={<SuccessfulBooking type="create-ok" />} />
+        <Route path="/bookings/:userId" element={<BookingList type="booking-list" />} />
       </Routes>
 
       <Footer />

@@ -77,5 +77,7 @@ deployFront_Job:
     - echo -e "Host \n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
     - ssh-keyscan -H $FRONTEND_IP >> ~/.ssh/known_hosts
   script:
-    - scp /frontend/build/* ubuntu@$FRONTEND_IP:~/artefacto
+    - cd frontend/build
+    - ls
+    - scp ./* ubuntu@$FRONTEND_IP:~/artefacto
 

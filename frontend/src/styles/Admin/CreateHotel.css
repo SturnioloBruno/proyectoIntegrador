@@ -132,10 +132,14 @@
         margin-bottom: 0;
     }
 
+    .section__admin-create .section__info-policies li:first-of-type h4 {
+        margin-top: 0;
+    }
+
     .section__admin-create .section__info-policies ul {
         border-radius: 8px;
         border: 1px solid var(--light-grey);
-        padding: 1em 5%;
+        padding: 1.5em 5%;
     }
 
     .section__admin-create .section__upload-images div {
@@ -144,5 +148,29 @@
 
     .section__admin-create form > .btn {
         width: 50%;
+    }
+}
+
+@media (min-width: 1024px) {
+    .section__admin-create .section__info-policies h4 {
+        margin-top: 0;
+    }
+
+    .section__admin-create .section__info-policies ul {
+        display: flex;
+        justify-content: space-between;
+        padding: 1.5em;
+    }
+
+    .section__admin-create .section__info-policies ul li {
+        width: calc(33% - 1em);
+    }
+
+    .section__admin-create form textarea {
+        height: 200px;
+    }
+
+    .section__admin-create form > .btn {
+        width: 30%;
     }
 }

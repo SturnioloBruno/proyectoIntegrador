@@ -79,5 +79,12 @@ deployFront_Job:
   script:
     - cd frontend/build
     - ls
-    - scp ./* ubuntu@$FRONTEND_IP:~/artefacto
+    - scp ./asset-manifest.json ubuntu@$FRONTEND_IP:~/artefacto
+    - scp ./favicon.ico ubuntu@$FRONTEND_IP:~/artefacto
+    - scp ./index.html ubuntu@$FRONTEND_IP:~/artefacto
+    - scp ./logo192.png ubuntu@$FRONTEND_IP:~/artefacto
+    - scp ./logo512.png ubuntu@$FRONTEND_IP:~/artefacto
+    - scp ./manifest.json ubuntu@$FRONTEND_IP:~/artefacto
+    - scp ./robots.txt ubuntu@$FRONTEND_IP:~/artefacto
+    - scp ./static ubuntu@$FRONTEND_IP:~/artefacto
 

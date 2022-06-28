@@ -46,6 +46,7 @@ CREATE TABLE IF NOT EXISTS images (
 CREATE TABLE IF NOT EXISTS characteristics (
 	charact_id INT NOT NULL AUTO_INCREMENT,
     charact_title VARCHAR(100) NOT NULL,
+    charact_class VARCHAR(100) NOT NULL,
     PRIMARY KEY(charact_id)
 );
 
@@ -224,15 +225,15 @@ VALUES
 (12, "https://images.unsplash.com/photo-1445991842772-097fea258e7b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"),
 (12, "https://images.unsplash.com/photo-1470290378698-263fa7ca60ab?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80");
 
-INSERT INTO characteristics (charact_title)
+INSERT INTO characteristics (charact_title, charact_class)
 VALUES
-("Cocina"),
-("Estacionamiento Gratuito"),
-("Televisor"),
-("Pileta"),
-("Aire Acondicionado"),
-("Wifi"),
-("Apto Mascotas");
+("Cocina", "li__cocina"),
+("Estacionamiento Gratuito", "li__estacionamiento-gratuito"),
+("Televisor", "li__televisor"),
+("Pileta", "li__pileta"),
+("Aire Acondicionado", "li__aire-acondicionado"),
+("Wifi", "li__wifi"),
+("Apto Mascotas", "li__apto-mascotas");
 
 INSERT INTO policies (policies_title, policies_desc)
 VALUES

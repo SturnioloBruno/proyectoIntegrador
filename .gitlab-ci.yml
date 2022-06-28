@@ -77,23 +77,5 @@ deployFront_Job:
     - echo -e "Host \n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
     - ssh-keyscan -H $FRONTEND_IP >> ~/.ssh/known_hosts
   script:
-    - cd frontend/build
-    - ls
-    - scp ./asset-manifest.json ubuntu@$FRONTEND_IP:~/artefacto
-    - scp ./favicon.ico ubuntu@$FRONTEND_IP:~/artefacto
-    - scp ./index.html ubuntu@$FRONTEND_IP:~/artefacto
-    - scp ./logo192.png ubuntu@$FRONTEND_IP:~/artefacto
-    - scp ./logo512.png ubuntu@$FRONTEND_IP:~/artefacto
-    - scp ./manifest.json ubuntu@$FRONTEND_IP:~/artefacto
-    - scp ./robots.txt ubuntu@$FRONTEND_IP:~/artefacto
-    - cd static
-    - cd css
-    - scp ./main.27fccdc8.css ubuntu@$FRONTEND_IP:~/artefacto/static/css
-    - scp ./main.27fccdc8.css.map ubuntu@$FRONTEND_IP:~/artefacto/static/css
-    - cd ../js
-    - scp ./main.7ee650f9.js ubuntu@$FRONTEND_IP:~/artefacto/static/js
-    - scp ./main.7ee650f9.js.LICENSE.txt ubuntu@$FRONTEND_IP:~/artefacto/static/js
-    - scp ./main.7ee650f9.js.map ubuntu@$FRONTEND_IP:~/artefacto/static/js
-    - cd ../media
-    - scp ./*.svg ubuntu@$FRONTEND_IP:~/artefacto/static/media
+    - scp -R frontend/build ubuntu@$FRONTEND_IP:~/artefacto
 

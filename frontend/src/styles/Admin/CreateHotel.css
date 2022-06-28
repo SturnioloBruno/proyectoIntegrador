@@ -151,7 +151,15 @@
     }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1280px) {
+    .section__admin-create form section {
+        padding: 2em;
+    }
+
+    .section__admin-create form textarea {
+        height: 200px;
+    }
+
     .section__admin-create .section__info-policies h4 {
         margin-top: 0;
     }
@@ -166,8 +174,8 @@
         width: calc(33% - 1em);
     }
 
-    .section__admin-create form textarea {
-        height: 200px;
+    .section__admin-create .section__upload-images {
+        padding: 0 2em;
     }
 
     .section__admin-create form > .btn {

@@ -71,6 +71,7 @@ public class BookingService {
                BookingDTO bookingDTO = null;
                bookingDTO = mapper.convertValue(b,BookingDTO.class);
                bookingDTO.setBookingStarTime(String.valueOf(b.getBookingStartTime()));
+               bookingDTO.setId(b.getId());
                bookingDTO.setProdId(b.getProdId());
                bookingDTO.setBookingCity(b.getCity());
                bookingDTO.setBookingUserInfoCovid(b.getBookingUserInfoCovid());

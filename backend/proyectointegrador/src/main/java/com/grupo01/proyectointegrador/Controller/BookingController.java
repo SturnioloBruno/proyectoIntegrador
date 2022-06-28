@@ -6,6 +6,9 @@ import com.grupo01.proyectointegrador.Service.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/bookings")
@@ -22,6 +25,11 @@ public class BookingController {
     @GetMapping("/findById/{id}")
     public ResponseEntity<Booking> buscarId(@PathVariable Long id) throws Exception{
         return ResponseEntity.ok(bookingService.buscarId(id));
+    }
+
+    @GetMapping("/findByUserId/{id}")
+    public ResponseEntity<List<BookingDTO>> finByUserId(@PathVariable Long id) throws Exception{
+        return ResponseEntity.ok(bookingService.getByUserId(id));
     }
 
     @DeleteMapping("/delete/{id}")

@@ -24,14 +24,14 @@ function Booking() {
     const startDateCache =  new Date(sessionStorage.getItem("dateStart"))
     const startDayGet = startDateCache.getDate().toString();
     const startDay = startDayGet.length === 1 ? "0" + startDayGet : startDayGet;
-    const startMonthGet = startDateCache.getMonth().toString();
+    const startMonthGet = (startDateCache.getMonth() + 1).toString();
     const startMonth = startMonthGet.length === 1 ? "0" + startMonthGet : startMonthGet;
     const startYear = startDateCache.getFullYear();
 
     const endDateCache =  new Date(sessionStorage.getItem("dateEnd"))
     const endDayGet = endDateCache.getDate().toString();
     const endDay = endDayGet.length === 1 ? "0" + endDayGet : endDayGet;
-    const endMonthGet = endDateCache.getMonth().toString();
+    const endMonthGet = (endDateCache.getMonth() +1 ).toString();
     const endMonth = endMonthGet.length === 1 ? "0" + endMonthGet : endMonthGet;
     const endYear = endDateCache.getFullYear();
 
@@ -100,7 +100,7 @@ function Booking() {
                 })
             })
             .then((response) => {
-                if(response.status === 200) navigate("/ok");
+                if(response.status === 200) navigate("/booking-ok");
                 if(response.status === 400) alert("Lamentablemente la reserva no ha podido realizarse. Por favor, intente más tarde.");
                 return response.json();
             })

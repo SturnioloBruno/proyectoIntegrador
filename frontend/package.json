@@ -18,7 +18,7 @@
     "react-bnb-gallery": "^1.4.4",
     "react-datepicker": "^4.8.0",
     "react-dates": "^21.8.0",
-    "react-document-meta": "*",
+    "react-document-meta": "^3.0.0-beta.2",
     "react-dom": "^18.2.0",
     "react-leaflet": "^4.0.0",
     "react-lines-ellipsis": "^0.15.0",
@@ -36,7 +36,6 @@
       "!src/home.js",
       "!src/Share.js",
       "!src/components/Products/*"
-      
     ]
   },
   "scripts": {

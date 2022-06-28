@@ -26,7 +26,7 @@ describe('Verificar renderizado del formulario', () => {
         // expect(screen.getByText('Ingresar')).toBeInTheDocument();
         const button = screen.getByRole('button',{name:"Ingresar"})
         expect(button.textContent).toBe("Ingresar");
-    });
+    }); 
 });
 
 describe('Verificar que pueda escribirse texto en los inputs', () => {
@@ -131,5 +131,15 @@ describe('Verificar validaciones en los inputs', () => {
         fireEvent.click(button);
          expect(screen.getByText("El campo debe contener al menos un número")).toBeTruthy();
     });
+    test('Verificar cambio del icono de ojo al ser clickeado' , async () => {
+        setup();
+        const eyeButton = screen.getByRole('link', {name: 'Show/Hide'});
+        
+        fireEvent.click(eyeButton);
+         expect(screen.getByRole('link', {name: 'Show/Hide'})).toHaveClass('show');
+         fireEvent.click(eyeButton);
+         expect(screen.getByRole('link', {name: 'Show/Hide'})).not.toHaveClass('show');
+    });
+
     
 });

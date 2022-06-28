@@ -34,6 +34,6 @@ describe ('Renderizado de elementos',() =>{
     test('Verificar renderizado de icono Instagram',() => {
         setup();
         expect(screen.getByText('Instagram')).toBeTruthy();
-    });
+    }); 
   
 });

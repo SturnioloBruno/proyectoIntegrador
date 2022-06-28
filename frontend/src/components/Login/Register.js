@@ -242,7 +242,7 @@ function Register({type}) {
                 <label htmlFor="password_login" className='label__password-input'>
                     <span>Contraseña</span>
                     <input type="password" name="password" data-testid="password_input" id="password_login" required autoComplete="off" className={`${errors.password ? "error" : ""}`} />
-                    <Link to="#" className="a__show-hide" onClick={show}>Show/Hide</Link>
+                    <Link to="#" data-testid="eye" className="a__show-hide" onClick={show}>Show/Hide</Link>
 
                     {errors.password?
                     <small className="small__error" id="error_password">{errors.password[0]}</small>:

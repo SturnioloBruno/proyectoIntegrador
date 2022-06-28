@@ -33,14 +33,9 @@ describe('Verificar renderizado del formulario', () => {
     test('Verificar onClick en botón Crear cuenta', async () => {
         setup()
         const button = screen.getByTestId("Button"); 
-       
-        // eslint-disable-next-line testing-library/no-unnecessary-act
-        act(() => {
-            fireEvent.click(button);
-        });
+        fireEvent.click(button);
         
         expect(screen.getByRole('banner')).toBeTruthy(); 
-        
     });
 });
 
@@ -51,7 +46,7 @@ describe('Verificar que pueda escribirse texto en los inputs', () => {
                 expect((nameInput).value).toBe('');
                 fireEvent.change(nameInput, {target: {value: 'prueba'}})
                 expect(nameInput.value).toMatch('prueba');
-            });
+        });
     test('Verificar que input Apellido permite escribir texto' , () => {
                 setup();
                 const lastnameInput = screen.getByLabelText('Apellido');
@@ -119,6 +114,17 @@ describe('Verificar validaciones en los inputs', () => {
         expect(screen.getByText("El campo es obligatorio")).toBeTruthy();
 
     });
+    test('Verificar que input Confirmar contraseña no acepte vacio' , async () => {
+        setup();
+        const confirmPasswordInput = screen.getByLabelText(/Confirmar contraseña/);
+        const button = screen.getByRole('button',{name:"Crear cuenta"})
+        expect((confirmPasswordInput).value).toBe('');
+        
+        fireEvent.click(button);
+        
+        expect(screen.getByText("El campo es obligatorio")).toBeTruthy();
+
+    });
     test('Verificar que input password tiene mas de seis caracteres' , async () => {
         setup();
         const emailInput = screen.getByLabelText('Correo electrónico');
@@ -167,7 +173,32 @@ describe('Verificar validaciones en los inputs', () => {
         fireEvent.click(button);
          expect(screen.getByText("El campo debe contener al menos un número")).toBeTruthy();
     });
-    
+    test('Verificar que input password no sea distinto de Confirmar contraseña' , async () => {
+        setup();
+        const emailInput = screen.getByLabelText('Correo electrónico');
+        const passwordInput = screen.getByTestId('password_input');
+        const confirmPasswordInput = screen.getByLabelText(/Confirmar contraseña/)
+        const button = screen.getByRole('button',{name:"Crear cuenta"})
+        expect((emailInput).value).toBe('');
+        fireEvent.change(emailInput, {target: {value: 'mail@prueba.com'}})
+        expect((passwordInput).value).toBe('');
+        fireEvent.change(passwordInput, {target: {value: 'Prueba1'}})
+        expect((confirmPasswordInput).value).toBe('');
+        fireEvent.change(confirmPasswordInput, {target: {value: 'Prueba2'}})
+        fireEvent.click(button);
+         expect(screen.getByText("No coinciden las contraseñas")).toBeTruthy();
+    });
+    test('Verificar cambio del icono de ojo al ser clickeado' , async () => {
+        setup();
+        const eyeButton = screen.getByTestId('eye');
+        
+        fireEvent.click(eyeButton);
+         expect(screen.getByTestId('eye')).toHaveClass('show');
+         fireEvent.click(eyeButton);
+         expect(screen.getByTestId('eye')).not.toHaveClass('show');
+    });
+
+
  });
 
 

@@ -11,6 +11,7 @@ import "../../styles/Booking/Booking.css";
 import "../../styles/Booking/Date.css";
 
 function Booking() {
+
     const [product, setProduct] = useState(null);
     const [change,setChange] = useState(false);
     const {id} = useParams();
@@ -19,12 +20,7 @@ function Booking() {
     const {user} = useContext(UserContext);
     const token = localStorage.getItem("token");
     const handlerChange = ()=>{setChange(!change)}
-
-    const city = document.querySelector("#input__city-booking");
-    const description = document.querySelector("#textarea__description-booking");
-    const checkCovid = document.querySelector("#label__covid");
-    const hour = document.querySelector("#select__option-hour");
-
+    
     const startDateCache =  new Date(sessionStorage.getItem("dateStart"))
     const startDayGet = startDateCache.getDate().toString();
     const startDay = startDayGet.length === 1 ? "0" + startDayGet : startDayGet;
@@ -59,6 +55,12 @@ function Booking() {
     }, [id]);
 
     const handlerSubmit = (e) => {
+
+        const city = document.querySelector("#input__city-booking");
+        const description = document.querySelector("#textarea__description-booking");
+        const checkCovid = document.querySelector("#label__covid");
+        const hour = document.querySelector("#select__option-hour");
+
         e.preventDefault();
         
         if(city.value.trim() === ""){

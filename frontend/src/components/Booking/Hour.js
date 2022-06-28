@@ -38,7 +38,7 @@ function Hour() {
                     <select name="hour" id="select__option-hour">
                         <option value="">Seleccionar hora</option>
                         {hours.map((hour, i) => {
-                            return <option key={i} value={hour.value}>{hour.hour}</option>;
+                            return <option data-testid="select-option" key={i} value={hour.value}>{hour.hour}</option>;
                         })}
                     </select>
                 </label>

@@ -23,7 +23,7 @@ function Form() {
                 </label>
                 <label>
                     <span>Ciudad</span>
-                    <input type="text" name="city" id="input__city-booking" />
+                    <input data-testid="city_input" type="text" name="city" id="input__city-booking" />
                 </label>
                 <label className="label__description">
                     <span>Datos para el vendedor (opcional)</span>

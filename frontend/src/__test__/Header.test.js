@@ -78,15 +78,15 @@ describe ('Evento onClick', () => {
     test('Verificar evento onclick en botón Cerrar sesión', async () => {
         setup();
         const boton_cerrar_sesion = screen.getByTestId("on-click-logout");
-        // eslint-disable-next-line testing-library/no-unnecessary-act
-        act(() => {
-            fireEvent.click(boton_cerrar_sesion);
-        });
-        expect(screen.getByText(/Crear cuenta/, { hidden: false })).toBeTruthy();
-        expect(screen.getByText(/Iniciar sesión/, { hidden: false })).toBeTruthy();
-    });
+        
+    
+        fireEvent.click(boton_cerrar_sesion);
+       
+        expect(screen.getByText(/Crear cuenta/)).toBeInTheDocument();
+        expect(screen.getByText(/Iniciar sesión/)).toBeInTheDocument();
+    }); 
 
-    test('Verificar evento onclick icono para salir- mobile', async () => {
+    test('Verificar evento onclick icono X para salir- mobile', async () => {
         setup();
         const boton_salir = screen.getByRole('link',{name:"Abrir/Cerrar"});
         // eslint-disable-next-line testing-library/no-unnecessary-act

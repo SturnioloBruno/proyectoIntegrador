@@ -1,7 +1,12 @@
+variables: 
+  MAVEN_OPTS: -Dmaven.repo.local=.m2/repository
+
 stages:
 #  - test
   - artefactback
   - front
+  - deployBack
+  - deployFront
 
 #test_job:
 #  stage: test
@@ -10,6 +15,11 @@ stages:
 
 artifact_back:
   image: maven:latest
+  cache:
+    key: one-key-to-rule-them-all
+    paths:
+      - .m2/repository
+      - backend/proyectointegrador/target
   stage: artefactback
   artifacts:
     paths:
@@ -23,12 +33,49 @@ artifact_back:
 
 front_job:
   image: node:16.14.0
+  cache:
+    key: one-key-to-rule-them-all
+    paths:
+      - frontend/node_modules
   stage: front
   artifacts:
     paths:
-      - frontend
+      - frontend/build
   script:
     - echo "building del front"
     - "cd frontend"
+    - npm ci --cache node_modules --prefer-offline
     - "npm install"
     - "npm run build"
+
+
+deployBack_job:
+    stage: deployBack
+    image: alpine:3.11
+    before_script:
+        - apk update && apk add openssh-client bash
+        - mkdir -p ~/.ssh
+        - eval $(ssh-agent -s)
+        - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
+        - touch ~/.ssh/config
+        - echo -e "Host \n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+        - ssh-keyscan -H $BACKEND_IP >> ~/.ssh/known_hosts
+    script:
+        - chmod og= $RSA_ID
+        - scp ./backend/proyectointegrador/target/*.jar ubuntu@$BACKEND_IP:~/console-app/
+
+
+deployFront_Job:
+  stage: deployFront
+  image: alpine:3.11  
+  before_script:
+    - apk update && apk add openssh-client bash
+    - mkdir -p ~/.ssh
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
+    - touch ~/.ssh/config
+    - echo -e "Host \n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+    - ssh-keyscan -H $FRONTEND_IP >> ~/.ssh/known_hosts
+  script:
+    - scp -r frontend/build ubuntu@$FRONTEND_IP:~/artefacto
+

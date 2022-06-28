@@ -26,7 +26,7 @@ function Search() {
 
     useEffect(()=>{
         const getCities = async()=>{
-            await fetch("http://localhost:8080/cities/getList",{
+            await fetch("http://3.88.46.2:8080/cities/getList",{
                 method:'GET',
                 headers:{
                     'Content-Type':'application/json'

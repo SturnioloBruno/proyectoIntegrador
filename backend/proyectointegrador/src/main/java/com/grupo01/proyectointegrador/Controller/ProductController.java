@@ -19,14 +19,12 @@ public class ProductController {
     @Autowired
     ProductService productService;
 
-    @CrossOrigin(origins = "http://localhost:3000")
     @Operation(summary = "retorna producto segun el id")
     @GetMapping("/findById/{id}")
     public ResponseEntity<ProductDTO> findByIDDTO(@PathVariable Long id)throws Exception{
         return ResponseEntity.ok(productService.buscarPorIdDTO(id));
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
     @Operation(summary = "retorna productos segun filtros")
     @GetMapping("/getListProducts")
     public List<ProductDTO> getListProduct(@RequestParam Optional<Long> city,
@@ -38,7 +36,6 @@ public class ProductController {
         return  productService.findByFilter(city,category,dateStart,dateEnd,sort);
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
     @Operation(summary = "crea un producto")
     @PostMapping("/insert")
     public ResponseEntity<Product> createProduct(@RequestBody Product product)throws Exception{

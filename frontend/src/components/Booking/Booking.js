@@ -42,7 +42,7 @@ function Booking() {
     useEffect(()=>{
         //Cargo datos del producto
         const getProduct = async()=>{
-            await fetch("http://localhost:8080/products/findById/" + id,{
+            await fetch("http://3.88.46.2:8080/products/findById/" + id,{
                 method:'GET',
                 headers:{
                     'Content-Type':'application/json'
@@ -75,7 +75,7 @@ function Booking() {
 
         //Insert con datos de la reserva
         const insertBooking = async()=>{
-            await fetch("http://localhost:8080/bookings/insert", {
+            await fetch("http://3.88.46.2:8080/bookings/insert", {
                 method:'POST',
                 headers: {
                     "Access-Control-Allow-Headers" : "Content-Type",

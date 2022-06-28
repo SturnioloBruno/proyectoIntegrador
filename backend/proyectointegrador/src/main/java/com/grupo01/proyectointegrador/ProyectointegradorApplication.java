@@ -12,15 +12,14 @@ public class ProyectointegradorApplication {
 		SpringApplication.run(ProyectointegradorApplication.class, args);
 	}
 
-	@Bean
-	public WebMvcConfigurer corsConfigurer() {
-		return new WebMvcConfigurer() {
-			@Override
-			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/**").allowedOrigins("http://18.208.179.234:81").allowedMethods("*").allowedHeaders("*");
-			}
-		};
-	}
-
+    @Bean
+    public WebMvcConfigurer corsConfigurer() {
+        return new WebMvcConfigurer() {
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                registry.addMapping("/**").allowedOrigins("http://18.208.179.234:81").allowedMethods("*").allowedHeaders("*");
+            }
+        };
+    }
 }
 	

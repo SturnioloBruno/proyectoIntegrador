@@ -29,7 +29,6 @@ public class ImageController {
         return ResponseEntity.ok(imageService.actualizar(image));
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/insert")
     public ResponseEntity<Image> save(@RequestBody Image image)throws Exception{
         return ResponseEntity.ok(imageService.guardar(image));

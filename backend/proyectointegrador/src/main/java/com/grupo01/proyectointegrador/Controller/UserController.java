@@ -28,6 +28,7 @@ public class UserController {
         return ResponseEntity.status(201).body(userService.guardar(userDTO));
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/findById/{id}")
     public ResponseEntity<User> buscarId(@PathVariable Long id) throws Exception{
         return ResponseEntity.ok(userService.buscarId(id));

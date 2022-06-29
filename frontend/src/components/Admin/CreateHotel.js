@@ -5,6 +5,7 @@ import "../../styles/Admin/CreateHotel.css";
 function CreateHotel() {
     const [categories, setCategories] = useState(null);
     const [cities, setCities] = useState(null);
+    const [products, setProducts] = useState(null);
     let icon = [];
 
     useEffect(()=>{
@@ -25,6 +26,7 @@ function CreateHotel() {
         }
         getCategories();
 
+        //Cargo ciudades
         const getCities = async()=>{
             await fetch("http://localhost:8080/cities/getList",{
                 method:'GET',
@@ -40,6 +42,23 @@ function CreateHotel() {
             })
         }
         getCities();
+
+        //Cargo productos
+        const getProducts = async()=>{
+            await fetch("http://localhost:8080/products/getListProducts/", {
+                method:'GET',
+                headers:{
+                    'Content-Type':'application/json'
+                }
+            })
+            .then(function(response){
+                return response.json();
+            })
+            .then(function (products) {
+                setProducts(products);
+            })
+        }      
+        getProducts();
     }, []);
 
     return (
@@ -89,7 +108,16 @@ function CreateHotel() {
                 <section className='section__info-attributes'>
                     <h3>Agregar atributos</h3>
                     <div>
-                        
+                        <label>
+                            <span>Nombre</span>
+                            <select name="attribute" className="select__attribute" required>
+                                {products?.map((product) => {
+                                    {product.characteristic?.map((product, i) => {
+                                        return <option key={i} value={product.characteristic.title}>{product.characteristic.title}</option>;
+                                    })}
+                                })}
+                            </select>
+                        </label>
                     </div>
                 </section>
                 <section className='section__info-policies'>

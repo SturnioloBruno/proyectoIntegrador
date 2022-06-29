@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import HeaderProduct from "../Products/HeaderProduct";
 import "../../styles/Admin/CreateHotel.css";
+import Api from "../Helpers/Api";
 
 function CreateHotel() {
     const [categories, setCategories] = useState(null);
@@ -10,7 +11,7 @@ function CreateHotel() {
     useEffect(()=>{
         //Cargo categorías
         const getCategories = async()=>{
-            await fetch("http://localhost:8080/categories/getList",{
+            await fetch(Api + "categories/getList",{
                 method:'GET',
                 headers:{
                     'Content-Type':'application/json'
@@ -26,7 +27,7 @@ function CreateHotel() {
         getCategories();
 
         const getCities = async()=>{
-            await fetch("http://localhost:8080/cities/getList",{
+            await fetch(Api + "cities/getList",{
                 method:'GET',
                 headers:{
                     'Content-Type':'application/json'

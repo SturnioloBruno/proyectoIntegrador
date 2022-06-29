@@ -3,6 +3,7 @@ import { Link , useNavigate } from "react-router-dom";
 import Button from "../Button";
 import '../../styles/Login.css';
 import { UserContext } from "../Context/UserContext";
+import Api from "../Helpers/Api";
 
 function Login({ type }) {
     const [errors,setError]=useState({})
@@ -35,7 +36,7 @@ function Login({ type }) {
         }
         
         const login = async() => {
-            await fetch("http://localhost:8080/authenticate", {
+            await fetch(Api + "authenticate", {
                 method:'POST',
                 headers:{
                     "Access-Control-Allow-Headers" : "Content-Type",
@@ -72,7 +73,7 @@ function Login({ type }) {
         login();
     
         const findUserData = async()=>{
-            await fetch("http://localhost:8080/users/findByEmail/" + emailValue.value.trim(), {
+            await fetch(Api + "users/findByEmail/" + emailValue.value.trim(), {
                 method:'GET',
                 headers: {
                     "Access-Control-Allow-Headers" : "Content-Type"

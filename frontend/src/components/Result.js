@@ -4,6 +4,7 @@ import Search from './Search/Search';
 import Card from './Cards/Card';
 import "../styles/Home.css";
 import "../styles/Result.css";
+import Api from "./Helpers/Api";
 
 function Home({title}) {
   const [productsCities, setProductsCities] = useState(null);
@@ -12,7 +13,7 @@ function Home({title}) {
   useEffect(()=>{
     //Cargo productos por ciudad
     const getProductsperCities = async()=>{
-        await fetch("http://localhost:8080/products/getListProducts/" + location.search, {
+        await fetch(Api + "products/getListProducts/" + location.search, {
             method:'GET',
             headers:{
                 'Content-Type':'application/json'

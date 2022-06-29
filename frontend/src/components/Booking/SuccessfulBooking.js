@@ -1,6 +1,7 @@
 import React,{useEffect} from 'react';
 import { Link , useParams} from "react-router-dom";
 import "../../styles/Booking/SuccessfulBooking.css";
+import Api from "../Helpers/Api";
 
 function SuccessfulBooking({type}) {
     const {id} = useParams();
@@ -9,7 +10,7 @@ function SuccessfulBooking({type}) {
 
         if (type === "confimation-ok"){
             const register = async() => {
-                await fetch(`http://localhost:8080/users/accountConfirmation/${id}`, {
+                await fetch(Api + `users/accountConfirmation/${id}`, {
                     method:'POST',
                     headers:{
                         "Access-Control-Allow-Headers" : "Content-Type",

@@ -9,6 +9,7 @@ import Politics from "../Products/Politics";
 import { UserContext } from "../Context/UserContext";
 import "../../styles/Booking/Booking.css";
 import "../../styles/Booking/Date.css";
+import Api from "../Helpers/Api";
 
 function Booking() {
     const [product, setProduct] = useState(null);
@@ -42,7 +43,7 @@ function Booking() {
     useEffect(()=>{
         //Cargo datos del producto
         const getProduct = async()=>{
-            await fetch("http://localhost:8080/products/findById/" + id,{
+            await fetch(Api + "products/findById/" + id,{
                 method:'GET',
                 headers:{
                     'Content-Type':'application/json'
@@ -75,7 +76,7 @@ function Booking() {
 
         //Insert con datos de la reserva
         const insertBooking = async()=>{
-            await fetch("http://localhost:8080/bookings/insert", {
+            await fetch(Api + "bookings/insert", {
                 method:'POST',
                 headers: {
                     "Access-Control-Allow-Headers" : "Content-Type",

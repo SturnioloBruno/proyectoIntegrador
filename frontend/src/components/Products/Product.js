@@ -12,6 +12,7 @@ import Politics from './Politics';
 import HotelDate from "./HotelDate";
 import Share from './Share';
 import "../../styles/Products/Product.css";
+import Api from "../Helpers/Api";
 
 function Product({type}) {
     const mobileTablet = useMediaQuery({ query: '(max-width: 1024px)' });
@@ -23,7 +24,7 @@ function Product({type}) {
     useEffect(()=>{
         //Cargo datos del producto
         const getProduct = async()=>{
-            await fetch("http://localhost:8080/products/findById/" + id,{
+            await fetch(Api + "products/findById/" + id,{
                 method:'GET',
                 headers:{
                     'Content-Type':'application/json'
@@ -40,7 +41,7 @@ function Product({type}) {
         
         //Cargo puntuación
         const getPunctuation = async()=>{
-            await fetch("http://localhost:8080/punctuations/findById/" + id,{
+            await fetch(Api + "punctuations/findById/" + id,{
                 method:'GET',
                 headers:{
                     'Content-Type':'application/json'

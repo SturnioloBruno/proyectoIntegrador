@@ -11,7 +11,7 @@ function BookingList() {
     useEffect(()=>{
         //Cargo reservas del usuario
         const getBookings = async()=>{
-            await fetch("http://localhost:8080/bookings/findByUserId/" + userId,{
+            await fetch("http://3.88.46.2:8080/bookings/findByUserId/" + userId,{
                 method:'GET',
                 headers: {
                     "Access-Control-Allow-Headers" : "Content-Type",

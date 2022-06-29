@@ -9,7 +9,7 @@ function SuccessfulBooking({type}) {
 
         if (type === "confimation-ok"){
             const register = async() => {
-                await fetch(`http://localhost:8080/users/accountConfirmation/${id}`, {
+                await fetch(`http://3.88.46.2:8080/users/accountConfirmation/${id}`, {
                     method:'POST',
                     headers:{
                         "Access-Control-Allow-Headers" : "Content-Type",

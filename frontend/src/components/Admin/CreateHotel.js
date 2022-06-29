@@ -11,7 +11,7 @@ function CreateHotel() {
     useEffect(()=>{
         //Cargo categorías
         const getCategories = async()=>{
-            await fetch("http://localhost:8080/categories/getList",{
+            await fetch("http://3.88.46.2:8080/categories/getList",{
                 method:'GET',
                 headers:{
                     'Content-Type':'application/json'
@@ -28,7 +28,7 @@ function CreateHotel() {
 
         //Cargo ciudades
         const getCities = async()=>{
-            await fetch("http://localhost:8080/cities/getList",{
+            await fetch("http://3.88.46.2:8080/cities/getList",{
                 method:'GET',
                 headers:{
                     'Content-Type':'application/json'
@@ -45,7 +45,7 @@ function CreateHotel() {
 
         //Cargo productos
         const getProducts = async()=>{
-            await fetch("http://localhost:8080/products/getListProducts/", {
+            await fetch("http://3.88.46.2:8080/products/getListProducts/", {
                 method:'GET',
                 headers:{
                     'Content-Type':'application/json'

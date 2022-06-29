@@ -16,7 +16,7 @@ public class CityController {
     @Autowired
     CityService cityService;
 
-    @CrossOrigin(origins = "http://localhost:3000")
+
     @Operation(summary = "Listar todas las ciudades")
     @GetMapping("/getList")
     public ResponseEntity<List<City>> listar()throws Exception{

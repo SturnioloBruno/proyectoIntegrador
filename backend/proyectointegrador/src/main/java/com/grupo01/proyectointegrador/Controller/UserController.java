@@ -20,7 +20,7 @@ public class UserController {
     @Autowired
     ObjectMapper mapper;
 
-    @CrossOrigin(origins = "http://localhost:3000")
+
     @Operation(summary = "crea un usuario")
     @PostMapping("/register")
     public ResponseEntity<Object> guardar(@RequestBody UserDTO userDTO) throws Exception {
@@ -28,13 +28,13 @@ public class UserController {
         return ResponseEntity.status(201).body(userService.guardar(userDTO));
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+
     @GetMapping("/findById/{id}")
     public ResponseEntity<User> buscarId(@PathVariable Long id) throws Exception{
         return ResponseEntity.ok(userService.buscarId(id));
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+
     @GetMapping("/findByEmail/{email}")
     public ResponseEntity<UserDTOResponse> buscarEmail(@PathVariable String email) throws Exception{
         User user = userService.buscarEmail(email);
@@ -61,7 +61,7 @@ public class UserController {
         return ResponseEntity.ok(userService.actualizar(userDTOResponse));
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+
     @Operation(summary = "Confimarcion de usuario")
     @PostMapping("/accountConfirmation/{id}")
     public ResponseEntity<Object> confirmation(@PathVariable Long id) throws Exception {

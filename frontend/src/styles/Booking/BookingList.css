@@ -1,0 +1,19 @@
+.section__booking-list .ul__accommodation-list li:nth-child(1) article {
+    margin-top: 0;
+}
+
+@media (min-width: 1280px) {
+    .section__booking-list {
+        min-height: calc(100vh - 234px);
+    }
+
+    .section__booking-list .ul__accommodation-list li:nth-child(2) article {
+        margin-top: 0;
+    }
+
+    .section__booking-list .ul__accommodation-list li article {
+        min-height: calc(100% - 2em);
+        height: auto;
+        margin-top: 2em;
+    }
+}

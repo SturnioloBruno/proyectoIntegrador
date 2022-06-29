@@ -3,3 +3,39 @@
 [2022-06-28 18:26:45] [ ERROR] [GlobalExceptions:33] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
 [2022-06-28 18:26:50] [ ERROR] [GlobalExceptions:33] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
 [2022-06-28 18:26:50] [ ERROR] [GlobalExceptions:33] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-06-28 18:35:36] [ ERROR] [GlobalExceptions:21] Ya existe usuario registrado con el email ingresado
+[2022-06-28 18:42:18] [ ERROR] [GlobalExceptions:21] Ya existe usuario registrado con el email ingresado
+[2022-06-28 19:19:33] [ ERROR] [GlobalExceptions:33] UserDetailsService returned null, which is an interface contract violation
+[2022-06-28 19:21:29] [ ERROR] [GlobalExceptions:33] UserDetailsService returned null, which is an interface contract violation
+[2022-06-28 19:24:54] [ ERROR] [GlobalExceptions:33] UserDetailsService returned null, which is an interface contract violation
+[2022-06-28 19:26:12] [ ERROR] [GlobalExceptions:33] UserDetailsService returned null, which is an interface contract violation
+[2022-06-28 19:32:23] [ ERROR] [GlobalExceptions:33] UserDetailsService returned null, which is an interface contract violation
+[2022-06-28 19:33:02] [ ERROR] [GlobalExceptions:33] UserDetailsService returned null, which is an interface contract violation
+[2022-06-28 19:35:44] [ ERROR] [GlobalExceptions:33] UserDetailsService returned null, which is an interface contract violation
+[2022-06-28 19:36:03] [ ERROR] [GlobalExceptions:33] Incorrect
+[2022-06-28 19:36:05] [ ERROR] [GlobalExceptions:33] Incorrect
+[2022-06-28 19:40:20] [ ERROR] [GlobalExceptions:33] Incorrect
+[2022-06-28 19:40:22] [ ERROR] [GlobalExceptions:33] Incorrect
+[2022-06-28 19:40:32] [ ERROR] [GlobalExceptions:33] Incorrect
+[2022-06-28 19:41:01] [ ERROR] [GlobalExceptions:33] Incorrect
+[2022-06-28 19:41:19] [ ERROR] [GlobalExceptions:33] Incorrect
+[2022-06-28 19:41:40] [ ERROR] [GlobalExceptions:33] Incorrect
+[2022-06-28 19:42:57] [ ERROR] [GlobalExceptions:33] Incorrect
+[2022-06-28 19:43:35] [ ERROR] [GlobalExceptions:21] Cuenta no confirmada
+[2022-06-28 19:47:13] [ ERROR] [GlobalExceptions:21] Ya existe usuario registrado con el email ingresado
+[2022-06-28 19:47:57] [ ERROR] [GlobalExceptions:21] Ya existe usuario registrado con el email ingresado
+[2022-06-28 19:48:39] [ ERROR] [GlobalExceptions:21] Ya existe usuario registrado con el email ingresado
+[2022-06-28 19:49:58] [ ERROR] [GlobalExceptions:21] Cuenta no confirmada
+[2022-06-28 19:51:47] [ ERROR] [GlobalExceptions:21] Ya existe usuario registrado con el email ingresado
+[2022-06-28 19:52:17] [ ERROR] [GlobalExceptions:21] Cuenta no confirmada
+[2022-06-28 19:53:21] [ ERROR] [GlobalExceptions:21] Cuenta no confirmada
+[2022-06-28 19:53:47] [ ERROR] [GlobalExceptions:21] Cuenta no confirmada
+[2022-06-28 19:56:17] [ ERROR] [GlobalExceptions:21] Cuenta no confirmada
+[2022-06-28 20:07:15] [ ERROR] [GlobalExceptions:33] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-06-28 20:07:20] [ ERROR] [GlobalExceptions:33] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-06-28 20:07:40] [ ERROR] [GlobalExceptions:33] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-06-28 20:07:45] [ ERROR] [GlobalExceptions:33] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-06-28 20:08:01] [ ERROR] [GlobalExceptions:33] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-06-28 20:08:04] [ ERROR] [GlobalExceptions:33] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+[2022-06-28 20:08:32] [ ERROR] [GlobalExceptions:33] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"
+

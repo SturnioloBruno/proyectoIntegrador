@@ -57,4 +57,12 @@ public class UserController {
     public ResponseEntity<UserDTOResponse> actualizar(@RequestBody UserDTOResponse userDTOResponse) throws Exception {
         return ResponseEntity.ok(userService.actualizar(userDTOResponse));
     }
+
+    @Operation(summary = "Confimarcion de usuario")
+    @PostMapping("/accountConfirmation/{id}")
+    public ResponseEntity<Object> confirmation(@PathVariable Long id) throws Exception {
+        userService.confirmationAccount(id);
+        return ResponseEntity.status(201).body("Confirmado con exito");
+    }
+
 }

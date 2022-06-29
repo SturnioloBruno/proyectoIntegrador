@@ -11,6 +11,7 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
+import com.grupo01.proyectointegrador.Exception.NotAcceptableException;
 
 @RestController
 @RequestMapping("/authenticate")
@@ -34,6 +35,11 @@ public class JwtController {
         }
 
         final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getEmail());
+
+        if(userDetails.getUsername().equals("NotAccountConfirmation")){
+            throw new NotAcceptableException("Cuenta no confirmada");
+        }
+
 
         final String jwt = jwtUtil.generateToken(userDetails);
 

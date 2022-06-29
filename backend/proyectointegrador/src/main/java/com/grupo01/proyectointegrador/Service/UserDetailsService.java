@@ -8,6 +8,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import com.grupo01.proyectointegrador.Exception.NotAcceptableException;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -26,6 +27,13 @@ public class UserDetailsService implements org.springframework.security.core.use
             Set<GrantedAuthority> grantList = new HashSet<GrantedAuthority>();
 
             if(user!=null){
+
+                //valido que este confirmada la cuenta
+                if(!user.isConfirmation()){
+                    return new User("NotAccountConfirmation",user.getUserPassword(),grantList);
+                }
+
+
                 grantList.add(new SimpleGrantedAuthority(user.getRoleId().getRoleName()));
                 return new User(user.getUserEmail(),  user.getUserPassword(), grantList);
             }

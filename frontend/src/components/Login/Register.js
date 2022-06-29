@@ -101,7 +101,7 @@ function Register({type}) {
                 }
                 console.log(user);
                     let emailBody = `Realiza la confirmacion de tu cuenta ingresando en: http://localhost:3000/accountconfirmation/${user.id}`;
-                     emailjs.send(`service_lmsq0hp`, EmailKey.TEMPLATE_ID, {name:user.userName, lastname:user.userSurname,message:emailBody}, EmailKey.USER_ID)
+                     emailjs.send(`service_lmsq0hp`, EmailKey.TEMPLATE_ID, {email:user.userEmail, name:user.userName, lastname:user.userSurname,message:emailBody}, EmailKey.USER_ID)
                     .then((result) => {
                    console.log("envio"+result.text);
                     },

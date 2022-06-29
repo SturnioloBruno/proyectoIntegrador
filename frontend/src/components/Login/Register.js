@@ -3,7 +3,8 @@ import { useState, useEffect } from 'react';
 import emailjs from 'emailjs-com';
 import Button from "../Button";
 import '../../styles/Login.css';
-import EmailKey from "../SendEmail/EmailKey"
+import EmailKey from "../SendEmail/EmailKey";
+import Api from "../Helpers/Api";
 
 function Register({type}) {
     const [errors,setError]=useState({})
@@ -67,7 +68,7 @@ function Register({type}) {
         }
 
         const register = async() => {
-            await fetch("http://localhost:8080/users/register", {
+            await fetch(Api + "users/register", {
                 method:'POST',
                 headers:{
                     "Access-Control-Allow-Headers" : "Content-Type",

@@ -5,6 +5,7 @@ import '../../styles/Search/Search.css';
 import InputCity from './InputCity';
 import InputDateRangePicker from './InputDateRangePicker';
 import { SearchContext } from '../Context/SearchContext';
+import Api from "../Helpers/Api";
 
 function Search() {
     const inputLocality = document.getElementById("input__locality")
@@ -26,7 +27,7 @@ function Search() {
 
     useEffect(()=>{
         const getCities = async()=>{
-            await fetch("http://localhost:8080/cities/getList",{
+            await fetch(Api + "cities/getList",{
                 method:'GET',
                 headers:{
                     'Content-Type':'application/json'

@@ -8,7 +8,7 @@ function CreateHotel() {
     const [categories, setCategories] = useState(null);
     const [cities, setCities] = useState(null);
     const [characteristics, setCharacteristics] = useState(null);
-
+    
     useEffect(()=>{
         //Cargo categorías
         const getCategories = async()=>{
@@ -108,7 +108,7 @@ function CreateHotel() {
                 </section>
                 <section className='section__info-attributes'>
                     <h3>Agregar atributos</h3>
-                    <div>
+                    <div className='div__info-attributes'>
                         <label>
                             <span>Nombre</span>
                             <select name="attribute" className="select__attribute" required>
@@ -116,6 +116,10 @@ function CreateHotel() {
                                     return <option key={i} value={characteristic.title}>{characteristic.title}</option>;
                                 })}
                             </select>
+                        </label>
+                        <label>
+                            <span>Ícono</span>
+                            <input type="text" name="icon_class" value="hola" disabled />
                         </label>
                     </div>
                 </section>

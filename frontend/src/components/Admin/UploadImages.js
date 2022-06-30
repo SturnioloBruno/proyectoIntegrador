@@ -1,20 +1,43 @@
-import ReactDOMServer from 'react-dom/server';
-import "../../styles/Admin/CreateHotel.css";
+import { useState } from "react";
+import "../../styles/Admin/UploadImages.css";
 
 function UploadImages() {
-    let array = [];
+    const [input, setInput] = useState([{image: ''}]);
 
-    function clickBtn(e) {
-        e.preventDefault();
-        array.push(ReactDOMServer.renderToString(<UploadImages />));
-        document.querySelector(".section__upload-images").innerHTML += array;
+    const handleInputChange = (e, i) => {
+        const {image, value} = e.target;
+        const list = [...input];
+        list[i][image] = value;
+        setInput(list);
+    }
+
+    const handleAddClick = () => {
+        setInput([...input, {image: ''}]);
+    }
+
+    const handleRemoveClick = i => {
+        const list = [...input];
+        list.splice(i, 1);
+        setInput(list);
     }
 
     return (
-        <div className='div__upload-images'>
-            <input type="text" placeholder="Insertar https://" name="img" required />
-            <a className='btn button__solid-type btn__upload-img' onClick={clickBtn}>Agregar</a>
-        </div>
+        <>
+        {input.map((x, i) => {
+            return(
+                <div className='div__upload-images' key={i}>
+                    <input type="text" placeholder="Insertar https://" name="img" required onChange={e => handleInputChange(e, i)} />
+                    {input.length !== 1 && input.length !== i + 1 &&
+                        <a className='btn btn__remove-img' onClick={()=> handleRemoveClick(i)}>Borrar</a>
+                    }
+                    {input.length === i + 1 &&
+                        <a className='btn btn__add-img' onClick={handleAddClick}>Agregar</a>
+                    }
+                    {console.log(i)}
+                </div>
+            )
+        })}
+        </>
     )
 }
 

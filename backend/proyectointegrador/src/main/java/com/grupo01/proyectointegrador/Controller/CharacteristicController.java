@@ -6,6 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
+@RestController
+@RequestMapping("/characteristics")
 public class CharacteristicController {
 
     @Autowired
@@ -32,5 +36,8 @@ public class CharacteristicController {
         return ResponseEntity.ok(characteristicService.guardar(characteristic));
     }
 
-
+    @GetMapping("/getList")
+    public ResponseEntity<List<Characteristic>> listar() throws Exception{
+        return ResponseEntity.ok(characteristicService.listarTodos());
+    }
 }

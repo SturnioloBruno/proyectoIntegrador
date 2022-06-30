@@ -3,6 +3,7 @@ package com.grupo01.proyectointegrador.Model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -41,6 +42,9 @@ public class User  {
 
     @OneToMany(mappedBy = "userId", fetch = FetchType.EAGER)
     private Set<Punctuation> punctuations;
+
+    @OneToMany(mappedBy = "userId", fetch = FetchType.EAGER)
+    private List<Favourite> favourites;
 
     public User() {}
 

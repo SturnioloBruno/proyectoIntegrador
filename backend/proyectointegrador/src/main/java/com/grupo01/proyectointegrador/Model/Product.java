@@ -66,6 +66,9 @@ public class Product {
     @OneToMany(mappedBy = "prodId", fetch = FetchType.LAZY)
     private List<Booking> bookings;
 
+    @OneToMany(mappedBy = "prodId", fetch = FetchType.LAZY)
+    private List<Favourite> favourites;
+
     public Product() {
     }
 

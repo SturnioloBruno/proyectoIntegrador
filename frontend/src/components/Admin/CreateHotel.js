@@ -1,18 +1,18 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import HeaderProduct from "../Products/HeaderProduct";
 import "../../styles/Admin/CreateHotel.css";
 import Api from "../Helpers/Api";
+import UploadImages from './UploadImages';
 
 function CreateHotel() {
     const [categories, setCategories] = useState(null);
     const [cities, setCities] = useState(null);
-    const [products, setProducts] = useState(null);
-    let icon = [];
+    const [characteristics, setCharacteristics] = useState(null);
 
     useEffect(()=>{
         //Cargo categorías
         const getCategories = async()=>{
-            await fetch(Api + "categories/getList",{
+            await fetch("http://localhost:8080/categories/getList/",{
                 method:'GET',
                 headers:{
                     'Content-Type':'application/json'
@@ -29,7 +29,7 @@ function CreateHotel() {
 
         //Cargo ciudades
         const getCities = async()=>{
-            await fetch(Api + "cities/getList",{
+            await fetch("http://localhost:8080/cities/getList/",{
                 method:'GET',
                 headers:{
                     'Content-Type':'application/json'
@@ -44,9 +44,9 @@ function CreateHotel() {
         }
         getCities();
 
-        //Cargo productos
-        const getProducts = async()=>{
-            await fetch("http://localhost:8080/products/getListProducts/", {
+        //Cargo características
+        const getCharacteristics = async()=>{
+            await fetch("http://localhost:8080/characteristics/getList/", {
                 method:'GET',
                 headers:{
                     'Content-Type':'application/json'
@@ -55,11 +55,11 @@ function CreateHotel() {
             .then(function(response){
                 return response.json();
             })
-            .then(function (products) {
-                setProducts(products);
+            .then(function (characteristics) {
+                setCharacteristics(characteristics);
             })
         }      
-        getProducts();
+        getCharacteristics();
     }, []);
 
     return (
@@ -112,10 +112,8 @@ function CreateHotel() {
                         <label>
                             <span>Nombre</span>
                             <select name="attribute" className="select__attribute" required>
-                                {products?.map((product) => {
-                                    {product.characteristic?.map((product, i) => {
-                                        return <option key={i} value={product.characteristic.title}>{product.characteristic.title}</option>;
-                                    })}
+                                {characteristics?.map((characteristic, i) => {
+                                    return <option key={i} value={characteristic.title}>{characteristic.title}</option>;
                                 })}
                             </select>
                         </label>
@@ -143,10 +141,7 @@ function CreateHotel() {
                 </section>
                 <section className='section__upload-images'>
                     <h3>Cargar imágenes</h3>
-                    <div>
-                        <input type="text" placeholder="Insertar https://" name="img" required />
-                        <button className='btn button__solid-type btn__upload-img'>Agregar</button>
-                    </div>
+                    <UploadImages />
                 </section>
                 <button type="submit" className='btn button__solid-type'>Crear</button>
             </form>

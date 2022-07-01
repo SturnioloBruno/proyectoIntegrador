@@ -14,6 +14,7 @@ import { SearchProvider } from './components/Context/SearchContext';
 import Meta from './components/Meta';
 import CreateHotel from './components/Admin/CreateHotel';
 import BookingList from "./components/Booking/BookingList";
+import FavouritesList from './components/Favourites/FavouritesList';
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
         <Route path="/create-ok" element={<SuccessfulBooking type="create-ok" />} />
         <Route path="/my-bookings" element={<BookingList type="booking-list" />} />
         <Route path="/accountconfirmation/:id" element={<SuccessfulBooking type="confimation-ok" />} />
+        <Route path="/my-favourites" element={<FavouritesList type="favourite" />} />
       </Routes>
 
       <Footer />

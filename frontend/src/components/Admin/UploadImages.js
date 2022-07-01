@@ -5,9 +5,9 @@ function UploadImages() {
     const [input, setInput] = useState([{image: ''}]);
 
     const handleInputChange = (e, i) => {
-        const {image, value} = e.target;
+        const {value} = e.target;
         const list = [...input];
-        list[i][image] = value;
+        list[i].image = value;
         setInput(list);
     }
 
@@ -23,17 +23,16 @@ function UploadImages() {
 
     return (
         <>
-        {input.map((x, i) => {
+        {input.map((element, i) => {
             return(
-                <div className='div__upload-images' key={i}>
-                    <input type="text" placeholder="Insertar https://" name="img" required onChange={e => handleInputChange(e, i)} />
+                <div className='div__upload-images div__btn-actions' key={i}>
+                    <input type="text" placeholder="Insertar https://" name="img" value={element.image} required onChange={e => handleInputChange(e, i)} />
                     {input.length !== 1 && input.length !== i + 1 &&
                         <a className='btn btn__remove-img' onClick={()=> handleRemoveClick(i)}>Borrar</a>
                     }
                     {input.length === i + 1 &&
                         <a className='btn btn__add-img' onClick={handleAddClick}>Agregar</a>
                     }
-                    {console.log(i)}
                 </div>
             )
         })}

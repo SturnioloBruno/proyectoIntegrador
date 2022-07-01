@@ -28,7 +28,6 @@
 .section__admin-create form label {
     display: flex;
     flex-direction: column;
-    margin-top: 1.5em;
 }
 
 .section__admin-create form label span {
@@ -40,10 +39,6 @@
 .section__admin-create form textarea {
     height: 150px;
     width: 100%;
-}
-
-.section__admin-create .section__info-attributes {
-    padding-top: 0;
 }
 
 .section__admin-create .section__info-policies {

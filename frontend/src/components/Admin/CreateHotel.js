@@ -3,11 +3,11 @@ import HeaderProduct from "../Products/HeaderProduct";
 import "../../styles/Admin/CreateHotel.css";
 import Api from "../Helpers/Api";
 import UploadImages from './UploadImages';
+import UploadAttributes from "./UploadAttributes";
 
 function CreateHotel() {
     const [categories, setCategories] = useState(null);
     const [cities, setCities] = useState(null);
-    const [characteristics, setCharacteristics] = useState(null);
     
     useEffect(()=>{
         //Cargo categorías
@@ -43,23 +43,6 @@ function CreateHotel() {
             })
         }
         getCities();
-
-        //Cargo características
-        const getCharacteristics = async()=>{
-            await fetch("http://localhost:8080/characteristics/getList/", {
-                method:'GET',
-                headers:{
-                    'Content-Type':'application/json'
-                }
-            })
-            .then(function(response){
-                return response.json();
-            })
-            .then(function (characteristics) {
-                setCharacteristics(characteristics);
-            })
-        }      
-        getCharacteristics();
     }, []);
 
     return (
@@ -108,20 +91,7 @@ function CreateHotel() {
                 </section>
                 <section className='section__info-attributes'>
                     <h3>Agregar atributos</h3>
-                    <div className='div__info-attributes'>
-                        <label>
-                            <span>Nombre</span>
-                            <select name="attribute" className="select__attribute" required>
-                                {characteristics?.map((characteristic, i) => {
-                                    return <option key={i} value={characteristic.title}>{characteristic.title}</option>;
-                                })}
-                            </select>
-                        </label>
-                        <label>
-                            <span>Ícono</span>
-                            <input type="text" name="icon_class" value="hola" disabled />
-                        </label>
-                    </div>
+                    <UploadAttributes />
                 </section>
                 <section className='section__info-policies'>
                     <h3>Políticas del producto</h3>

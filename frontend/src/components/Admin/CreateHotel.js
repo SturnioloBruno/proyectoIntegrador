@@ -43,6 +43,29 @@ function CreateHotel() {
             })
         }
         getCities();
+
+        //Inserto nuevo producto
+        const insertProduct = async()=>{
+            await fetch("http://localhost:8080/products/insert/", {
+                method:'POST',
+                headers: {
+                    "Access-Control-Allow-Headers" : "Content-Type",
+                    'Access-Control-Allow-Origin': "*",
+                    'Content-Type': 'application/json'
+                }, body: JSON.stringify({
+                    address: document.querySelector(".label__address-info input").value,
+                    name: document.querySelector(".label__name-info input").value,
+                    descTitle: document.querySelector(".label__name-info input").value,
+                    desc: document.querySelector(".label__description textarea").value,
+                    x: document.querySelector(".label__latitude-info input").value,
+                    y: document.querySelector(".label__longitude-info input").value
+                })
+            })
+            .then((response) => {
+                return response.json();
+            })
+        }
+        insertProduct();
     }, []);
 
     return (
@@ -52,7 +75,7 @@ function CreateHotel() {
             <h3>Crear propiedad</h3>
             <form method='POST'>
                 <section className='section__info-hotel'>
-                    <label>
+                    <label className='label__name-info'>
                         <span>Nombre de la propiedad</span>
                         <input type="text" placeholder="Hotel Hermirage" name="hotel_name" required />
                     </label>
@@ -64,7 +87,7 @@ function CreateHotel() {
                             })}
                         </select>
                     </label>
-                    <label>
+                    <label className='label__address-info'>
                         <span>Dirección</span>
                         <input type="text" placeholder="Av. Colón 1643" name="address" required />
                     </label>
@@ -76,11 +99,11 @@ function CreateHotel() {
                             })}
                         </select>
                     </label>
-                    <label>
+                    <label className='label__latitude-info'>
                         <span>Latitud</span>
                         <input type="text" placeholder="-59.1235862000" name="latitude" required />
                     </label>
-                    <label>
+                    <label className='label__longitude-info'>
                         <span>Longitud</span>
                         <input type="text" placeholder="-34.5641632000" name="longitude" required />
                     </label>

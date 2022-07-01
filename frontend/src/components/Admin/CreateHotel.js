@@ -5,7 +5,7 @@ import Api from "../Helpers/Api";
 import UploadImages from './UploadImages';
 import UploadAttributes from "./UploadAttributes";
 
-function CreateHotel() {
+function CreateHotel({type}) {
     const [categories, setCategories] = useState(null);
     const [cities, setCities] = useState(null);
     
@@ -70,7 +70,7 @@ function CreateHotel() {
 
     return (
         <>
-        <HeaderProduct name="Administración de productos" />
+        <HeaderProduct name="Administración de productos" type={type} />
         <section className="section__admin-create">
             <h3>Crear propiedad</h3>
             <form method='POST'>

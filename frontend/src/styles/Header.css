@@ -127,15 +127,20 @@ header.div__open-menu {
     border-bottom: 1px solid var(--light-grey);
 }
 
-.div__open-menu .div__menu-bar .ul__bar-buttons > li > span {
+.div__open-menu .div__menu-bar .ul__bar-buttons > li {
     color: var(--grey);
     padding: 1.5em 0;
+    text-align: right;
+}
+
+.div__open-menu .div__menu-bar .ul__bar-buttons > li span {
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    margin-bottom: 1em;
 }
 
-.div__open-menu .div__menu-bar .ul__bar-buttons > li > span::after {
+.div__open-menu .div__menu-bar .ul__bar-buttons > li span::after {
     content: "";
     width: 16px;
     height: 16px;
@@ -236,7 +241,8 @@ body.register .div__open-menu .div__menu-bar .ul__bar-buttons li {
         border-radius: 5px;
         margin-left: 1.5em;
         width: calc(50% - 1.5em);
-        top: 50px;
+        top: 62px;
+        right: 0;
     }
 
     .ul__role-menu li {
@@ -266,7 +272,7 @@ body.register .div__open-menu .div__menu-bar .ul__bar-buttons li {
         align-items: center;
     }
 
-    .ul__bar-buttons > li > span {
+    .ul__bar-buttons > li {
         padding: .8em 2em;
         border-radius: 5px;
         font-weight: 700;
@@ -276,14 +282,15 @@ body.register .div__open-menu .div__menu-bar .ul__bar-buttons li {
         cursor: pointer;
     }
 
-    .ul__bar-buttons span:hover, .ul__bar-buttons a:active, .ul__role-menu a:hover {
+    .ul__bar-buttons > li:hover, .ul__role-menu a:hover {
         border: none;
         color: white;
         background: var(--orange);
+        border: 1px solid var(--orange);
     }
 
-    .ul__bar-buttons span:hover {
-        border: 1px solid var(--orange);
+    .ul__role-menu a:hover {
+        border: none;
     }
 
     .div__menu-login.admin {

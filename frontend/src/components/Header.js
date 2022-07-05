@@ -7,7 +7,6 @@ import { useMediaQuery } from 'react-responsive';
 
 function Header() {
     const {user, setUser} = useContext(UserContext);
-    let [typeLogin, setTypeLogin] = useState(false);
     let [typeRegister, setTypeRegister] = useState(false);
     const role = localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")).role.roleName : "";
     const mobile = useMediaQuery({ query: '(max-width: 768px)' });
@@ -26,18 +25,11 @@ function Header() {
     function clicButton() {
         document.querySelector("header").className = "";
         document.body.style.overflow = 'unset';
-        if(typeLogin == true) setTypeLogin(typeLogin = false);
         if(typeRegister == true) setTypeRegister(typeRegister = false);
-    }
-
-    const handleChangeLogin = () => {
-        typeLogin == false ? setTypeLogin(typeLogin = true) : setTypeLogin(typeLogin = false);
-        if(typeLogin == true) setTypeRegister(typeRegister = false);
     }
 
     const handleChangeRegister = () => {
         typeRegister == false ? setTypeRegister(typeRegister = true) : setTypeRegister(typeRegister = false);
-        if(typeRegister == true) setTypeLogin(typeLogin = false);
     }
 
     return (
@@ -64,18 +56,10 @@ function Header() {
                             </ul>}
                             {!user &&
                             <ul className="ul__bar-buttons">
-                                <li>
-                                    <span onClick={handleChangeLogin}>Iniciar sesión</span>
-                                    {typeLogin == true && typeRegister == false ? 
-                                    <ul className='ul__role-menu'>
-                                        <li><Link to="/login" onClick={clicButton}>Usuarios</Link></li>
-                                        <li><Link to="/admin/login" onClick={clicButton}>Administradores</Link></li>
-                                    </ul>
-                                    : ""}
-                                </li>
+                                <li>Iniciar sesión</li>
                                 <li>
                                     <span onClick={handleChangeRegister}>Crear cuenta</span>
-                                    {typeRegister == true && typeLogin == false ?
+                                    {typeRegister == true ?
                                     <ul className='ul__role-menu'>
                                         <li><Link to="/register" onClick={clicButton}>Usuarios</Link></li>
                                         <li><Link to="/admin/register" onClick={clicButton}>Administradores</Link></li>

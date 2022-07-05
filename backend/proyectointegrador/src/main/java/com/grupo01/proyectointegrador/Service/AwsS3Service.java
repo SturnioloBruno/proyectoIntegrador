@@ -12,6 +12,8 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
+import static java.io.File.createTempFile;
+
 @Service
 public class AwsS3Service {
 
@@ -24,7 +26,7 @@ public class AwsS3Service {
     public String uploadFile(String urlString, String product) throws Exception {
         URL url = new URL(urlString);
         String fileName = product + "_"+System.currentTimeMillis()+urlString.substring(urlString.lastIndexOf(".")) ;
-        File mainFile = new File(fileName);
+        File mainFile =  createTempFile(fileName,urlString.substring(urlString.lastIndexOf(".")),null);
         try (InputStream in = url.openStream();
              BufferedInputStream bis = new BufferedInputStream(in);
              FileOutputStream fos = new FileOutputStream(mainFile)) {
@@ -37,6 +39,8 @@ public class AwsS3Service {
 
             PutObjectRequest request = new PutObjectRequest(nameBucket+"/images",fileName,mainFile);
             amazonS3.putObject(request);
+
+            mainFile.deleteOnExit();
 
         } catch (IOException e) {
             e.printStackTrace();

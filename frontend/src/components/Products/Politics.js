@@ -8,11 +8,11 @@ function Politics({policy}) {
         <section className="section__politics section__title-border section__booking-politics">
             <h2>Qué tenés que saber</h2>
             <ul>
-                {policy?.map((policy) => (
+                {policy?.map((policy,index) => (
                     <li key={policy.policy.id}>
                         <h3>{policy.policy.title}</h3>
                         <ul>
-                            {listPolicy[policy.policy.id - 1]?.map((list, i) => (
+                            {listPolicy[index]?.map((list, i) => (
                                 <li key={i}>{list}</li>
                             ))}
                         </ul>

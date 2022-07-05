@@ -3,8 +3,8 @@ import "../../styles/Admin/UploadAttributes.css";
 
 function UploadImages() {
     const [characteristics, setCharacteristics] = useState(null);
-    const [input, setInput] = useState([{title: '', icon: ''}]);
-    const arrayOptions = [{title: '', icon: ''}]
+    const [input, setInput] = useState([{id:'', title: '', icon: ''}]);
+    const arrayOptions = []
 
     useEffect(()=>{
         //Cargo características
@@ -25,17 +25,17 @@ function UploadImages() {
         getCharacteristics();
     }, []);
 
-    const handleInputChange = (e, i) => {
-        const {value} = e.target;
+    const handleInputChange = (e, i) => {   
+        const {value} = e.target;  
         const list = [...input];
-        list[i].title = value;
-        const filter = arrayOptions.filter(element => element.title == value);
+        list[i].id = value;
+        const filter = arrayOptions.filter(element => element.id ==value);
         list[i].icon = filter[0].icon;
         setInput(list);
     }
 
     const handleAddClick = () => {
-        setInput([...input, {title: '', icon: ''}]);
+        setInput([...input, {id:'',title: '', icon: ''}]);
     }
 
     const handleRemoveClick = i => {
@@ -52,11 +52,12 @@ function UploadImages() {
                     <div className="div__label-input">
                         <label>
                             <span>Nombre</span>
-                            <select name="attribute" className="select__option" required value={element.title} onChange={e => handleInputChange(e, i)}>
+                            <select name="attribute" className="select__option" id="select__option-attribute" required
+                             value={element.id} onChange={e => handleInputChange(e, i)}>
                                 <option defaultValue="Seleccione una opción">Seleccione una opción</option>
                                 {characteristics?.map((characteristic, i) => {
-                                    arrayOptions.push({title: characteristic.title, icon: characteristic.charactClass})
-                                    return <option key={i} value={characteristic.title}>{characteristic.title}</option>;
+                                    arrayOptions.push({id:characteristic.id,title: characteristic.title, icon: characteristic.charactClass})
+                                    return <option key={i} value={characteristic.id}>{characteristic.title}</option>;
                                 })}
                             </select>
                         </label>

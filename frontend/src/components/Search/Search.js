@@ -80,10 +80,10 @@ function Search() {
       
         //Armo fechas, al mes se le suma 1 porque los meses van de 0 a 11.
         start = (startDate._d? startDate._d.getFullYear() : startDate.getFullYear()) + "-"+ 
-        ((startDate._d? startDate._d.getMonth() : startDate.getMonth()+1)<=9?"0"+(startDate._d? startDate._d.getMonth() : startDate.getMonth()+1):(startDate._d? startDate._d.getMonth() : startDate.getMonth()+1))+ "-" +
+        ((startDate._d? startDate._d.getMonth() : startDate.getMonth()+1)<=9?"0"+(startDate._d? startDate._d.getMonth()+1 : startDate.getMonth()+1):(startDate._d? startDate._d.getMonth() : startDate.getMonth()+1))+ "-" +
          (startDate._d? startDate._d.getDate()>9?startDate._d.getDate():"0"+startDate._d.getDate() : startDate.getDate()>9?startDate.getDate():"0"+startDate.getDate())
         end = (endDate._d? endDate._d.getFullYear() : endDate.getFullYear()) + "-"+ 
-        ((endDate._d? endDate._d.getMonth() : endDate.getMonth()+1)<=9?"0"+(endDate._d? endDate._d.getMonth() : endDate.getMonth()+1):(endDate._d? endDate._d.getMonth() : endDate.getMonth()+1))+ "-" + 
+        ((endDate._d? endDate._d.getMonth() : endDate.getMonth()+1)<=9?"0"+(endDate._d? endDate._d.getMonth()+1 : endDate.getMonth()+1):(endDate._d? endDate._d.getMonth() : endDate.getMonth()+1))+ "-" + 
         (endDate._d? endDate._d.getDate()>9?endDate._d.getDate():"0"+endDate._d.getDate() : endDate.getDate()>9?endDate.getDate():"0"+endDate.getDate()) 
         }
        

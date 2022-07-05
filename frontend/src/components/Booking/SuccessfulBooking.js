@@ -59,7 +59,7 @@ function SuccessfulBooking({type}) {
                 }
                  {type === "confimation-ok" &&
                     <>
-                    <p>Email confirmado con con éxito</p>
+                    <p>Email confirmado con éxito</p>
                     <Link to="/" className="btn button__solid-type">Volver</Link>
                     </>
                 }

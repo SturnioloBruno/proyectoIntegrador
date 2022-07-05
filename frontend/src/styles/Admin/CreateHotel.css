@@ -1,7 +1,3 @@
-.section__header-product {
-    padding-top: 98px;
-}
-
 .section__admin-create {
     padding: 0 0 1.5em;
     background-color: #E5E5E5;
@@ -67,10 +63,6 @@
 }
 
 @media (min-width: 768px) {
-    .section__header-product {
-        padding-top: 114px;
-    }
-
     .section__admin-create {
         padding: 2em 5%;
     }

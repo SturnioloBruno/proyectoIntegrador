@@ -35,7 +35,7 @@ function App() {
         <Route path="/admin/register" element={<Register type="register" />} />
         <Route path="/product/:id/booking" element={<Booking type="booking" />} />
         <Route path="/booking-ok" element={<SuccessfulBooking type="booking-ok" />} />
-        <Route path="/administracion" element={<CreateHotel type="create" />} />
+        <Route path="/administration" element={<CreateHotel type="create" />} />
         <Route path="/create-ok" element={<SuccessfulBooking type="create-ok" />} />
         <Route path="/my-bookings" element={<BookingList type="booking-list" />} />
         <Route path="/accountconfirmation/:id" element={<SuccessfulBooking type="confimation-ok" />} />

@@ -17,8 +17,8 @@ function Login({ type }) {
 
         const emailValue =  document.querySelector("#email_login");
         const passwordValue = document.querySelector("#password_login");
-        let ret;
-
+        let ret ;
+ 
         //LIMPIO ERRORES 
         setError({})
 

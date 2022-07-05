@@ -56,7 +56,7 @@ function Header() {
                             </ul>}
                             {!user &&
                             <ul className="ul__bar-buttons">
-                                <li>Iniciar sesión</li>
+                                <li><Link to="/login" onClick={clicButton}>Iniciar sesión</Link></li>
                                 <li>
                                     <span onClick={handleChangeRegister}>Crear cuenta</span>
                                     {typeRegister == true ?

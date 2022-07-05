@@ -133,6 +133,10 @@ header.div__open-menu {
     text-align: right;
 }
 
+.div__open-menu .div__menu-bar .ul__bar-buttons > li > a {
+    color: var(--grey);
+}
+
 .div__open-menu .div__menu-bar .ul__bar-buttons > li span {
     display: flex;
     align-items: center;
@@ -241,7 +245,7 @@ body.register .div__open-menu .div__menu-bar .ul__bar-buttons li {
         border-radius: 5px;
         margin-left: 1.5em;
         width: calc(50% - 1.5em);
-        top: 62px;
+        top: 50px;
         right: 0;
     }
 
@@ -272,7 +276,7 @@ body.register .div__open-menu .div__menu-bar .ul__bar-buttons li {
         align-items: center;
     }
 
-    .ul__bar-buttons > li {
+    .ul__bar-buttons > li span, .ul__bar-buttons > li > a {
         padding: .8em 2em;
         border-radius: 5px;
         font-weight: 700;
@@ -282,7 +286,7 @@ body.register .div__open-menu .div__menu-bar .ul__bar-buttons li {
         cursor: pointer;
     }
 
-    .ul__bar-buttons > li:hover, .ul__role-menu a:hover {
+    .ul__bar-buttons > li span:hover, .ul__bar-buttons > li > a:hover, .ul__role-menu a:hover {
         border: none;
         color: white;
         background: var(--orange);

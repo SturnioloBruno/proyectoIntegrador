@@ -1,0 +1,5 @@
+@media (min-width: 1280px) {
+    .section__favourites-list {
+        min-height: calc(100vh - 234px);
+    }
+}

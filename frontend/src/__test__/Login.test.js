@@ -130,7 +130,7 @@ describe('Verificar validaciones en los inputs', () => {
         fireEvent.change(passwordInput, {target: {value: 'Prueba'}})
         fireEvent.click(button);
          expect(screen.getByText("El campo debe contener al menos un número")).toBeTruthy();
-    });
+    }); 
     test('Verificar cambio del icono de ojo al ser clickeado' , async () => {
         setup();
         const eyeButton = screen.getByRole('link', {name: 'Show/Hide'});

@@ -160,7 +160,7 @@ describe('Verificar validaciones en los inputs', () => {
         fireEvent.change(passwordInput, {target: {value: 'PRUEBA'}})
         fireEvent.click(button);
          expect(screen.getByText("El campo debe contener al menos una letra minúscula")).toBeTruthy();
-    });
+    }); 
     test('Verificar que input password contiene al menos un número' , async () => {
         setup();
         const emailInput = screen.getByLabelText('Correo electrónico');

@@ -14,6 +14,7 @@
     "emailjs-com": "^3.2.0",
     "leaflet": "^1.8.0",
     "leaflet-defaulticon-compatibility": "^0.1.1",
+    "node-fetch": "^3.2.6",
     "react": "^18.2.0",
     "react-bnb-gallery": "^1.4.4",
     "react-datepicker": "^4.8.0",
@@ -35,7 +36,7 @@
       "!src/index.js",
       "!src/home.js",
       "!src/Share.js",
-      "!src/components/Products/*"
+      "!src/components/Products/Politics.js"
     ]
   },
   "scripts": {
@@ -66,7 +67,9 @@
     "@testing-library/dom": "^8.14.0",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.2.0",
+    "fetch-mock-jest": "^1.5.1",
     "jest": "^28.1.1",
+    "jest-fetch-mock": "^3.0.3",
     "jest-watch-typeahead": "^1.1.0",
     "react-test-renderer": "^18.1.0"
   }

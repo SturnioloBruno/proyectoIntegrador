@@ -85,7 +85,7 @@ describe ('Evento onClick', () => {
         expect(screen.getByText(/Crear cuenta/)).toBeInTheDocument();
         expect(screen.getByText(/Iniciar sesión/)).toBeInTheDocument();
     }); 
-
+ 
     test('Verificar evento onclick icono X para salir- mobile', async () => {
         setup();
         const boton_salir = screen.getByRole('link',{name:"Abrir/Cerrar"});

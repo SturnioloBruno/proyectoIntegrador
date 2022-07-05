@@ -57,7 +57,7 @@ function CreateHotel() {
                         <span>Categoría</span>
                         <select name="category" className="select__option" required>
                             {categories?.map((category, i) => {
-                                return <option key={i} value={category.title}>{category.title}</option>;
+                                return <option key={i} value={category.title} >{category.title}</option>;
                             })}
                         </select>
                     </label>
@@ -69,7 +69,7 @@ function CreateHotel() {
                         <span>Ciudad</span>
                         <select name="city" className="select__option" required>
                             {cities?.map((city, i) => {
-                                return <option key={i} value={city.cityName}>{city.cityName}</option>;
+                                return <option key={i} value={city.cityName} >{city.cityName}</option>;
                             })}
                         </select>
                     </label>

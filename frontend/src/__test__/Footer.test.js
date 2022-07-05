@@ -35,5 +35,5 @@ describe ('Renderizado de elementos',() =>{
         setup();
         expect(screen.getByText('Instagram')).toBeTruthy();
     }); 
-  
+
 });

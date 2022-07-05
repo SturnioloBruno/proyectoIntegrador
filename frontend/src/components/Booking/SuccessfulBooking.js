@@ -5,9 +5,9 @@ function SuccessfulBooking({type}) {
     return (
         <section className="section__successful-booking">
             <div>
-                {type === "booking-ok" &&
+                {type  === "booking-ok" &&
                     <>
-                    <h2>¡Muchas gracias!</h2>
+                    <h2 >¡Muchas gracias!</h2>
                     <p>Su reserva se ha realizado con éxito</p>
                     <Link to="/" className="btn button__solid-type">ok</Link>
                     </>

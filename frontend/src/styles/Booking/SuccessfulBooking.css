@@ -1,5 +1,5 @@
 .section__successful-booking {
-    min-height: calc(100vh - 50.2px);
+    min-height: calc(100vh - 72px);
     background-color: var(--light-grey);
 }
 

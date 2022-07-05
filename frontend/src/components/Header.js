@@ -46,7 +46,7 @@ function Header() {
             <div>
                 <Link to="#" className="a__button-nav" onClick={clicNav}>Abrir/Cerrar</Link>
                 <div className="div__menu-bar">
-                    <div className={`div__menu-login ${role == "USER" ? "admin" : ""}`}>
+                    <div className={`div__menu-login ${role == "ADMIN" ? "admin" : ""}`}>
                         {user ?
                         <div className="div__user-login">
                             <span>{user?.userName[0] + user?.userSurname[0]}</span>
@@ -54,11 +54,11 @@ function Header() {
                         </div>
                         :<p>Menú</p>
                         }
-                        {user && role == "USER" && !mobile && <Link to="/administration">Administración</Link>}
+                        {user && role == "ADMIN" && !mobile && <Link to="/administration">Administración</Link>}
                     </div>
                     <div className="div__menu-navigation">
                         <nav>
-                            {user && role == "USER" && mobile &&
+                            {user && role == "ADMIN" && mobile &&
                             <ul className="ul__bar-admin">
                                 <li><Link to="/administration">Administración</Link></li>
                             </ul>}

@@ -14,60 +14,60 @@ const setup = () => render(
     </BrowserRouter>
     );
 
-    describe('Verificar renderizado del titulos de la sección ', () => {
+    describe('Verificar renderizado de elementos de la pantalla', () => {
         test('Verificar renderizado del titulo de la sección',() => {
             setup();
             expect(screen.getByText('Administración de productos')).toBeInTheDocument();
         });
-        test('Verificar renderizado del titulo de la sección 2',() => {
+        test('Verificar renderizado del titulo del bloque',() => {
             setup();
             expect(screen.getByText('Crear propiedad')).toBeInTheDocument();
         });
-        test('Verificar renderizado del titulo de la sección 3',() => {
+        test('Verificar renderizado de label- Nombre',() => {
             setup();
             expect(screen.getByText('Nombre de la propiedad')).toBeInTheDocument();
         });
-        test('Verificar renderizado del titulo de la sección 4',() => {
+        test('Verificar renderizado de label- Categoria',() => {
             setup();
             expect(screen.getByText('Categoría')).toBeInTheDocument();
         });
-        test('Verificar renderizado del titulo de la sección 5',() => {
+        test('Verificar renderizado de label- Dirección',() => {
             setup();
             expect(screen.getByText('Dirección')).toBeInTheDocument();
         });
-        test('Verificar renderizado del titulo de la sección 6',() => {
+        test('Verificar renderizado de label- Ciudad',() => {
             setup();
             expect(screen.getByText('Ciudad')).toBeInTheDocument();
         });
-        test('Verificar renderizado del titulo de la sección 7',() => {
+        test('Verificar renderizado del label- Latitud',() => {
             setup();
             expect(screen.getByText('Latitud')).toBeInTheDocument();
         });
-        test('Verificar renderizado del titulo de la sección 8',() => {
+        test('Verificar renderizado del label- Longitud',() => {
             setup();
             expect(screen.getByText('Longitud')).toBeInTheDocument();
         });
-        test('Verificar renderizado del titulo de la sección 9',() => {
+        test('Verificar renderizado del titulo del bloque 2',() => {
             setup();
             expect(screen.getByText('Agregar atributos')).toBeInTheDocument();
         });
-        test('Verificar renderizado del titulo de la sección 10',() => {
+        test('Verificar renderizado del titulo del bloque 3',() => {
             setup();
             expect(screen.getByText('Políticas del producto')).toBeInTheDocument();
         });
-        test('Verificar renderizado del titulo de la sección 11',() => {
+        test('Verificar renderizado del titulo de politicas 1',() => {
             setup();
             expect(screen.getByText('Normas de la casa')).toBeInTheDocument();
         });
-        test('Verificar renderizado del titulo de la sección 12',() => {
+        test('Verificar renderizado del titulo de politicas 2',() => {
             setup();
             expect(screen.getByText('Salud y seguridad')).toBeInTheDocument();
         });
-        test('Verificar renderizado del titulo de la sección 13',() => {
+        test('Verificar renderizado del titulo de politicas 3',() => {
             setup();
             expect(screen.getByText('Política de cancelación')).toBeInTheDocument();
         });
-        test('Verificar renderizado del titulo de la sección 14',() => {
+        test('Verificar renderizado del titulo del bloque 4',() => {
             setup();
             expect(screen.getByText('Cargar imágenes')).toBeInTheDocument();
         });

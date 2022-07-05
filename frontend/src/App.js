@@ -30,7 +30,9 @@ function App() {
         <Route path="/search/" element={<Result type="search" title="Resultado de búsqueda" />} />
         <Route path="/categories/" element={<Result type="categories" />} />
         <Route path="/login" element={<Login  type="login" />} />
+        <Route path="/admin/login" element={<Login type="login" />} />
         <Route path="/register" element={<Register type="register" />} />
+        <Route path="/admin/register" element={<Register type="register" />} />
         <Route path="/product/:id/booking" element={<Booking type="booking" />} />
         <Route path="/booking-ok" element={<SuccessfulBooking type="booking-ok" />} />
         <Route path="/administracion" element={<CreateHotel type="create" />} />

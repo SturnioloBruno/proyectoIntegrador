@@ -118,7 +118,6 @@ function Register({type}) {
               });
         }
         register();
-
     }
 
     //VALIDO CAMPO EMAIL

@@ -41,10 +41,9 @@ public class ProductController {
 
     @Operation(summary = "crea un producto")
     @PostMapping("/insert")
-    public ResponseEntity<Product> createProduct(@RequestBody Product product)throws Exception{
-        return ResponseEntity.ok(productService.crearProduct(product));
+    public ResponseEntity<Product> createProduct(@RequestBody ProductDTO product)throws Exception{
+        return ResponseEntity.status(201).body(productService.saveProduct(product));
     }
-
 
     @Operation(summary = "actualiza porductoDTO")
     @PutMapping("/update")

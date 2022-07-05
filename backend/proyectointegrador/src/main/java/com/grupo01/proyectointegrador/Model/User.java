@@ -3,6 +3,7 @@ package com.grupo01.proyectointegrador.Model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -29,6 +30,9 @@ public class User  {
     @Column(name = "user_city", nullable = false)
     private String userCity;
 
+    @Column(name = "user_confirmation", nullable = false)
+    private boolean confirmation;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "role_id", nullable = false)
     private Role roleId;
@@ -39,23 +43,36 @@ public class User  {
     @OneToMany(mappedBy = "userId", fetch = FetchType.EAGER)
     private Set<Punctuation> punctuations;
 
+    @OneToMany(mappedBy = "userId", fetch = FetchType.EAGER)
+    private List<Favourite> favourites;
+
     public User() {}
 
-    public User(Long id, String userName, String userSurname, String userEmail, String userPassword, String userCity) {
+    public User(Long id, String userName, String userSurname, String userEmail, String userPassword, String userCity,boolean confirmation) {
         this.id = id;
         this.userName = userName;
         this.userSurname = userSurname;
         this.userEmail = userEmail;
         this.userPassword = userPassword;
         this.userCity = userCity;
+        this.confirmation = confirmation;
     }
 
-    public User(String userName, String userSurname, String userEmail, String userPassword, String userCity) {
+    public User(String userName, String userSurname, String userEmail, String userPassword, String userCity,boolean confirmation) {
         this.userName = userName;
         this.userSurname = userSurname;
         this.userEmail = userEmail;
         this.userPassword = userPassword;
         this.userCity = userCity;
+        this.confirmation = confirmation;
+    }
+
+    public boolean isConfirmation() {
+        return confirmation;
+    }
+
+    public void setConfirmation(boolean confirmation) {
+        this.confirmation = confirmation;
     }
 
     public Long getId() {

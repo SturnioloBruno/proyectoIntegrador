@@ -1,5 +1,6 @@
 package com.grupo01.proyectointegrador.Service;
 
+import com.grupo01.proyectointegrador.Exception.NotAcceptableException;
 import com.grupo01.proyectointegrador.Model.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -26,6 +27,10 @@ public class UserDetailsService implements org.springframework.security.core.use
             Set<GrantedAuthority> grantList = new HashSet<GrantedAuthority>();
 
             if(user!=null){
+                //valido que este confirmada la cuenta
+                if(!user.isConfirmation()){
+                    return new User("NotAccountConfirmation",user.getUserPassword(),grantList);
+                }
                 grantList.add(new SimpleGrantedAuthority(user.getRoleId().getRoleName()));
                 return new User(user.getUserEmail(),  user.getUserPassword(), grantList);
             }

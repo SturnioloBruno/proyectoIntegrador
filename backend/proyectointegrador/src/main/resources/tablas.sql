@@ -1,5 +1,5 @@
 SET FOREIGN_KEY_CHECKS = 0;
-DROP TABLE IF EXISTS `punctuations`, `cities`, `images`, `policies`, `products_policies`, `characteristics`, `products_characteristics`,`products`,`categories`;
+DROP TABLE IF EXISTS `punctuations`, `cities`, `images`, `policies`, `products_policies`, `characteristics`, `products_characteristics`,`products`,`categories`, `bookings`, `favourites`;
 SET FOREIGN_KEY_CHECKS = 1;
 
 CREATE TABLE IF NOT EXISTS categories (
@@ -46,6 +46,7 @@ CREATE TABLE IF NOT EXISTS images (
 CREATE TABLE IF NOT EXISTS characteristics (
 	charact_id INT NOT NULL AUTO_INCREMENT,
     charact_title VARCHAR(100) NOT NULL,
+    charact_class VARCHAR(100) NOT NULL,
     PRIMARY KEY(charact_id)
 );
 
@@ -88,6 +89,7 @@ user_surname VARCHAR(100) NOT NULL,
 user_email VARCHAR(100) NOT NULL,
 user_password CHAR(60) NOT NULL,
 user_city VARCHAR(100) NOT NULL,
+user_confirmation TINYINT not null,
 PRIMARY KEY(user_id),
 FOREIGN KEY (role_id) REFERENCES roles(role_id)
 );
@@ -111,20 +113,29 @@ booking_start_date DATE,
 booking_finish_date DATE,
 booking_vaccine_covid BIT,
 booking_userinfo_covid VARCHAR(500),
-booking_city VARCHAR(500),
+booking_city varchar(500),
 PRIMARY KEY(booking_id),
+FOREIGN KEY (prod_id) REFERENCES products(prod_id),
+FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+
+CREATE TABLE IF NOT EXISTS favourites (
+fav_id INT NOT NULL AUTO_INCREMENT,
+prod_id INT NOT NULL,
+user_id INT NOT NULL,
+PRIMARY KEY(fav_id),
 FOREIGN KEY (prod_id) REFERENCES products(prod_id),
 FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
 
 INSERT INTO roles (role_name) VALUES("ADMIN"),("USER");
 
-INSERT INTO users (role_id, user_name, user_surname, user_email, user_password, user_city)
+INSERT INTO users (role_id, user_name, user_surname, user_email, user_password, user_city,user_confirmation)
 VALUES
-(2, "Maria", "Acosta", "maria@email.com", "password1", 1),
-(2, "Juan", "Corral", "juan@email.com", "password2", 2),
-(2, "Valeria", "Lopez", "valeria@email.com", "password3", 3),
-(2, "Franco", "Elias", "franco@email.com", "password4", 4);
+(2, "Maria", "Acosta", "maria@email.com", "password1", 1,0),
+(2, "Juan", "Corral", "juan@email.com", "password2", 2,0),
+(2, "Valeria", "Lopez", "valeria@email.com", "password3", 3,0),
+(2, "Franco", "Elias", "franco@email.com", "password4", 4,0);
 
 INSERT INTO categories (cat_title,cat_description,cat_url_img)
 VALUES ("Hotel","821.458 hoteles","https://images.unsplash.com/photo-1629140727571-9b5c6f6267b4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1527&q=80"),
@@ -149,18 +160,18 @@ VALUES
 
 INSERT INTO products (cat_id,city_id,prod_address,prod_name,prod_stars,prod_desc_title,prod_desc,prod_x,prod_y,prod_score,prod_punctuation)
 VALUES
-(1, 1, "San Martin 231", "Hotel el Pacífico", 5,"Hotel el Pacífico", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed varius sed nibh sit amet dignissim. Morbi commodo turpis nulla.", "-59.1235862000", "-34.5641632000", "MUY BUENO",8),
-(2, 2, "Lavalle 345", "Hostel Argentina", 3, "Hostel Argentina", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed varius sed nibh sit amet dignissim. Morbi commodo turpis nulla.", "-59.1235862000", "-34.5641632000", "BUENO",7),
-(3, 3, "Cordoba 999", "Dpto La Ventana", 4, "Depto La Ventana", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed varius sed nibh sit amet dignissim. Morbi commodo turpis nulla.", "-59.1235862000", "-34.5641632000", "MUY BUENO",9),
-(4, 4, "Mendoza 1020", "Bed and Breakfast Paraíso", 2, "Bed and Breakfast Paraíso", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed varius sed nibh sit amet dignissim. Morbi commodo turpis nulla.", "-59.1235862000", "-34.5641632000", "MALO",3),
-(1, 5, "Alsina 45", "Hotel El Mar", 3, "Hotel El Mar", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed varius sed nibh sit amet dignissim. Morbi commodo turpis nulla.", "-59.1235862000", "-34.5641632000", "BUENO",6),
-(2, 6, "San Martin 5300", "Hostel Los Árboles", 4,"Hostel Los Árboles", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed varius sed nibh sit amet dignissim. Morbi commodo turpis nulla.", "-59.1235862000", "-34.5641632000", "EXCELENTE",10),
-(3, 7, "9 de Julio 33", "Dpto Santa Fe", 3, "Dpto Santa Fe", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed varius sed nibh sit amet dignissim. Morbi commodo turpis nulla.", "-59.1235862000", "-34.5641632000", "BUENO",7),
-(4, 8, "Francia 102", "Bed and Breakfast Oasis", 5, "Bed and Breakfast Oasis", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed varius sed nibh sit amet dignissim. Morbi commodo turpis nulla.", "-59.1235862000", "-34.5641632000", "MUY BUENO",8),
-(1, 9, "Mitre 78", "Hotel Los Sueños", 4, "Hotel Los Sueños", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed varius sed nibh sit amet dignissim. Morbi commodo turpis nulla.", "-59.1235862000", "-34.5641632000", "MUY BUENO",7),
-(2, 10, "Corrientes 582", "Hostel Cristal", 1, "Hotel Cristal", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed varius sed nibh sit amet dignissim. Morbi commodo turpis nulla.", "-59.1235862000", "-34.5641632000", "MALO",2),
-(3, 11, "La Paz 10","Dpto Las Estrellas", 3, "Dpto Las Estrellas", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed varius sed nibh sit amet dignissim. Morbi commodo turpis nulla.", "-59.1235862000", "-34.5641632000", "BUENO",5),
-(4, 12, "Pasco 2404", "Bed and Breakfast Palace", 3, "Bed and Breakfast Palace", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed varius sed nibh sit amet dignissim. Morbi commodo turpis nulla.", "-59.1235862000", "-34.5641632000", "BUENO",5);
+(1, 1, "San Martin 231", "Hotel el Pacífico", 5,"Hotel el Pacífico", "Hotel el Pacífico, ubicado a tan solo 940 metros del centro, ofrece una grandiosa calidad en sus alojamientos junto con varios servicios para garantizar la comodidad del turista.", "-59.1235862000", "-34.5641632000", "MUY BUENO",8),
+(2, 2, "Lavalle 345", "Hostel Argentina", 3, "Hostel Argentina", "Hostel Argentina, ubicado a tan solo 940 metros del centro, le garantiza a los turistas experiencia agradable durante toda su estadía, con habitaciones tanto compartidas como privadas, y servicios pensados en lo mejor para el turista", "-59.1235862000", "-34.5641632000", "BUENO",7),
+(3, 3, "Cordoba 999", "Dpto La Ventana", 4, "Depto La Ventana", "El Departamento La Ventana, ubicado a tan solo 940 metros del centro, es un departamento confortable y moderno, para que el turista siempre se sienta como en casa. Ofrecemos una serie de servicios para garantizarle la comodidad.", "-59.1235862000", "-34.5641632000", "MUY BUENO",9),
+(4, 4, "Mendoza 1020", "Bed and Breakfast Paraíso", 2, "Bed and Breakfast Paraíso", "Podrá relajarse en las cómodas habitaciones de Bed and Breakfast Paraíso. Ubicado a tan solo 940 metros del centro, ofrecemos calidad en todos nuestros servicios, pensando en lo mejor para el turista.", "-59.1235862000", "-34.5641632000", "MALO",3),
+(1, 5, "Alsina 45", "Hotel El Mar", 3, "Hotel El Mar", "Hotel el Mar, ubicado a tan solo 940 m del centro, ofrece una grandiosa calidad en sus alojamientos junto con varios servicios para garantizar la comodidad del turista.", "-59.1235862000", "-34.5641632000", "BUENO",6),
+(2, 6, "San Martin 5300", "Hostel Los Árboles", 4,"Hostel Los Árboles", "Hostel Los Árboles, ubicado a tan solo 940 metros del centro, le garantiza a los turistas experiencia agradable durante toda su estadía, con habitaciones tanto compartidas como privadas, y servicios pensados en lo mejor para el turista", "-59.1235862000", "-34.5641632000", "EXCELENTE",10),
+(3, 7, "9 de Julio 33", "Dpto Santa Fe", 3, "Dpto Santa Fe", "El Departamento Santa Fe, ubicado a tan solo 940 metros del centro, es un departamento confortable y moderno, para que el turista siempre se sienta como en casa. Ofrecemos una serie de servicios para garantizarle la comodidad.", "-59.1235862000", "-34.5641632000", "BUENO",7),
+(4, 8, "Francia 102", "Bed and Breakfast Oasis", 5, "Bed and Breakfast Oasis", "Podrá relajarse en las cómodas habitaciones de Bed and Breakfast Oasis. Ubicado a tan solo 940 metros del centro, ofrecemos calidad en todos nuestros servicios, pensando en lo mejor para el turista.", "-59.1235862000", "-34.5641632000", "MUY BUENO",8),
+(1, 9, "Mitre 78", "Hotel Los Sueños", 4, "Hotel Los Sueños", "Hotel Los Sueños, ubicado a tan solo 940 m del centro, ofrece una grandiosa calidad en sus alojamientos junto con varios servicios para garantizar la comodidad del turista.", "-59.1235862000", "-34.5641632000", "MUY BUENO",7),
+(2, 10, "Corrientes 582", "Hostel Cristal", 1, "Hotel Cristal", "Hostel Cristal, ubicado a tan solo 940 metros del centro, le garantiza a los turistas experiencia agradable durante toda su estadía, con habitaciones tanto compartidas como privadas, y servicios pensados en lo mejor para el turista", "-59.1235862000", "-34.5641632000", "MALO",2),
+(3, 11, "La Paz 10","Dpto Las Estrellas", 3, "Dpto Las Estrellas", "El Departamento Las Estrellas, ubicado a tan solo 940 metros del centro, es un departamento confortable y moderno, para que el turista siempre se sienta como en casa. Ofrecemos una serie de servicios para garantizarle la comodidad.", "-59.1235862000", "-34.5641632000", "BUENO",5),
+(4, 12, "Pasco 2404", "Bed and Breakfast Palace", 3, "Bed and Breakfast Palace", "Podrá relajarse en las cómodas habitaciones de Bed and Breakfast Palace. Ubicado a tan solo 940 metros del centro, ofrecemos calidad en todos nuestros servicios, pensando en lo mejor para el turista.", "-59.1235862000", "-34.5641632000", "BUENO",5);
 
 INSERT INTO images (prod_id, img_url)
 VALUES
@@ -225,15 +236,15 @@ VALUES
 (12, "https://images.unsplash.com/photo-1445991842772-097fea258e7b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"),
 (12, "https://images.unsplash.com/photo-1470290378698-263fa7ca60ab?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80");
 
-INSERT INTO characteristics (charact_title)
+INSERT INTO characteristics (charact_title, charact_class)
 VALUES
-("Cocina"),
-("Estacionamiento Gratuito"),
-("Televisor"),
-("Pileta"),
-("Aire Acondicionado"),
-("Wifi"),
-("Apto Mascotas");
+("Cocina", "li__cocina"),
+("Estacionamiento Gratuito", "li__estacionamiento-gratuito"),
+("Televisor", "li__televisor"),
+("Pileta", "li__pileta"),
+("Aire Acondicionado", "li__aire-acondicionado"),
+("Wifi", "li__wifi"),
+("Apto Mascotas", "li__apto-mascotas");
 
 INSERT INTO policies (policies_title, policies_desc)
 VALUES
@@ -285,3 +296,10 @@ VALUES
 (10, 2, 1),
 (11, 3, 2.5),
 (12, 4, 2.5);
+
+INSERT INTO favourites (prod_id, user_id)
+VALUES
+(1, 1),
+(2, 1),
+(3, 1),
+(1, 2);

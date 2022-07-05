@@ -1,0 +1,60 @@
+.section__admin-create .section__info-attributes {
+    padding: 0 5%;
+}
+
+.section__info-attributes .div__info-attributes {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--light-grey);
+    border-radius: 8px;
+    padding: 1em;
+    margin-top: 1em;
+}
+
+.section__info-attributes .div__info-attributes .div__label-input {
+    display: flex;
+    flex-direction: column;
+    width: calc(100% - 66px);
+}
+
+.section__info-attributes .div__info-attributes .div__label-input label {
+    width: 100%;
+}
+
+.section__info-attributes .div__info-attributes .div__label-input label:first-of-type {
+    margin-bottom: 1em;
+}
+
+.section__info-attributes .div__info-attributes .div__label-input label input:disabled {
+    background-color: white;
+}
+
+.section__info-attributes .div__info-attributes .btn {
+    width: 50px;
+}
+
+@media (min-width: 1280px) {
+    .section__admin-create .section__info-attributes {
+        padding: 0 2em;
+    }
+
+    .section__info-attributes .div__info-attributes {
+        align-items: flex-end;
+        padding: 1.5em 1.5em 2em;
+        margin-top: 1.5em;
+    }
+
+    .section__info-attributes .div__info-attributes .div__label-input {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .section__info-attributes .div__info-attributes .div__label-input label {
+        width: calc(50% - .5em);
+    }
+
+    .section__info-attributes .div__info-attributes .div__label-input label:first-of-type {
+        margin-bottom: 0;
+    }
+}

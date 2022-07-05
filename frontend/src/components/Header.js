@@ -1,20 +1,20 @@
-import { useContext ,useEffect} from 'react';
+import { useContext ,useEffect, useState} from 'react';
 import Title from "./Title";
 import '../styles/Header.css';
 import { Link } from "react-router-dom";
-import Login from "./Login/Login";
-import Register from "./Login/Register";
 import { UserContext } from './Context/UserContext';
+import { useMediaQuery } from 'react-responsive';
 
 function Header() {
     const {user, setUser} = useContext(UserContext);
+    let [typeRegister, setTypeRegister] = useState(false);
+    const role = localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")).role.roleName : "";
+    const mobile = useMediaQuery({ query: '(max-width: 768px)' });
 
     useEffect(()=>{
-
         if(localStorage.getItem("user")){
             setUser(JSON.parse(localStorage.user));
         }
-       
     },[]);
 
     function clicNav() {
@@ -25,6 +25,11 @@ function Header() {
     function clicButton() {
         document.querySelector("header").className = "";
         document.body.style.overflow = 'unset';
+        if(typeRegister == true) setTypeRegister(typeRegister = false);
+    }
+
+    const handleChangeRegister = () => {
+        typeRegister == false ? setTypeRegister(typeRegister = true) : setTypeRegister(typeRegister = false);
     }
 
     return (
@@ -33,7 +38,7 @@ function Header() {
             <div>
                 <Link to="#" className="a__button-nav" onClick={clicNav}>Abrir/Cerrar</Link>
                 <div className="div__menu-bar">
-                    <div className={"div__menu-login"}>
+                    <div className={`div__menu-login ${role == "ADMIN" ? "admin" : ""}`}>
                         {user ?
                         <div className="div__user-login">
                             <span>{user?.userName[0] + user?.userSurname[0]}</span>
@@ -41,16 +46,29 @@ function Header() {
                         </div>
                         :<p>Menú</p>
                         }
+                        {user && role == "ADMIN" && !mobile && <Link to="/administration">Administración</Link>}
                     </div>
-                    <div className={`div__menu-navigation ${user ? "login" : ""}`}>
-                        {user ? ""
-                        :<nav>
-                            <ul className="ul__bar-links">
-                            <li><Link to="/login" data-testid="on-click-login" element={<Login />} id="link__login-btn" onClick={clicButton}>Iniciar sesión</Link></li>
-                            <li><Link to="/register" data-testid="on-click-register" element={<Register />} id="link__register-btn" onClick={clicButton}>Crear cuenta</Link></li>
-                            </ul>
-                        </nav>}
-                        <div data-testid="on-click-logout" className="div__social-menu">
+                    <div className="div__menu-navigation">
+                        <nav>
+                            {user && role == "ADMIN" && mobile &&
+                            <ul className="ul__bar-admin">
+                                <li><Link to="/administration">Administración</Link></li>
+                            </ul>}
+                            {!user &&
+                            <ul className="ul__bar-buttons">
+                                <li><Link to="/login" onClick={clicButton} data-testid="on-click-login">Iniciar sesión</Link></li>
+                                <li>
+                                    <span onClick={handleChangeRegister}>Crear cuenta</span>
+                                    {typeRegister == true ?
+                                    <ul className='ul__role-menu'>
+                                        <li><Link to="/register" onClick={clicButton} data-testid="on-click-register">Usuarios</Link></li>
+                                        <li><Link to="/admin/register" onClick={clicButton}>Administradores</Link></li>
+                                    </ul>
+                                : ""}
+                                </li>
+                            </ul>}
+                        </nav>
+                        <div className="div__social-menu" data-testid="on-click-logout">
                            {user?<span>¿Deseas <Link to="/" onClick={()=>{
                                 setUser(undefined)
                                 localStorage.removeItem("token");

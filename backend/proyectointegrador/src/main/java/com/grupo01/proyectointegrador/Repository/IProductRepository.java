@@ -21,7 +21,7 @@ public interface IProductRepository extends JpaRepository<Product, Long> {
             " WHERE "+
             " prod_id NOT IN( " +
             " SELECT DISTINCT prod_id " +
-            "             FROM Bookings " +
+            "             FROM bookings " +
             " WHERE (booking_start_date <= :dateStart" +
             "             AND booking_finish_date > :dateStart)" +
             "     OR (booking_start_date <= :dateEnd" +
@@ -38,7 +38,7 @@ public interface IProductRepository extends JpaRepository<Product, Long> {
             " AND cat_id = :catId " +
             " AND prod_id NOT IN( " +
             " SELECT DISTINCT prod_id " +
-            "             FROM Bookings " +
+            "             FROM bookings " +
             " WHERE (booking_start_date <= :dateStart" +
             "             AND booking_finish_date > :dateStart)" +
             "     OR (booking_start_date <= :dateEnd" +
@@ -56,7 +56,7 @@ public interface IProductRepository extends JpaRepository<Product, Long> {
             " city_id = :cityId " +
             " AND prod_id NOT IN( " +
             " SELECT DISTINCT prod_id " +
-            "             FROM Bookings " +
+            "             FROM bookings " +
             " WHERE (booking_start_date <= :dateStart" +
             "             AND booking_finish_date > :dateStart)" +
             "     OR (booking_start_date <= :dateEnd" +
@@ -73,7 +73,7 @@ public interface IProductRepository extends JpaRepository<Product, Long> {
             " cat_id = :catId " +
             " AND prod_id NOT IN( " +
             " SELECT DISTINCT prod_id " +
-            "             FROM Bookings " +
+            "             FROM bookings " +
             " WHERE (booking_start_date <= :dateStart" +
             "             AND booking_finish_date > :dateStart)" +
             "     OR (booking_start_date <= :dateEnd" +

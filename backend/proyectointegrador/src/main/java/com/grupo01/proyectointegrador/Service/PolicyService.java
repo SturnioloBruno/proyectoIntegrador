@@ -4,9 +4,11 @@ import com.grupo01.proyectointegrador.Model.Characteristic;
 import com.grupo01.proyectointegrador.Model.Policy;
 import com.grupo01.proyectointegrador.Repository.IPolicyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+@Service
 public class PolicyService {
 
     @Autowired

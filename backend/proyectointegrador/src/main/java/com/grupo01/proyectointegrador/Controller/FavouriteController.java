@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/favourites")
 public class FavouriteController {
@@ -27,5 +29,10 @@ public class FavouriteController {
     public ResponseEntity<String> borrar(@PathVariable Long id) throws Exception {
         favouriteService.borrar(id);
         return ResponseEntity.ok("Favorito borrado con exito");
+    }
+
+    @GetMapping("/findByUserId/{id}")
+    public ResponseEntity<List<Favourite>> findByUserId(@PathVariable Long id) throws Exception {
+        return ResponseEntity.ok(favouriteService.getByUserId(id));
     }
 }

@@ -118,7 +118,7 @@
     background-size: contain;
 }
 
-.article__info-product .a__like-icon:hover::before {
+.article__info-product .a__like-icon:hover::before, .article__info-product .a__like-icon.like::before {
     background: url(../../assets/icons/like-orange.svg) no-repeat center center;
     background-size: contain;
 }

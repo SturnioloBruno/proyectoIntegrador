@@ -20,7 +20,8 @@ function Product() {
     const [product, setProduct] = useState(null);
     const [punctuation, setPunctuation] = useState(null);
     const {id} = useParams();
-    const token = localStorage.getItem("token");
+    const userId = localStorage.getItem("user") != null ? JSON.parse(localStorage.getItem("user")).id : null;
+    const [productLike, setProductLike] = useState(null);
 
     useEffect(()=>{
         //Cargo datos del producto
@@ -56,6 +57,27 @@ function Product() {
             })
         }
         getPunctuation();
+
+        //Ver producto en favoritos
+        if(userId != null) {
+            const getProductLike = async()=>{
+                await fetch(Api + "favourites/findByUserId/" + userId, {
+                    method:'GET',
+                    headers:{
+                        'Content-Type':'application/json'
+                    }
+                })
+                .then(function(response){
+                    return response.json();
+                })
+                .then(function(productLike) {
+                    {productLike?.map((like) => {
+                        if(like.prodId.id == id) setProductLike(like);
+                    })}
+                })
+            }
+            getProductLike();
+        }
     }, [id]);
 
     //Para ver la modal
@@ -64,27 +86,61 @@ function Product() {
         document.querySelector(".div__modal-share").classList.remove("none");
     }
 
+    //Producto agregado a favoritos
+    if(Array.isArray(productLike)) {
+        {productLike?.map((like) => {
+            if(like.prodId.id == id) document.querySelector(".a__like-icon").classList.add("like");
+        })}
+    } else {
+        if(productLike != null && productLike.prodId.id == id) document.querySelector(".a__like-icon").classList.add("like");
+    }
+
+
     const handlerSubmit = (e) => {
         e.preventDefault();
 
-        const insertFavourite = async()=>{
-            await fetch(Api + "favourites/insert/", {
-                method: "POST",
-                headers: {
-                    "Access-Control-Allow-Headers" : "Content-Type",
-                    'Access-Control-Allow-Origin': "*",
-                    'Content-Type': 'application/json',
-                    "Authorization": `Bearer ${token}`
-                },
-                body: JSON.stringify({
-                    id: id
-                }),
-            }).then((response) => {
-                console.log(response);
-                return response.json();
-            });
+        if(userId != null) {
+            if(!productLike) {
+                const insertFavourite = async()=>{
+                    await fetch(Api + "favourites/insert/", {
+                        method: "POST",
+                        headers: {
+                            "Access-Control-Allow-Headers" : "Content-Type",
+                            'Access-Control-Allow-Origin': "*",
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            prodId: {id: id},
+                            userId: {id: userId}
+                        }),
+                    })
+                    .then((response) => {
+                        return response.json();
+                    })
+                    .then(function(productLike) {
+                        setProductLike(productLike);
+                    })
+                }
+                insertFavourite();
+            } else {
+                const deleteFavourite = async()=>{
+                    await fetch(Api + "favourites/delete/" + productLike.id, {
+                        method: "DELETE",
+                        headers: {
+                            "Access-Control-Allow-Headers" : "Content-Type",
+                            'Access-Control-Allow-Origin': "*",
+                            'Content-Type': 'application/json'
+                        }
+                    })
+                    .then(function() {
+                        setProductLike(null);
+                        document.querySelector(".a__like-icon").classList.remove("like");
+                    })
+                    .catch(e => { console.log(e) })
+                }
+                deleteFavourite();
+            }
         }
-        insertFavourite();
     }
 
     return <><article className="article__info-product">

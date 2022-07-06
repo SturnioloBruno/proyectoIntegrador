@@ -50,17 +50,6 @@ public class BookingService {
         }
     }
 
-    public Booking actualizar (BookingDTO bookingDTO) throws Exception {
-        Booking bookingBuscado = buscarId(bookingDTO.getId());
-        if (bookingBuscado != null){
-            Booking booking = mapper.convertValue(bookingDTO,Booking.class);
-            return bookingRepository.save(booking);
-        }
-        else{
-            throw new Exception("Reserva con id: "+ bookingDTO.getId() + " no existe");
-        }
-    }
-
     public List<BookingDTO> getByUserId(Long id)throws Exception{
         User user = userService.buscarId(id);
 

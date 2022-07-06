@@ -1,5 +1,5 @@
 .section__successful-booking {
-    min-height: calc(100vh - 50.2px);
+    min-height: calc(100vh - 72px);
     background-color: var(--light-grey);
 }
 
@@ -28,9 +28,16 @@
     width: 48px;
     height: 48px;
     display: block;
+}
+
+.section__successful-booking .div__successful-booking::before {
     background: url(../../assets/icons/successful.svg) no-repeat center center;
     background-size: contain;
-    margin: 0 auto 1em;
+}
+
+.section__successful-booking .div__denegate-booking::before {
+    background: url(../../assets/icons/denegate.svg) no-repeat center center;
+    background-size: contain;
 }
 
 .section__successful-booking div p {

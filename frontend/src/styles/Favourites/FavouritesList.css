@@ -1,0 +1,11 @@
+.div__favourites-list {
+    padding: 82px 0 0;
+    min-height: calc(100vh - 50px);
+}
+
+@media (min-width: 768px) {
+    .div__favourites-list {
+        padding: 98px 0 0;
+        min-height: calc(100vh - 72px);
+    }
+}

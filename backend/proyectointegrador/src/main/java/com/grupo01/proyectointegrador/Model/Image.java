@@ -39,6 +39,10 @@ public class Image {
         return id;
     }
 
+    public void setProId(Product proId) {
+        this.proId = proId;
+    }
+
     public String getNombre_url() {
         return nombreUrl;
     }

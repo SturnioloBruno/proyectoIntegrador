@@ -1,13 +1,12 @@
 package com.grupo01.proyectointegrador.Service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.grupo01.proyectointegrador.Model.Product;
+import com.grupo01.proyectointegrador.Model.*;
 import com.grupo01.proyectointegrador.DTO.ProductDTO;
 import com.grupo01.proyectointegrador.Repository.IProductRepository;
 import com.grupo01.proyectointegrador.Service.Interfaces.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.time.LocalDate;
 import java.util.*;
@@ -19,10 +18,57 @@ public class ProductService implements IProductService {
     IProductRepository productRepository;
 
     @Autowired
+    ImageService imageService;
+
+    @Autowired
+    PolicyService policyService;
+
+    @Autowired
+    ProductPolicyService productPolicyService;
+
+    @Autowired
+    ProductCharacteristicService productCharacteristicService;
+
+    @Autowired
+    AwsS3Service awsS3Service;
+
+    @Autowired
     ObjectMapper mapper;
 
     public Product crearProduct(Product product) throws Exception{
        return  productRepository.save(product);
+    }
+
+    public Product saveProduct(ProductDTO product) throws Exception{
+
+        Product product1 =  mapper.convertValue(product,Product.class);
+        product1.setProductsC(product.getCharacteristic());
+        Product productInsertado = productRepository.save(product1);
+
+        List<Image> listaImagenes = product.getImages();
+        //falta insertar en bucket
+        for (Image img:listaImagenes) {
+            img.setNombre_url(awsS3Service.uploadFile(img.getNombre_url(),productInsertado.getId().toString()));
+            img.setProId(productInsertado);
+            imageService.guardar(img);
+        }
+
+        List<ProductCharacteristic> listCharacteristic = product.getCharacteristic();
+        for (ProductCharacteristic pc: listCharacteristic) {
+            pc.setProduct(productInsertado);
+            productCharacteristicService.save(pc);
+        }
+        productInsertado.setProductsC(listCharacteristic);
+
+        List<ProductPolicy> listPolicy = product.getPolicy();
+        for (ProductPolicy pp: listPolicy) {
+            Policy policyInsert = policyService.guardar(pp.getPolicy());
+            pp.setProduct(productInsertado);
+            productPolicyService.save(pp);
+        }
+        productInsertado.setProductsP(listPolicy);
+
+        return  productRepository.save(productInsertado);
     }
 
     @Override

@@ -1,4 +1,4 @@
-import { Link , useNavigate } from "react-router-dom";
+import { Link , useNavigate ,useLocation } from "react-router-dom";
 import { useState, useEffect } from 'react';
 import emailjs from 'emailjs-com';
 import Button from "../Button";
@@ -12,6 +12,7 @@ function Register({type}) {
     const [name, setName] = useState("");
     const [lastname, setLastname] = useState("");
     const [email, setEmail] = useState("");
+    const location = useLocation()
 
     const handlerSubmit = (e)=>{
         e.preventDefault()
@@ -80,7 +81,7 @@ function Register({type}) {
                     userEmail:emailValue.value.trim(),
                     userPassword:passwordValue.value.trim(),
                     userCity:"",
-                    role: {id:2}
+                    role: {id: location.pathname.includes("admin")?1:2}
                 })
             })
             .then((response) => {
@@ -100,14 +101,14 @@ function Register({type}) {
                 if(!user){
                     return
                 }
-                console.log(user);
+                
                     let emailBody = `Realiza la confirmacion de tu cuenta ingresando en: http://localhost:3000/accountconfirmation/${user.id}`;
                      emailjs.send(`service_lmsq0hp`, EmailKey.TEMPLATE_ID, {email:user.userEmail, name:user.userName, lastname:user.userSurname,message:emailBody}, EmailKey.USER_ID)
                     .then((result) => {
-                   console.log("envio"+result.text);
+                  
                     },
                     (error) => {
-                    console.log("error"+error.text);
+                    
                     });
 
                 navigate("/login"); // logueo para obtener token
@@ -118,7 +119,6 @@ function Register({type}) {
               });
         }
         register();
-
     }
 
     //VALIDO CAMPO EMAIL

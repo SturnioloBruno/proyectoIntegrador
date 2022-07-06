@@ -10,7 +10,7 @@ function HeaderProduct({category, name, type}) {
                 <h2>{name}</h2>
                 <p>{category}</p>
             </div>
-            {type == "product" || type == "create" || type == "favourite" ?
+            {type === "product" || type === "create" || type === "favourite" || type === "management"?
             <Link to="/" className="a__show-more" /> :
             <Link to={`/product/${id}`} className="a__show-more" />
             }

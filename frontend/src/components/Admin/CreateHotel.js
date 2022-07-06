@@ -11,6 +11,7 @@ function CreateHotel() {
   const navigate = useNavigate();
   const [categories, setCategories] = useState(null);
   const [cities, setCities] = useState(null);
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
     //Cargo categorías
@@ -137,6 +138,7 @@ function CreateHotel() {
         "Access-Control-Allow-Headers": "Content-Type",
         "Access-Control-Allow-Origin": "*",
         "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
       },
       body: JSON.stringify({
         address: inputs.address.value,
@@ -155,14 +157,15 @@ function CreateHotel() {
         policy: arrayPolicies
       }),
     }).then((response) => {
+      console.log(response);
         if(response.status === 201) navigate("/create-ok");
         if(response.status === 400) alert("Lamentablemente el producto no ha podido crearse. Por favor intente más tarde.");
     });
   };
 
   return (
-    <>
-      <HeaderProduct name="Administración de productos" />
+    <main className="main__admin-create">
+      <HeaderProduct name="Administración de productos" type="management"/>
       <section className="section__admin-create">
         <h3>Crear propiedad</h3>
         <form method="POST" onSubmit={handlerSubmitProduct}>
@@ -294,7 +297,7 @@ function CreateHotel() {
           </button>
         </form>
       </section>
-    </>
+    </main>
   );
 }
 

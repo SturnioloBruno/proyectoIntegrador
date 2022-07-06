@@ -116,7 +116,7 @@ function Login({ type }) {
     return (
         <section className="section__form-data">
             <h2>Iniciar sesión</h2>
-            {sessionStorage.getItem("msg") !== undefined ? <p className='p__login-error'>{sessionStorage.getItem("msg")}</p> : "" }
+            {sessionStorage.getItem("msg") !== null ? <p className='p__login-error'>{sessionStorage.getItem("msg")}</p> : "" }
             <form action="POST" onSubmit={handlerSubmit}>
                 <label htmlFor="email_login">
                     <span>Correo electrónico</span>

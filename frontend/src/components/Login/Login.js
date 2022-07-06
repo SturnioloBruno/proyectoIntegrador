@@ -17,8 +17,8 @@ function Login({ type }) {
 
         const emailValue =  document.querySelector("#email_login");
         const passwordValue = document.querySelector("#password_login");
-        let ret;
-
+        let ret ;
+ 
         //LIMPIO ERRORES 
         setError({})
 
@@ -116,6 +116,7 @@ function Login({ type }) {
     return (
         <section className="section__form-data">
             <h2>Iniciar sesión</h2>
+            {sessionStorage.getItem("msg") !== undefined ? <p className='p__login-error'>{sessionStorage.getItem("msg")}</p> : "" }
             <form action="POST" onSubmit={handlerSubmit}>
                 <label htmlFor="email_login">
                     <span>Correo electrónico</span>
@@ -137,7 +138,6 @@ function Login({ type }) {
                         {errors.general?errors.general:''}
                     </small> : "" }
                 </label>
-                {sessionStorage.getItem("msg") !== undefined ? <small className='small__error'>{sessionStorage.getItem("msg")}</small> : "" }
                 <Button text="Ingresar" type="submit" className="btn button__solid-type" />
             </form>
             <p>¿Aún no tenes cuenta? <Link to="/register">Registrate</Link></p>

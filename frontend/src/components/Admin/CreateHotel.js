@@ -155,11 +155,8 @@ function CreateHotel() {
         policy: arrayPolicies
       }),
     }).then((response) => {
-        if(response.status === 201) {
-          navigate("/create-ok");
-        } else{
-          alert("Lamentablemente la reserva no ha podido realizarse. Por favor, intente más tarde.");
-        }
+        if(response.status === 201) navigate("/create-ok");
+        if(response.status === 400) alert("Lamentablemente el producto no ha podido crearse. Por favor intente más tarde.");
     });
   };
 

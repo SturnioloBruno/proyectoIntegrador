@@ -165,7 +165,7 @@ function CreateHotel() {
 
   return (
     <main className="main__admin-create">
-      <HeaderProduct name="Administración de productos" type="management"/>
+      <HeaderProduct name="Administración de productos" type="home" />
       <section className="section__admin-create">
         <h3>Crear propiedad</h3>
         <form method="POST" onSubmit={handlerSubmitProduct}>

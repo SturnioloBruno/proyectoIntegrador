@@ -33,7 +33,7 @@ function BookingList() {
 
     return (
         <main className='main__booking-list'>
-            <HeaderProduct name="Mis reservas" />
+        <HeaderProduct name="Mis reservas" type="home" />
             <section className="section__booking-list">
                 <ul className="ul__accommodation-list">
                     {bookings?.map((booking) => (

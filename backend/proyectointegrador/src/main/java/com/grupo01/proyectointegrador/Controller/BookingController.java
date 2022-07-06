@@ -23,12 +23,12 @@ public class BookingController {
     }
 
     @GetMapping("/findById/{id}")
-    public ResponseEntity<Booking> buscarId(@PathVariable Long id) throws Exception{
+    public ResponseEntity<Booking> buscarId(@PathVariable Long id) throws Exception {
         return ResponseEntity.ok(bookingService.buscarId(id));
     }
 
     @GetMapping("/findByUserId/{id}")
-    public ResponseEntity<List<BookingDTO>> finByUserId(@PathVariable Long id) throws Exception{
+    public ResponseEntity<List<BookingDTO>> finByUserId(@PathVariable Long id) throws Exception {
         return ResponseEntity.ok(bookingService.getByUserId(id));
     }
 
@@ -40,6 +40,6 @@ public class BookingController {
 
     @PutMapping("/update")
     public ResponseEntity<Booking> actualizar(@RequestBody BookingDTO booking) throws Exception {
-        return ResponseEntity.ok(bookingService.guardar(booking));
+        return ResponseEntity.ok(bookingService.actualizar(booking));
     }
 }

@@ -10,6 +10,7 @@ function Header() {
     let [typeRegister, setTypeRegister] = useState(false);
     const role = localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")).role.roleName : "";
     const mobile = useMediaQuery({ query: '(max-width: 768px)' });
+    const [open, setOpen] = useState(false);
 
     useEffect(()=>{
         if(localStorage.getItem("user")){
@@ -26,21 +27,26 @@ function Header() {
         document.querySelector("header").className = "";
         document.body.style.overflow = 'unset';
         if(typeRegister == true) setTypeRegister(typeRegister = false);
+        if(open == true) setOpen(open = false);
     }
 
     const handleChangeRegister = () => {
         typeRegister == false ? setTypeRegister(typeRegister = true) : setTypeRegister(typeRegister = false);
     }
 
+    function handleChangeOpen() {
+        open == false ? setOpen(true) : setOpen(false);
+    }
+
     return (
         <header>
             <Title />
-            <div>
+            <div className='div__nav-menu'>
                 <Link to="#" className="a__button-nav" onClick={clicNav}>Abrir/Cerrar</Link>
                 <div className="div__menu-bar">
                     <div className={`div__menu-login ${role == "ADMIN" ? "admin" : ""}`}>
                         {user ?
-                        <div className="div__user-login">
+                        <div className="div__user-login" onClick={handleChangeOpen}>
                             <span>{user?.userName[0] + user?.userSurname[0]}</span>
                             <p>Hola, <span>{`${user?.userName} ${user?.userSurname}`}</span></p>
                         </div>
@@ -50,9 +56,17 @@ function Header() {
                     </div>
                     <div className="div__menu-navigation">
                         <nav>
-                            {user && role == "ADMIN" && mobile &&
+                            {user && mobile &&
                             <ul className="ul__bar-admin">
-                                <li><Link to="/administration">Administración</Link></li>
+                                {role == "ADMIN" &&
+                                <li><Link to="/administration">Administración</Link></li>}
+                                <li><Link to="/my-bookings" onClick={clicButton}>Mis reservas</Link></li>
+                                <li><Link to="/my-favourites" onClick={clicButton}>Mis favoritos</Link></li>
+                            </ul>}
+                            {open && !mobile &&
+                            <ul className="ul__bar-admin">
+                                <li><Link to="/my-bookings" onClick={clicButton}>Mis reservas</Link></li>
+                                <li><Link to="/my-favourites" onClick={clicButton}>Mis favoritos</Link></li>
                             </ul>}
                             {!user &&
                             <ul className="ul__bar-buttons">
@@ -67,10 +81,6 @@ function Header() {
                                 : ""}
                                 </li>
                             </ul>}
-                            <ul className='ul__router-menu'>
-                                <li><Link to="/my-bookings" onClick={clicButton}>Mis reservas</Link></li>
-                                <li><Link to="/my-favourites" onClick={clicButton}>Mis favoritos</Link></li>
-                            </ul>
                         </nav>
                         <div className="div__social-menu">
                            {user?<span>¿Deseas <Link to="/" onClick={()=>{

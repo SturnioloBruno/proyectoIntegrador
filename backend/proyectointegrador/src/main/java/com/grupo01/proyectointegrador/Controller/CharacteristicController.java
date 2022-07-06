@@ -33,7 +33,7 @@ public class CharacteristicController {
 
     @PutMapping("/update")
     public ResponseEntity<Characteristic> actualizar(@RequestBody Characteristic characteristic) throws Exception {
-        return ResponseEntity.ok(characteristicService.guardar(characteristic));
+        return ResponseEntity.ok(characteristicService.actualizar(characteristic));
     }
 
     @GetMapping("/getList")

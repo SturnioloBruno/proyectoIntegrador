@@ -2,6 +2,7 @@ import { React, useState, useEffect } from 'react';
 import Api from "../Helpers/Api";
 import "../../styles/Favourites/FavouritesList.css";
 import HeaderProduct from '../Products/HeaderProduct';
+import Card from "../Cards/Card";
 
 function FavouritesList() {
     const [favourites, setFavourites] = useState(null);
@@ -30,9 +31,11 @@ function FavouritesList() {
         <div className='div__favourites-list'>
             <HeaderProduct name="Mis favoritos" type="home" />
             <section className="section__favourites-list">
-                <ul>
+            <ul className="ul__accommodation-list">
                     {favourites?.map((favourite) => {
-                        console.log(favourite);
+                        return <li key={favourite.prodId.id}>
+                            <Card id={favourite.prodId.id} title={favourite.prodId.name} src={favourite.prodId.images[0]?.nombre_url} address={favourite.prodId.address} description={favourite.prodId.desc} category={favourite.prodId.category.title} punctuation={favourite.prodId.punctuation} score={favourite.prodId.score} stars={favourite.prodId.stars} services={favourite.prodId.characteristic} latitude={favourite.prodId.y} longitude={favourite.prodId.x} />
+                        </li>
                     })}
                 </ul>
             </section>

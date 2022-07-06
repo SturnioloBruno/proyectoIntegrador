@@ -21,6 +21,8 @@ function Product() {
     const [punctuation, setPunctuation] = useState(null);
     const {id} = useParams();
     const token = localStorage.getItem("token");
+    const userId = JSON.parse(localStorage.getItem("user")).id;
+    const [productLike, setProductLike] = useState(null);
 
     useEffect(()=>{
         //Cargo datos del producto
@@ -56,12 +58,38 @@ function Product() {
             })
         }
         getPunctuation();
+
+        //Ver producto en favoritos
+        const getProductLike = async()=>{
+            await fetch(Api + "favourites/findByUserId/" + userId, {
+                method:'GET',
+                headers:{
+                    'Content-Type':'application/json'
+                }
+            })
+            .then(function(response){
+                return response.json();
+            })
+            .then(function(productLike) {
+                setProductLike(productLike);
+            })
+        }
+        getProductLike();
     }, [id]);
 
     //Para ver la modal
     function viewModal(e) {
         e.preventDefault();
         document.querySelector(".div__modal-share").classList.remove("none");
+    }
+
+    //Producto agregado a favoritos
+    if(Array.isArray(productLike)) {
+        {productLike?.map((like) => {
+            if(like.prodId.id == id) document.querySelector(".a__like-icon").classList.add("like");
+        })}
+    } else {
+        if(productLike != null && productLike.prodId.id == id) document.querySelector(".a__like-icon").classList.add("like");
     }
 
     const handlerSubmit = (e) => {
@@ -77,12 +105,16 @@ function Product() {
                     "Authorization": `Bearer ${token}`
                 },
                 body: JSON.stringify({
-                    id: id
+                    prodId: {id: id},
+                    userId: {id: userId}
                 }),
-            }).then((response) => {
-                console.log(response);
+            })
+            .then((response) => {
                 return response.json();
-            });
+            })
+            .then(function(productLike) {
+                setProductLike(productLike);
+            })
         }
         insertFavourite();
     }

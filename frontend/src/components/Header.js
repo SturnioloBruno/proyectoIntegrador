@@ -58,10 +58,9 @@ function Header() {
                             <ul className="ul__bar-buttons">
                                 <li><Link to="/login" onClick={clicButton} data-testid="on-click-login">Iniciar sesión</Link></li>
                                 <li>
-                                    <span onClick={handleChangeRegister}>Crear cuenta</span>
+                                    <span onClick={handleChangeRegister} data-testid="on-click-register">Crear cuenta</span>
                                     {typeRegister == true ?
                                     <ul className='ul__role-menu'>
-                                        <li><Link to="/register" onClick={clicButton} data-testid="on-click-register">Usuarios</Link></li>
                                         <li><Link to="/admin/register" onClick={clicButton}>Administradores</Link></li>
                                     </ul>
                                 : ""}

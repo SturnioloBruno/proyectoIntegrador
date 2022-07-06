@@ -92,15 +92,19 @@ describe('Verificar validaciones en los inputs', () => {
     });
     test('Verificar que input email contenga @' , () => {
         setup();
+        const nombreInput = screen.getByLabelText('Nombre');
+        const apellidoInput = screen.getByLabelText('Apellido');
         const emailInput = screen.getByLabelText('Correo electrónico');
-        const passwordInput = screen.getByTestId('password_input'); 
-        const button = screen.getByRole('button',{name:"Crear cuenta"})
+        const button = screen.getByRole('button',{name:"Crear cuenta"});
+
+        expect((nombreInput).value).toBe('');
+        fireEvent.change(nombreInput, {target: {value: 'Sofia'}})
+         expect((apellidoInput).value).toBe('');
+        fireEvent.change(apellidoInput, {target: {value: 'Vallo'}})
         expect((emailInput).value).toBe('');
-        fireEvent.change(emailInput, {target: {value: 'mailprueba.com'}})
-        expect((passwordInput).value).toBe('');
-        fireEvent.change(passwordInput, {target: {value: 'Prueba1'}})
+        fireEvent.change(emailInput, {target: {value: 'mailprueba'}})
         fireEvent.click(button);
-         expect(screen.getByText("El campo email no cumple con el formato")).toBeTruthy();
+        expect((emailInput)).toHaveClass('error');
 
     });
     test('Verificar que input password no acepte vacio' , () => {
@@ -127,9 +131,15 @@ describe('Verificar validaciones en los inputs', () => {
     });
     test('Verificar que input password tiene mas de seis caracteres' , async () => {
         setup();
+        const nombreInput = screen.getByLabelText('Nombre');
+        const apellidoInput = screen.getByLabelText('Apellido');
         const emailInput = screen.getByLabelText('Correo electrónico');
         const passwordInput = screen.getByTestId('password_input');
-        const button = screen.getByRole('button',{name:"Crear cuenta"})
+        const button = screen.getByRole('button',{name:"Crear cuenta"});
+        expect((nombreInput).value).toBe('');
+        fireEvent.change(nombreInput, {target: {value: 'Sofia'}})
+        expect((apellidoInput).value).toBe('');
+        fireEvent.change(apellidoInput, {target: {value: 'Vallo'}})
         expect((emailInput).value).toBe('');
         fireEvent.change(emailInput, {target: {value: 'mail@prueba.com'}})
         expect((passwordInput).value).toBe('');
@@ -139,9 +149,16 @@ describe('Verificar validaciones en los inputs', () => {
     });
     test('Verificar que input password contiene una mayúscula' , async () => {
         setup();
+        const nombreInput = screen.getByLabelText('Nombre');
+        const apellidoInput = screen.getByLabelText('Apellido');
         const emailInput = screen.getByLabelText('Correo electrónico');
         const passwordInput = screen.getByTestId('password_input');
         const button = screen.getByRole('button',{name:"Crear cuenta"})
+
+        expect((nombreInput).value).toBe('');
+        fireEvent.change(nombreInput, {target: {value: 'Sofia'}})
+        expect((apellidoInput).value).toBe('');
+        fireEvent.change(apellidoInput, {target: {value: 'Vallo'}})
         expect((emailInput).value).toBe('');
         fireEvent.change(emailInput, {target: {value: 'mail@prueba.com'}})
         expect((passwordInput).value).toBe('');
@@ -151,21 +168,35 @@ describe('Verificar validaciones en los inputs', () => {
     });
     test('Verificar que input password contiene al menos una minúscula' , async () => {
         setup();
+        const nombreInput = screen.getByLabelText('Nombre');
+        const apellidoInput = screen.getByLabelText('Apellido');
         const emailInput = screen.getByLabelText('Correo electrónico');
         const passwordInput = screen.getByTestId('password_input'); 
-        const button = screen.getByRole('button',{name:"Crear cuenta"})
+        const button = screen.getByRole('button',{name:"Crear cuenta"});
+
+        expect((nombreInput).value).toBe('');
+        fireEvent.change(nombreInput, {target: {value: 'Sofia'}})
+        expect((apellidoInput).value).toBe('');
+        fireEvent.change(apellidoInput, {target: {value: 'Vallo'}})
         expect((emailInput).value).toBe('');
-        fireEvent.change(emailInput, {target: {value: 'mail@prueba.com'}})
+        fireEvent.change(emailInput, {target: {value: 'svallo34@gmail.com'}})
         expect((passwordInput).value).toBe('');
-        fireEvent.change(passwordInput, {target: {value: 'PRUEBA'}})
+        fireEvent.change(passwordInput, {target: {value: 'PRUEBA1'}})
         fireEvent.click(button);
          expect(screen.getByText("El campo debe contener al menos una letra minúscula")).toBeTruthy();
     }); 
     test('Verificar que input password contiene al menos un número' , async () => {
         setup();
+        const nombreInput = screen.getByLabelText('Nombre');
+        const apellidoInput = screen.getByLabelText('Apellido');
         const emailInput = screen.getByLabelText('Correo electrónico');
         const passwordInput = screen.getByTestId('password_input');
-        const button = screen.getByRole('button',{name:"Crear cuenta"})
+        const button = screen.getByRole('button',{name:"Crear cuenta"});
+
+        expect((nombreInput).value).toBe('');
+        fireEvent.change(nombreInput, {target: {value: 'Sofia'}})
+        expect((apellidoInput).value).toBe('');
+        fireEvent.change(apellidoInput, {target: {value: 'Vallo'}})
         expect((emailInput).value).toBe('');
         fireEvent.change(emailInput, {target: {value: 'mail@prueba.com'}})
         expect((passwordInput).value).toBe('');
@@ -175,18 +206,24 @@ describe('Verificar validaciones en los inputs', () => {
     });
     test('Verificar que input password no sea distinto de Confirmar contraseña' , async () => {
         setup();
+        const nombreInput = screen.getByLabelText('Nombre');
+        const apellidoInput = screen.getByLabelText('Apellido');
         const emailInput = screen.getByLabelText('Correo electrónico');
         const passwordInput = screen.getByTestId('password_input');
         const confirmPasswordInput = screen.getByLabelText(/Confirmar contraseña/)
-        const button = screen.getByRole('button',{name:"Crear cuenta"})
+        const button = screen.getByRole('button',{name:"Crear cuenta"});
+        expect((nombreInput).value).toBe('');
+        fireEvent.change(nombreInput, {target: {value: 'Sofia'}})
+        expect((apellidoInput).value).toBe('');
+        fireEvent.change(apellidoInput, {target: {value: 'Vallo'}})
         expect((emailInput).value).toBe('');
-        fireEvent.change(emailInput, {target: {value: 'mail@prueba.com'}})
+        fireEvent.change(emailInput, {target: {value: 'svallo34@gmail.com'}})
         expect((passwordInput).value).toBe('');
-        fireEvent.change(passwordInput, {target: {value: 'Prueba1'}})
+        fireEvent.change(passwordInput, {target: {value: 'User1234'}})
         expect((confirmPasswordInput).value).toBe('');
-        fireEvent.change(confirmPasswordInput, {target: {value: 'Prueba2'}})
+        fireEvent.change(confirmPasswordInput, {target: {value: 'User4321'}})
         fireEvent.click(button);
-         expect(screen.getByText("No coinciden las contraseñas")).toBeTruthy();
+         expect(screen.getAllByText("No coinciden las contraseñas")).toBeTruthy();
     });
     test('Verificar cambio del icono de ojo al ser clickeado' , async () => {
         setup();
@@ -199,6 +236,6 @@ describe('Verificar validaciones en los inputs', () => {
     });
 
 
- });
+});
 
 

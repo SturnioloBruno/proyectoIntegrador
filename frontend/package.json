@@ -37,6 +37,9 @@
       "!src/home.js",
       "!src/Share.js",
       "!src/components/Products/Politics.js"
+    ],
+    "transformIgnorePatterns": [
+      "node_modules/(?!@ngrx|(?!deck.gl)|ng-dynamic)"
     ]
   },
   "scripts": {

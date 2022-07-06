@@ -18,7 +18,7 @@ const setup = () => render(
 describe('Verificar renderizado de elementos de la pantalla', () => {
     test('Verificar renderizado de texto',() => {
         setup();
-        expect(screen.getByText('Detalle de la reserva')).toBeInTheDocument();
+        expect(screen.getByText('Detalle de la reserva')).toBeInTheDocument(); 
         expect(screen.getByText('Check in')).toBeInTheDocument();
         expect(screen.getByText('Check out')).toBeInTheDocument();
     

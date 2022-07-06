@@ -143,6 +143,6 @@ describe('Verificar que no se efectue la reserva sin completar campos obligatori
 
         const boton_confirmar_reserva = screen.getByRole('button', { name: 'Confirmar reserva'});
         fireEvent.click(boton_confirmar_reserva);
-        expect((hourSelect)).toHaveClass('error');
+        expect((hourSelect)).toHaveClass('error'); 
     });
  })

@@ -55,8 +55,10 @@ function SuccessfulBooking({type}) {
                     <>
                     <p>Tu propiedad se ha creado con con éxito</p>
                     <Link to="/" className="btn button__solid-type">Volver</Link>
-                </div>
-            }
+                    </>
+                }
+            </div>
+                
         </section>
     )
 }

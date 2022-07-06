@@ -71,10 +71,7 @@ const setup = () => render(
             setup();
             expect(screen.getByText('Cargar imágenes')).toBeInTheDocument();
         });
-        test('Verificar renderizado de botón agregar',() => {
-            setup();
-            expect(screen.getByRole('button', {name:'Agregar'})).toBeInTheDocument();
-        });
+        
         test('Verificar renderizado de botón crear',() => {
             setup();
             expect(screen.getByRole('button', {name:'Crear'})).toBeInTheDocument();
@@ -104,27 +101,56 @@ const setup = () => render(
             fireEvent.change(descripcionInput, {target: {value: 'descripcionPrueba'}})
             expect(descripcionInput.value).toMatch('descripcionPrueba');
         });
+        test('Verificar que input nombre de la propiedad no acepte vacio' , () => {
+            setup();
+            const nombreInput = screen.getByLabelText('Nombre de la propiedad');
+            const button = screen.getByRole('button',{name:"Crear"})
+            expect((nombreInput).value).toBe('');
+            
+            fireEvent.click(button);
+            
+            expect((nombreInput)).toHaveClass('error');
+    
+        });
+        test('Verificar que input direccion no acepte vacio' , () => {
+            setup();
+            const direccionInput = screen.getByLabelText('Dirección');
+            const button = screen.getByRole('button',{name:"Crear"})
+            expect((direccionInput).value).toBe('');
+            
+            fireEvent.click(button);
+            
+            expect((direccionInput)).toHaveClass('error');
+    
+        });
+        test('Verificar que input descripcion no acepte vacio' , () => {
+            setup();
+            const descripcionInput = screen.getByLabelText('Descripción');
+            const button = screen.getByRole('button',{name:"Crear"})
+            expect((descripcionInput).value).toBe('');
+            
+            fireEvent.click(button);
+            
+            expect((descripcionInput)).toHaveClass('error');
+    
+        });
+      
     });
 
-    // describe('Verificar lista desplegable de categorías', () => {
+    describe('Verificar lista desplegable de categorías', () => {
         
-    //     test('Verificar renderizado de select',() => {
-    //         setup();
-    //         expect(screen.getByRole('combobox', { name: 'Categoría'})).toBeInTheDocument();
-    //     });
+        test('Verificar renderizado de select',() => {
+            setup();
+            expect(screen.getByRole('combobox', { name: 'Categoría'})).toBeInTheDocument();
+        });
        
-    //     test('Se muestran en el select un correcto número de opciones', () => {
-    //         setup()
-    //         expect(screen.getAllByRole('option').length).toBe(4)
-    //     })
-    //     test('Verificar que pueden seleccionarse opciones', () => {
-    //         setup();
-    //         userEvent.selectOptions(
-    //             screen.getByRole('combobox', { name: 'Categoría'}),
-    //             screen.getByRole('option', {value:"{category.title}"})
-    //         );
-
-    //         expect(screen.getByText(/Hotel/).selected).toBe(true);
-    //     })
-    // });
+    });
+    describe('Verificar lista desplegable de ciudades', () => {
+        
+        test('Verificar renderizado de select',() => {
+            setup();
+            expect(screen.getByRole('combobox', { name: 'Ciudad'})).toBeInTheDocument();
+        });
+       
+    });
     

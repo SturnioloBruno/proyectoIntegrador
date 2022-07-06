@@ -19,7 +19,7 @@ describe ('Renderizado de elementos',() =>{
         setup();
         expect(screen.getByText('©2022 Digital Booking')).toBeTruthy();
     });
-    test('Verificar renderizado de icono Facebook',() => {
+    test('Verificar renderizado de icono Facebook',() => { 
         setup();
         expect(screen.getByText('Facebook')).toBeTruthy();
     });

@@ -76,7 +76,7 @@ describe('Verificar validaciones en los inputs', () => {
         setup();
         const passwordInput = screen.getByLabelText(/Contraseña/i);
         const button = screen.getByRole('button',{name:"Ingresar"})
-        expect((passwordInput).value).toBe('');
+        expect((passwordInput).value).toBe(''); 
         
         fireEvent.click(button);
         

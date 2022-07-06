@@ -57,7 +57,7 @@ describe ('Evento onClick', () => {
         
         // eslint-disable-next-line testing-library/no-unnecessary-act
         act(() => {
-            fireEvent.click(boton_crear_cuenta);
+            fireEvent.click(boton_crear_cuenta); 
         });
         
         expect(screen.getByText(/Crear cuenta/, { hidden: true })).toBeTruthy();

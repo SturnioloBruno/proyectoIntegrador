@@ -1,12 +1,11 @@
 import { React, useState, useEffect } from 'react';
-import { useParams } from "react-router-dom";
 import Api from "../Helpers/Api";
 import "../../styles/Favourites/FavouritesList.css";
 import HeaderProduct from '../Products/HeaderProduct';
 
 function FavouritesList({type}) {
     const [favourites, setFavourites] = useState(null);
-    const {id} = useParams();
+    const id = JSON.parse(localStorage.getItem("user")).id;
 
     useEffect(()=>{
         //Cargo favoritos
@@ -28,16 +27,16 @@ function FavouritesList({type}) {
     }, [id]);
 
     return (
-        <>
-        <HeaderProduct name="Mis favoritos" type={type} />
-        <section className="section__favourites-list">
-            <ul>
-                {/*favourites?.map((favourite) => {
-                    
-                */}
-            </ul>
-        </section>
-        </>
+        <div className='div__favourites-list'>
+            <HeaderProduct name="Mis favoritos" type={type} />
+            <section className="section__favourites-list">
+                <ul>
+                    {favourites?.map((favourite) => {
+                        console.log(favourite);
+                    })}
+                </ul>
+            </section>
+        </div>
     )
 }
 

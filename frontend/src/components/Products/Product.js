@@ -20,6 +20,7 @@ function Product({type}) {
     const [product, setProduct] = useState(null);
     const [punctuation, setPunctuation] = useState(null);
     const {id} = useParams();
+    const token = localStorage.getItem("token");
 
     useEffect(()=>{
         //Cargo datos del producto
@@ -47,8 +48,8 @@ function Product({type}) {
                     'Content-Type':'application/json'
                 }
             })
-            .then(function(respuesta){
-                return respuesta.json();
+            .then(function(response){
+                return response.json();
             })
             .then(function (punctuation) {
                 setPunctuation(punctuation);
@@ -63,14 +64,37 @@ function Product({type}) {
         document.querySelector(".div__modal-share").classList.remove("none");
     }
 
+    const handlerSubmit = (e) => {
+        e.preventDefault();
+
+        const insertFavourite = async()=>{
+            await fetch(Api + "favourites/insert/", {
+                method: "POST",
+                headers: {
+                    "Access-Control-Allow-Headers" : "Content-Type",
+                    'Access-Control-Allow-Origin': "*",
+                    'Content-Type': 'application/json',
+                    "Authorization": `Bearer ${token}`
+                },
+                body: JSON.stringify({
+                    id: id
+                }),
+            }).then((response) => {
+                console.log(response);
+                return response.json();
+            });
+        }
+        insertFavourite();
+    }
+
     return <><article className="article__info-product">
         <HeaderProduct type={type} name={product?.name} category={product?.category.title} />
         <InfoProduct address={product?.address} punctuation={product?.punctuation} stars={punctuation?.punctValue} score={product?.score} />
         <div className="div__img-actions">
-            <div className="div__buttons-bar">
+            <form method='POST' className="div__buttons-bar" onSubmit={handlerSubmit}>
                 <Link to="#" className="a__share-icon" onClick={viewModal}>Compartir</Link>
-                <Link to="#" className="a__like-icon">Me gusta</Link>
-            </div>
+                <button type="submit" className="a__like-icon">Me gusta</button>
+            </form>
             {mobileTablet && <GalleryMobile srcImg={product?.images} altImg={product?.category.title} />}
             {desktop && <GalleryDesktop srcImg={product?.images} altImg={product?.category.title} />}
         </div>

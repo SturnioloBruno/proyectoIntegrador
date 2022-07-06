@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import "../../styles/Admin/UploadAttributes.css";
+import Api from "../Helpers/Api";
 
 function UploadImages() {
     const [characteristics, setCharacteristics] = useState(null);
@@ -9,7 +10,7 @@ function UploadImages() {
     useEffect(()=>{
         //Cargo características
         const getCharacteristics = async()=>{
-            await fetch("http://localhost:8080/characteristics/getList/", {
+            await fetch(Api + "characteristics/getList/", {
                 method:'GET',
                 headers:{
                     'Content-Type':'application/json'

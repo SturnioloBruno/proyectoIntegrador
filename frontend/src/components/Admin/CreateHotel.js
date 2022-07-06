@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import HeaderProduct from "../Products/HeaderProduct";
 import "../../styles/Admin/CreateHotel.css";
 import Api from "../Helpers/Api";
@@ -7,6 +8,7 @@ import UploadAttributes from "./UploadAttributes";
 import validateInput from "../Helpers/Util";
 
 function CreateHotel() {
+  const navigate = useNavigate();
   const [categories, setCategories] = useState(null);
   const [cities, setCities] = useState(null);
 
@@ -153,13 +155,8 @@ function CreateHotel() {
         policy: arrayPolicies
       }),
     }).then((response) => {
-        console.log(response);
-        console.log(response.json())
-        if(response.status === 201){
-            //mandarlo a que se creo el producto
-        }else{
-            //no se creo el producto
-        }
+        if(response.status === 201) navigate("/create-ok");
+        if(response.status === 400) alert("Lamentablemente el producto no ha podido crearse. Por favor intente más tarde.");
     });
   };
 

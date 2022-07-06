@@ -88,12 +88,15 @@
     align-items: center;
 }
 
-.article__info-product .a__share-icon, .a__like-icon {
+.article__info-product .a__share-icon, .article__info-product .a__like-icon {
     font-size: 0;
     margin-right: 16px;
+    background: none;
+    border: none;
+    cursor: pointer;
 }
 
-.article__info-product .a__share-icon::before, .a__like-icon::before {
+.article__info-product .a__share-icon::before, .article__info-product .a__like-icon::before {
     content: "";
     width: 24px;
     height: 24px;
@@ -112,6 +115,11 @@
 
 .article__info-product .a__like-icon::before {
     background: url(../../assets/icons/like.svg) no-repeat center center;
+    background-size: contain;
+}
+
+.article__info-product .a__like-icon:hover::before {
+    background: url(../../assets/icons/like-orange.svg) no-repeat center center;
     background-size: contain;
 }
 

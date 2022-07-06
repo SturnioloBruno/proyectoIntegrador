@@ -64,13 +64,13 @@ function Booking() {
         
         if(city.value.trim() === ""){
             city.focus();
-            city.className = "error";
+            city.classList.add("error")
             return
         }
 
         if(hour.value === ""){
             hour.focus();
-            hour.className = "error";
+            hour.classList.add("error");
             return
         }
 

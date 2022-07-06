@@ -43,27 +43,33 @@ function SuccessfulBooking({type}) {
 
     return (
         <section className="section__successful-booking">
-            <div>
-                {type === "booking-ok" &&
-                    <>
-                    <h2>¡Muchas gracias!</h2>
-                    <p>Su reserva se ha realizado con éxito</p>
-                    <Link to="/" className="btn button__solid-type">ok</Link>
-                    </>
-                }
-                {type === "create-ok" &&
-                    <>
-                    <p>Tu propiedad se ha creado con con éxito</p>
+            {type === "booking-ok" || type === "create-ok" || type === "confimation-ok" ?
+                <div className='div__successful-booking'>
+                    {type === "booking-ok" &&
+                        <>
+                        <h2>¡Muchas gracias!</h2>
+                        <p>Su reserva se ha realizado con éxito</p>
+                        <Link to="/" className="btn button__solid-type">ok</Link>
+                        </>
+                    }
+                    {type === "create-ok" &&
+                        <>
+                        <p>Tu propiedad se ha creado con con éxito</p>
+                        <Link to="/" className="btn button__solid-type">Volver</Link>
+                        </>
+                    }
+                    {type === "confimation-ok" &&
+                        <>
+                        <p>Email confirmado con con éxito</p>
+                        <Link to="/" className="btn button__solid-type">Volver</Link>
+                        </>
+                    }
+                </div> :
+                <div className='div__denegate-booking'>
+                    <p>No tiene permisos de administrador para visualizar esta sección</p>
                     <Link to="/" className="btn button__solid-type">Volver</Link>
-                    </>
-                }
-                 {type === "confimation-ok" &&
-                    <>
-                    <p>Email confirmado con con éxito</p>
-                    <Link to="/" className="btn button__solid-type">Volver</Link>
-                    </>
-                }
-            </div>
+                </div>
+            }
         </section>
     )
 }

@@ -301,6 +301,20 @@ body.register .div__open-menu .div__menu-bar .ul__bar-buttons li {
         background: var(--orange);
     }
 
+    .ul__bar-buttons > li span:hover, .ul__bar-buttons > li > a:hover {
+        border: 1px solid var(--orange);
+    }
+
+    .ul__role-menu li:first-child a:hover,
+    .ul__bar-admin li:first-child a:hover {
+        border-radius: 5px 5px 0 0;
+    }
+
+    .ul__role-menu li:last-child a:hover,
+    .ul__bar-admin li:last-child a:hover {
+        border-radius: 0 0 5px 5px;
+    }
+
     .ul__role-menu a:hover {
         border: none;
     }

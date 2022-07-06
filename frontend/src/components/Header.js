@@ -67,6 +67,10 @@ function Header() {
                                 : ""}
                                 </li>
                             </ul>}
+                            <ul className='ul__router-menu'>
+                                <li><Link to="/my-bookings" onClick={clicButton}>Mis reservas</Link></li>
+                                <li><Link to="/my-favourites" onClick={clicButton}>Mis favoritos</Link></li>
+                            </ul>
                         </nav>
                         <div className="div__social-menu">
                            {user?<span>¿Deseas <Link to="/" onClick={()=>{

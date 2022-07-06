@@ -1,5 +1,6 @@
 package com.grupo01.proyectointegrador.Service;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.grupo01.proyectointegrador.Model.Favourite;
 import com.grupo01.proyectointegrador.Model.User;
 import com.grupo01.proyectointegrador.Repository.IFavouriteRepository;
@@ -18,6 +19,9 @@ public class FavouriteService {
 
     @Autowired
     UserService userService;
+
+    @Autowired
+    ObjectMapper mapper;
 
     public Favourite guardar(Favourite favourite) throws Exception {
         return favouriteRepository.save(favourite);

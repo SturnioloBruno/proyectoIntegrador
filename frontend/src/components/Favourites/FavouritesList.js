@@ -3,7 +3,7 @@ import Api from "../Helpers/Api";
 import "../../styles/Favourites/FavouritesList.css";
 import HeaderProduct from '../Products/HeaderProduct';
 
-function FavouritesList({type}) {
+function FavouritesList() {
     const [favourites, setFavourites] = useState(null);
     const id = JSON.parse(localStorage.getItem("user")).id;
 
@@ -28,7 +28,7 @@ function FavouritesList({type}) {
 
     return (
         <div className='div__favourites-list'>
-            <HeaderProduct name="Mis favoritos" type={type} />
+            <HeaderProduct name="Mis favoritos" type="home" />
             <section className="section__favourites-list">
                 <ul>
                     {favourites?.map((favourite) => {

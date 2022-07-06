@@ -14,7 +14,7 @@ import Share from './Share';
 import "../../styles/Products/Product.css";
 import Api from "../Helpers/Api";
 
-function Product({type}) {
+function Product() {
     const mobileTablet = useMediaQuery({ query: '(max-width: 1024px)' });
     const desktop = useMediaQuery({ query: '(min-width: 1025px)' });
     const [product, setProduct] = useState(null);
@@ -88,7 +88,7 @@ function Product({type}) {
     }
 
     return <><article className="article__info-product">
-        <HeaderProduct type={type} name={product?.name} category={product?.category.title} />
+        <HeaderProduct type="home" name={product?.name} category={product?.category.title} />
         <InfoProduct address={product?.address} punctuation={product?.punctuation} stars={punctuation?.punctValue} score={product?.score} />
         <div className="div__img-actions">
             <form method='POST' className="div__buttons-bar" onSubmit={handlerSubmit}>

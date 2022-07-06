@@ -19,12 +19,10 @@ public class Punctuation {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "prod_id", nullable = false)
-    @JsonIgnore
     private Product prodId;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id", nullable = false)
-    @JsonIgnore
     private User userId;
 
     public Punctuation(){}

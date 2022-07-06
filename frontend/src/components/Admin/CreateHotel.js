@@ -161,7 +161,7 @@ function CreateHotel() {
   };
 
   return (
-    <>
+    <main className="main__admin-create">
       <HeaderProduct name="Administración de productos" />
       <section className="section__admin-create">
         <h3>Crear propiedad</h3>
@@ -294,7 +294,7 @@ function CreateHotel() {
           </button>
         </form>
       </section>
-    </>
+    </main>
   );
 }
 

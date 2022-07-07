@@ -3,7 +3,7 @@
     min-height: calc(100vh - 50px);
 }
 
-.ul__accommodation-list li:first-of-type article {
+.div__favourites-list .ul__accommodation-list li:first-of-type article {
     margin-top: 0;
 }
 
@@ -15,8 +15,8 @@
 }
 
 @media (min-width: 1280px) {
-    .ul__accommodation-list li:first-of-type article,
-    .ul__accommodation-list li:nth-child(2) article {
+    .div__favourites-list .ul__accommodation-list li:first-of-type article,
+    .div__favourites-list .ul__accommodation-list li:nth-child(2) article {
         margin-top: 0;
     }
 }

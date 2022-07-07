@@ -391,6 +391,14 @@ body.register .div__open-menu .div__menu-bar .ul__bar-buttons li {
         color: var(--grey);
     }
 
+    .div__user-login:hover {
+        cursor: pointer;
+    }
+
+    .div__user-login:hover > span {
+        background-color: var(--orange);
+    }
+
     .ul__bar-buttons a {
         padding: .8em 3em;
     }

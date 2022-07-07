@@ -8,7 +8,7 @@ import { registerLocale } from  "react-datepicker";
 import es from 'date-fns/locale/es';
 registerLocale('es', es);
 
-function Calendar({bookings , handlerChange}) {
+function Calendar({bookings , handlerChange,error}) {
     const [dateRange, setDateRange] = useState([null, null]);
     const [startDate, endDate] = dateRange;
     const mobile = useMediaQuery({ query: '(max-width: 767px)' });
@@ -69,6 +69,9 @@ function Calendar({bookings , handlerChange}) {
                         //SI MARCO UNA RESERVADA LE BORRO LA SELECCION
                         if(filterResult.length>0){
                             setDateRange([null, null]);
+                            sessionStorage.removeItem("dateStart");
+                            sessionStorage.removeItem("dateEnd");
+                            error("Debes seleccionar un rango con fechas disponibles")
                             return
                         }
 

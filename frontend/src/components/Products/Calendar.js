@@ -71,7 +71,7 @@ function Calendar({bookings , handlerChange,error}) {
                             setDateRange([null, null]);
                             sessionStorage.removeItem("dateStart");
                             sessionStorage.removeItem("dateEnd");
-                            error("Debes seleccionar un rango con fechas disponibles")
+                            error("Debes seleccionar un rango de fechas válido")
                             return
                         }
 

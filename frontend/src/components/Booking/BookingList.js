@@ -3,6 +3,7 @@ import HeaderProduct from "../Products/HeaderProduct";
 import Card from '../Cards/Card';
 import "../../styles/Booking/BookingList.css";
 import Api from "../Helpers/Api";
+import SuccessfulBooking from "./SuccessfulBooking";
 
 function BookingList() {
     const userId = JSON.parse(localStorage.getItem("user")).id;
@@ -31,7 +32,10 @@ function BookingList() {
         getBookings();
     },[]);
 
+    const arr = bookings || [];
     return (
+        arr.length === 0 ?
+        <SuccessfulBooking type="booking-list" /> :
         <main className='main__booking-list'>
         <HeaderProduct name="Mis reservas" type="home" />
             <section className="section__booking-list">

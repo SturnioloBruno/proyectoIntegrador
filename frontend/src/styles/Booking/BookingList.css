@@ -30,8 +30,6 @@
     }
 
     .section__booking-list .ul__accommodation-list li article {
-        min-height: calc(100% - 2em);
-        height: auto;
         margin-top: 2em;
     }
 }

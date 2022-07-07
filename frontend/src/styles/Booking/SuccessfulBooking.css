@@ -21,6 +21,7 @@
 
 .section__successful-booking div h2 {
     font-size: 20px;
+    margin-top: .5em;
 }
 
 .section__successful-booking div::before {

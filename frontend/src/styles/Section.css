@@ -207,7 +207,7 @@ h2 {
         width: 45%;
         object-position: center;
         border-radius: 8px 0 0 8px;
-        max-height: 400px;
+        height: 400px;
     }
 
     .ul__accommodation-list article .p__description-text {
@@ -242,7 +242,7 @@ h2 {
     }
 
     .ul__accommodation-list article {
-        height: calc(100% - 2em);
+        height: auto;
     }
 
     .div__info-accommodation > div:first-of-type {

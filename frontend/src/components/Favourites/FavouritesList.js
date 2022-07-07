@@ -21,12 +21,16 @@ function FavouritesList() {
             .then(function(response){
                 return response.json();
             })
+            .then(function (favourites) {
+                setFavourites(favourites)
+            })
         }      
         getFavourites();
     }, [id]);
-
+    
+    const arr = favourites || [];
     return (
-        favourites === null ?
+        arr.length === 0 ?
         <SuccessfulBooking type="favourite" /> :
         <div className='div__favourites-list'>
             <HeaderProduct name="Mis favoritos" type="home" />

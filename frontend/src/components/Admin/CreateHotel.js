@@ -226,7 +226,7 @@ function CreateHotel() {
               <span>Latitud</span>
               <input
                 type="text"
-                placeholder="-59.1235862000"
+                placeholder="-59.12358620"
                 name="latitude"
                 required
               />
@@ -235,7 +235,7 @@ function CreateHotel() {
               <span>Longitud</span>
               <input
                 type="text"
-                placeholder="-34.5641632000"
+                placeholder="-34.56416320"
                 name="longitude"
                 required
               />

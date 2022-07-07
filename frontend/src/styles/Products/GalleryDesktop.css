@@ -32,4 +32,8 @@
         height: 90px !important;
         object-fit: cover;
     }
+
+    .gallery .gallery-control--prev, .gallery .gallery-control--next {
+        border: none;
+    }
 }

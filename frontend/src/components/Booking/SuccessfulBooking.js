@@ -53,13 +53,13 @@ function SuccessfulBooking({type}) {
                     }
                     {type === "create-ok" &&
                         <>
-                        <p>Tu propiedad se ha creado con con éxito</p>
+                        <p>Tu propiedad se ha creado con éxito</p>
                         <Link to="/" className="btn button__solid-type">Volver</Link>
                         </>
                     }
                     {type === "confimation-ok" &&
                         <>
-                        <p>Email confirmado con con éxito</p>
+                        <p>Email confirmado con éxito</p>
                         <Link to="/" className="btn button__solid-type">Volver</Link>
                         </>
                     }

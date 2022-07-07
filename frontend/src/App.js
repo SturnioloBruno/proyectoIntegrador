@@ -17,7 +17,6 @@ import BookingList from "./components/Booking/BookingList";
 import FavouritesList from './components/Favourites/FavouritesList';
 
 function App() {
-  const role = localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")).role.roleName : "";
 
   return (
     <Fragment>
@@ -37,7 +36,8 @@ function App() {
         <Route path="/admin/register" element={<Register type="register" />} />
         <Route path="/product/:id/booking" element={<Booking type="booking" />} />
         <Route path="/booking-ok" element={<SuccessfulBooking type="booking-ok" />} />
-        {role == "ADMIN" ? <Route path="/administration" element={<CreateHotel type="create" />} /> : <Route path="/administration" element={<SuccessfulBooking type="denegate" />} />}
+        <Route path="/administration" element={<CreateHotel type="create" />} /> 
+        <Route path="/administration/denegado" element={<SuccessfulBooking type="denegate" />} />
         <Route path="/create-ok" element={<SuccessfulBooking type="create-ok" />} />
         <Route path="/my-bookings" element={<BookingList type="booking-list" />} />
         <Route path="/accountconfirmation/:id" element={<SuccessfulBooking type="confimation-ok" />} />

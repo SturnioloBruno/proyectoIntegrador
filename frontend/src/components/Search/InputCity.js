@@ -36,7 +36,6 @@ const InputCity = ({ cities , handlerCity }) => {
           setSearchTerm(e.target.value);
         }}
         onClick={toggle}
-        onBlur={toggle}
       />
       <ul className={isActive ? "ul__list-location show" : "ul__list-location"}>
         {cities

@@ -14,6 +14,13 @@ function CreateHotel() {
   const token = localStorage.getItem("token");
 
   useEffect(() => {
+ 
+    if((localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")).role.roleName : "") !== "ADMIN"){
+      console.log("entro");
+      navigate("/administration/denegado")
+      return
+    } 
+
     //Cargo categorías
     const getCategories = async () => {
       await fetch(Api + "categories/getList/", {

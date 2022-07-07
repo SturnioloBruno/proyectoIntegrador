@@ -77,6 +77,12 @@ function SuccessfulBooking({type}) {
                         <Link to="/" className="btn button__solid-type">Volver</Link>
                         </>
                     }
+                     {type === "denegate" &&
+                        <>
+                        <p>No tienes permisos de administrador para ingresar a esta seccion</p>
+                        <Link to="/" className="btn button__solid-type">Volver</Link>
+                        </>
+                    }
                 </div>
             }
         </section>

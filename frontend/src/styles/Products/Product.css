@@ -118,7 +118,7 @@
     background-size: contain;
 }
 
-.article__info-product .a__like-icon:hover::before, .article__info-product .a__like-icon.like::before {
+.article__info-product .a__like-icon.like::before {
     background: url(../../assets/icons/like-orange.svg) no-repeat center center;
     background-size: contain;
 }
@@ -212,6 +212,11 @@
 }
 
 @media (min-width: 1024px) {
+    .article__info-product .a__like-icon:hover::before {
+        background: url(../../assets/icons/like-orange.svg) no-repeat center center;
+        background-size: contain;
+    }
+
     .article__info-product section:not(.section__header-product, .section__address-score, .section__hotel-date) {
         padding: 2em 5% 0;    
     }

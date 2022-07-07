@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react';
 import { useMediaQuery } from 'react-responsive';
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import HeaderProduct from './HeaderProduct';
 import InfoProduct from './InfoProduct';
 import GalleryMobile from "./GalleryMobile";
@@ -22,6 +22,7 @@ function Product() {
     const {id} = useParams();
     const userId = localStorage.getItem("user") != null ? JSON.parse(localStorage.getItem("user")).id : null;
     const [productLike, setProductLike] = useState(null);
+    const navigate = useNavigate();
 
     useEffect(()=>{
         //Cargo datos del producto
@@ -140,7 +141,7 @@ function Product() {
                 }
                 deleteFavourite();
             }
-        }
+        } else navigate("/login");
     }
 
     return <><article className="article__info-product">

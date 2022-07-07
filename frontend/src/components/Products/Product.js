@@ -141,7 +141,11 @@ function Product() {
                 }
                 deleteFavourite();
             }
-        } else navigate("/login");
+        } else {
+            sessionStorage.setItem("url", `/product/${id}`);
+            sessionStorage.setItem("msg", "Debe iniciar sesión para guardar favoritos.");
+            navigate("/login");
+        }
     }
 
     return <><article className="article__info-product">

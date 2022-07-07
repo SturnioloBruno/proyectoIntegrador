@@ -16,9 +16,9 @@ function HotelDate({id,bookings}) {
 
         if(!login){
          if(!localStorage.getItem("user")) {
-                            sessionStorage.setItem("url", `/product/${id}/booking`);
-                            sessionStorage.setItem("msg", "Debe iniciar sesión para realizar reservas.");
-         } 
+            sessionStorage.setItem("url", `/product/${id}/booking`);
+            sessionStorage.setItem("msg", "Debe iniciar sesión para realizar reservas.");
+         }
          navigate("/login")
          return
         }

@@ -7,7 +7,6 @@ function SuccessfulBooking({type}) {
     const {id} = useParams();
 
     useEffect(()=>{
-
         if (type === "confimation-ok"){
             const register = async() => {
                 await fetch(Api + `users/accountConfirmation/${id}`, {
@@ -66,8 +65,18 @@ function SuccessfulBooking({type}) {
                     }
                 </div> :
                 <div className='div__denegate-booking'>
-                    <p>No tiene permisos de administrador para visualizar esta sección</p>
-                    <Link to="/" className="btn button__solid-type">Volver</Link>
+                    {type === "favourite" &&
+                        <>
+                        <p>Aún no has agregado ningún alojamiento a tu lista de favoritos</p>
+                        <Link to="/" className="btn button__solid-type">Volver</Link>
+                        </>
+                    }
+                    {type === "booking-list" &&
+                        <>
+                        <p>Aún no has efectuado ninguna reserva</p>
+                        <Link to="/" className="btn button__solid-type">Volver</Link>
+                        </>
+                    }
                 </div>
             }
         </section>

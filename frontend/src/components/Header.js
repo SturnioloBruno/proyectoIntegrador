@@ -34,9 +34,9 @@ function Header() {
         typeRegister == false ? setTypeRegister(typeRegister = true) : setTypeRegister(typeRegister = false);
     }
 
-    function handleChangeOpen() {
-        open == false ? setOpen(true) : setOpen(false);
-    }
+    const toggle = () => {
+        setOpen(!open);
+    };
 
     return (
         <header>
@@ -46,7 +46,7 @@ function Header() {
                 <div className="div__menu-bar">
                     <div className={`div__menu-login ${role == "ADMIN" ? "admin" : ""}`}>
                         {user ?
-                        <div className="div__user-login" onClick={handleChangeOpen}>
+                        <div className="div__user-login" onClick={toggle}>
                             <span>{user?.userName[0] + user?.userSurname[0]}</span>
                             <p>Hola, <span>{`${user?.userName} ${user?.userSurname}`}</span></p>
                         </div>

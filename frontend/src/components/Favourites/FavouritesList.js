@@ -38,7 +38,7 @@ function FavouritesList() {
                 <ul className="ul__accommodation-list">
                     {favourites?.map((favourite) => {
                         return <li key={favourite.prodId.id}>
-                            <Card id={favourite.prodId.id} title={favourite.prodId.name} src={favourite.prodId.images[0]?.nombre_url} address={favourite.prodId.address} description={favourite.prodId.desc} category={favourite.prodId.category.title} punctuation={favourite.prodId.punctuation} score={favourite.prodId.score} stars={favourite.prodId.stars} services={favourite.prodId.characteristic} latitude={favourite.prodId.y} longitude={favourite.prodId.x} />
+                            <Card id={favourite.prodId.id} title={favourite.prodId.name} src={favourite.prodId.images[0]?.nombre_url} address={favourite.prodId.address} description={favourite.prodId.desc} category={favourite.prodId.category.title} punctuation={favourite.prodId.punctuation} score={favourite.prodId.score} stars={favourite.prodId.stars} services={favourite.prodId.productsC} latitude={favourite.prodId.y} longitude={favourite.prodId.x} />
                         </li>
                     })}
                 </ul>

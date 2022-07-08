@@ -84,7 +84,7 @@ function Login({ type }) {
                 if (response.status === 200) {
                     return response.json()
                 } else{
-                    setError({password:["No es posible loguearse"]})
+                    setError({password:["Revise su casilla de email para confirmar su cuenta"]})
                     return
                 }
             })

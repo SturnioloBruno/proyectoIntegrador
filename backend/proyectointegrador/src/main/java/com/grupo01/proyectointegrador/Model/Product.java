@@ -50,7 +50,7 @@ public class Product {
     private City city;
 
     @OneToMany(mappedBy = "product",fetch = FetchType.LAZY)
-    @JsonIgnore
+    
     private List<ProductCharacteristic> productsC;
 
     @OneToMany(mappedBy = "product",fetch = FetchType.LAZY)

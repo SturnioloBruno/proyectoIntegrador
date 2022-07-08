@@ -54,9 +54,9 @@ function Card({id, title, src, address, description, category, punctuation, scor
                 </ul>
                 <div className="div__show-text">
                     <p className="p__description-text">{description}</p>
-                    <Link to="#">más...</Link>
+                    <Link to={`/product/${id}`}>más...</Link>
                 </div>
-                <Link to={`/product/${id}`}className="btn button__solid-type">ver más</Link>
+                <Link to={`/product/${id}`} className="btn button__solid-type">ver más</Link>
             </div>
             <img src={src} alt={title} />
         </article>

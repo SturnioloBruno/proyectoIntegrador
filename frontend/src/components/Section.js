@@ -50,6 +50,8 @@ function Section({ type, title }) {
             }
             getProducts();
         }
+        sessionStorage.removeItem("msg");
+        sessionStorage.removeItem("url");
     },[type,user]);
 
     return (

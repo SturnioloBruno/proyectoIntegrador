@@ -14,6 +14,7 @@ import Api from "../Helpers/Api";
 function Booking() {
     const [product, setProduct] = useState(null);
     const [change,setChange] = useState(false);
+    const [pRange, setpRange] = useState(null);
     const {id} = useParams();
     const navigate = useNavigate();
     sessionStorage.removeItem("url");
@@ -74,6 +75,11 @@ function Booking() {
             return
         }
 
+        if(sessionStorage.getItem("dateStart") === null || sessionStorage.getItem("dateEnd") === null) {    
+            setpRange("Seleccione un rango de fechas para continuar.");
+            return
+        }
+        
         //Insert con datos de la reserva
         const insertBooking = async()=>{
             await fetch(Api + "bookings/insert", {
@@ -115,11 +121,11 @@ function Booking() {
                     <Form />
                     <section className='section__booking-date'>
                         <h2>Seleccioná tu fecha de reserva</h2>
-                        <Calendar bookings={product?.bookings} handlerChange={handlerChange}/>
+                        <Calendar bookings={product?.bookings} handlerChange={handlerChange} error={setpRange}/>
                     </section>
                     <Hour />
                 </div>
-                <Details src={product?.images[0]?.nombre_url} change={change} name={product?.name} category={product?.category.title} address={product?.address} city={product? product.city?.cityName + ", " + product.city?.country : ""} stars={product?.stars} />
+                <Details error={pRange} src={product?.images[0]?.nombre_url} change={change} name={product?.name} category={product?.category.title} address={product?.address} city={product? product.city?.cityName + ", " + product.city?.country : ""} stars={product?.stars} />
             </form>
             <Politics policy={product?.policy} />
         </section>

@@ -13,7 +13,7 @@
     --light-grey: #DFE4EA;
 }
 
-body {
+body, textarea {
     font-family: 'Poppins', sans-serif;
 }
 
@@ -121,13 +121,39 @@ input:not([type="checkbox"], .input__calendar-day input), textarea {
     box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.15);
 }
 
+.select__option {
+    border-radius: 5px;
+    padding: 1em;
+    width: 100%;
+    height: 50px;
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.15);
+    border: none;
+    background-image:
+    linear-gradient(45deg, transparent 50%, gray 50%),
+    linear-gradient(135deg, gray 50%, transparent 50%),
+    linear-gradient(to right, #ccc, #ccc);
+    background-position:
+    calc(100% - 20px) calc(1em + 10px),
+    calc(100% - 15px) calc(1em + 10px),
+    calc(100% - 2.5em) 1.2em;
+    background-size:
+    5px 5px,
+    5px 5px,
+    1px 1.5em;
+    background-repeat: no-repeat;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
 textarea {
     resize: none;
 }
 
 input.error, select.error {
-    border: 1px solid #FF0000;
-    background: #FFE1E1;
+    background-color: #FFE1E1;
 }
 
 input:disabled {
@@ -140,6 +166,31 @@ input:disabled {
     text-align: right;
     width: 100%;
     display: block;
+}
+
+.p__error {
+    color: #FF0000;
+    font-size: 14px;
+}
+
+.p__login-error {
+    background-color: rgba(255, 0, 0, .1);
+    color: #B00020;
+    padding: 1em 2em;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.p__login-error::before {
+    content: "";
+    width: 32px;
+    height: 32px;
+    display: flex;
+    margin-right: .5em;
+    background: url(../assets/icons/error.svg) no-repeat center center;
+    background-size: contain;
 }
 
 .show {
@@ -167,6 +218,37 @@ input:disabled {
 
 .a__close-modal:hover {
     text-decoration: underline;
+}
+
+.div__btn-actions a {
+    font-size: 0;
+}
+
+.div__btn-actions a::after {
+    content: "";
+    width: 50px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn__remove-img {
+    background-color: var(--grey);
+}
+
+.btn__remove-img::after {
+    background: url(../assets/icons/remove.svg) no-repeat center center;
+    background-size: 50%;
+}
+
+.btn__add-img {
+    background-color: var(--orange);
+}
+
+.btn__add-img::after {
+    background: url(../assets/icons/add.svg) no-repeat center center;
+    background-size: 50%;
 }
 
 .none {

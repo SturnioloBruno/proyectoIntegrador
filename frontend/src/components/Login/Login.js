@@ -3,6 +3,8 @@ import { Link , useNavigate } from "react-router-dom";
 import Button from "../Button";
 import '../../styles/Login.css';
 import { UserContext } from "../Context/UserContext";
+import Api from "../Helpers/Api";
+import validateInput from '../Helpers/Util';
 
 function Login({ type }) {
     const [errors,setError]=useState({})
@@ -15,8 +17,8 @@ function Login({ type }) {
 
         const emailValue =  document.querySelector("#email_login");
         const passwordValue = document.querySelector("#password_login");
-        let ret;
-
+        let ret ;
+ 
         //LIMPIO ERRORES 
         setError({})
 
@@ -35,7 +37,7 @@ function Login({ type }) {
         }
         
         const login = async() => {
-            await fetch("http://localhost:8080/authenticate", {
+            await fetch(Api + "authenticate", {
                 method:'POST',
                 headers:{
                     "Access-Control-Allow-Headers" : "Content-Type",
@@ -49,8 +51,11 @@ function Login({ type }) {
             .then((response) => {
                 if (response.status === 200) {
                   return response.json()
-                } else {
-                   setError({password:["No es posible loguearse"]})
+                } else if(response.status === 406){
+                   setError({email:["La cuanta ingresada no ha sido confirmada"]})
+                   return
+                }else{
+                    setError({password:["No es posible loguearse"]})
                    return
                 }
             })
@@ -69,7 +74,7 @@ function Login({ type }) {
         login();
     
         const findUserData = async()=>{
-            await fetch("http://localhost:8080/users/findByEmail/" + emailValue.value.trim(), {
+            await fetch(Api + "users/findByEmail/" + emailValue.value.trim(), {
                 method:'GET',
                 headers: {
                     "Access-Control-Allow-Headers" : "Content-Type"
@@ -79,7 +84,7 @@ function Login({ type }) {
                 if (response.status === 200) {
                     return response.json()
                 } else{
-                    setError({password:["No es posible loguearse"]})
+                    setError({password:["Revise su casilla de email para confirmar su cuenta"]})
                     return
                 }
             })
@@ -99,50 +104,6 @@ function Login({ type }) {
         }
     }
 
-    //VALIDO CAMPO EMAIL
-    const validateInput = (type,value)=>{ 
-        value = value.trim() //hago un trim para sacar los espacios
-
-        switch (type) {
-            case 'EMAIL':
-                    if (value.length === 0 ){
-                        return "El campo es obligatorio"; 
-                    }
-
-                    if (!value.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/ )) {
-                        return "El campo email no cumple con el formato";
-                   }
-                break;
-            case 'PASSWORD':
-                    if (value.length === 0 ){
-                      return "El campo es obligatorio"; 
-                    }  
-
-                    if (value.length < 6) {
-                        
-                         return "La contraseña debe contener más de 6 caracteres"
-                    }
-
-                    if (!value.match(/[A-Z]/)) {
-                        return "El campo debe contener al menos una letra mayúscula"
-                    }
-
-                    if (!value.match(/[a-z]/)) {
-                        return "El campo debe contener al menos una letra minúscula"
-                    }
-
-                    if (!value.match(/[0-9]/)) {
-                        return "El campo debe contener al menos un número"
-                    }
-                    break;
-            default:
-                return "Caso no contemplado!";
-        }
-          
-        //RETORNO VACIO NO HUBO ERRORES
-        return "";
-    }
-
     if(type) document.body.className = `${type}`;
 
     //Mostrar u ocultar contraseña
@@ -155,10 +116,15 @@ function Login({ type }) {
     return (
         <section className="section__form-data">
             <h2>Iniciar sesión</h2>
+            {sessionStorage.getItem("msg") !== null ? <p className='p__login-error'>{sessionStorage.getItem("msg")}</p> : "" }
             <form action="POST" onSubmit={handlerSubmit}>
                 <label htmlFor="email_login">
                     <span>Correo electrónico</span>
                     <input type="email" name="email" id="email_login" required className={`${errors.email ||errors.general ? "error" : ""}`} autoComplete="off" value={email} onChange={(e) => setEmail(e.target.value)} />
+                    {errors.email?
+                    <small className="small__error" id="error_email">
+                        {errors.email?errors.email:''}
+                    </small> : "" }
                 </label>
 
                 <label htmlFor="password_login" className='label__password-input'>
@@ -166,14 +132,12 @@ function Login({ type }) {
                     <input type="password" name="password" id="password_login" required className={`${errors.password || errors.general? "error" : ""}`} autoComplete="off" />
                     <Link to="#" className="a__show-hide" onClick={show}>Show/Hide</Link>
                     
-                    {errors.password || errors.email || errors.general ?
+                    {errors.password || errors.general ?
                     <small className="small__error" id="error_password">
                         {errors.password?errors.password:''}
-                        {errors.email?errors.email:''}
                         {errors.general?errors.general:''}
                     </small> : "" }
                 </label>
-                {sessionStorage.getItem("msg") !== undefined ? <small className='small__error'>{sessionStorage.getItem("msg")}</small> : "" }
                 <Button text="Ingresar" type="submit" className="btn button__solid-type" />
             </form>
             <p>¿Aún no tenes cuenta? <Link to="/register">Registrate</Link></p>

@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react';
 import { useMediaQuery } from 'react-responsive';
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import HeaderProduct from './HeaderProduct';
 import InfoProduct from './InfoProduct';
 import GalleryMobile from "./GalleryMobile";
@@ -12,18 +12,22 @@ import Politics from './Politics';
 import HotelDate from "./HotelDate";
 import Share from './Share';
 import "../../styles/Products/Product.css";
+import Api from "../Helpers/Api";
 
-function Product({type}) {
+function Product() {
     const mobileTablet = useMediaQuery({ query: '(max-width: 1024px)' });
     const desktop = useMediaQuery({ query: '(min-width: 1025px)' });
     const [product, setProduct] = useState(null);
     const [punctuation, setPunctuation] = useState(null);
     const {id} = useParams();
+    const userId = localStorage.getItem("user") != null ? JSON.parse(localStorage.getItem("user")).id : null;
+    const [productLike, setProductLike] = useState(null);
+    const navigate = useNavigate();
 
     useEffect(()=>{
         //Cargo datos del producto
         const getProduct = async()=>{
-            await fetch("http://localhost:8080/products/findById/" + id,{
+            await fetch(Api + "products/findById/" + id,{
                 method:'GET',
                 headers:{
                     'Content-Type':'application/json'
@@ -40,20 +44,41 @@ function Product({type}) {
         
         //Cargo puntuación
         const getPunctuation = async()=>{
-            await fetch("http://localhost:8080/punctuations/findById/" + id,{
+            await fetch(Api + "punctuations/findById/" + id,{
                 method:'GET',
                 headers:{
                     'Content-Type':'application/json'
                 }
             })
-            .then(function(respuesta){
-                return respuesta.json();
+            .then(function(response){
+                return response.json();
             })
             .then(function (punctuation) {
                 setPunctuation(punctuation);
             })
         }
         getPunctuation();
+
+        //Ver producto en favoritos
+        if(userId != null) {
+            const getProductLike = async()=>{
+                await fetch(Api + "favourites/findByUserId/" + userId, {
+                    method:'GET',
+                    headers:{
+                        'Content-Type':'application/json'
+                    }
+                })
+                .then(function(response){
+                    return response.json();
+                })
+                .then(function(productLike) {
+                    {productLike?.map((like) => {
+                        if(like.prodId.id == id) setProductLike(like);
+                    })}
+                })
+            }
+            getProductLike();
+        }
     }, [id]);
 
     //Para ver la modal
@@ -62,14 +87,75 @@ function Product({type}) {
         document.querySelector(".div__modal-share").classList.remove("none");
     }
 
+    //Producto agregado a favoritos
+    if(Array.isArray(productLike)) {
+        {productLike?.map((like) => {
+            if(like.prodId.id == id) document.querySelector(".a__like-icon").classList.add("like");
+        })}
+    } else {
+        if(productLike != null && productLike.prodId.id == id) document.querySelector(".a__like-icon").classList.add("like");
+    }
+
+
+    const handlerSubmit = (e) => {
+        e.preventDefault();
+
+        if(userId != null) {
+            if(!productLike) {
+                const insertFavourite = async()=>{
+                    await fetch(Api + "favourites/insert/", {
+                        method: "POST",
+                        headers: {
+                            "Access-Control-Allow-Headers" : "Content-Type",
+                            'Access-Control-Allow-Origin': "*",
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            prodId: {id: id},
+                            userId: {id: userId}
+                        }),
+                    })
+                    .then((response) => {
+                        return response.json();
+                    })
+                    .then(function(productLike) {
+                        setProductLike(productLike);
+                    })
+                }
+                insertFavourite();
+            } else {
+                const deleteFavourite = async()=>{
+                    await fetch(Api + "favourites/delete/" + productLike.id, {
+                        method: "DELETE",
+                        headers: {
+                            "Access-Control-Allow-Headers" : "Content-Type",
+                            'Access-Control-Allow-Origin': "*",
+                            'Content-Type': 'application/json'
+                        }
+                    })
+                    .then(function() {
+                        setProductLike(null);
+                        document.querySelector(".a__like-icon").classList.remove("like");
+                    })
+                    .catch(e => { console.log(e) })
+                }
+                deleteFavourite();
+            }
+        } else {
+            sessionStorage.setItem("url", `/product/${id}`);
+            sessionStorage.setItem("msg", "Debe iniciar sesión para guardar favoritos.");
+            navigate("/login");
+        }
+    }
+
     return <><article className="article__info-product">
-        <HeaderProduct type={type} name={product?.name} category={product?.category.title} />
+        <HeaderProduct type="home" name={product?.name} category={product?.category.title} />
         <InfoProduct address={product?.address} punctuation={product?.punctuation} stars={punctuation?.punctValue} score={product?.score} />
         <div className="div__img-actions">
-            <div className="div__buttons-bar">
+            <form method='POST' className="div__buttons-bar" onSubmit={handlerSubmit}>
                 <Link to="#" className="a__share-icon" onClick={viewModal}>Compartir</Link>
-                <Link to="#" className="a__like-icon">Me gusta</Link>
-            </div>
+                <button type="submit" className="a__like-icon">Me gusta</button>
+            </form>
             {mobileTablet && <GalleryMobile srcImg={product?.images} altImg={product?.category.title} />}
             {desktop && <GalleryDesktop srcImg={product?.images} altImg={product?.category.title} />}
         </div>

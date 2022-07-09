@@ -1,0 +1,150 @@
+.main__admin-create .section__header-product {
+    padding-top: 98px;
+}
+
+.section__admin-create {
+    padding: 0 0 1.5em;
+    background-color: #E5E5E5;
+}
+
+.section__admin-create > h3 {
+    padding: 1em 5%;
+}
+
+.section__admin-create form {
+    background-color: white;
+    padding-bottom: 1.5em;
+}
+
+.section__admin-create form > .btn {
+    width: 90%;
+    margin: auto;
+}
+
+.section__admin-create form > section.section__info-hotel label:first-child {
+    margin-top: 0;
+}
+
+.section__admin-create form label {
+    display: flex;
+    flex-direction: column;
+}
+
+.section__admin-create .section__info-hotel label {
+    margin-top: 1em;
+}
+
+.section__admin-create form label span {
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: .5em;
+}
+
+.section__admin-create form textarea {
+    height: 150px;
+    width: 100%;
+}
+
+.section__admin-create .section__info-policies {
+    background-color: transparent;
+}
+
+.section__admin-create .section__info-policies h3 {
+    margin-bottom: 1em;
+}
+
+.section__admin-create .section__info-policies h4 {
+    margin: 1em 0;
+}
+
+.section__admin-create .section__info-policies h5 {
+    margin-bottom: .5em;
+    color: var(--grey);
+}
+
+.section__admin-create .section__upload-images {
+    padding: 0 5%;
+}
+
+@media (min-width: 768px) {
+    .main__admin-create .section__header-product {
+        padding-top: 114px;
+    }
+
+    .section__admin-create {
+        padding: 2em 5%;
+    }
+
+    .section__admin-create > h3 {
+        padding: 0;
+        margin-bottom: 1.5em;
+    }
+
+    .section__admin-create form {
+        border-radius: 8px;
+        padding-bottom: 2em;
+        margin-bottom: 0;
+    }
+
+    .section__admin-create .section__info-hotel {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    .section__admin-create .section__info-hotel label {
+        width: calc(50% - 1em);
+        margin: 0 0 1.5em;
+    }
+
+    .section__admin-create .section__info-hotel .label__description {
+        width: 100%;
+        margin-bottom: 0;
+    }
+
+    .section__admin-create .section__info-policies li:first-of-type h4 {
+        margin-top: 0;
+    }
+
+    .section__admin-create .section__info-policies ul {
+        border-radius: 8px;
+        border: 1px solid var(--light-grey);
+        padding: 1.5em;
+    }
+
+    .section__admin-create form > .btn {
+        width: 50%;
+    }
+}
+
+@media (min-width: 1280px) {
+    .section__admin-create form section {
+        padding: 2em;
+    }
+
+    .section__admin-create form textarea {
+        height: 200px;
+    }
+
+    .section__admin-create .section__info-policies h4 {
+        margin-top: 0;
+    }
+
+    .section__admin-create .section__info-policies ul {
+        display: flex;
+        justify-content: space-between;
+        padding: 1.5em;
+    }
+
+    .section__admin-create .section__info-policies ul li {
+        width: calc(33% - 1em);
+    }
+
+    .section__admin-create .section__upload-images {
+        padding: 0 2em;
+    }
+
+    .section__admin-create form > .btn {
+        width: 30%;
+    }
+}

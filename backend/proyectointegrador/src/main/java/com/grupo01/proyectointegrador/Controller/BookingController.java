@@ -6,7 +6,10 @@ import com.grupo01.proyectointegrador.Service.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-@CrossOrigin(origins = "http://localhost:3000")
+
+import java.util.List;
+
+
 @RestController
 @RequestMapping("/bookings")
 public class BookingController {
@@ -20,18 +23,18 @@ public class BookingController {
     }
 
     @GetMapping("/findById/{id}")
-    public ResponseEntity<Booking> buscarId(@PathVariable Long id) throws Exception{
+    public ResponseEntity<Booking> buscarId(@PathVariable Long id) throws Exception {
         return ResponseEntity.ok(bookingService.buscarId(id));
+    }
+
+    @GetMapping("/findByUserId/{id}")
+    public ResponseEntity<List<BookingDTO>> findByUserId(@PathVariable Long id) throws Exception {
+        return ResponseEntity.ok(bookingService.getByUserId(id));
     }
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> borrar(@PathVariable Long id) throws Exception {
         bookingService.borrar(id);
         return ResponseEntity.ok("Reserva borrada con exito");
-    }
-
-    @PutMapping("/update")
-    public ResponseEntity<Booking> actualizar(@RequestBody BookingDTO booking) throws Exception {
-        return ResponseEntity.ok(bookingService.guardar(booking));
     }
 }

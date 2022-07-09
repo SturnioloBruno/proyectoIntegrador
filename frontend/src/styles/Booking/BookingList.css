@@ -1,0 +1,35 @@
+.main__booking-list {
+    min-height: calc(100vh - 52px);
+}
+
+.main__booking-list .section__header-product {
+    padding-top: 98px;
+}
+
+.section__booking-list .ul__accommodation-list li:nth-child(1) article {
+    margin-top: 0;
+}
+
+@media (min-width: 768px) {
+    .main__booking-list {
+        min-height: calc(100vh - 72px);
+    }
+
+    .main__booking-list .section__header-product {
+        padding-top: 114px;
+    }
+}
+
+@media (min-width: 1280px) {
+    .section__booking-list {
+        min-height: calc(100vh - 234px);
+    }
+
+    .section__booking-list .ul__accommodation-list li:nth-child(2) article {
+        margin-top: 0;
+    }
+
+    .section__booking-list .ul__accommodation-list li article {
+        margin-top: 2em;
+    }
+}

@@ -4,6 +4,7 @@ import Search from './Search/Search';
 import Card from './Cards/Card';
 import "../styles/Home.css";
 import "../styles/Result.css";
+import Api from "./Helpers/Api";
 
 function Home({title}) {
   const [productsCities, setProductsCities] = useState(null);
@@ -12,7 +13,7 @@ function Home({title}) {
   useEffect(()=>{
     //Cargo productos por ciudad
     const getProductsperCities = async()=>{
-        await fetch("http://localhost:8080/products/getListProducts/" + location.search, {
+        await fetch(Api + "products/getListProducts/" + location.search, {
             method:'GET',
             headers:{
                 'Content-Type':'application/json'
@@ -35,9 +36,11 @@ function Home({title}) {
         <Search />
         <section className='section__cards-results'>
           <h2>{title === undefined ? `Resultados de: ${category}` : title}</h2>
-          <ul className="ul__accommodation-list">
+          <ul className="ul__accommodation-list">{console.log(productsCities)}
             {productsCities?.map((city) => {
-              return <li key={city?.id}><Card id={city?.id} title={city?.name} src={city?.category.urlImagen} address={city?.address} description={city?.desc} category={city?.category.title} punctuation={city?.punctuation} stars={city?.stars} score={city?.score} latitude={city?.y} longitude={city?.x} services={city?.characteristic} /></li>;
+              return <li key={city?.id}><Card id={city?.id} title={city?.name} src={city?.images[0]?.nombre_url}
+               address={city?.address} description={city?.desc} category={city?.category.title} punctuation={city?.punctuation} 
+               stars={city?.stars} score={city?.score} latitude={city?.y} longitude={city?.x} services={city?.characteristic} /></li>;
             })}
           </ul>
         </section>

@@ -4,6 +4,8 @@ import Category from './Cards/Category';
 import Card from './Cards/Card';
 import '../styles/Section.css';
 import { UserContext } from './Context/UserContext';
+import Api from "./Helpers/Api";
+
 
 function Section({ type, title }) {
     const [categories, setCategories] = useState(null);
@@ -14,7 +16,7 @@ function Section({ type, title }) {
         if(type==="Category"){
             //Cargo categorías
             const getCategories = async()=>{
-                await fetch("http://localhost:8080/categories/getList",{
+                await fetch(Api +"categories/getList",{
                     method:'GET',
                     headers:{
                         'Content-Type':'application/json'
@@ -33,7 +35,7 @@ function Section({ type, title }) {
         if(type==="Card"){
             //Cargo productos
             const getProducts = async()=>{
-                await fetch(`http://localhost:8080/products/getListProducts${user?"?sort=true":"?sort=false"}`,{
+                await fetch(Api + `products/getListProducts${user?"?sort=true":"?sort=false"}`,{
                     method:'GET',
                     headers:{
                         'Content-Type':'application/json'
@@ -48,6 +50,8 @@ function Section({ type, title }) {
             }
             getProducts();
         }
+        sessionStorage.removeItem("msg");
+        sessionStorage.removeItem("url");
     },[type,user]);
 
     return (

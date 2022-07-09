@@ -112,15 +112,47 @@ header.div__open-menu {
     align-items: flex-end;
 }
 
-.div__open-menu .div__menu-bar .ul__bar-links li:not(:last-of-type) {
+.div__open-menu .div__menu-bar .ul__bar-admin li a {
+    padding: 1.5em 0;
+    text-align: right;
+    display: block;
+    color: black;
+}
+
+.div__open-menu .div__menu-bar .ul__bar-admin li a:active {
+    color: var(--orange);
+}
+
+.div__open-menu .div__menu-bar .ul__bar-buttons > li:not(:last-of-type),
+.div__open-menu .div__menu-bar .ul__bar-admin > li:not(:last-of-type) {
     border-bottom: 1px solid var(--light-grey);
 }
 
-.div__open-menu .div__menu-bar .ul__bar-links li a {
+.div__open-menu .div__menu-bar .ul__bar-buttons > li {
     color: var(--grey);
-    padding: 24px 0;
+    padding: 1.5em 0;
     text-align: right;
+}
+
+.div__open-menu .div__menu-bar .ul__bar-buttons > li > a {
+    color: var(--grey);
+}
+
+.div__open-menu .div__menu-bar .ul__bar-buttons > li span {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-bottom: 1em;
+}
+
+.div__open-menu .div__menu-bar .ul__bar-buttons > li span::after {
+    content: "";
+    width: 16px;
+    height: 16px;
     display: block;
+    background: url(../assets/icons/show-more.svg) no-repeat center center;
+    background-size: contain;
+    margin-left: .5em;
 }
 
 .div__menu-bar .div__menu-navigation {
@@ -144,6 +176,16 @@ header.div__open-menu {
 
 .div__menu-bar .div__social-menu a {
     color: var(--orange);
+}
+
+.ul__role-menu li {
+    text-align: right;
+    padding: 0 0 1.5em;
+}
+
+.ul__role-menu li a {
+    font-size: 14px;
+    color: #333;
 }
 
 .ul__social-links {
@@ -184,21 +226,45 @@ header.div__open-menu {
     background-size: contain;
 }
 
-body.login #link__login-btn {
-    display: none;
-}
-
-body.register #link__register-btn {
-    display: none;
-}
-
-body.register .div__open-menu .div__menu-bar .ul__bar-links li {
+body.register .div__open-menu .div__menu-bar .ul__bar-buttons li {
     border-bottom: none;
 }
 
 @media (min-width: 768px) {
     header {
         padding: 1.5em 5%;
+    }
+
+    .div__nav-menu, .ul__bar-buttons {
+        position: relative;
+    }
+
+    .ul__role-menu, .ul__bar-admin {
+        position: absolute;
+        background-color: white;
+        box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.15);
+        border-radius: 5px;
+        top: 50px;
+        right: 0;
+    }
+
+    .ul__role-menu {
+        margin-left: 1.5em;
+        width: calc(50% - 1.5em);
+    }
+
+    .ul__bar-admin {
+        width: 210px;
+    }
+
+    .ul__role-menu li, .ul__bar-admin li {
+        padding: 0;
+    }
+
+    .ul__role-menu li a, .ul__bar-admin li a {
+        padding: 1.5em;
+        display: block;
+        color: #333;
     }
 
     .a__button-nav {
@@ -214,25 +280,60 @@ body.register .div__open-menu .div__menu-bar .ul__bar-links li {
         display: none;
     }
 
-    .ul__bar-links {
+    .ul__bar-buttons {
         display: flex;
         align-items: center;
     }
 
-    .ul__bar-links a {
+    .ul__bar-buttons > li span, .ul__bar-buttons > li > a {
         padding: .8em 2em;
         border-radius: 5px;
         font-weight: 700;
         border: 1px solid var(--orange);
         color: var(--orange);
         margin-left: 1.5em;
+        cursor: pointer;
     }
 
-    .ul__bar-links a:hover, .ul__bar-links a:active {
+    .ul__bar-buttons > li span:hover, .ul__bar-buttons > li > a:hover, .ul__role-menu a:hover, .ul__bar-admin a:hover {
         border: none;
         color: white;
         background: var(--orange);
+    }
+
+    .ul__bar-buttons > li span:hover, .ul__bar-buttons > li > a:hover {
         border: 1px solid var(--orange);
+    }
+
+    .ul__role-menu li:first-child a:hover,
+    .ul__bar-admin li:first-child a:hover {
+        border-radius: 5px 5px 0 0;
+    }
+
+    .ul__role-menu li:last-child a:hover,
+    .ul__bar-admin li:last-child a:hover {
+        border-radius: 0 0 5px 5px;
+    }
+
+    .ul__role-menu a:hover {
+        border: none;
+    }
+
+    .div__menu-login.admin {
+        display: flex;
+        align-items: center;
+        flex-direction: row-reverse;
+    }
+
+    .div__menu-login.admin a {
+        font-weight: bold;
+        color: var(--grey);
+        padding-right: 1em;
+        margin-right: 1em;
+        border-right: 1px solid var(--orange);
+        height: 45px;
+        display: flex;
+        align-items: center;
     }
 
     .div__user-login {
@@ -290,7 +391,15 @@ body.register .div__open-menu .div__menu-bar .ul__bar-links li {
         color: var(--grey);
     }
 
-    .ul__bar-links a {
+    .div__user-login:hover {
+        cursor: pointer;
+    }
+
+    .div__user-login:hover > span {
+        background-color: var(--orange);
+    }
+
+    .ul__bar-buttons a {
         padding: .8em 3em;
     }
 }

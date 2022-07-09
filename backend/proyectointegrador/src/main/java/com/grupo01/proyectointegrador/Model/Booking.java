@@ -31,7 +31,7 @@ public class Booking {
     @Column (name = "booking_userinfo_covid")
     private String bookingUserInfoCovid;
 
-    @ManyToOne (fetch = FetchType.LAZY)
+    @ManyToOne (fetch = FetchType.EAGER)
     @JoinColumn(name = "prod_id", nullable = false)
     @JsonIgnore
     private Product prodId;

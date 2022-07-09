@@ -31,6 +31,6 @@ public class RoleController {
 
     @PutMapping("/update")
     public ResponseEntity<Role> actualizar(@RequestBody Role role) throws Exception {
-        return ResponseEntity.ok(roleService.guardar(role));
+        return ResponseEntity.ok(roleService.actualizar(role));
     }
 }

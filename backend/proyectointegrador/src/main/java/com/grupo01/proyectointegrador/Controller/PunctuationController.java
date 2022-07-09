@@ -13,7 +13,7 @@ public class PunctuationController {
    @Autowired
    PunctuationService punctuationService;
 
-   @CrossOrigin(origins = "http://localhost:3000")
+
    @GetMapping("/findById/{id}")
    public ResponseEntity<Punctuation> buscarId(@PathVariable Long id) throws Exception {
       return ResponseEntity.ok(punctuationService.buscarId(id));
@@ -35,7 +35,7 @@ public class PunctuationController {
       return ResponseEntity.ok(punctuationService.actualizar(punctuation));
    }
 
-   @CrossOrigin(origins = "http://localhost:3000")
+
    @GetMapping("/total/{id}")
    public ResponseEntity<Long> totalPuntuaciones(@PathVariable Long id) throws Exception {
       return ResponseEntity.ok(punctuationService.totalPunctuation(id));

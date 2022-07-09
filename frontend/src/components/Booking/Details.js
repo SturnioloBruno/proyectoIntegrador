@@ -6,11 +6,12 @@ import Button from "../../components/Button";
 import {useEffect,useState,useContext} from 'react';
 import { SearchContext } from '../Context/SearchContext';
 
-function Details({ src, name, category, address, city, stars , change}) {
+function Details({ src, name, category, address, city, stars , change,error}) {
     const startDateCache = useContext(SearchContext);
     const endDateCache = sessionStorage.getItem("dateEnd")?sessionStorage.getItem("dateEnd"):null
     const [dateStartFormat,setDateStartFormat] = useState(null);
     let [dateEndFormat,setDateEndFormat]= useState(null); 
+    
 
     useEffect(()=>{
 
@@ -50,6 +51,7 @@ function Details({ src, name, category, address, city, stars , change}) {
                                 <span>{dateEndFormat?dateEndFormat:"-/-/-"}</span>                         
                             </li>
                         </ul>
+                        {error != null ? <p className='p__error'>{error}</p> : ""}
                         <Button text="Confirmar reserva" className="btn button__solid-type" />
                     </div>
                 </div>

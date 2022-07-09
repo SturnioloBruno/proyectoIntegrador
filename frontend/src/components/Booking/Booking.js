@@ -9,10 +9,12 @@ import Politics from "../Products/Politics";
 import { UserContext } from "../Context/UserContext";
 import "../../styles/Booking/Booking.css";
 import "../../styles/Booking/Date.css";
+import Api from "../Helpers/Api";
 
 function Booking() {
     const [product, setProduct] = useState(null);
     const [change,setChange] = useState(false);
+    const [pRange, setpRange] = useState(null);
     const {id} = useParams();
     const navigate = useNavigate();
     sessionStorage.removeItem("url");
@@ -42,7 +44,7 @@ function Booking() {
     useEffect(()=>{
         //Cargo datos del producto
         const getProduct = async()=>{
-            await fetch("http://localhost:8080/products/findById/" + id,{
+            await fetch(Api + "products/findById/" + id,{
                 method:'GET',
                 headers:{
                     'Content-Type':'application/json'
@@ -63,19 +65,24 @@ function Booking() {
         
         if(city.value.trim() === ""){
             city.focus();
-            city.className = "error";
+            city.classList.add("error")
             return
         }
 
         if(hour.value === ""){
             hour.focus();
-            hour.className = "error";
+            hour.classList.add("error");
             return
         }
 
+        if(sessionStorage.getItem("dateStart") === null || sessionStorage.getItem("dateEnd") === null) {    
+            setpRange("Seleccione un rango de fechas para continuar.");
+            return
+        }
+        
         //Insert con datos de la reserva
         const insertBooking = async()=>{
-            await fetch("http://localhost:8080/bookings/insert", {
+            await fetch(Api + "bookings/insert", {
                 method:'POST',
                 headers: {
                     "Access-Control-Allow-Headers" : "Content-Type",
@@ -98,7 +105,7 @@ function Booking() {
                 })
             })
             .then((response) => {
-                if(response.status === 200) navigate("/ok");
+                if(response.status === 200) navigate("/booking-ok");
                 if(response.status === 400) alert("Lamentablemente la reserva no ha podido realizarse. Por favor, intente más tarde.");
                 return response.json();
             })
@@ -114,11 +121,11 @@ function Booking() {
                     <Form />
                     <section className='section__booking-date'>
                         <h2>Seleccioná tu fecha de reserva</h2>
-                        <Calendar bookings={product?.bookings} handlerChange={handlerChange}/>
+                        <Calendar bookings={product?.bookings} handlerChange={handlerChange} error={setpRange}/>
                     </section>
                     <Hour />
                 </div>
-                <Details src={product?.images[0]?.nombre_url} change={change} name={product?.name} category={product?.category.title} address={product?.address} city={product? product.city?.cityName + ", " + product.city?.country : ""} stars={product?.stars} />
+                <Details error={pRange} src={product?.images[0]?.nombre_url} change={change} name={product?.name} category={product?.category.title} address={product?.address} city={product? product.city?.cityName + ", " + product.city?.country : ""} stars={product?.stars} />
             </form>
             <Politics policy={product?.policy} />
         </section>

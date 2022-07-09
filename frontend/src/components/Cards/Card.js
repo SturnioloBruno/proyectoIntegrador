@@ -36,7 +36,7 @@ function Card({id, title, src, address, description, category, punctuation, scor
                         <div className="div__category-stars">
                         <p className="p__category-name">{category}</p>
                         <Stack spacing={1}>
-                            <Rating name="half-rating-read" size="small" defaultValue={stars} value={stars} precision={0.5} emptyIcon={<StarIcon fontSize="inherit" style={{ opacity: 0.5 }} />} readOnly />
+                            <Rating name="half-rating-read" size="small" lue={stars} value={stars} precision={0.5} emptyIcon={<StarIcon fontSize="inherit" style={{ opacity: 0.5 }} />} readOnly />
                         </Stack>
                         </div>
                         <h3>{title}</h3>
@@ -54,9 +54,9 @@ function Card({id, title, src, address, description, category, punctuation, scor
                 </ul>
                 <div className="div__show-text">
                     <p className="p__description-text">{description}</p>
-                    <Link to="#">más...</Link>
+                    <Link to={`/product/${id}`}>más...</Link>
                 </div>
-                <Link to={`/product/${id}`}className="btn button__solid-type">ver más</Link>
+                <Link to={`/product/${id}`} className="btn button__solid-type">ver más</Link>
             </div>
             <img src={src} alt={title} />
         </article>
